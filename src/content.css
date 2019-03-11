@@ -1,0 +1,106 @@
+.__rhn__blur {
+    filter: blur(3px);
+}
+
+.__rhn__blur:hover {
+    filter: blur(0);
+}
+
+.__rhn__dead-link-color,
+.__rhn__dead-link-color * {
+    color: #d89899 !important;
+}
+
+.__rhn__comment-indent {
+    border-right: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.__rhn__comment-indent:hover {
+    border-color: #888;
+}
+
+.__rhn__toggle-btn {
+    font-size: 10px;
+    text-decoration: underline !important;
+}
+
+.__rhn__no-display {
+    display: none;
+}
+
+.__rhn__highlight-op {
+    color: #f7694c !important;
+}
+
+.__rhn__hide-story-container {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+}
+
+.__rhn__hide-story-container label {
+    font-size: 13px;
+    color: black;
+}
+
+.__rhn__hide-story-container input {
+    margin-right: 5px;
+    margin-left: 0;
+}
+
+.__rhn__characters-over {
+    color: #ea605d;
+}
+
+.__rhn__characters-under {
+    color: #43a047;
+}
+
+.__rhn__profile-dropdown {
+    background: #ff6600;
+    border: 1px solid #000;
+    margin-top: 4px;
+    position: absolute;
+}
+
+.__rhn__profile-dropdown a,
+.__rhn__profile-dropdown a:visited {
+    display: block;
+    text-align: left;
+    text-decoration: underline;
+    height: 20px;
+    padding: 0 5px;
+    color: #000;
+}
+
+.__rhn__hover-user-info {
+    position: absolute;
+    background: #f6f6ef;
+    z-index: 2;
+    border: 1px solid black;
+    padding: 3px;
+    max-width: 500px;
+    box-shadow: #999 0 0 10px;
+}
+
+.__rhn__hover-user-info td {
+    font-size: 10px !important;
+    vertical-align: top;
+}
+
+.__rhn__hover-user-info td p {
+    word-break: break-all;
+}
+
+.__rhn__hover-user-info td a {
+    color: black !important;
+    text-decoration: none !important;
+}
+
+a.hnuser:hover ~ .__rhn__hover-user-info,
+.__rhn__hover-user-info:hover {
+    display: block;
+}

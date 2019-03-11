@@ -1,0 +1,32 @@
+{
+	"private": true,
+	"scripts": {
+		"lint": "xo && stylelint src/*.css",
+		"lint-fix": "xo --fix; stylelint --fix src/*.css",
+		"build": "webpack --mode=production",
+		"watch": "webpack --mode=development --watch"
+	},
+	"dependencies": {
+		"firebase": "^5.8.6",
+		"webextension-polyfill": "^0.4.0"
+	},
+	"devDependencies": {
+		"copy-webpack-plugin": "^5.0.0",
+		"size-plugin": "^1.1.2",
+		"stylelint": "^9.10.1",
+		"stylelint-config-xo": "^0.13.0",
+		"terser-webpack-plugin": "^1.2.3",
+		"web-ext-submit": "^2.9.3",
+		"webpack": "^4.29.4",
+		"webpack-cli": "^3.2.3",
+		"xo": "^0.24.0"
+	},
+	"xo": {
+		"envs": [
+			"browser"
+		],
+		"globals": [
+			"browser"
+		]
+	}
+}

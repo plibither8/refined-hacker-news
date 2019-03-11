@@ -1,0 +1,36 @@
+{
+	"name": "Refined Hacker News",
+	"version": "0.0.0",
+	"description": "✨ Hacker News, but refined.",
+	"homepage_url": "https://github.com/plibither8/refined-hacker-news",
+	"manifest_version": 2,
+	"permissions": [
+		"storage",
+		"contextMenus"
+	],
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts": [
+			"browser-polyfill.min.js",
+			"background.js"
+		],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+			"run_at": "document_start",
+			"matches": [
+				"https://news.ycombinator.com/*"
+			],
+			"css": [
+				"content.css"
+			],
+			"js": [
+				"browser-polyfill.min.js",
+				"content.js"
+			]
+		}
+	]
+}
