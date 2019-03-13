@@ -1,11 +1,8 @@
-import features from "../libs/features";
+import features from '../libs/features';
 import {getLoggedInUser} from '../libs/utils';
 
 const init = () => {
     const user = getLoggedInUser();
-    if (!user) {
-        return;
-    }
 
     const links = [
         {
@@ -48,23 +45,20 @@ const init = () => {
     userLink.innerHTML += ' ▾';
 
     dropdownEl.classList.add('__rhn__no-display', '__rhn__profile-dropdown');
-    const userLinkRect = userLink.getBoundingClientRect();
-    const dropdownRect = dropdownEl.getBoundingClientRect();
-    dropdownEl.style.left = (2*userLinkRect.left + userLinkRect.width - dropdownRect.width)/2 + 'px';
     let state = 0;
-
+    
     for (const link of links) {
         const anchorEl = document.createElement('a');
         anchorEl.href = link.path;
         anchorEl.innerHTML = link.title;
         dropdownEl.appendChild(anchorEl);
     }
-
+    
     targetCell.appendChild(dropdownEl);
-
+    
     userLink.addEventListener('click', e => {
         e.preventDefault();
-        console.log('checl')
+        dropdownEl.style.left = userLink.getBoundingClientRect().left + 'px';
         dropdownEl.classList.toggle('__rhn__no-display');
         userLink.innerHTML = `${user} ${state ? '▾' : '▴'}`;
         state = 1 - state;
@@ -73,7 +67,16 @@ const init = () => {
 
 features.add({
     id: 'profile-link-dropdown',
-    pages: ['*'],
+    pages: {
+        include: ['*'],
+        exclude: [
+            '/newsguidelines.html',
+            '/newsfaq.html',
+            '/security.html',
+            '/bookmarklet.html'
+        ]
+    },
+    login_required: true,
     init: init
 });
 

@@ -9,14 +9,18 @@ const init = () => {
 
 features.add({
     id: 'blur-story-scores',
-    pages: [
-        '/',
-        '/news',
-        '/show',
-        '/shownew',
-        '/ask',
-        '/active'
-    ],
+    pages: {
+        include: [
+            '/',
+            '/news',
+            '/show',
+            '/shownew',
+            '/ask',
+            '/active'
+        ],
+        exclude: []
+    },
+    login_required: false,
     init: init
 });
 

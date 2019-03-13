@@ -1,4 +1,4 @@
-import features from "../libs/features";
+import features from '../libs/features';
 
 const init = () => {
     const storyLinks = document.querySelectorAll('a.storylink');
@@ -10,7 +10,11 @@ const init = () => {
 
 features.add({
     id: 'open-story-links-in-new-tab',
-    pages: ['*'],
+    pages: {
+        include: ['*'],
+        exclude: []
+    },
+    login_required: false,
     init: init
 });
 

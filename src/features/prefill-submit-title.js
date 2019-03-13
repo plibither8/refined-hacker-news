@@ -1,11 +1,10 @@
-import features from "../libs/features";
+import features from '../libs/features';
 
 const init = () => {
     const page = window.location.pathname;
     switch (page) {
         case '/show':
         case '/shownew': {
-            console.log('hello')
             const pagetop = document.querySelector('span.pagetop');
             for (const link of pagetop.querySelectorAll('a')) {
                 if (link.innerText === 'submit') {
@@ -38,12 +37,16 @@ const init = () => {
 
 features.add({
     id: 'prefill-submit-title',
-    pages: [
-        '/show',
-        '/shownew',
-        '/ask',
-        '/submit'
-    ],
+    pages: {
+        include: [
+            '/show',
+            '/shownew',
+            '/ask',
+            '/submit'
+        ],
+        exclude: []
+    },
+    login_required: false,
     init: init
 });
 

@@ -1,4 +1,4 @@
-import features from "../libs/features";
+import features from '../libs/features';
 
 const init = () => {
     const allComments = [...document.querySelectorAll('tr.comtr')];
@@ -12,7 +12,7 @@ const init = () => {
         if (nextIndent && nextIndent > currentIndent) {
             const fontTag = document.createElement('font');
             fontTag.setAttribute('size', 1);
-    
+
             const toggleAllBtn = document.createElement('a');
             toggleAllBtn.classList.add('__rhn__toggle-btn');
             toggleAllBtn.innerHTML = 'toggle all replies';
@@ -24,16 +24,23 @@ const init = () => {
                     allComments[i].querySelector('a.togg').click();
                 }
             });
-    
+
             fontTag.appendChild(toggleAllBtn);
-            comment.querySelector('div.reply p').appendChild(fontTag);
+
+            const fontTagParent = comment.querySelector('div.reply p');
+            fontTagParent.appendChild(document.createTextNode(' | '));
+            fontTagParent.appendChild(fontTag);
         }
     });
 }
 
 features.add({
     id: 'toggle-all-replies',
-    pages: ['/item'],
+    pages: {
+        include: ['/item'],
+        exclude: []
+    },
+    login_required: false,
     init: init
 });
 

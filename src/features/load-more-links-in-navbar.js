@@ -1,4 +1,4 @@
-import features from "../libs/features";
+import features from '../libs/features';
 
 const init = () => {
     const navbar = document.querySelector('span.pagetop');
@@ -70,7 +70,21 @@ const init = () => {
 
 features.add({
     id: 'load-more-links-in-navbar',
-    pages: ['*'],
+    pages: {
+        include: ['*'],
+        exclude: [
+            '/submit',
+            '/reply',
+            '/edit',
+            '/delete-confirm',
+            '/submitlink',
+            '/newsguidelines.html',
+            '/newsfaq.html',
+            '/security.html',
+            '/bookmarklet.html'
+        ]
+    },
+    login_required: false,
     init: init
 });
 

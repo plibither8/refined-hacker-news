@@ -1,4 +1,4 @@
-import features from "../libs/features";
+import features from '../libs/features';
 import {getLoggedInUser} from '../libs/utils';
 
 const init = () => {
@@ -37,7 +37,11 @@ const init = () => {
 
 features.add({
     id: 'show-karma-left',
-    pages: ['/user'],
+    pages: {
+        include: ['/user'],
+        exclude: []
+    },
+    login_required: true,
     init: init
 });
 

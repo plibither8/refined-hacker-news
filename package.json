@@ -8,6 +8,7 @@
 	},
 	"dependencies": {
 		"firebase": "^5.8.6",
+		"linkifyjs": "^2.1.8",
 		"webextension-polyfill": "^0.4.0"
 	},
 	"devDependencies": {

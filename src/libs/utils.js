@@ -12,11 +12,6 @@ export const getTopLevelComments = () => {
     return topLevelComments;
 };
 
-export const getLoggedInUser = () => {
-    const me = document.querySelector('a#me');
-    if (me) {
-        return me.innerText;
-    } else {
-        return false;
-    }
-};
+export const isLoggedIn = () => Boolean(document.querySelector('a#me'));
+
+export const getLoggedInUser = () => document.querySelector('a#me').innerText.split(' ')[0];

@@ -39,6 +39,8 @@
     padding-left: 10px;
     border-bottom: 1px solid #ddd;
     display: flex;
+    font-size: 13px;
+    color: black;
 }
 
 .__rhn__hide-story-container label {
@@ -49,6 +51,11 @@
 .__rhn__hide-story-container input {
     margin-right: 5px;
     margin-left: 0;
+}
+
+.__rhn__select-disabled {
+    pointer-events: none;
+    cursor: not-allowed;
 }
 
 .__rhn__characters-over {
@@ -83,7 +90,6 @@
     border: 1px solid black;
     padding: 3px;
     max-width: 500px;
-    box-shadow: #999 0 0 10px;
 }
 
 .__rhn__hover-user-info td {
@@ -92,7 +98,7 @@
 }
 
 .__rhn__hover-user-info td p {
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .__rhn__hover-user-info td a {
@@ -103,4 +109,8 @@
 a.hnuser:hover ~ .__rhn__hover-user-info,
 .__rhn__hover-user-info:hover {
     display: block;
+}
+
+.__rhn__injected-form {
+    margin-top: 10px;
 }

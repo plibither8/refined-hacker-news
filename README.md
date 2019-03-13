@@ -6,15 +6,19 @@
 
 This is a small browser that tweaks a few stuff on Hacker News to make the experience better, while keeping the core design principles in place.
 
-Heavily inspired by [Sindre Sorhus](https://github.com/sindresorhus)'s extension [Refined GitHub](https://github.com/sindresorhus/refined-github).
+Inspired by [Sindre Sorhus](https://github.com/sindresorhus)'s extension [Refined GitHub](https://github.com/sindresorhus/refined-github).
 
 ## To-do
 
+### Extension
+
+- [ ] Options
+
 ### Code
 
-* When features are "add"ed, the details object containing information about the feature should include a check whether to see if being logged in is required to access the feature. This will help in removing extra checks from all features. Something like: `login_required: true`;
+- [x] When features are "add"ed, the details object containing information about the feature should include a check whether to see if being logged in is required to access the feature. This will help in removing extra checks from all features. Something like: `login_required: true`
 
-* In the feaure details, make it something like:
+- [x] In the feaure details, make it something like:
 
 ```js
 ...
@@ -27,27 +31,33 @@ pages: {
 
 ### Features
 
+#### Left
+
+*Nothing :)*
+
 #### Done
 
 - [x] `blur-story-scores`
 - [x] `change-dead-comments-color`
 - [x] `click-comment-indent-to-toggle`
 - [x] `highlight-op-username`
+- [x] `italicise-shortcut-key`
+- [x] `linkify-text`
 - [x] `load-more-links-in-navbar`
 - [x] `open-story-links-in-new-tab`
+- [x] `past-date-picker`
 - [x] `prefill-submit-title`
 - [x] `profile-links-dropdown`
+- [x] `reply-without-leaving-page`
 - [x] `show-favorite-link-on-frontpage`
 - [x] `show-karma-left`
 - [x] `show-submission-title-remaining-characters`
 - [x] `show-user-info-on-hover`
+- [x] `sort-stories`
 - [x] `toggle-all-comments`
 - [x] `toggle-all-replies`
 
-#### Left
+#### Abandoned
 
-- [ ] `reply-without-leaving-page`
-- [ ] `load-more-dates`
-- [ ] `past-date-picker`
-- [ ] `sort-stories`
-- [ ] `hide-read-stories` *use Chrome's History API to get this shit working*
+- `hide-read-stories`
+- `load-more-stories`

@@ -1,4 +1,4 @@
-import features from "../libs/features";
+import features from '../libs/features';
 
 const init = () => {
     const comments = document.querySelectorAll('tr.comtr');
@@ -12,7 +12,11 @@ const init = () => {
 
 features.add({
     id: 'click-comment-indent-to-toggle',
-    pages: ['/item'],
+    pages: {
+        include: ['/item'],
+        exclude: []
+    },
+    login_required: false,
     init: init
 });
 

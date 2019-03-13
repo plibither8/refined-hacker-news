@@ -1,4 +1,4 @@
-import features from "../libs/features";
+import features from '../libs/features';
 
 const init = () => {
     const op = document.querySelector('td.subtext a.hnuser').innerText;
@@ -14,7 +14,11 @@ const init = () => {
 
 features.add({
     id: 'highlight-op-username',
-    pages: ['/item'],
+    pages: {
+        include: ['/item'],
+        exclude: []
+    },
+    login_required: false,
     init: init
 });
 

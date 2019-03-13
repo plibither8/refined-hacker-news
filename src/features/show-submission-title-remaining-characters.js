@@ -1,4 +1,4 @@
-import features from "../libs/features";
+import features from '../libs/features';
 
 const init = () => {
     const titleField = document.querySelector('input[name="title"]');
@@ -17,7 +17,11 @@ const init = () => {
 
 features.add({
     id: 'show-submission-title-remaining-characters',
-    pages: ['/submit'],
+    pages: {
+        include: ['/submit'],
+        exclude: []
+    },
+    login_required: false,
     init: init
 });
 
