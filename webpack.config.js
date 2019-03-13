@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports */
 'use strict';
 const path = require('path');
 const SizePlugin = require('size-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = (env, argv) => ({
+module.exports = () => ({
 	devtool: 'sourcemap',
 	stats: 'errors-only',
 	entry: {
 		content: './src/content',
-		background: './src/background',
-		// options: './src/options'
+		background: './src/background'
+		// Options: './src/options'
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
@@ -50,7 +49,7 @@ module.exports = (env, argv) => ({
 					compress: false,
 					output: {
 						beautify: true,
-						indent_level: 2
+						indent_level: 2 // eslint-disable-line camelcase
 					}
 				}
 			})
