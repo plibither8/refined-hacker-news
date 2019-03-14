@@ -10,7 +10,11 @@
 		"history"
 	],
 	"browser_action": {
-		"default_popup": "popup.html"
+		"default_popup": "popup.html",
+		"default_icon": "icon.png"
+	},
+	"icons": {
+		"128": "icon.png"
 	},
 	"background": {
 		"scripts": [

@@ -37,7 +37,7 @@ const init = () => {
 	if (shouldLinkify) {
 		linkifyElement(targetEl, {
 			attributes: {
-				rel: 'nofollow noreferrer'
+				rel: 'noopener'
 			}
 		});
 	}

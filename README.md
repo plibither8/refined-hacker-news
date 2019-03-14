@@ -33,7 +33,7 @@ pages: {
 
 #### Left
 
-*Nothing :)*
+- [ ] `vim-key-bindings-for-navigation`
 
 #### Done
 

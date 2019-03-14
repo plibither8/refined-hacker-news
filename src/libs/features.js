@@ -2,7 +2,7 @@ import {isLoggedIn} from './utils';
 
 const add = featureDetails => {
 	const {
-		id, // eslint-disable-line no-unused-vars
+		id,
 		pages,
 		loginRequired,
 		init
@@ -23,6 +23,7 @@ const add = featureDetails => {
 			return;
 		}
 
+		console.info('Refined Hacker News:', '️️️✓', id);
 		init();
 	});
 };

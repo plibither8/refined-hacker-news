@@ -4,7 +4,7 @@ const init = () => {
 	const storyLinks = document.querySelectorAll('a.storylink');
 	for (const link of storyLinks) {
 		link.target = '_blank';
-		link.rel = 'noopener noreferrer';
+		link.rel = 'noopener';
 	}
 };
 

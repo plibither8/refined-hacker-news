@@ -31,11 +31,11 @@ const init = () => {
 		},
 		{
 			title: 'favorite submissions',
-			path: `favorites?id=${user}`
+			path: `favorites?n&id=${user}`
 		},
 		{
 			title: 'favorite comments',
-			path: `favorites?id=${user}&comments=t`
+			path: `favorites?n&id=${user}&comments=t`
 		}
 	];
 

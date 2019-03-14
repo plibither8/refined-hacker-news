@@ -87,7 +87,7 @@ const init = async () => {
 		});
 	}
 
-	sort('default', stories);
+	await sort('default', stories);
 	reinit();
 
 	sortSelect.addEventListener('change', () => {
