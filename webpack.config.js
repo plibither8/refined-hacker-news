@@ -9,8 +9,8 @@ module.exports = () => ({
 	stats: 'errors-only',
 	entry: {
 		content: './src/content',
-		background: './src/background'
-		// Options: './src/options'
+		background: './src/background',
+		popup: './src/popup'
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),

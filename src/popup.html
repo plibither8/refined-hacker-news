@@ -1,14 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Refined Hacker News</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="./popup.css">
-    <script src="./popup.js"></script> -->
-</head>
-<body>
-    <p>Hello</p>
-</body>
-</html>
+<!doctype html>
+<meta charset="utf-8">
+<title>Refined Hacker News Options</title>
+<link rel="stylesheet" href="popup.css">
+<link rel="stylesheet" href="chrome://global/skin/in-content/common.css">
+
+
+<form id="options-form" class="detail-view-container">
+    <h2><img src="icon.png"/>Refined Hacker News</h2>
+    
+    <p>
+        <label>
+            <strong>Features to disable</strong>, by <a href="https://github.com/sindresorhus/refined-hacker-news/tree/master/src/features"
+                target="_blank">filename</a><br>
+            <textarea name="disabledFeatures" rows="3" placeholder="For example: &#10;show-user-info-on-hover"
+                spellcheck="false"></textarea>
+        </label>
+    </p>
+
+    <p>
+        <label>
+            <strong>Custom CSS</strong> (useful to undo unwanted styles)<br>
+            <textarea name="customCSS" rows="3" spellcheck="false"></textarea>
+        </label>
+    </p>
+
+    <p>
+        <label>
+            <input type="checkbox" name="logging" checked>
+            Show the features enabled on each page in the console
+        </label>
+    </p>
+
+</form>
+
+<script src="browser-polyfill.min.js"></script>
+<script src="popup.js"></script>

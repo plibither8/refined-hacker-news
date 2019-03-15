@@ -1,4 +1,3 @@
-import './features/blur-story-scores';
 import './features/change-dead-comments-color';
 import './features/click-comment-indent-to-toggle';
 import './features/highlight-op-username';

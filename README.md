@@ -37,7 +37,6 @@ pages: {
 
 #### Done
 
-- [x] `blur-story-scores`
 - [x] `change-dead-comments-color`
 - [x] `click-comment-indent-to-toggle`
 - [x] `highlight-op-username`
@@ -60,5 +59,6 @@ pages: {
 
 #### Abandoned
 
+- `blur-story-scores`
 - `hide-read-stories`
 - `load-more-stories`

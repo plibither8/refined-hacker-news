@@ -1,0 +1,60 @@
+body {
+	margin: 0;
+	border: 5px solid #f7694c;
+	min-width: 430px;
+	background: #f6f6ef;
+}
+
+form {
+	margin: 0 auto;
+	width: 95%;
+}
+
+textarea {
+	display: block;
+	width: 100%;
+	font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	font-size: 11px;
+	line-height: 1.5;
+	resize: vertical;
+	-moz-tab-size: 4 !important;
+	tab-size: 4 !important;
+	box-sizing: border-box;
+	margin-top: 5px;
+}
+
+input[type='checkbox'] {
+	vertical-align: -0.16em;
+}
+
+h2 {
+	display: flex;
+	align-items: center;
+}
+
+h2 img {
+	height: 40px;
+	width: auto;
+	margin-right: 6px;
+	border: 1px solid #f7694c;
+	border-radius: 7px;
+}
+
+p:last-child {
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+}
+
+@-moz-document url-prefix('') {
+	:root {
+		background: none !important;
+	}
+
+	:root h2 {
+		font-weight: normal;
+	}
+
+	input[type='checkbox'] {
+		vertical-align: -41%;
+	}
+}

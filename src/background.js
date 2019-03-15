@@ -1,5 +1,9 @@
-browser.browserAction.onClicked.addListener(() => {
-	browser.tabs.create({
-		url: 'https://news.ycombinator.com'
-	});
+import OptionsSync from 'webext-options-sync';
+
+new OptionsSync().define({
+	defaults: {
+		disabledFeatures: '',
+		customCSS: '',
+		logging: true
+	}
 });

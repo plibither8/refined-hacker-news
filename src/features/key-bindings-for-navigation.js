@@ -89,8 +89,8 @@ const init = () => {
 					break;
 				}
 
-				// T: Toggle
-				case 84: {
+				// Enter: Toggle
+				case 13: {
 					activeItem.querySelector('a.togg').click();
 					items = document.querySelectorAll('table.comment-tree tr.comtr:not(.noshow) td.default');
 					break;
@@ -107,13 +107,13 @@ const init = () => {
 			const comment = next.querySelector('a[href^="item"]');
 
 			switch (e.keyCode) {
-				// Enter
+				// Enter: open story link
 				case 13: {
 					story.click();
 					break;
 				}
 
-				// U
+				// U: upvote story
 				case 85: {
 					if (upvote) {
 						upvote.click();
@@ -122,7 +122,7 @@ const init = () => {
 					break;
 				}
 
-				// H
+				// H: hide story
 				case 72: {
 					if (hide) {
 						hide.click();
@@ -133,7 +133,7 @@ const init = () => {
 					break;
 				}
 
-				// F
+				// F: favorite story
 				case 70: {
 					if (fave) {
 						fave.click();
@@ -142,7 +142,7 @@ const init = () => {
 					break;
 				}
 
-				// C
+				// C: open story comments
 				case 67: {
 					if (comment) {
 						comment.click();
