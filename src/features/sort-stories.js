@@ -1,8 +1,6 @@
 import features from '../libs/features';
-import reinit from '../libs/reinitialise-story-features';
 
 const sort = (method, stories) => {
-	const itemlistTable = document.querySelector('table.itemlist > tbody');
 	switch (method) {
 		case 'time': {
 			stories.sort((a, b) => a.id < b.id ? 1 : -1);
@@ -21,6 +19,7 @@ const sort = (method, stories) => {
 		}
 	}
 
+	const itemlistTable = document.querySelector('table.itemlist > tbody');
 	const moreRow = itemlistTable.lastChild;
 	const morespaceRow = moreRow.previousSibling;
 
@@ -36,7 +35,7 @@ const sort = (method, stories) => {
 	itemlistTable.append(moreRow);
 };
 
-const init = async () => {
+const init = () => {
 	const mainTbody = document.querySelector('table#hnmain > tbody');
 	const sortContainer = document.createElement('div');
 	const sortLabel = document.createElement('label');
@@ -59,10 +58,7 @@ const init = async () => {
 	const insertBeforeTr = mainTbody.querySelectorAll('tr')[3];
 	mainTbody.insertBefore(sortContainer, insertBeforeTr);
 
-	const rawPageHtml = await fetch(window.location.href).then(res => res.text());
-	const tempEl = document.createElement('div');
-	tempEl.innerHTML = rawPageHtml;
-	const rows = [...tempEl.querySelectorAll('table.itemlist > tbody > tr')];
+	const rows = [...document.querySelectorAll('table.itemlist > tbody > tr')];
 	while (!rows[0].matches('.athing')) {
 		rows.shift();
 	}
@@ -87,8 +83,7 @@ const init = async () => {
 		});
 	}
 
-	await sort('default', stories);
-	reinit();
+	sort('default', stories);
 
 	sortSelect.addEventListener('change', () => {
 		sort(sortSelect.value, stories);

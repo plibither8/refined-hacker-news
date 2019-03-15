@@ -114,3 +114,13 @@ a.hnuser:hover ~ .__rhn__hover-user-info,
 .__rhn__injected-form {
 	margin-top: 10px;
 }
+
+.__rhn__focussed-item {
+	outline: 2px solid #f7694c73;
+	box-sizing: unset;
+	margin: -2px;
+}
+
+table.itemlist {
+	border-collapse: collapse;
+}

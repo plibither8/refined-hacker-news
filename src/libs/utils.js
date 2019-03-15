@@ -15,3 +15,12 @@ export const getTopLevelComments = () => {
 export const isLoggedIn = () => Boolean(document.querySelector('a#me'));
 
 export const getLoggedInUser = () => document.querySelector('a#me').innerText.split(' ')[0];
+
+export const elementInScrollView = el => {
+	const rect = el.getBoundingClientRect();
+	const elemTop = rect.top;
+	const elemBottom = rect.bottom;
+
+	const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+	return isVisible;
+};

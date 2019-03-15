@@ -32,6 +32,11 @@ const init = () => {
 					btn.innerText = 'hide ' + btn.innerText;
 					btn.dataset.rhnBtnActive = '1';
 					replyDiv.append(replyForm);
+
+					const textarea = replyForm.querySelector('textarea');
+					if (textarea) {
+						textarea.focus();
+					}
 				} else if (btn.dataset.rhnBtnActive === '1') {
 					comment.dataset.rhnFormInjected = '0';
 					btn.dataset.rhnBtnActive = '0';

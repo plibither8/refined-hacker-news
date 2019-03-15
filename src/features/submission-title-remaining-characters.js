@@ -16,7 +16,7 @@ const init = () => {
 };
 
 features.add({
-	id: 'show-submission-title-remaining-characters',
+	id: 'submission-title-remaining-characters',
 	pages: {
 		include: ['/submit'],
 		exclude: []

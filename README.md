@@ -33,7 +33,7 @@ pages: {
 
 #### Left
 
-- [ ] `vim-key-bindings-for-navigation`
+*Nothing :)*
 
 #### Done
 
@@ -42,6 +42,7 @@ pages: {
 - [x] `click-comment-indent-to-toggle`
 - [x] `highlight-op-username`
 - [x] `italicise-shortcut-key`
+- [x] `key-bindings-for-navigation`
 - [x] `linkify-text`
 - [x] `load-more-links-in-navbar`
 - [x] `open-story-links-in-new-tab`
@@ -51,9 +52,9 @@ pages: {
 - [x] `reply-without-leaving-page`
 - [x] `show-favorite-link-on-frontpage`
 - [x] `show-karma-left`
-- [x] `show-submission-title-remaining-characters`
 - [x] `show-user-info-on-hover`
 - [x] `sort-stories`
+- [x] `submission-title-remaining-characters`
 - [x] `toggle-all-comments`
 - [x] `toggle-all-replies`
 
