@@ -29,7 +29,7 @@ const init = () => {
 			userDiv.classList.remove('__rhn__no-display');
 			if (user.dataset.rhnInfoLoaded === '0') {
 				user.dataset.rhnInfoLoaded = '1';
-				const userInfo = await getUserInfo(user.innerText);
+				const userInfo = await getUserInfo(user.innerText.split(' ')[0]);
 				const userDate = new Date(userInfo.created * 1000);
 				const renderedDate = `${monthNames[userDate.getMonth()]} ${userDate.getDate()}, ${userDate.getFullYear()}`;
 
