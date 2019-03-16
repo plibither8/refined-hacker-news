@@ -6,7 +6,9 @@ const init = () => {
 		const indentCell = comment.querySelector('td.ind');
 		const toggleBtn = comment.querySelector('a.togg');
 		indentCell.classList.add('__rhn__comment-indent');
-		indentCell.setAttribute('onclick', toggleBtn.getAttribute('onclick'));
+		indentCell.addEventListener('click', () => {
+			toggleBtn.click();
+		});
 	}
 };
 
