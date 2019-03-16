@@ -12,7 +12,7 @@ Inspired by [Sindre Sorhus](https://github.com/sindresorhus)'s extension [Refine
 
 ### Extension
 
-- [ ] Options
+- [x] Options
 
 ### Code
 
