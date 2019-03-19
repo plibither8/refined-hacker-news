@@ -1,5 +1,3 @@
-import select from 'select-dom';
-
 import './features/auto-refresh';
 import './features/change-dead-comments-color';
 import './features/click-comment-indent-to-toggle';
@@ -21,5 +19,3 @@ import './features/sort-stories';
 import './features/submission-title-remaining-characters';
 import './features/toggle-all-comments';
 import './features/toggle-all-replies';
-
-window.select = select;

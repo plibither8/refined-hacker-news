@@ -51,14 +51,14 @@ const init = () => {
 	});
 
 	if (document.querySelector('#auto-refresh-input')) {
-		const firstChild = optionsBar.firstChild;
+		const {firstChild} = optionsBar;
 		optionsBar.insertBefore(sortLabel, firstChild);
 		optionsBar.insertBefore(sortSelect, firstChild);
 		optionsBar.insertBefore(document.createTextNode('|'), firstChild);
 	} else {
-		optionsBar.appendChild(sortLabel);
-		optionsBar.appendChild(sortSelect);
-		optionsBar.appendChild(document.createTextNode('|'));
+		optionsBar.append(sortLabel);
+		optionsBar.append(sortSelect);
+		optionsBar.append(document.createTextNode('|'));
 	}
 
 	const rows = [...document.querySelectorAll('table.itemlist > tbody > tr')];

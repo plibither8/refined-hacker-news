@@ -39,4 +39,4 @@ export const createOptionsBar = () => {
 	mainTbody.insertBefore(optionsBar, insertBeforeTr);
 
 	return optionsBar;
-}
+};
