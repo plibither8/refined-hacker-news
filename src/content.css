@@ -33,7 +33,11 @@
 	color: #f7694c !important;
 }
 
-.__rhn__hide-story-container {
+.__rhn__highlight-me {
+	font-weight: bold;
+}
+
+.__rhn__options-bar {
 	margin-bottom: 5px;
 	padding-bottom: 5px;
 	padding-left: 10px;
@@ -43,14 +47,19 @@
 	color: #000;
 }
 
-.__rhn__hide-story-container label {
+.__rhn__options-bar label {
 	font-size: 13px;
 	color: #000;
 }
 
-.__rhn__hide-story-container input {
+.__rhn__options-bar input[type='number'] {
 	margin-right: 5px;
-	margin-left: 0;
+	padding: 0;
+	width: 60px
+}
+
+.__rhn__options-bar select {
+	margin-right: 10px;
 }
 
 .__rhn__select-disabled {

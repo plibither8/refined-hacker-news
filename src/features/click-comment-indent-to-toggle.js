@@ -5,7 +5,6 @@ const init = () => {
 	for (const comment of comments) {
 		const indentCell = comment.querySelector('td.ind');
 		const toggleBtn = comment.querySelector('a.togg');
-		indentCell.classList.add('__rhn__comment-indent');
 		indentCell.addEventListener('click', () => {
 			toggleBtn.click();
 		});

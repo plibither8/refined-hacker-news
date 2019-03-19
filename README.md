@@ -33,13 +33,15 @@ pages: {
 
 #### Left
 
-*Nothing :)*
+- [ ] `auto-refresh` *Auto-refresh every 'n' seconds*
+
+<!-- *Nothing :)* -->
 
 #### Done
 
 - [x] `change-dead-comments-color`
 - [x] `click-comment-indent-to-toggle`
-- [x] `highlight-op-username`
+- [x] `comments-ui-tweaks`
 - [x] `italicise-shortcut-key`
 - [x] `key-bindings-for-navigation`
 - [x] `linkify-text`

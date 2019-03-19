@@ -24,3 +24,19 @@ export const elementInScrollView = el => {
 	const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
 	return isVisible;
 };
+
+export const createOptionsBar = () => {
+	let optionsBar = document.querySelector('.__rhn__options-bar');
+	if (optionsBar) {
+		return optionsBar;
+	}
+
+	const mainTbody = document.querySelector('table#hnmain > tbody');
+	optionsBar = document.createElement('div');
+	optionsBar.classList.add('__rhn__options-bar');
+
+	const insertBeforeTr = mainTbody.querySelectorAll('tr')[3];
+	mainTbody.insertBefore(optionsBar, insertBeforeTr);
+
+	return optionsBar;
+}

@@ -1,4 +1,5 @@
 import features from '../libs/features';
+import {createOptionsBar} from '../libs/utils';
 
 const sort = (method, stories) => {
 	switch (method) {
@@ -36,12 +37,9 @@ const sort = (method, stories) => {
 };
 
 const init = () => {
-	const mainTbody = document.querySelector('table#hnmain > tbody');
-	const sortContainer = document.createElement('div');
+	const optionsBar = createOptionsBar();
 	const sortLabel = document.createElement('label');
 	const sortSelect = document.createElement('select');
-
-	sortContainer.classList.add('__rhn__hide-story-container');
 
 	sortLabel.innerHTML = 'sort stories:&nbsp;';
 	sortLabel.setAttribute('for', 'sort-stories-input');
@@ -52,11 +50,16 @@ const init = () => {
 		sortSelect.innerHTML += `<option value=${o}>${o}</option>`;
 	});
 
-	sortContainer.append(sortLabel);
-	sortContainer.append(sortSelect);
-
-	const insertBeforeTr = mainTbody.querySelectorAll('tr')[3];
-	mainTbody.insertBefore(sortContainer, insertBeforeTr);
+	if (document.querySelector('#auto-refresh-input')) {
+		const firstChild = optionsBar.firstChild;
+		optionsBar.insertBefore(sortLabel, firstChild);
+		optionsBar.insertBefore(sortSelect, firstChild);
+		optionsBar.insertBefore(document.createTextNode('|'), firstChild);
+	} else {
+		optionsBar.appendChild(sortLabel);
+		optionsBar.appendChild(sortSelect);
+		optionsBar.appendChild(document.createTextNode('|'));
+	}
 
 	const rows = [...document.querySelectorAll('table.itemlist > tbody > tr')];
 	while (!rows[0].matches('.athing')) {
