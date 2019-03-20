@@ -71,4 +71,4 @@ export const getGroupedStories = itemlist => {
 	}
 
 	return stories;
-}
+};

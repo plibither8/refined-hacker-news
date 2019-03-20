@@ -33,10 +33,10 @@ const refresh = async () => {
 	const rawText = await fetch(window.location).then(res => res.text());
 	const tempEl = document.createElement('div');
 	tempEl.innerHTML = rawText;
-	
+
 	const newStories = tempEl.querySelector('table.itemlist');
 	document.querySelector('table.itemlist').innerHTML = newStories.innerHTML;
-	
+
 	showFavoriteLinkOnFrontpage.init();
 };
 
@@ -57,12 +57,12 @@ const init = async () => {
 
 	label.innerHTML = 'auto refresh every&nbsp;';
 	label.setAttribute('for', 'auto-refresh-check');
-	
+
 	input.type = 'number';
 	input.id = 'auto-refresh-input';
 	input.name = 'autoRefreshValue';
 	input.value = options.autoRefreshValue;
-	
+
 	if (!options.disabledFeatures.includes('sort-stories')) {
 		check.style.marginLeft = '8px';
 		form.append(document.createTextNode('|'));
@@ -85,7 +85,7 @@ const init = async () => {
 	form.addEventListener('change', () => {
 		input.disabled = !check.checked;
 		handleInterval(input);
-	})
+	});
 
 	new OptionsSync().syncForm('#autoRefreshForm');
 	return true;

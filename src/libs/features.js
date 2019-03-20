@@ -1,4 +1,3 @@
-import OptionsSync from 'webext-options-sync';
 import {getOptions, isLoggedIn} from './utils';
 
 const add = async featureDetails => {
@@ -50,6 +49,7 @@ const add = async featureDetails => {
 		if (!init()) {
 			return;
 		}
+
 		options.log('RHN:', '️️️✓', id);
 
 		// Initialise dependant features that need to load after current feature

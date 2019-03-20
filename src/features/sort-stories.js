@@ -62,9 +62,9 @@ const init = () => {
 		optionsBar.append(sortSelect);
 	}
 
-	let stories = getGroupedStories(document.querySelector('table.itemlist'));	
+	let stories = getGroupedStories(document.querySelector('table.itemlist'));
 	sort('default', stories);
-	
+
 	sortSelect.addEventListener('change', () => {
 		stories = getGroupedStories(document.querySelector('table.itemlist'));
 		sort(sortSelect.value, stories);
