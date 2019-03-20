@@ -40,9 +40,11 @@ const init = () => {
 
 		default: break;
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'prefill-submit-title',
 	pages: {
 		include: [
@@ -55,6 +57,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

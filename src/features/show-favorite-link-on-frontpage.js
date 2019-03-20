@@ -48,9 +48,11 @@ const init = async () => {
 		subtext.insertBefore(faveLink, commentsLink);
 		subtext.insertBefore(faveSeparator, commentsLink);
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'show-favorite-link-on-frontpage',
 	pages: {
 		include: [
@@ -65,6 +67,8 @@ features.add({
 	},
 	loginRequired: true,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

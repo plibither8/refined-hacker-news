@@ -34,9 +34,11 @@ const init = () => {
 			karmaRow.parentNode.insertBefore(pollRow, karmaRow.nextSibling);
 		}
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'show-karma-left',
 	pages: {
 		include: ['/user'],
@@ -44,6 +46,8 @@ features.add({
 	},
 	loginRequired: true,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

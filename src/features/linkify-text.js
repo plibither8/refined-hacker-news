@@ -18,9 +18,11 @@ const init = () => {
 			});
 		}
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'linkify-text',
 	pages: {
 		include: ['/user'],
@@ -28,6 +30,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

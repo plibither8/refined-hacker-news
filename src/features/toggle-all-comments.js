@@ -25,9 +25,11 @@ const init = () => {
 	row.append(leftCell);
 	row.append(rightCell);
 	target.append(row);
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'toggle-all-comments',
 	pages: {
 		include: ['/item'],
@@ -35,6 +37,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

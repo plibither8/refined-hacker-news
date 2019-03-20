@@ -66,9 +66,11 @@ const init = () => {
 
 	navbar.append(moreLinkSepartor);
 	navbar.append(moreLinksBtn);
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'load-more-links-in-navbar',
 	pages: {
 		include: ['*'],
@@ -86,6 +88,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

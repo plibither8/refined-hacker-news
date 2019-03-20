@@ -8,9 +8,11 @@ const init = () => {
 			comment.querySelector('div.comment span.commtext.cdd').classList.add('__rhn__dead-link-color');
 		}
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'change-dead-comments-color',
 	pages: {
 		include: ['/item'],
@@ -18,6 +20,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

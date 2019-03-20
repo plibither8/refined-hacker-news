@@ -13,9 +13,11 @@ const init = () => {
 			`${limit - length} remaining` :
 			'';
 	});
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'submission-title-remaining-characters',
 	pages: {
 		include: ['/submit'],
@@ -23,6 +25,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

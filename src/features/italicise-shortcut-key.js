@@ -60,9 +60,11 @@ const init = () => {
 	};
 
 	window.addEventListener('load', observer.observe(commentTree, observerConfig));
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'italicise-shortcut-key',
 	pages: {
 		include: [
@@ -73,6 +75,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

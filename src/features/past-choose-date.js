@@ -45,9 +45,11 @@ const init = () => {
 	navigator.append(dayInput);
 	navigator.append(document.createTextNode(' '));
 	navigator.append(goSpan);
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'past-choose-date',
 	pages: {
 		include: ['/front'],
@@ -55,6 +57,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

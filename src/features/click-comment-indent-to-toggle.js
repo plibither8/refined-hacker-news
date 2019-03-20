@@ -9,9 +9,11 @@ const init = () => {
 			toggleBtn.click();
 		});
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'click-comment-indent-to-toggle',
 	pages: {
 		include: ['/item'],
@@ -19,6 +21,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

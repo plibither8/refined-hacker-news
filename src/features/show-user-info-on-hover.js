@@ -60,9 +60,11 @@ const init = () => {
 			userDiv.classList.add('__rhn__no-display');
 		});
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'show-user-info-on-hover',
 	pages: {
 		include: ['*'],
@@ -70,6 +72,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

@@ -24,9 +24,11 @@ const init = async () => {
 		// Indent-border
 		comment.querySelector('td.ind').classList.add('__rhn__comment-indent');
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'comments-ui-tweaks',
 	pages: {
 		include: ['/item'],
@@ -34,6 +36,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

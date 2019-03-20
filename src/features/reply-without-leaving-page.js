@@ -46,9 +46,11 @@ const init = () => {
 			});
 		}
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'reply-without-leaving-page',
 	pages: {
 		include: ['/item'],
@@ -56,6 +58,8 @@ features.add({
 	},
 	loginRequired: true,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

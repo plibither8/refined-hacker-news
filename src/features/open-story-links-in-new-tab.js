@@ -6,9 +6,11 @@ const init = () => {
 		link.target = '_blank';
 		link.rel = 'noopener';
 	}
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'open-story-links-in-new-tab',
 	pages: {
 		include: ['*'],
@@ -16,6 +18,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

@@ -63,9 +63,11 @@ const init = () => {
 		userLink.innerHTML = `${user} ${state ? '▾' : '▴'}`;
 		state = 1 - state;
 	});
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'profile-link-dropdown',
 	pages: {
 		include: ['*'],
@@ -78,6 +80,8 @@ features.add({
 	},
 	loginRequired: true,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

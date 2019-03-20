@@ -91,9 +91,11 @@ const init = () => {
 	sortSelect.addEventListener('change', () => {
 		sort(sortSelect.value, stories);
 	});
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'sort-stories',
 	pages: {
 		include: [
@@ -108,6 +110,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

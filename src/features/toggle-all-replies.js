@@ -32,9 +32,11 @@ const init = () => {
 			fontTagParent.append(fontTag);
 		}
 	});
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'toggle-all-replies',
 	pages: {
 		include: ['/item'],
@@ -42,6 +44,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;

@@ -11,7 +11,7 @@ const init = () => {
 	let activeItem;
 
 	window.addEventListener('keydown', e => {
-		if (document.activeElement.matches('textarea')) {
+		if (['textarea', 'input'].includes(document.activeElement.tagName)) {
 			return;
 		}
 
@@ -162,9 +162,11 @@ const init = () => {
 			activeItem = undefined;
 		}
 	});
+
+	return true;
 };
 
-features.add({
+const details = {
 	id: 'key-bindings-for-navigation',
 	pages: {
 		include: [
@@ -181,6 +183,8 @@ features.add({
 	},
 	loginRequired: false,
 	init
-});
+};
 
-export default init;
+features.add(details);
+
+export default details;
