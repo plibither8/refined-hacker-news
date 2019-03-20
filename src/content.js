@@ -1,6 +1,7 @@
 import './features/auto-refresh';
 import './features/change-dead-comments-color';
 import './features/click-comment-indent-to-toggle';
+import './features/click-rank-to-vote-unvote';
 import './features/comments-ui-tweaks';
 import './features/immediately-return-after-favorite';
 import './features/italicise-shortcut-key';

@@ -40,6 +40,7 @@ pages: {
 - [x] `auto-refresh`
 - [x] `change-dead-comments-color`
 - [x] `click-comment-indent-to-toggle`
+- [x] `click-rank-to-vote-unvote`
 - [x] `comments-ui-tweaks`
 - [x] `italicise-shortcut-key`
 - [x] `key-bindings-for-navigation`

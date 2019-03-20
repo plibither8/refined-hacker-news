@@ -135,6 +135,10 @@ a.hnuser:hover ~ .__rhn__hover-user-info,
 	margin: -2px;
 }
 
+.__rhn__rank {
+	cursor: pointer;
+}
+
 table.itemlist {
 	border-collapse: collapse;
 }
