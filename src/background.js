@@ -4,6 +4,8 @@ new OptionsSync().define({
 	defaults: {
 		disabledFeatures: '',
 		customCSS: '',
-		logging: true
+		logging: true,
+		autoRefreshEnabled: false,
+		autoRefreshValue: 0
 	}
 });

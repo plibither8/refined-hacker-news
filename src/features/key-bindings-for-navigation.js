@@ -1,19 +1,22 @@
 import features from '../libs/features';
-import {elementInScrollView} from '../libs/utils';
+
+import {elementInScrollView} from '../libs/dom-utils';
 
 const init = () => {
 	const path = window.location.pathname;
-	let items = path === '/item' ?
-		document.querySelectorAll('table.comment-tree tr.comtr:not(.noshow) td.default') :
-		document.querySelectorAll('table.itemlist tr.athing');
 	const focusClass = '__rhn__focussed-item';
+	let items;
 	let index = 0;
 	let activeItem;
 
 	window.addEventListener('keydown', e => {
-		if (['textarea', 'input'].includes(document.activeElement.tagName)) {
+		if (['TEXTAREA', 'INPUT'].includes(document.activeElement.tagName)) {
 			return;
 		}
+
+		items = path === '/item' ?
+			document.querySelectorAll('table.comment-tree tr.comtr:not(.noshow) td.default') :
+			document.querySelectorAll('table.itemlist tr.athing');
 
 		switch (e.keyCode) {
 			// Down-arrow

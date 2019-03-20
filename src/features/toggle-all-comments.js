@@ -1,5 +1,5 @@
 import features from '../libs/features';
-import {getTopLevelComments} from '../libs/utils';
+import {getTopLevelComments} from '../libs/dom-utils';
 
 const init = () => {
 	const target = document.querySelector('table.fatitem > tbody');

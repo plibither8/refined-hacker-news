@@ -1,5 +1,8 @@
 import features from '../libs/features';
-import {createOptionsBar} from '../libs/utils';
+import {
+	createOptionsBar,
+	getGroupedStories
+} from '../libs/dom-utils';
 
 const sort = (method, stories) => {
 	switch (method) {
@@ -54,41 +57,16 @@ const init = () => {
 		const {firstChild} = optionsBar;
 		optionsBar.insertBefore(sortLabel, firstChild);
 		optionsBar.insertBefore(sortSelect, firstChild);
-		optionsBar.insertBefore(document.createTextNode('|'), firstChild);
 	} else {
 		optionsBar.append(sortLabel);
 		optionsBar.append(sortSelect);
-		optionsBar.append(document.createTextNode('|'));
 	}
 
-	const rows = [...document.querySelectorAll('table.itemlist > tbody > tr')];
-	while (!rows[0].matches('.athing')) {
-		rows.shift();
-	}
-
-	const stories = [];
-
-	for (let i = 0; i < rows.length - 2; i += 3) {
-		const id = parseInt(rows[i].id, 10);
-		const scoreSpan = rows[i + 1].querySelector('span.score');
-		const score = scoreSpan ? parseInt(scoreSpan.innerText, 10) : null;
-		const defaultRank = parseInt(rows[i].querySelector('span.rank').innerText, 10);
-		const elements = [
-			rows[i],
-			rows[i + 1],
-			rows[i + 2]
-		];
-		stories.push({
-			id,
-			score,
-			elements,
-			defaultRank
-		});
-	}
-
+	let stories = getGroupedStories(document.querySelector('table.itemlist'));	
 	sort('default', stories);
-
+	
 	sortSelect.addEventListener('change', () => {
+		stories = getGroupedStories(document.querySelector('table.itemlist'));
 		sort(sortSelect.value, stories);
 	});
 
