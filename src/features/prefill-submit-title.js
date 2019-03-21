@@ -38,7 +38,7 @@ const init = () => {
 			break;
 		}
 
-		default: break;
+		default: return false;
 	}
 
 	return true;

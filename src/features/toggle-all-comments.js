@@ -4,7 +4,7 @@ import {getTopLevelComments} from '../libs/dom-utils';
 const init = () => {
 	const topLevelComments = getTopLevelComments();
 	if (topLevelComments.length === 0) {
-		return true;
+		return false;
 	}
 
 	const target = document.querySelector('table.fatitem > tbody');

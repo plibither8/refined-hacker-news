@@ -5,7 +5,7 @@ const init = () => {
 	const params = new URLSearchParams(window.location.search);
 	if (params.has('id')) {
 		if (getLoggedInUser() !== params.get('id')) {
-			return;
+			return false;
 		}
 
 		const karmaRow = document.querySelectorAll('form.profileform table tr')[2];

@@ -7,11 +7,11 @@ const init = () => {
 			const params = new URLSearchParams(window.location.href.replace('?', '&'));
 
 			if (params.has('n')) {
-				return;
+				return false;
 			}
 
 			if (referrer !== 'https://news.ycombinator.com') {
-				return;
+				return false;
 			}
 
 			history.back();
@@ -28,7 +28,7 @@ const init = () => {
 			break;
 		}
 
-		default: break;
+		default: return false;
 	}
 
 	return true;
