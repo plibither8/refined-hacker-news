@@ -31,6 +31,7 @@ const init = () => {
 			if (fontTagParent.innerText.includes('reply')) {
 				fontTagParent.append(document.createTextNode(' | '));
 			}
+
 			fontTagParent.append(fontTag);
 		}
 	});

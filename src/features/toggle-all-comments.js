@@ -8,7 +8,7 @@ const init = () => {
 	}
 
 	const target = document.querySelector('table.fatitem > tbody');
-	
+
 	const row = document.createElement('tr');
 	const leftCell = document.createElement('td');
 	const rightCell = document.createElement('td');
