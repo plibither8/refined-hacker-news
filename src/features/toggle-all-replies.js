@@ -28,7 +28,9 @@ const init = () => {
 			fontTag.append(toggleAllBtn);
 
 			const fontTagParent = comment.querySelector('div.reply p');
-			fontTagParent.append(document.createTextNode(' | '));
+			if (fontTagParent.innerText.includes('reply')) {
+				fontTagParent.append(document.createTextNode(' | '));
+			}
 			fontTagParent.append(fontTag);
 		}
 	});
