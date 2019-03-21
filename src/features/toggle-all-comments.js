@@ -2,8 +2,13 @@ import features from '../libs/features';
 import {getTopLevelComments} from '../libs/dom-utils';
 
 const init = () => {
-	const target = document.querySelector('table.fatitem > tbody');
+	const topLevelComments = getTopLevelComments();
+	if (topLevelComments.length === 0) {
+		return true;
+	}
 
+	const target = document.querySelector('table.fatitem > tbody');
+	
 	const row = document.createElement('tr');
 	const leftCell = document.createElement('td');
 	const rightCell = document.createElement('td');
@@ -15,7 +20,6 @@ const init = () => {
 	toggleAllBtn.href = 'javascript:void(0)';
 
 	toggleAllBtn.addEventListener('click', () => {
-		const topLevelComments = getTopLevelComments();
 		for (const comment of topLevelComments) {
 			comment.querySelector('a.togg').click();
 		}
