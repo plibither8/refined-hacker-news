@@ -1,11 +1,11 @@
 import OptionsSync from 'webext-options-sync';
 
 import features from '../libs/features';
-import {getOptions} from '../libs/utils';
+import {isLoggedIn, getOptions} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
 import showFavoriteLinkOnFrontpage from './show-favorite-link-on-frontpage';
 
-const handleInterval = input => {
+const handleInterval = (input, options) => {
 	if (input.disabled) {
 		return;
 	}
@@ -25,11 +25,11 @@ const handleInterval = input => {
 			return;
 		}
 
-		refresh();
+		refresh(options);
 	}, duration);
 };
 
-const refresh = async () => {
+const refresh = async options => {
 	const loader = document.querySelector('form#autoRefreshForm img');
 	loader.classList.remove('__rhn__no-display');
 	const rawText = await fetch(window.location).then(res => res.text());
@@ -39,7 +39,10 @@ const refresh = async () => {
 	const newStories = tempEl.querySelector('table.itemlist');
 	document.querySelector('table.itemlist').innerHTML = newStories.innerHTML;
 
-	showFavoriteLinkOnFrontpage.init();
+	if (!options.disabledFeatures.includes('show-favorite-link-on-frontpage') && isLoggedIn()) {
+		showFavoriteLinkOnFrontpage.init();
+	}
+
 	loader.classList.add('__rhn__no-display');
 };
 
@@ -84,7 +87,7 @@ const init = async () => {
 	optionsBar.append(form);
 
 	input.disabled = !check.checked;
-	handleInterval(input);
+	handleInterval(input, options);
 
 	input.addEventListener('input', () => {
 		input.style.width = (input.value.length + 3) + 'ch';
@@ -92,7 +95,7 @@ const init = async () => {
 
 	form.addEventListener('change', () => {
 		input.disabled = !check.checked;
-		handleInterval(input);
+		handleInterval(input, options);
 	});
 
 	new OptionsSync().syncForm('#autoRefreshForm');
