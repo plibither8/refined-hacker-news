@@ -30,6 +30,8 @@ const handleInterval = input => {
 };
 
 const refresh = async () => {
+	const loader = document.querySelector('form#autoRefreshForm img');
+	loader.classList.remove('__rhn__no-display');
 	const rawText = await fetch(window.location).then(res => res.text());
 	const tempEl = document.createElement('div');
 	tempEl.innerHTML = rawText;
@@ -38,6 +40,7 @@ const refresh = async () => {
 	document.querySelector('table.itemlist').innerHTML = newStories.innerHTML;
 
 	showFavoriteLinkOnFrontpage.init();
+	loader.classList.add('__rhn__no-display');
 };
 
 const init = async () => {
@@ -48,6 +51,7 @@ const init = async () => {
 	const check = document.createElement('input');
 	const label = document.createElement('label');
 	const input = document.createElement('input');
+	const loader = document.createElement('img');
 
 	check.type = 'checkbox';
 	check.id = 'auto-refresh-check';
@@ -63,6 +67,9 @@ const init = async () => {
 	input.name = 'autoRefreshValue';
 	input.value = options.autoRefreshValue;
 
+	loader.src = browser.extension.getURL('loader.gif');
+	loader.classList.add('__rhn__no-display');
+
 	if (!options.disabledFeatures.includes('sort-stories')) {
 		check.style.marginLeft = '8px';
 		form.append(document.createTextNode('|'));
@@ -73,6 +80,7 @@ const init = async () => {
 	form.append(label);
 	form.append(input);
 	form.append(document.createTextNode('seconds'));
+	form.append(loader);
 	optionsBar.append(form);
 
 	input.disabled = !check.checked;

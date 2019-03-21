@@ -62,9 +62,14 @@
 	margin-right: 10px;
 }
 
-.__rhn__options-bar form#autoRefreshForm {
+.__rhn__options-bar form {
 	display: flex;
 	margin-bottom: 0;
+}
+
+.__rhn__options-bar form img {
+	align-self: center;
+	margin-left: 4px;
 }
 
 .__rhn__select-disabled {
