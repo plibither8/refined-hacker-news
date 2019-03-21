@@ -22,7 +22,7 @@ export const getOptions = new Promise(async resolve => {
 	}
 
 	// Create logging function
-	options.log = options.logging ? console.log : () => {};
+	options.log = options.logging ? console.info : () => {};
 
 	resolve(options);
 });
