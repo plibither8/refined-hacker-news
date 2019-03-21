@@ -1,9 +1,9 @@
 import OptionsSync from 'webext-options-sync';
 
 import features from '../libs/features';
+import initialise from '../libs/initialise';
 import {isLoggedIn, getOptions} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
-import showFavoriteLinkOnFrontpage from './show-favorite-link-on-frontpage';
 
 const handleInterval = (input, options) => {
 	if (input.disabled) {
@@ -38,10 +38,13 @@ const refresh = async options => {
 
 	const newStories = tempEl.querySelector('table.itemlist');
 	document.querySelector('table.itemlist').innerHTML = newStories.innerHTML;
-
-	if (!options.disabledFeatures.includes('show-favorite-link-on-frontpage') && isLoggedIn()) {
-		showFavoriteLinkOnFrontpage.init();
-	}
+	
+	await initialise(
+		'click-rank-to-vote-unvote',
+		'open-story-links-in-new-tab',
+		'show-favorite-link-on-frontpage',
+		'show-user-info-on-hover'
+	);
 
 	loader.classList.add('__rhn__no-display');
 };
@@ -115,7 +118,5 @@ const details = {
 	loginRequired: false,
 	init
 };
-
-features.add(details);
 
 export default details;

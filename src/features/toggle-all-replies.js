@@ -49,6 +49,4 @@ const details = {
 	init
 };
 
-features.add(details);
-
 export default details;
