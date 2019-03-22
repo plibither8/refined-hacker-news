@@ -75,14 +75,14 @@ const init = async () => {
 
 	if (!options.disabledFeatures.includes('sort-stories')) {
 		check.style.marginLeft = '8px';
-		form.append(document.createTextNode('|'));
+		form.append('|');
 	}
 
 	form.id = 'autoRefreshForm';
 	form.append(check);
 	form.append(label);
 	form.append(input);
-	form.append(document.createTextNode('seconds'));
+	form.append('seconds');
 	form.append(loader);
 	optionsBar.append(form);
 

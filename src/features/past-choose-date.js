@@ -1,7 +1,6 @@
 
 const init = () => {
 	const navigator = document.querySelectorAll('table.itemlist > tbody > tr')[3].querySelectorAll('td')[1];
-	const chooseDateLabel = document.createTextNode(' Choose a date: ');
 
 	const yearInput = document.createElement('select');
 	const monthInput = document.createElement('select');
@@ -29,21 +28,22 @@ const init = () => {
 
 	const goBtn = document.createElement('a');
 	goBtn.href = 'javascript:void(0)';
-	goBtn.innerHTML = 'Go.';
+	goBtn.innerHTML = 'Go';
 	goBtn.addEventListener('click', () => {
 		window.location.href = `front?day=${yearInput.value}-${monthInput.value}-${dayInput.value}`;
 	});
 
 	goSpan.append(goBtn);
 
-	navigator.append(chooseDateLabel);
+	navigator.append(' Choose a date: ');
 	navigator.append(yearInput);
-	navigator.append(document.createTextNode('-'));
+	navigator.append('-');
 	navigator.append(monthInput);
-	navigator.append(document.createTextNode('-'));
+	navigator.append('-');
 	navigator.append(dayInput);
-	navigator.append(document.createTextNode(' '));
+	navigator.append(' ');
 	navigator.append(goSpan);
+	navigator.append('.');
 
 	return true;
 };

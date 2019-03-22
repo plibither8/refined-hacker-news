@@ -29,7 +29,7 @@ const init = () => {
 
 			const fontTagParent = comment.querySelector('div.reply p');
 			if (fontTagParent.innerText.includes('reply')) {
-				fontTagParent.append(document.createTextNode(' | '));
+				fontTagParent.append(' | ');
 			}
 
 			fontTagParent.append(fontTag);
