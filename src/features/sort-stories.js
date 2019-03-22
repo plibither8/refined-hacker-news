@@ -1,4 +1,3 @@
-import features from '../libs/features';
 import {
 	createOptionsBar,
 	getGroupedStories

@@ -1,4 +1,3 @@
-import features from '../libs/features';
 
 const init = () => {
 	const navigator = document.querySelectorAll('table.itemlist > tbody > tr')[3].querySelectorAll('td')[1];

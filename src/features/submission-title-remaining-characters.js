@@ -1,4 +1,3 @@
-import features from '../libs/features';
 
 const init = () => {
 	const titleField = document.querySelector('input[name="title"]');

@@ -1,4 +1,3 @@
-import features from '../libs/features';
 import {getTopLevelComments} from '../libs/dom-utils';
 
 const init = () => {

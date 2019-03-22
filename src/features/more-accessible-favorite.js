@@ -1,4 +1,3 @@
-import features from '../libs/features';
 import {getLoggedInUser, getAuthString, getPageDom} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 
@@ -20,7 +19,7 @@ const init = async () => {
 
 			const headSpan = comment.querySelector('span.comhead');
 			let unfave = false;
-			
+
 			const faveLink = document.createElement('a');
 			const faveSeparator = document.createTextNode('| ');
 
@@ -43,9 +42,7 @@ const init = async () => {
 				window.open(url, '_self');
 			});
 		}
-	}
-
-	else {
+	} else {
 		const subtexts = document.querySelectorAll('td.subtext');
 		const alreadyFaveStories = [];
 		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + user);
@@ -91,7 +88,6 @@ const init = async () => {
 			subtext.insertBefore(faveSeparator, commentsLink);
 		}
 	}
-
 
 	return true;
 };

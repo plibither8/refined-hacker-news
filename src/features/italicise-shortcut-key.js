@@ -1,4 +1,3 @@
-import features from '../libs/features';
 
 const handleKeydown = e => {
 	if (e.ctrlKey && e.keyCode === 73) {

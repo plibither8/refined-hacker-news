@@ -1,4 +1,3 @@
-import features from '../libs/features';
 import {getUserInfo} from '../libs/api';
 
 const init = () => {

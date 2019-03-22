@@ -24,12 +24,12 @@ const add = async (featureDetails, firstLoad = false) => {
 	if (pages.exclude.includes(path)) {
 		return;
 	}
-	
+
 	// Allow only on `include`d pages
 	if (!(pages.include.includes(path) || pages.include[0] === '*')) {
 		return;
 	}
-	
+
 	// Skip if feature has been marked as disabled
 	if (options.disabledFeatures.includes(id)) {
 		if (firstLoad) {

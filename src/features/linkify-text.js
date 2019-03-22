@@ -1,5 +1,4 @@
 import linkifyElement from 'linkifyjs/element';
-import features from '../libs/features';
 import {isLoggedIn, getLoggedInUser} from '../libs/utils';
 
 const init = () => {

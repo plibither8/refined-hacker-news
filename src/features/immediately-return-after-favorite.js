@@ -1,4 +1,3 @@
-import features from '../libs/features';
 
 const init = () => {
 	switch (window.location.pathname) {

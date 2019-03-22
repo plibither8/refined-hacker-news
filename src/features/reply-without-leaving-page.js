@@ -1,9 +1,8 @@
-import features from '../libs/features';
 import {getPageDom} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 
 const init = () => {
-	const comments = getAllComments()
+	const comments = getAllComments();
 	for (const comment of comments) {
 		comment.dataset.rhnFormInjected = '0';
 

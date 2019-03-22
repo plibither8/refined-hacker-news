@@ -1,4 +1,3 @@
-import features from '../libs/features';
 
 const init = () => {
 	const page = window.location.pathname;

@@ -1,4 +1,3 @@
-import features from '../libs/features';
 import {getLoggedInUser} from '../libs/utils';
 
 const init = () => {

@@ -1,4 +1,3 @@
-import features from '../libs/features';
 
 const init = () => {
 	const rows = document.querySelectorAll('table.itemlist > tbody > tr.athing');

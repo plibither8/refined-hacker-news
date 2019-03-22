@@ -1,5 +1,4 @@
-import features from '../libs/features';
-import {getAllComments} from '../libs/dom-utils'
+import {getAllComments} from '../libs/dom-utils';
 
 const init = () => {
 	const allComments = [...getAllComments()];

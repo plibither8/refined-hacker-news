@@ -1,4 +1,3 @@
-import features from '../libs/features';
 
 import {elementInScrollView} from '../libs/dom-utils';
 

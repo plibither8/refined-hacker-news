@@ -1,4 +1,3 @@
-import features from '../libs/features';
 
 import autoRefresh from '../features/auto-refresh';
 import changeDeadCommentsColor from '../features/change-dead-comments-color';
@@ -22,6 +21,7 @@ import sortStories from '../features/sort-stories';
 import submissionTitleRemainingCharacters from '../features/submission-title-remaining-characters';
 import toggleAllComments from '../features/toggle-all-comments';
 import toggleAllReplies from '../features/toggle-all-replies';
+import features from './features';
 
 const featureList = [
 	autoRefresh,
@@ -61,4 +61,4 @@ export default (...args) => {
 		const feat = featureList.find(f => f.id === id);
 		features.add(feat);
 	}
-}
+};
