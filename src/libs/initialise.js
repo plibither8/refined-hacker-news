@@ -10,12 +10,12 @@ import italiciseShortcutKey from '../features/italicise-shortcut-key';
 import keyBindingsForNavigation from '../features/key-bindings-for-navigation';
 import linkifyText from '../features/linkify-text';
 import loadMoreLinksInNavbar from '../features/load-more-links-in-navbar';
+import moreAccessibleFavorite from '../features/more-accessible-favorite';
 import openStoryLinksInNewTab from '../features/open-story-links-in-new-tab';
 import pastChooseDate from '../features/past-choose-date';
 import prefillSubmitTitle from '../features/prefill-submit-title';
 import profileLinksDropdown from '../features/profile-links-dropdown';
 import replyWithoutLeavingPage from '../features/reply-without-leaving-page';
-import showFavoriteLinkOnFrontpage from '../features/show-favorite-link-on-frontpage';
 import showKarmaLeft from '../features/show-karma-left';
 import showUserInfoOnHover from '../features/show-user-info-on-hover';
 import sortStories from '../features/sort-stories';
@@ -34,12 +34,12 @@ const featureList = [
 	keyBindingsForNavigation,
 	linkifyText,
 	loadMoreLinksInNavbar,
+	moreAccessibleFavorite,
 	openStoryLinksInNewTab,
 	pastChooseDate,
 	prefillSubmitTitle,
 	profileLinksDropdown,
 	replyWithoutLeavingPage,
-	showFavoriteLinkOnFrontpage,
 	showKarmaLeft,
 	showUserInfoOnHover,
 	sortStories,

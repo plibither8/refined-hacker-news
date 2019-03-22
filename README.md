@@ -46,12 +46,12 @@ pages: {
 - [x] `key-bindings-for-navigation`
 - [x] `linkify-text`
 - [x] `load-more-links-in-navbar`
+- [x] `more-accessible-favorite`
 - [x] `open-story-links-in-new-tab`
 - [x] `past-date-picker`
 - [x] `prefill-submit-title`
 - [x] `profile-links-dropdown`
 - [x] `reply-without-leaving-page`
-- [x] `show-favorite-link-on-frontpage`
 - [x] `show-karma-left`
 - [x] `show-user-info-on-hover`
 - [x] `sort-stories`
