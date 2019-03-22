@@ -1,7 +1,8 @@
 import features from '../libs/features';
+import {getAllComments} from '../libs/dom-utils'
 
 const init = () => {
-	const comments = document.querySelectorAll('tr.comtr');
+	const comments = getAllComments()
 	for (const comment of comments) {
 		const commentHeadSpan = comment.querySelector('span.comhead');
 		if (commentHeadSpan.innerText.includes('[dead]')) {

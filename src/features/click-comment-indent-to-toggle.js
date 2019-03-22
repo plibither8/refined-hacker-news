@@ -1,7 +1,8 @@
 import features from '../libs/features';
+import {getAllComments} from '../libs/dom-utils'
 
 const init = () => {
-	const comments = document.querySelectorAll('tr.comtr');
+	const comments = getAllComments()
 	for (const comment of comments) {
 		const indentCell = comment.querySelector('td.ind');
 		const toggleBtn = comment.querySelector('a.togg');

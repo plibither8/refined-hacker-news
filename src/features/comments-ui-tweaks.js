@@ -1,12 +1,14 @@
 import features from '../libs/features';
 import {isLoggedIn, getLoggedInUser} from '../libs/utils';
+import {getAllComments} from '../libs/dom-utils'
 import {getItemInfo} from '../libs/api';
+
 
 const init = async () => {
 	const me = isLoggedIn() ? getLoggedInUser() : null;
 	const itemId = new URLSearchParams(window.location.search.replace('?', '&')).get('id');
 	const op = (await getItemInfo(itemId)).by;
-	const comments = document.querySelectorAll('tr.comtr');
+	const comments = getAllComments()
 
 	for (const comment of comments) {
 		const commentAuthor = comment.querySelector('a.hnuser');

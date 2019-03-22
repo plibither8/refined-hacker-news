@@ -22,7 +22,14 @@ const init = () => {
 const details = {
 	id: 'click-rank-to-vote-unvote',
 	pages: {
-		include: ['*'],
+		include: [
+			'/',
+			'/news',
+			'/show',
+			'/shownew',
+			'/ask',
+			'/active'
+		],
 		exclude: []
 	},
 	loginRequired: false,

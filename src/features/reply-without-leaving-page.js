@@ -1,7 +1,9 @@
 import features from '../libs/features';
+import {getPageDom} from '../libs/utils';
+import {getAllComments} from '../libs/dom-utils';
 
 const init = () => {
-	const comments = document.querySelectorAll('tr.comtr');
+	const comments = getAllComments()
 	for (const comment of comments) {
 		comment.dataset.rhnFormInjected = '0';
 
@@ -21,11 +23,9 @@ const init = () => {
 			btn.addEventListener('click', async e => {
 				e.preventDefault();
 				if (comment.dataset.rhnFormInjected === '0') {
-					const replyPageString = await fetch(btn.href).then(res => res.text());
-					const tempEl = document.createElement('div');
-					tempEl.innerHTML = replyPageString;
+					const page = await getPageDom(btn.href);
 
-					const replyForm = tempEl.querySelector('form');
+					const replyForm = page.querySelector('form');
 					replyForm.classList.add('__rhn__injected-form');
 
 					comment.dataset.rhnFormInjected = '1';

@@ -2,7 +2,7 @@ import OptionsSync from 'webext-options-sync';
 
 import features from '../libs/features';
 import initialise from '../libs/initialise';
-import {isLoggedIn, getOptions} from '../libs/utils';
+import {isLoggedIn, getOptions, getPageDom} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
 
 const handleInterval = (input, options) => {
@@ -32,17 +32,15 @@ const handleInterval = (input, options) => {
 const refresh = async options => {
 	const loader = document.querySelector('form#autoRefreshForm img');
 	loader.classList.remove('__rhn__no-display');
-	const rawText = await fetch(window.location).then(res => res.text());
-	const tempEl = document.createElement('div');
-	tempEl.innerHTML = rawText;
 
-	const newStories = tempEl.querySelector('table.itemlist');
+	const page = await getPageDom(window.location);
+	const newStories = page.querySelector('table.itemlist');
 	document.querySelector('table.itemlist').innerHTML = newStories.innerHTML;
-	
+
 	await initialise(
 		'click-rank-to-vote-unvote',
 		'open-story-links-in-new-tab',
-		'show-favorite-link-on-frontpage',
+		'more-accessible-favorite',
 		'show-user-info-on-hover'
 	);
 

@@ -25,8 +25,10 @@ export const elementInScrollView = el => {
 	return isVisible;
 };
 
+export const getAllComments = () => document.querySelectorAll('tr.comtr');
+
 export const getTopLevelComments = () => {
-	const allComments = document.querySelectorAll('tr.comtr');
+	const allComments = getAllComments();
 	const topLevelComments = [];
 
 	for (const comment of allComments) {

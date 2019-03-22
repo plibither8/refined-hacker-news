@@ -1,7 +1,8 @@
 import features from '../libs/features';
+import {getAllComments} from '../libs/dom-utils'
 
 const init = () => {
-	const allComments = [...document.querySelectorAll('tr.comtr')];
+	const allComments = [...getAllComments()];
 
 	allComments.forEach((comment, id) => {
 		const currentIndent = comment.querySelector('td.ind img').width / 40;
