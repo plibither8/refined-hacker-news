@@ -1,7 +1,7 @@
 import {getPageDom} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 
-const init = () => {
+function init() {
 	const comments = getAllComments();
 	for (const comment of comments) {
 		comment.dataset.rhnFormInjected = '0';
@@ -19,8 +19,8 @@ const init = () => {
 		for (const btn of btns) {
 			btn.dataset.rhnBtnActive = '0';
 
-			btn.addEventListener('click', async e => {
-				e.preventDefault();
+			btn.addEventListener('click', async event => {
+				event.preventDefault();
 				if (comment.dataset.rhnFormInjected === '0') {
 					const page = await getPageDom(btn.href);
 
@@ -47,7 +47,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'reply-without-leaving-page',

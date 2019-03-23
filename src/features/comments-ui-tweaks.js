@@ -2,7 +2,7 @@ import {isLoggedIn, getLoggedInUser} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 import {getItemInfo} from '../libs/api';
 
-const init = async () => {
+async function init() {
 	const me = isLoggedIn() ? getLoggedInUser() : null;
 	const itemId = new URLSearchParams(window.location.search.replace('?', '&')).get('id');
 	const op = (await getItemInfo(itemId)).by;
@@ -26,7 +26,7 @@ const init = async () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'comments-ui-tweaks',

@@ -1,5 +1,4 @@
-
-const init = () => {
+function init() {
 	const titleField = document.querySelector('input[name="title"]');
 	titleField.nextElementSibling.classList.add('__rhn__characters-over');
 	const span = document.createElement('span');
@@ -14,7 +13,7 @@ const init = () => {
 	});
 
 	return true;
-};
+}
 
 const details = {
 	id: 'submission-title-remaining-characters',

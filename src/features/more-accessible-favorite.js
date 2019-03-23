@@ -1,7 +1,7 @@
 import {getLoggedInUser, getAuthString, getPageDom} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 
-const init = async () => {
+async function init() {
 	const path = window.location.pathname;
 	const user = getLoggedInUser();
 
@@ -92,7 +92,7 @@ const init = async () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'more-accessible-favorite',

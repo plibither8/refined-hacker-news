@@ -1,5 +1,5 @@
 // Creates the option bar to display the options
-export const createOptionsBar = () => {
+export function createOptionsBar() {
 	let optionsBar = document.querySelector('.__rhn__options-bar');
 	if (optionsBar) {
 		return optionsBar;
@@ -13,21 +13,23 @@ export const createOptionsBar = () => {
 	mainTbody.insertBefore(optionsBar, insertBeforeTr);
 
 	return optionsBar;
-};
+}
 
 // From: https://stackoverflow.com/a/22480938
-export const elementInScrollView = el => {
+export function elementInScrollView(el) {
 	const rect = el.getBoundingClientRect();
 	const elemTop = rect.top;
 	const elemBottom = rect.bottom;
 
 	const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
 	return isVisible;
-};
+}
 
-export const getAllComments = () => document.querySelectorAll('tr.comtr');
+export function getAllComments() {
+	return document.querySelectorAll('tr.comtr');
+}
 
-export const getTopLevelComments = () => {
+export function getTopLevelComments() {
 	const allComments = getAllComments();
 	const topLevelComments = [];
 
@@ -39,9 +41,9 @@ export const getTopLevelComments = () => {
 	}
 
 	return topLevelComments;
-};
+}
 
-export const getGroupedStories = itemlist => {
+export function getGroupedStories(itemlist) {
 	const rows = [...itemlist.querySelectorAll(':scope > tbody > tr')];
 	while (!rows[0].matches('.athing')) {
 		rows.shift();
@@ -73,4 +75,4 @@ export const getGroupedStories = itemlist => {
 	}
 
 	return stories;
-};
+}

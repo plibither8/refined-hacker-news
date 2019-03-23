@@ -1,6 +1,6 @@
 import {getTopLevelComments} from '../libs/dom-utils';
 
-const init = () => {
+function init() {
 	const topLevelComments = getTopLevelComments();
 	if (topLevelComments.length === 0) {
 		return false;
@@ -30,7 +30,7 @@ const init = () => {
 	target.append(row);
 
 	return true;
-};
+}
 
 const details = {
 	id: 'toggle-all-comments',

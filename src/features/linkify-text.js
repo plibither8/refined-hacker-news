@@ -1,8 +1,9 @@
 import linkifyElement from 'linkifyjs/element';
 import {isLoggedIn, getLoggedInUser} from '../libs/utils';
 
-const init = () => {
-	if (isLoggedIn() && getLoggedInUser() === document.querySelector('.hnuser').innerText) {
+function init() {
+	const currentUser = document.querySelector('.hnuser').innerText;
+	if (isLoggedIn() && currentUser === getLoggedInUser()) {
 		return;
 	}
 
@@ -19,7 +20,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'linkify-text',

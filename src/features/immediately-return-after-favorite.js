@@ -1,5 +1,4 @@
-
-const init = () => {
+function init() {
 	switch (window.location.pathname) {
 		case '/favorites': {
 			const referrer = new URL(document.referrer).origin;
@@ -31,7 +30,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'immediately-return-after-favorite',

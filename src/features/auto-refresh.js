@@ -4,7 +4,7 @@ import initialise from '../libs/initialise';
 import {getOptions, getPageDom} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
 
-const handleInterval = input => {
+function handleInterval(input) {
 	if (input.disabled) {
 		return;
 	}
@@ -26,9 +26,9 @@ const handleInterval = input => {
 
 		refresh();
 	}, duration);
-};
+}
 
-const refresh = async () => {
+async function refresh() {
 	const loader = document.querySelector('form#autoRefreshForm img');
 	loader.classList.remove('__rhn__no-display');
 
@@ -44,9 +44,9 @@ const refresh = async () => {
 	);
 
 	loader.classList.add('__rhn__no-display');
-};
+}
 
-const init = async () => {
+async function init() {
 	const options = await getOptions;
 
 	const optionsBar = createOptionsBar();
@@ -100,7 +100,7 @@ const init = async () => {
 
 	new OptionsSync().syncForm('#autoRefreshForm');
 	return true;
-};
+}
 
 const details = {
 	id: 'auto-refresh',

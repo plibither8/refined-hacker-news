@@ -1,6 +1,6 @@
 import {getLoggedInUser} from '../libs/utils';
 
-const init = () => {
+function init() {
 	const user = getLoggedInUser();
 
 	const links = [
@@ -55,8 +55,8 @@ const init = () => {
 
 	targetCell.append(dropdownEl);
 
-	userLink.addEventListener('click', e => {
-		e.preventDefault();
+	userLink.addEventListener('click', event => {
+		event.preventDefault();
 		dropdownEl.style.left = userLink.getBoundingClientRect().left + 'px';
 		dropdownEl.classList.toggle('__rhn__no-display');
 		userLink.innerHTML = `${user} ${state ? '▾' : '▴'}`;
@@ -64,7 +64,7 @@ const init = () => {
 	});
 
 	return true;
-};
+}
 
 const details = {
 	id: 'profile-link-dropdown',

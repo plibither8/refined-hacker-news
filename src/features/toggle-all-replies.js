@@ -1,6 +1,6 @@
 import {getAllComments} from '../libs/dom-utils';
 
-const init = () => {
+function init() {
 	const allComments = [...getAllComments()];
 
 	allComments.forEach((comment, id) => {
@@ -37,7 +37,7 @@ const init = () => {
 	});
 
 	return true;
-};
+}
 
 const details = {
 	id: 'toggle-all-replies',

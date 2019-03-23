@@ -1,5 +1,4 @@
-
-const init = () => {
+function init() {
 	const storyLinks = document.querySelectorAll('a.storylink');
 	for (const link of storyLinks) {
 		link.target = '_blank';
@@ -7,7 +6,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'open-story-links-in-new-tab',

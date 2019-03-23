@@ -1,5 +1,4 @@
-
-const init = () => {
+function init() {
 	const navbar = document.querySelector('span.pagetop');
 
 	const linkDetails = [
@@ -67,7 +66,7 @@ const init = () => {
 	navbar.append(moreLinksBtn);
 
 	return true;
-};
+}
 
 const details = {
 	id: 'load-more-links-in-navbar',

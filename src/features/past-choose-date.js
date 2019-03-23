@@ -1,5 +1,4 @@
-
-const init = () => {
+function init() {
 	const navigator = document.querySelectorAll('table.itemlist > tbody > tr')[3].querySelectorAll('td')[1];
 
 	const yearInput = document.createElement('select');
@@ -46,7 +45,7 @@ const init = () => {
 	navigator.append('.');
 
 	return true;
-};
+}
 
 const details = {
 	id: 'past-choose-date',

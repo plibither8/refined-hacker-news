@@ -1,6 +1,6 @@
 import {getLoggedInUser} from '../libs/utils';
 
-const init = () => {
+function init() {
 	const params = new URLSearchParams(window.location.search);
 	if (params.has('id')) {
 		if (getLoggedInUser() !== params.get('id')) {
@@ -35,7 +35,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'show-karma-left',

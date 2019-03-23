@@ -1,6 +1,6 @@
 import {getAllComments} from '../libs/dom-utils';
 
-const init = () => {
+function init() {
 	const comments = getAllComments();
 	for (const comment of comments) {
 		const indentCell = comment.querySelector('td.ind');
@@ -11,7 +11,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'click-comment-indent-to-toggle',

@@ -48,7 +48,7 @@ const featureList = [
 	toggleAllReplies
 ];
 
-export default (...args) => {
+export default function (...args) {
 	if (args.length === 0) {
 		for (const feat of featureList) {
 			features.add(feat, true);
@@ -61,4 +61,4 @@ export default (...args) => {
 		const feat = featureList.find(f => f.id === id);
 		features.add(feat);
 	}
-};
+}

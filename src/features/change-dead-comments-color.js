@@ -1,6 +1,6 @@
 import {getAllComments} from '../libs/dom-utils';
 
-const init = () => {
+function init() {
 	const comments = getAllComments();
 	for (const comment of comments) {
 		const commentHeadSpan = comment.querySelector('span.comhead');
@@ -10,7 +10,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'change-dead-comments-color',

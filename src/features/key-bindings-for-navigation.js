@@ -1,14 +1,13 @@
-
 import {elementInScrollView} from '../libs/dom-utils';
 
-const init = () => {
+function init() {
 	const path = window.location.pathname;
 	const focusClass = '__rhn__focussed-item';
 	let items;
 	let index = 0;
 	let activeItem;
 
-	window.addEventListener('keydown', e => {
+	window.addEventListener('keydown', event => {
 		if (['TEXTAREA', 'INPUT'].includes(document.activeElement.tagName)) {
 			return;
 		}
@@ -17,7 +16,7 @@ const init = () => {
 			document.querySelectorAll('table.comment-tree tr.comtr:not(.noshow) td.default') :
 			document.querySelectorAll('table.itemlist tr.athing');
 
-		switch (e.keyCode) {
+		switch (event.keyCode) {
 			// Down-arrow
 			case 74: {
 				if (index === items.length - 1) {
@@ -80,7 +79,7 @@ const init = () => {
 		}
 
 		if (path === '/item') {
-			switch (e.keyCode) {
+			switch (event.keyCode) {
 				// R: Reply
 				case 82: {
 					const replyBtn = activeItem.querySelector('a[href^="reply"]');
@@ -128,7 +127,7 @@ const init = () => {
 			const fave = next.querySelector('a[href^="fave"]');
 			const comment = next.querySelector('a[href^="item"]');
 
-			switch (e.keyCode) {
+			switch (event.keyCode) {
 				// Enter: open story link
 				case 13: {
 					story.click();
@@ -186,7 +185,7 @@ const init = () => {
 	});
 
 	return true;
-};
+}
 
 const details = {
 	id: 'key-bindings-for-navigation',

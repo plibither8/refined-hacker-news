@@ -1,7 +1,7 @@
 
-const handleKeydown = e => {
-	if (e.ctrlKey && e.keyCode === 73) {
-		const {target} = e;
+function handleKeydown(event) {
+	if (event.ctrlKey && event.keyCode === 73) {
+		const {target} = event;
 		const {
 			value,
 			selectionEnd,
@@ -26,9 +26,9 @@ const handleKeydown = e => {
 			target.selectionEnd = selectionEnd + 1;
 		}
 	}
-};
+}
 
-const init = () => {
+function init() {
 	const fields = document.querySelectorAll('textarea');
 
 	for (const field of fields) {
@@ -61,7 +61,7 @@ const init = () => {
 	window.addEventListener('load', observer.observe(commentTree, observerConfig));
 
 	return true;
-};
+}
 
 const details = {
 	id: 'italicise-shortcut-key',

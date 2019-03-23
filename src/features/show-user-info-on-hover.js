@@ -1,8 +1,9 @@
 import {getUserInfo} from '../libs/api';
 
-const init = () => {
+function init() {
 	const allUsers = document.querySelectorAll('a.hnuser');
-	const monthNames = ['January',
+	const monthNames = [
+		'January',
 		'February',
 		'March',
 		'April',
@@ -13,7 +14,8 @@ const init = () => {
 		'September',
 		'October',
 		'November',
-		'December'];
+		'December'
+	];
 
 	for (const user of allUsers) {
 		const userDiv = document.createElement('div');
@@ -61,7 +63,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'show-user-info-on-hover',

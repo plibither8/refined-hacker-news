@@ -1,9 +1,6 @@
-import {
-	createOptionsBar,
-	getGroupedStories
-} from '../libs/dom-utils';
+import {createOptionsBar, getGroupedStories} from '../libs/dom-utils';
 
-const sort = (method, stories) => {
+function sort(method, stories) {
 	switch (method) {
 		case 'time': {
 			stories.sort((a, b) => a.id < b.id ? 1 : -1);
@@ -36,9 +33,9 @@ const sort = (method, stories) => {
 
 	itemlistTable.append(morespaceRow);
 	itemlistTable.append(moreRow);
-};
+}
 
-const init = () => {
+function init() {
 	const optionsBar = createOptionsBar();
 	const sortLabel = document.createElement('label');
 	const sortSelect = document.createElement('select');
@@ -70,7 +67,7 @@ const init = () => {
 	});
 
 	return true;
-};
+}
 
 const details = {
 	id: 'sort-stories',

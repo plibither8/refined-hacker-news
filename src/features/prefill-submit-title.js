@@ -1,5 +1,4 @@
-
-const init = () => {
+function init() {
 	const page = window.location.pathname;
 	switch (page) {
 		case '/show':
@@ -41,7 +40,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'prefill-submit-title',

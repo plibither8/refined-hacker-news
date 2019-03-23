@@ -1,6 +1,6 @@
 import {getOptions, isLoggedIn} from './utils';
 
-const add = async (featureDetails, firstLoad = false) => {
+async function add(featureDetails, firstLoad = false) {
 	const details = {
 		dependants: {
 			before: [],
@@ -57,7 +57,7 @@ const add = async (featureDetails, firstLoad = false) => {
 
 	// Initialise dependant features that need to load after current feature
 	dependants.after.map(feat => feat.init());
-};
+}
 
 export default {
 	add

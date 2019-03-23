@@ -1,5 +1,4 @@
-
-const init = () => {
+function init() {
 	const rows = document.querySelectorAll('table.itemlist > tbody > tr.athing');
 	for (const row of rows) {
 		const rank = row.querySelector('span.rank');
@@ -16,7 +15,7 @@ const init = () => {
 	}
 
 	return true;
-};
+}
 
 const details = {
 	id: 'click-rank-to-vote-unvote',
