@@ -91,6 +91,26 @@ const init = () => {
 					break;
 				}
 
+				// F: favorite comment/reply
+				case 70: {
+					const fave = activeItem.querySelector('.__rhn__favelink');
+					if (fave) {
+						fave.click();
+					}
+
+					break;
+				}
+
+				// U: upvote comment/reply
+				case 85: {
+					const upvote = activeItem.previousSibling.querySelector('div.votearrow');
+					if (upvote) {
+						upvote.click();
+					}
+
+					break;
+				}
+
 				// Enter: Toggle
 				case 13: {
 					activeItem.querySelector('a.togg').click();

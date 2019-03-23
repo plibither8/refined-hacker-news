@@ -24,6 +24,8 @@ const init = async () => {
 			const faveSeparator = document.createTextNode('| ');
 
 			faveLink.href = 'javascript:void(0)';
+			faveLink.classList.add('__rhn__favelink');
+
 			if (alreadyFaveStories.includes(id)) {
 				faveLink.innerHTML = 'un-favorite';
 				unfave = true;
