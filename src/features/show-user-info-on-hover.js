@@ -20,6 +20,7 @@ function init() {
 	for (const user of allUsers) {
 		const userDiv = document.createElement('div');
 		userDiv.classList.add('__rhn__hover-user-info', '__rhn__no-display');
+		userDiv.style.left = user.getBoundingClientRect().left + 'px';
 		user.dataset.rhnInfoLoaded = '0';
 
 		userDiv.innerHTML = 'Loading...';
@@ -52,9 +53,9 @@ function init() {
                         </tbody>
                     </table>
                 `;
-				userDiv.style.left = user.getBoundingClientRect().left + 'px';
 				userDiv.innerHTML = table;
 			}
+			userDiv.style.left = user.getBoundingClientRect().left + 'px';
 		});
 
 		user.addEventListener('mouseout', () => {
