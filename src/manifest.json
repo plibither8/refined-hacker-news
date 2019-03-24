@@ -7,7 +7,8 @@
 	"permissions": [
 		"storage",
 		"contextMenus",
-		"history"
+		"history",
+		"tabs"
 	],
 	"browser_action": {
 		"default_popup": "popup.html",

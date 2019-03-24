@@ -130,7 +130,14 @@ function init() {
 			switch (event.keyCode) {
 				// Enter: open story link
 				case 13: {
-					story.click();
+					if (story) {
+						if (event.ctrlKey) {
+							browser.runtime.sendMessage({url: story.href});
+						} else {
+							story.click();
+						}
+					}
+
 					break;
 				}
 
@@ -166,7 +173,11 @@ function init() {
 				// C: open story comments
 				case 67: {
 					if (comment) {
-						comment.click();
+						if (event.ctrlKey) {
+							browser.runtime.sendMessage({url: comment.href});
+						} else {
+							comment.click();
+						}
 					}
 
 					break;
