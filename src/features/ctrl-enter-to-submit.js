@@ -1,29 +1,8 @@
 function handleKeydown(event) {
-	if (event.ctrlKey && event.keyCode === 73) {
+	if (event.ctrlKey && event.keyCode === 13) {
 		const {target} = event;
-		const {
-			value,
-			selectionEnd,
-			selectionStart
-		} = target;
-
-		const selection = value.substring(selectionStart, selectionEnd);
-		let before;
-		let after;
-
-		if (value.charAt(selectionStart - 1) === '*' && value.charAt(selectionEnd) === '*') {
-			before = value.substring(0, selectionStart - 1);
-			after = value.substring(selectionEnd + 1, value.length);
-			target.value = `${before}${selection}${after}`;
-			target.selectionStart = selectionStart - 1;
-			target.selectionEnd = selectionEnd - 1;
-		} else {
-			before = value.substring(0, selectionStart);
-			after = value.substring(selectionEnd, value.length);
-			target.value = `${before}*${selection}*${after}`;
-			target.selectionStart = selectionStart + 1;
-			target.selectionEnd = selectionEnd + 1;
-		}
+		const form = target.parentElement;
+		form.submit();
 	}
 }
 
@@ -63,10 +42,11 @@ function init() {
 }
 
 const details = {
-	id: 'italicise-shortcut-key',
+	id: 'ctrl-enter-to-submit',
 	pages: {
 		include: [
 			'/item',
+			'/submit',
 			'/reply'
 		],
 		exclude: []

@@ -1,9 +1,11 @@
+import features from './features';
 
 import autoRefresh from '../features/auto-refresh';
 import changeDeadCommentsColor from '../features/change-dead-comments-color';
 import clickCommentIndentToToggle from '../features/click-comment-indent-to-toggle';
 import clickRankToVoteUnvote from '../features/click-rank-to-vote-unvote';
 import commentsUiTweaks from '../features/comments-ui-tweaks';
+import ctrlEnterToSubmit from '../features/ctrl-enter-to-submit';
 import immediatelyReturnAfterFavorite from '../features/immediately-return-after-favorite';
 import italiciseShortcutKey from '../features/italicise-shortcut-key';
 import keyBindingsForNavigation from '../features/key-bindings-for-navigation';
@@ -21,7 +23,6 @@ import sortStories from '../features/sort-stories';
 import submissionTitleRemainingCharacters from '../features/submission-title-remaining-characters';
 import toggleAllComments from '../features/toggle-all-comments';
 import toggleAllReplies from '../features/toggle-all-replies';
-import features from './features';
 
 const featureList = [
 	autoRefresh,
@@ -29,6 +30,7 @@ const featureList = [
 	clickCommentIndentToToggle,
 	clickRankToVoteUnvote,
 	commentsUiTweaks,
+	ctrlEnterToSubmit,
 	immediatelyReturnAfterFavorite,
 	italiciseShortcutKey,
 	keyBindingsForNavigation,
