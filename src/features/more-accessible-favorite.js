@@ -1,5 +1,11 @@
-import {getLoggedInUser, getAuthString, getPageDom} from '../libs/utils';
-import {getAllComments} from '../libs/dom-utils';
+import {
+	getLoggedInUser,
+	getAuthString,
+	getPageDom
+} from '../libs/utils';
+import {
+	getAllComments
+} from '../libs/dom-utils';
 
 async function init() {
 	const path = window.location.pathname;
@@ -15,7 +21,9 @@ async function init() {
 
 		const comments = getAllComments();
 		for (const comment of comments) {
-			const {id} = comment;
+			const {
+				id
+			} = comment;
 
 			const headSpan = comment.querySelector('span.comhead');
 			let unfave = false;
@@ -41,7 +49,12 @@ async function init() {
 			faveLink.addEventListener('click', async () => {
 				const auth = await getAuthString(id);
 				const url = `fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
-				window.open(url, '_self');
+				browser.runtime.sendMessage({
+					url
+				});
+				faveLink.innerHTML = faveLink.innerHTML === 'favorite' ?
+					'un-favorite' :
+					'favorite';
 			});
 		}
 	} else {
@@ -88,6 +101,16 @@ async function init() {
 
 			subtext.insertBefore(faveLink, commentsLink);
 			subtext.insertBefore(faveSeparator, commentsLink);
+
+			faveLink.addEventListener('click', event => {
+				event.preventDefault();
+				browser.runtime.sendMessage({
+					url: faveLink.href
+				});
+				faveLink.innerHTML = faveLink.innerHTML === 'favorite' ?
+					'un-favorite' :
+					'favorite';
+			});
 		}
 	}
 
