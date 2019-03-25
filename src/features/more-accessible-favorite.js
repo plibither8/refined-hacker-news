@@ -52,9 +52,9 @@ async function init() {
 				browser.runtime.sendMessage({
 					url
 				});
-				faveLink.innerHTML = faveLink.innerHTML === 'favorite' ?
-					'un-favorite' :
-					'favorite';
+
+				unfave = !unfave;
+				faveLink.innerHTML = unfave ? 'un-favorite' : 'favorite';
 			});
 		}
 	} else {
@@ -90,10 +90,12 @@ async function init() {
 
 			const faveLink = document.createElement('a');
 			const faveSeparator = document.createTextNode(' | ');
+			let unfave = false;
 
 			if (alreadyFaveStories.includes(id)) {
 				faveLink.href = `fave?id=${id}&auth=${auth}&un=t`;
 				faveLink.innerHTML = 'un-favorite';
+				unfave = true;
 			} else {
 				faveLink.href = `fave?id=${id}&auth=${auth}`;
 				faveLink.innerHTML = 'favorite';
@@ -107,9 +109,10 @@ async function init() {
 				browser.runtime.sendMessage({
 					url: faveLink.href
 				});
-				faveLink.innerHTML = faveLink.innerHTML === 'favorite' ?
-					'un-favorite' :
-					'favorite';
+
+				unfave = !unfave;
+				faveLink.innerHTML = unfave ? 'un-favorite' : 'favorite';
+				faveLink.href = `fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
 			});
 		}
 	}

@@ -6,7 +6,6 @@ import clickCommentIndentToToggle from '../features/click-comment-indent-to-togg
 import clickRankToVoteUnvote from '../features/click-rank-to-vote-unvote';
 import commentsUiTweaks from '../features/comments-ui-tweaks';
 import ctrlEnterToSubmit from '../features/ctrl-enter-to-submit';
-import immediatelyReturnAfterFavorite from '../features/immediately-return-after-favorite';
 import italiciseShortcutKey from '../features/italicise-shortcut-key';
 import keyBindingsForNavigation from '../features/key-bindings-for-navigation';
 import linkifyText from '../features/linkify-text';
@@ -31,7 +30,6 @@ const featureList = [
 	clickRankToVoteUnvote,
 	commentsUiTweaks,
 	ctrlEnterToSubmit,
-	immediatelyReturnAfterFavorite,
 	italiciseShortcutKey,
 	keyBindingsForNavigation,
 	linkifyText,
@@ -55,12 +53,10 @@ export default function (...args) {
 		for (const feat of featureList) {
 			features.add(feat, true);
 		}
-
-		return;
-	}
-
-	for (const id of args) {
-		const feat = featureList.find(f => f.id === id);
-		features.add(feat);
+	} else {
+		for (const id of args) {
+			const feat = featureList.find(f => f.id === id);
+			features.add(feat);
+		}
 	}
 }
