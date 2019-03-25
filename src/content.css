@@ -60,6 +60,8 @@
 
 .__rhn__options-bar select {
 	margin-right: 10px;
+	height: 18px;
+	font-size: 13px;
 }
 
 .__rhn__options-bar form {
