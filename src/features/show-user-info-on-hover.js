@@ -55,6 +55,7 @@ function init() {
                 `;
 				userDiv.innerHTML = table;
 			}
+
 			userDiv.style.left = user.getBoundingClientRect().left + 'px';
 		});
 

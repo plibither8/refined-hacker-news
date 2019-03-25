@@ -1,4 +1,4 @@
-import {elementInScrollView} from '../libs/dom-utils';
+import {keydown} from '../libs/handle-keydowns';
 
 function init() {
 	const path = window.location.pathname;
@@ -8,7 +8,7 @@ function init() {
 	let activeItem;
 
 	window.addEventListener('keydown', event => {
-		if (['TEXTAREA', 'INPUT'].includes(document.activeElement.tagName)) {
+		if (document.activeElement.tagName !== 'BODY') {
 			return;
 		}
 
@@ -16,60 +16,33 @@ function init() {
 			document.querySelectorAll('table.comment-tree tr.comtr:not(.noshow) td.default') :
 			document.querySelectorAll('table.itemlist tr.athing');
 
+		// Universal
 		switch (event.keyCode) {
 			// Down-arrow
-			case 74: {
-				if (index === items.length - 1) {
-					return;
-				}
-
-				if (index !== -1) {
-					items[index].classList.remove(focusClass);
-				}
-
-				if (activeItem) {
-					index++;
-				}
-
-				activeItem = items[index];
-				activeItem.classList.add(focusClass);
-				if (!elementInScrollView(activeItem)) {
-					activeItem.scrollIntoView(true);
-				}
-
+			case 74:
+				({
+					items,
+					index,
+					activeItem
+				} = keydown.universal.down(items, index, activeItem));
 				return;
-			}
 
 			// Up-arrow
-			case 75: {
-				if (index === 0) {
-					return;
-				}
-
-				items[index].classList.remove(focusClass);
-
-				if (activeItem) {
-					index--;
-				}
-
-				activeItem = items[index];
-				activeItem.classList.add(focusClass);
-				if (!elementInScrollView(activeItem)) {
-					activeItem.scrollIntoView(true);
-				}
-
+			case 75:
+				({
+					items,
+					index,
+					activeItem
+				} = keydown.universal.up(items, index, activeItem));
 				return;
-			}
 
 			// Escape
-			case 27: {
-				if (activeItem) {
-					activeItem.classList.remove(focusClass);
+			case 27:
+				if (keydown.universal.escape(activeItem)) {
 					activeItem = undefined;
 				}
 
-				break;
-			}
+				return;
 
 			default: break;
 		}
@@ -78,116 +51,79 @@ function init() {
 			return;
 		}
 
+		// If URL pathname is of the form: ".../item?id=..."
+		// Basically, if it is a story item
 		if (path === '/item') {
 			switch (event.keyCode) {
 				// R: Reply
-				case 82: {
-					const replyBtn = activeItem.querySelector('a[href^="reply"]');
-					if (replyBtn) {
-						replyBtn.click();
-					}
-
-					break;
-				}
+				case 82:
+					keydown.item.reply(activeItem);
+					return;
 
 				// F: favorite comment/reply
-				case 70: {
-					const fave = activeItem.querySelector('.__rhn__favelink');
-					if (fave) {
-						fave.click();
-					}
-
-					break;
-				}
+				case 70:
+					keydown.item.favorite(activeItem);
+					return;
 
 				// U: upvote comment/reply
-				case 85: {
-					const upvote = activeItem.previousSibling.querySelector('div.votearrow');
-					if (upvote) {
-						upvote.click();
-					}
-
-					break;
-				}
+				case 85:
+					keydown.item.vote(activeItem);
+					return;
 
 				// Enter: Toggle
-				case 13: {
-					activeItem.querySelector('a.togg').click();
+				case 13:
+					keydown.item.toggle(activeItem);
 					items = document.querySelectorAll('table.comment-tree tr.comtr:not(.noshow) td.default');
+
 					break;
-				}
 
 				default: break;
 			}
-		} else {
+		/* eslint-disable-next-line brace-style */
+		}
+
+		// For all other pages where this feature is active
+		// Basically story lists
+		else {
 			const next = items[index].nextElementSibling;
-			const story = activeItem.querySelector('a.storylink');
-			const upvote = activeItem.querySelector('div.votearrow');
-			const hide = next.querySelector('a[href^="hide"]');
-			const fave = next.querySelector('a[href^="fave"]');
-			const comment = next.querySelector('a[href^="item"]');
 
 			switch (event.keyCode) {
 				// Enter: open story link
-				case 13: {
-					if (story) {
-						if (event.ctrlKey || event.metaKey) {
-							browser.runtime.sendMessage({url: story.href});
-						} else {
-							story.click();
-						}
-					}
-
-					break;
-				}
+				case 13:
+					keydown.story.open(activeItem, event);
+					return;
 
 				// U: upvote story
-				case 85: {
-					if (upvote) {
-						upvote.click();
-					}
-
-					break;
-				}
+				case 85:
+					keydown.story.vote(activeItem, next);
+					return;
 
 				// H: hide story
-				case 72: {
-					if (hide) {
-						hide.click();
+				case 72:
+					if (keydown.story.hide(next)) {
 						items = document.querySelectorAll('table.itemlist tr.athing');
 						activeItem = items[index--];
 					}
 
-					break;
-				}
+					return;
 
 				// F: favorite story
-				case 70: {
-					if (fave) {
-						fave.click();
-					}
-
-					break;
-				}
+				case 70:
+					keydown.story.favorite(next);
+					return;
 
 				// C: open story comments
-				case 67: {
-					if (comment) {
-						if (event.ctrlKey || event.metaKey) {
-							browser.runtime.sendMessage({url: comment.href});
-						} else {
-							comment.click();
-						}
-					}
+				case 67:
+					keydown.story.comment(next, event);
 
 					break;
-				}
 
 				default: break;
 			}
 		}
 	});
 
+	// If there has been a click, de-activate the activeItem
 	window.addEventListener('click', () => {
 		if (activeItem) {
 			activeItem.classList.remove(focusClass);

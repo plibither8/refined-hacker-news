@@ -5,7 +5,7 @@ function init() {
 		rank.classList.add('__rhn__rank');
 		rank.addEventListener('click', () => {
 			const vote = row.querySelector('div.votearrow');
-			const unvote = row.nextElementSibling.querySelector('a[href^="vote"]');
+			const unvote = row.nextElementSibling.querySelector('a[id^="un_"]');
 			if (vote && !vote.parentElement.classList.contains('nosee')) {
 				vote.click();
 			} else if (unvote) {
