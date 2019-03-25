@@ -81,7 +81,7 @@ const universal = {
 };
 
 const item = {
-	// Reply
+	// Reply to comment
 	reply(activeItem) {
 		const replyBtn = activeItem.querySelector('a[href^="reply"]');
 
@@ -90,7 +90,7 @@ const item = {
 		}
 	},
 
-	// Favorite
+	// Favorite comment
 	favorite(activeItem) {
 		const fave = activeItem.querySelector('.__rhn__favelink');
 
@@ -99,7 +99,7 @@ const item = {
 		}
 	},
 
-	// Vote/unvote
+	// Vote/unvote comment
 	vote(activeItem) {
 		const vote = activeItem.previousSibling.querySelector('div.votearrow');
 		const unvote = activeItem.querySelector('a[id^="un_"]');
@@ -111,6 +111,7 @@ const item = {
 		}
 	},
 
+	// Toggle comment
 	toggle(activeItem) {
 		activeItem.querySelector('a.togg').click();
 	}
@@ -131,7 +132,7 @@ const story = {
 		}
 	},
 
-	// Vote
+	// Vote story
 	vote(activeItem, next) {
 		const vote = activeItem.querySelector('div.votearrow');
 		const unvote = next.querySelector('a[id^="un_"]');
@@ -143,7 +144,7 @@ const story = {
 		}
 	},
 
-	// Hide
+	// Hide story
 	hide(next) {
 		const hide = next.querySelector('a[href^="hide"]');
 
@@ -155,7 +156,7 @@ const story = {
 		return false;
 	},
 
-	// Favorite
+	// Favorite story
 	favorite(next) {
 		const fave = next.querySelector('a[href^="fave"]');
 		if (fave) {
@@ -163,7 +164,7 @@ const story = {
 		}
 	},
 
-	// Comment
+	// Open comments
 	comment(next, event) {
 		const comment = next.querySelector('a[href^="item"]');
 
