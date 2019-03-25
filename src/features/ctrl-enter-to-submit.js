@@ -1,5 +1,5 @@
 function handleKeydown(event) {
-	if (event.ctrlKey && event.keyCode === 13) {
+	if ((event.ctrlKey || event.metaKey) && event.keyCode === 13) {
 		const {target} = event;
 		const form = target.parentElement;
 		form.submit();

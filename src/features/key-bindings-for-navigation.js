@@ -131,7 +131,7 @@ function init() {
 				// Enter: open story link
 				case 13: {
 					if (story) {
-						if (event.ctrlKey) {
+						if (event.ctrlKey || event.metaKey) {
 							browser.runtime.sendMessage({url: story.href});
 						} else {
 							story.click();
@@ -173,7 +173,7 @@ function init() {
 				// C: open story comments
 				case 67: {
 					if (comment) {
-						if (event.ctrlKey) {
+						if (event.ctrlKey || event.metaKey) {
 							browser.runtime.sendMessage({url: comment.href});
 						} else {
 							comment.click();

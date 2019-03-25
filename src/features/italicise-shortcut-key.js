@@ -1,5 +1,5 @@
 function handleKeydown(event) {
-	if (event.ctrlKey && event.keyCode === 73) {
+	if ((event.ctrlKey || event.metaKey) && event.keyCode === 73) {
 		const {target} = event;
 		const {
 			value,
