@@ -23,6 +23,9 @@ function init() {
 				event.preventDefault();
 				if (comment.dataset.rhnFormInjected === '0') {
 					const page = await getPageDom(btn.href);
+					if (!page) {
+						return false;
+					}
 
 					const replyForm = page.querySelector('form');
 					replyForm.classList.add('__rhn__injected-form');

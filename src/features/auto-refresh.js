@@ -33,6 +33,10 @@ async function refresh() {
 	loader.classList.remove('__rhn__no-display');
 
 	const page = await getPageDom(window.location);
+	if (!page) {
+		return false;
+	}
+
 	const newStories = page.querySelector('table.itemlist');
 	document.querySelector('table.itemlist').innerHTML = newStories.innerHTML;
 
@@ -94,7 +98,13 @@ async function init() {
 	});
 
 	form.addEventListener('change', () => {
-		input.disabled = !check.checked;
+		const isChecked = check.checked;
+		input.disabled = !isChecked;
+
+		if (!isChecked) {
+			loader.classList.add('__rhn__no-display');
+		}
+
 		handleInterval(input, options);
 	});
 

@@ -5,7 +5,15 @@ import OptionsSync from 'webext-options-sync';
 
 export function getPageDom(url) {
 	return new Promise(async resolve => {
-		const rawText = await fetch(url).then(res => res.text());
+		if (!navigator.onLine) {
+			console.error('RHN:', `Network error: Cannot fetch ${url}.`, 'Your computer seems to be offline :/');
+			return false;
+		}
+
+		const rawText = await fetch(url)
+			.then(res => res.text())
+			.catch(error => console.error(error));
+
 		const tempEl = document.createElement('div');
 		tempEl.innerHTML = rawText;
 
@@ -16,6 +24,10 @@ export function getPageDom(url) {
 export function getAuthString(id) {
 	return new Promise(async resolve => {
 		const page = await getPageDom(`https://news.ycombinator.com/item?id=${id}`);
+		if (!page) {
+			return false;
+		}
+
 		const row = page.querySelector('table.fatitem td.subtext') || page.querySelector('table.fatitem span.comhead');
 		const target = row.querySelector('a[href^="hide"]') || row.querySelector('a[href^="fave"]');
 		const params = new URLSearchParams(target.href.replace('?', '&'));

@@ -14,6 +14,10 @@ async function init() {
 	if (path === '/item') {
 		const alreadyFaveStories = [];
 		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user);
+		if (!page) {
+			return false;
+		}
+
 		const stories = page.querySelectorAll('table.itemlist > tbody > tr.athing');
 		for (const story of stories) {
 			alreadyFaveStories.push(story.id);
@@ -61,6 +65,10 @@ async function init() {
 		const subtexts = document.querySelectorAll('td.subtext');
 		const alreadyFaveStories = [];
 		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + user);
+		if (!page) {
+			return false;
+		}
+
 		const stories = page.querySelectorAll('table.itemlist > tbody > tr.athing');
 		for (const story of stories) {
 			alreadyFaveStories.push(story.id);
