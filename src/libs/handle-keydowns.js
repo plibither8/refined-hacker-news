@@ -106,7 +106,7 @@ const item = {
 
 		if (unvote) {
 			unvote.click();
-		} else {
+		} else if (vote) {
 			vote.click();
 		}
 	},
@@ -139,7 +139,7 @@ const story = {
 
 		if (unvote) {
 			unvote.click();
-		} else {
+		} else if (vote) {
 			vote.click();
 		}
 	},
