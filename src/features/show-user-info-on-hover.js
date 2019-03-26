@@ -19,12 +19,16 @@ function init() {
 
 	for (const user of allUsers) {
 		const userDiv = document.createElement('div');
+		const loader = document.createElement('img');
+
 		userDiv.classList.add('__rhn__hover-user-info', '__rhn__no-display');
 		userDiv.style.left = user.getBoundingClientRect().left + 'px';
-		user.dataset.rhnInfoLoaded = '0';
+		loader.src = browser.extension.getURL('loader.gif');
 
-		userDiv.innerHTML = 'Loading...';
+		userDiv.append(loader);
 		user.parentElement.append(userDiv);
+
+		user.dataset.rhnInfoLoaded = '0';
 
 		user.addEventListener('mouseover', async () => {
 			userDiv.classList.remove('__rhn__no-display');
