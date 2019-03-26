@@ -85,6 +85,7 @@ const details = {
 		]
 	},
 	loginRequired: false,
+	runOnJobItems: true,
 	init
 };
 

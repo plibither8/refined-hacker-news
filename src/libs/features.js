@@ -1,11 +1,8 @@
 import {getOptions, isLoggedIn} from './utils';
 
-async function add(featureDetails, firstLoad = false) {
+async function add(featureDetails, itemIsJob, firstLoad = false) {
 	const details = {
-		dependants: {
-			before: [],
-			after: []
-		},
+		runOnJobItems: false,
 		...featureDetails
 	};
 
@@ -14,6 +11,7 @@ async function add(featureDetails, firstLoad = false) {
 		pages,
 		dependants,
 		loginRequired,
+		runOnJobItems,
 		init
 	} = details;
 
@@ -43,8 +41,10 @@ async function add(featureDetails, firstLoad = false) {
 		return;
 	}
 
-	// Initialise dependant features that need to load before current feature
-	dependants.before.map(feat => feat.init());
+	// Don't run on job items when not allowed
+	if (itemIsJob && !runOnJobItems) {
+		return;
+	}
 
 	// Initialise current feature
 	if (!init()) {
@@ -54,11 +54,6 @@ async function add(featureDetails, firstLoad = false) {
 	if (firstLoad) {
 		options.log('RHN:', '️️️✓', id);
 	}
-
-	// Initialise dependant features that need to load after current feature
-	dependants.after.map(feat => feat.init());
 }
 
-export default {
-	add
-};
+export default {add};

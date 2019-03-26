@@ -22,6 +22,7 @@ import toggleAllComments from '../features/toggle-all-comments';
 import toggleAllReplies from '../features/toggle-all-replies';
 
 import features from './features';
+import {isItemJob} from './utils';
 
 const featureList = [
 	autoRefresh,
@@ -48,15 +49,24 @@ const featureList = [
 	toggleAllReplies
 ];
 
-export default function (...args) {
+export default async function (...args) {
 	if (args.length === 0) {
+		const path = window.location.pathname;
+		let isJob = false;
+		if (path === '/item') {
+			const params = new URLSearchParams(window.location.search.replace('?', '&'));
+			const itemId = params.get('id');
+
+			isJob = await isItemJob(itemId);
+		}
+
 		for (const feat of featureList) {
-			features.add(feat, true);
+			features.add(feat, isJob, true);
 		}
 	} else {
 		for (const id of args) {
 			const feat = featureList.find(f => f.id === id);
-			features.add(feat);
+			features.add(feat, isItemJob);
 		}
 	}
 }

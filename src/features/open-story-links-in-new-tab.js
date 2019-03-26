@@ -15,6 +15,7 @@ const details = {
 		exclude: []
 	},
 	loginRequired: false,
+	runOnJobItems: true,
 	init
 };
 

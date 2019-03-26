@@ -3,6 +3,8 @@
 
 import OptionsSync from 'webext-options-sync';
 
+import {getItemInfo} from './api';
+
 export function getPageDom(url) {
 	return new Promise(async resolve => {
 		if (!navigator.onLine) {
@@ -43,6 +45,17 @@ export function isLoggedIn() {
 
 export function getLoggedInUser() {
 	return document.querySelector('a#me').innerText.split(' ')[0];
+}
+
+export async function isItemJob(id) {
+	return new Promise(async resolve => {
+		const details = await getItemInfo(id);
+		const {
+			type
+		} = details;
+
+		resolve(type === 'job');
+	})
 }
 
 export const getOptions = new Promise(async resolve => {
