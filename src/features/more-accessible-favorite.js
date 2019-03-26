@@ -1,7 +1,8 @@
 import {
 	getLoggedInUser,
 	getAuthString,
-	getPageDom
+	getPageDom,
+	getOptions
 } from '../libs/utils';
 import {
 	getAllComments
@@ -10,6 +11,7 @@ import {
 async function init() {
 	const path = window.location.pathname;
 	const user = getLoggedInUser();
+	const options = await getOptions;
 
 	if (path === '/item') {
 		const alreadyFaveStories = [];
@@ -54,7 +56,8 @@ async function init() {
 				const auth = await getAuthString(id);
 				const url = `fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
 				browser.runtime.sendMessage({
-					url
+					url,
+					immediatelyCloseFavorite: options.immediatelyCloseFavorite
 				});
 
 				unfave = !unfave;
@@ -115,7 +118,8 @@ async function init() {
 			faveLink.addEventListener('click', event => {
 				event.preventDefault();
 				browser.runtime.sendMessage({
-					url: faveLink.href
+					url: faveLink.href,
+					immediatelyCloseFavorite: options.immediatelyCloseFavorite
 				});
 
 				unfave = !unfave;

@@ -6,18 +6,25 @@ new OptionsSync().define({
 		customCSS: '',
 		logging: true,
 		autoRefreshEnabled: false,
-		autoRefreshValue: 0
+		autoRefreshValue: 0,
+		immediatelyCloseFavorite: false
 	}
 });
 
 browser.runtime.onMessage.addListener(
 	(request, sender) => {
 		if (request.url) {
-			browser.tabs.create({
+			const newTab = browser.tabs.create({
 				url: request.url,
 				active: false,
 				index: sender.tab.index + 1
 			});
+
+			if (request.immediatelyCloseFavorite) {
+				newTab.then(tab => {
+					browser.tabs.remove(tab.id);
+				});
+			}
 		}
 	}
 );
