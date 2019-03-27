@@ -1,3 +1,11 @@
+/**
+ * ID: click-rank-to-vote-unvote
+ * Purpose: The story's rank to the left of the title can be
+ *          clicked to vote or unvote a story. This allows for
+ *          a larger hitbox for voting comments while simultaneosuly
+ *          allowing you to vote and unvote by clicking the same button.
+ */
+
 function init() {
 	const rows = document.querySelectorAll('table.itemlist > tbody > tr.athing');
 	for (const row of rows) {

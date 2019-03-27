@@ -1,3 +1,10 @@
+/**
+ * ID: change-dead-comments-color
+ * Purpose: If user has enabled viewing of dead comments/replies,
+ *          change the color of the comment's text to a reddish color
+ *          of some higher contrast to make it more readable. 
+ */
+
 import {getAllComments} from '../libs/dom-utils';
 
 function init() {

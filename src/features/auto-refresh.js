@@ -1,3 +1,9 @@
+/**
+ * ID: auto-refresh
+ * Purpose: Auto-refresh stories on the page every `n` seconds,
+ *          set by the user in the options bar.
+ */
+
 import OptionsSync from 'webext-options-sync';
 
 import {initialiseSome} from '../libs/initialise';

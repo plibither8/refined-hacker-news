@@ -1,3 +1,8 @@
+/**
+ * ID: comments-ui-tweaks
+ * Purpose: 
+ */
+
 import {isLoggedIn, getLoggedInUser} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 import {getItemInfo} from '../libs/api';
