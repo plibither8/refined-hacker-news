@@ -9,7 +9,6 @@ async function add(featureDetails, itemIsJob, firstLoad = false) {
 	const {
 		id,
 		pages,
-		dependants,
 		loginRequired,
 		runOnJobItems,
 		init

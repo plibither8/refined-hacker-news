@@ -49,24 +49,35 @@ const featureList = [
 	toggleAllReplies
 ];
 
-export default async function (...args) {
-	if (args.length === 0) {
-		const path = window.location.pathname;
-		let isJob = false;
-		if (path === '/item') {
-			const params = new URLSearchParams(window.location.search.replace('?', '&'));
-			const itemId = params.get('id');
+export async function initialiseAll() {
+	const path = window.location.pathname;
+	let isJob = false;
 
-			isJob = await isItemJob(itemId);
-		}
+	if (path === '/item') {
+		const params = new URLSearchParams(window.location.search.replace('?', '&'));
+		const itemId = params.get('id');
 
-		for (const feat of featureList) {
-			features.add(feat, isJob, true);
-		}
-	} else {
-		for (const id of args) {
-			const feat = featureList.find(f => f.id === id);
-			features.add(feat, isItemJob);
-		}
+		isJob = await isItemJob(itemId);
+	}
+
+	for (const feat of featureList) {
+		features.add(feat, isJob, true);
+	}
+}
+
+export async function initialiseSome(...args) {
+	const path = window.location.pathname;
+	let isJob = false;
+
+	if (path === '/item') {
+		const params = new URLSearchParams(window.location.search.replace('?', '&'));
+		const itemId = params.get('id');
+
+		isJob = await isItemJob(itemId);
+	}
+
+	for (const id of args) {
+		const feat = featureList.find(f => f.id === id);
+		features.add(feat, isJob);
 	}
 }

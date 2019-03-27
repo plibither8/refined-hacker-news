@@ -1,6 +1,6 @@
 import OptionsSync from 'webext-options-sync';
 
-import initialise from '../libs/initialise';
+import {initialiseSome} from '../libs/initialise';
 import {getOptions, getPageDom} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
 
@@ -40,7 +40,7 @@ async function refresh() {
 	const newStories = page.querySelector('table.itemlist');
 	document.querySelector('table.itemlist').innerHTML = newStories.innerHTML;
 
-	initialise(
+	initialiseSome(
 		'click-rank-to-vote-unvote',
 		'open-story-links-in-new-tab',
 		'more-accessible-favorite',
