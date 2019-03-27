@@ -32,6 +32,8 @@ function init() {
 
 		user.addEventListener('mouseover', async () => {
 			userDiv.classList.remove('__rhn__no-display');
+			userDiv.style.left = user.getBoundingClientRect().left + 'px';
+
 			if (user.dataset.rhnInfoLoaded === '0') {
 				user.dataset.rhnInfoLoaded = '1';
 				const userInfo = await getUserInfo(user.innerText.split(' ')[0]);
@@ -59,8 +61,6 @@ function init() {
                 `;
 				userDiv.innerHTML = table;
 			}
-
-			userDiv.style.left = user.getBoundingClientRect().left + 'px';
 		});
 
 		user.addEventListener('mouseout', () => {
