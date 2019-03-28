@@ -1,6 +1,6 @@
 const shortcuts = {
-    italicise: function(event) {
-        const {target} = event;
+	italicise(event) {
+		const {target} = event;
 		const {
 			value,
 			selectionEnd,
@@ -24,26 +24,26 @@ const shortcuts = {
 			target.selectionStart = selectionStart + 1;
 			target.selectionEnd = selectionEnd + 1;
 		}
-    },
+	},
 
-    quickSubmit: function(event) {
+	quickSubmit(event) {
 		event.target.form.submit();
-    }
-}
+	}
+};
 
 function handleKeydown(event) {
 	if (event.ctrlKey || event.metaKey) {
-        switch(event.keyCode) {
-            case 73:
-                shortcuts.italicise(event);
-                break;
+		switch (event.keyCode) {
+			case 73:
+				shortcuts.italicise(event);
+				break;
 
-            case 13:
-                shortcuts.quickSubmit(event);
-                break;
+			case 13:
+				shortcuts.quickSubmit(event);
+				break;
 
-            default: break;
-        }
+			default: break;
+		}
 	}
 }
 
@@ -54,7 +54,7 @@ function init() {
 
 	for (const field of fields) {
 		field.addEventListener('keydown', handleKeydown);
-    }
+	}
 
 	const commentTree = document.querySelector('table.comment-tree');
 	if (window.location.pathname === '/item' && commentTree) {
