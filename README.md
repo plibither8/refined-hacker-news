@@ -42,9 +42,8 @@ pages: {
 - [x] `click-comment-indent-to-toggle`
 - [x] `click-rank-to-vote-unvote`
 - [x] `comments-ui-tweaks`
-- [x] `ctrl-enter-to-submit`
-- [x] `italicise-shortcut-key`
 - [x] `key-bindings-for-navigation`
+- [x] `key-bindings-on-input-fields`
 - [x] `linkify-text`
 - [x] `load-more-links-in-navbar`
 - [x] `more-accessible-favorite`

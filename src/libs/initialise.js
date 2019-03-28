@@ -3,9 +3,8 @@ import changeDeadCommentsColor from '../features/change-dead-comments-color';
 import clickCommentIndentToToggle from '../features/click-comment-indent-to-toggle';
 import clickRankToVoteUnvote from '../features/click-rank-to-vote-unvote';
 import commentsUiTweaks from '../features/comments-ui-tweaks';
-import ctrlEnterToSubmit from '../features/ctrl-enter-to-submit';
-import italiciseShortcutKey from '../features/italicise-shortcut-key';
 import keyBindingsForNavigation from '../features/key-bindings-for-navigation';
+import keyBindingsOnInputFields from '../features/key-bindings-on-input-fields';
 import linkifyText from '../features/linkify-text';
 import loadMoreLinksInNavbar from '../features/load-more-links-in-navbar';
 import moreAccessibleFavorite from '../features/more-accessible-favorite';
@@ -30,9 +29,8 @@ const featureList = [
 	clickCommentIndentToToggle,
 	clickRankToVoteUnvote,
 	commentsUiTweaks,
-	ctrlEnterToSubmit,
-	italiciseShortcutKey,
 	keyBindingsForNavigation,
+	keyBindingsOnInputFields,
 	linkifyText,
 	loadMoreLinksInNavbar,
 	moreAccessibleFavorite,
