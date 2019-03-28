@@ -4,6 +4,8 @@ import {initialiseSome} from '../libs/initialise';
 import {getOptions, getPageDom} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
 
+import sortStories from './sort-stories';
+
 function handleInterval(input) {
 	if (input.disabled) {
 		return;
@@ -77,7 +79,8 @@ async function init() {
 	loader.src = browser.extension.getURL('loader.gif');
 	loader.classList.add('__rhn__no-display');
 
-	if (!options.disabledFeatures.includes('sort-stories')) {
+	if (!options.disabledFeatures.includes('sort-stories') &&
+		sortStories.pages.include.includes(window.location.pathname)) {
 		check.style.marginLeft = '8px';
 		form.append('|');
 	}
@@ -118,7 +121,8 @@ const details = {
 		include: [
 			'/',
 			'/news',
-			'/active'
+			'/active',
+			'/newest'
 		],
 		exclude: []
 	},

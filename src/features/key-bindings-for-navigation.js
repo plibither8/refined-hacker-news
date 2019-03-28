@@ -139,7 +139,7 @@ const details = {
 	pages: {
 		include: [
 			'/',
-			'/new',
+			'/newest',
 			'/news',
 			'/show',
 			'/shownew',
