@@ -55,7 +55,7 @@ export async function isItemJob(id) {
 		} = details;
 
 		resolve(type === 'job');
-	})
+	});
 }
 
 export const getOptions = new Promise(async resolve => {
