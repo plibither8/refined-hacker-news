@@ -47,6 +47,7 @@ pages: {
 - [x] `linkify-text`
 - [x] `load-more-links-in-navbar`
 - [x] `more-accessible-favorite`
+- [x] `on-link-focus-comment`
 - [x] `open-story-links-in-new-tab`
 - [x] `past-date-picker`
 - [x] `prefill-submit-title`

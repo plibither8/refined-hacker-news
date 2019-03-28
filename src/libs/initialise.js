@@ -8,6 +8,7 @@ import keyBindingsOnInputFields from '../features/key-bindings-on-input-fields';
 import linkifyText from '../features/linkify-text';
 import loadMoreLinksInNavbar from '../features/load-more-links-in-navbar';
 import moreAccessibleFavorite from '../features/more-accessible-favorite';
+import onLinkFocusComment from '../features/on-link-focus-comment';
 import openStoryLinksInNewTab from '../features/open-story-links-in-new-tab';
 import pastChooseDate from '../features/past-choose-date';
 import prefillSubmitTitle from '../features/prefill-submit-title';
@@ -34,6 +35,7 @@ const featureList = [
 	linkifyText,
 	loadMoreLinksInNavbar,
 	moreAccessibleFavorite,
+	onLinkFocusComment,
 	openStoryLinksInNewTab,
 	pastChooseDate,
 	prefillSubmitTitle,
