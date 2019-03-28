@@ -41,24 +41,24 @@ function init() {
 				const renderedDate = `${monthNames[userDate.getMonth()]} ${userDate.getDate()}, ${userDate.getFullYear()}`;
 
 				const table = `
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>user:</td>
-                                <td>${userInfo.id}</td>
-                            </tr>
-                            <tr>
-                                <td>created:</td>
-                                <td>${renderedDate}</td>
-                            </tr>
-                            <tr>
-                                <td>karma:</td>
-                                <td>${userInfo.karma}</td>
-                            </tr>
-                            ${userInfo.about ? '<tr><td>about:</td><td>' + userInfo.about + '</td></tr>' : ''}
-                        </tbody>
-                    </table>
-                `;
+					<table>
+						<tbody>
+							<tr>
+								<td>user:</td>
+								<td>${userInfo.id}</td>
+							</tr>
+							<tr>
+								<td>created:</td>
+								<td>${renderedDate}</td>
+							</tr>
+							<tr>
+								<td>karma:</td>
+								<td>${userInfo.karma}</td>
+							</tr>
+							${userInfo.about ? '<tr><td>about:</td><td>' + userInfo.about + '</td></tr>' : ''}
+						</tbody>
+					</table>
+				`;
 				userDiv.innerHTML = table;
 			}
 		});
