@@ -12,8 +12,8 @@ function init() {
 			return;
 		}
 
-		items = path === '/item' ?
-			document.querySelectorAll('table.comment-tree tr.comtr:not(.noshow) td.default') :
+		items = ['/item', '/threads'].includes(path) ?
+			document.querySelectorAll('tr.comtr:not(.noshow) td.default') :
 			document.querySelectorAll('table.itemlist tr.athing');
 
 		// Universal
@@ -51,9 +51,9 @@ function init() {
 			return;
 		}
 
-		// If URL pathname is of the form: ".../item?id=..."
+		// If URL pathname is of the form: ".../[item|threads]?id=..."
 		// Basically, if it is a story item
-		if (path === '/item') {
+		if (['/item', '/threads'].includes(path)) {
 			switch (event.keyCode) {
 				// R: Reply
 				case 82:
@@ -73,7 +73,7 @@ function init() {
 				// Enter: Toggle
 				case 13:
 					keydown.item.toggle(activeItem);
-					items = document.querySelectorAll('table.comment-tree tr.comtr:not(.noshow) td.default');
+					items = document.querySelectorAll('tr.comtr:not(.noshow) td.default');
 
 					break;
 
@@ -145,7 +145,8 @@ const details = {
 			'/shownew',
 			'/ask',
 			'/active',
-			'/item'
+			'/item',
+			'/threads'
 		],
 		exclude: []
 	},
