@@ -54,7 +54,7 @@ async function init() {
 
 			faveLink.addEventListener('click', async () => {
 				const auth = await getAuthString(id);
-				const url = `fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
+				const url = `https://news.ycombinator.com/fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
 				browser.runtime.sendMessage({
 					url,
 					immediatelyCloseFavorite: options.immediatelyCloseFavorite
