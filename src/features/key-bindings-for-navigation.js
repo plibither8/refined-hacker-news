@@ -7,14 +7,20 @@ function init() {
 	let index = 0;
 	let activeItem;
 
+	const isCommentList = ['/item', '/threads'].includes(path);
+
+	function getItemList() {
+		return isCommentList ?
+			document.querySelectorAll('tr.comtr:not(.noshow) td.default') :
+			document.querySelectorAll('table.itemlist tr.athing');
+	}
+
 	window.addEventListener('keydown', event => {
 		if (document.activeElement.tagName !== 'BODY') {
 			return;
 		}
 
-		items = ['/item', '/threads'].includes(path) ?
-			document.querySelectorAll('tr.comtr:not(.noshow) td.default') :
-			document.querySelectorAll('table.itemlist tr.athing');
+		items = getItemList();
 
 		// Universal
 		switch (event.keyCode) {
@@ -53,7 +59,7 @@ function init() {
 
 		// If URL pathname is of the form: ".../[item|threads]?id=..."
 		// Basically, if it is a story item
-		if (['/item', '/threads'].includes(path)) {
+		if (isCommentList) {
 			switch (event.keyCode) {
 				// R: Reply
 				case 82:
@@ -73,7 +79,7 @@ function init() {
 				// Enter: Toggle
 				case 13:
 					keydown.item.toggle(activeItem);
-					items = document.querySelectorAll('tr.comtr:not(.noshow) td.default');
+					items = getItemList();
 
 					break;
 
@@ -101,7 +107,7 @@ function init() {
 				// H: hide story
 				case 72:
 					if (keydown.story.hide(next)) {
-						items = document.querySelectorAll('table.itemlist tr.athing');
+						items = getItemList();
 						activeItem = items[index--];
 					}
 
@@ -145,6 +151,10 @@ const details = {
 			'/shownew',
 			'/ask',
 			'/active',
+			'/submitted',
+			'/hidden',
+			'/upvoted',
+			'/favorites',
 			'/item',
 			'/threads'
 		],
