@@ -17,7 +17,7 @@ function createTab(url, sender) {
 			url,
 			active: false,
 			index: sender.tab.index + 1
-		}, async tab => {
+		}).then(async tab => {
 			browser.tabs.onUpdated.addListener(function listener(tabId, info) {
 				if (info.status === 'complete' && tabId === tab.id) {
 					browser.tabs.onUpdated.removeListener(listener);
