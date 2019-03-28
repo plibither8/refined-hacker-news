@@ -10,8 +10,8 @@ function init() {
 		const karmaRow = document.querySelectorAll('form.profileform table tr')[2];
 		const karma = Number(karmaRow.querySelectorAll('td')[1].innerText);
 
-		const downvoteThreshold = 500;
-		const pollThreshold = 200;
+		const downvoteThreshold = 501;
+		const pollThreshold = 201;
 
 		if (karma < downvoteThreshold) {
 			const indent = document.createElement('td');
