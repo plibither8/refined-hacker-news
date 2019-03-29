@@ -42,8 +42,8 @@ pages: {
 - [x] `click-comment-indent-to-toggle`
 - [x] `click-rank-to-vote-unvote`
 - [x] `comments-ui-tweaks`
-- [x] `key-bindings-for-navigation`
 - [x] `key-bindings-on-input-fields`
+- [x] `key-bindings-on-items`
 - [x] `linkify-text`
 - [x] `load-more-links-in-navbar`
 - [x] `more-accessible-favorite`

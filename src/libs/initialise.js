@@ -3,8 +3,8 @@ import changeDeadCommentsColor from '../features/change-dead-comments-color';
 import clickCommentIndentToToggle from '../features/click-comment-indent-to-toggle';
 import clickRankToVoteUnvote from '../features/click-rank-to-vote-unvote';
 import commentsUiTweaks from '../features/comments-ui-tweaks';
-import keyBindingsForNavigation from '../features/key-bindings-for-navigation';
 import keyBindingsOnInputFields from '../features/key-bindings-on-input-fields';
+import keyBindingsOnItems from '../features/key-bindings-on-items';
 import linkifyText from '../features/linkify-text';
 import loadMoreLinksInNavbar from '../features/load-more-links-in-navbar';
 import moreAccessibleFavorite from '../features/more-accessible-favorite';
@@ -30,8 +30,8 @@ const featureList = [
 	clickCommentIndentToToggle,
 	clickRankToVoteUnvote,
 	commentsUiTweaks,
-	keyBindingsForNavigation,
 	keyBindingsOnInputFields,
+	keyBindingsOnItems,
 	linkifyText,
 	loadMoreLinksInNavbar,
 	moreAccessibleFavorite,
