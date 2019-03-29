@@ -1,6 +1,10 @@
 function init() {
 	const navbar = document.querySelector('span.pagetop');
 
+	if (!navbar) {
+		return false;
+	}
+
 	const linkDetails = [
 		{
 			title: 'leaders',
