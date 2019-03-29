@@ -11,12 +11,12 @@ new OptionsSync().define({
 	}
 });
 
-function createTab(url, sender) {
+function createTab(request, sender) {
 	return new Promise(resolve => {
 		browser.tabs.create({
-			url,
 			active: false,
-			index: sender.tab.index + 1
+			index: sender.tab.index + 1,
+			...request
 		}).then(async tab => {
 			browser.tabs.onUpdated.addListener(function listener(tabId, info) {
 				if (info.status === 'complete' && tabId === tab.id) {
@@ -31,7 +31,7 @@ function createTab(url, sender) {
 browser.runtime.onMessage.addListener(
 	async (request, sender) => {
 		if (request.url) {
-			const tab = await createTab(request.url, sender);
+			const tab = await createTab(request, sender);
 			if (request.immediatelyCloseFavorite) {
 				browser.tabs.remove(tab.id);
 			}

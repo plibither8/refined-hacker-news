@@ -2,6 +2,45 @@ import {elementInScrollView} from './dom-utils';
 
 const focusClass = '__rhn__focussed-item';
 
+function parseReferenceLinks(activeItem) {
+	const links = [];
+
+	const commentSpan = activeItem.querySelector('span.commtext');
+	const children = [...commentSpan.childNodes];
+	const lastItem = children.pop();
+	if (lastItem.nodeType !== Node.ELEMENT_NODE || !lastItem.matches('div.reply')) {
+		return links;
+	}
+
+	children.shift();
+
+	const regex = /^\[?(?<index>\d)\]?:?$/;
+
+	for (const child of children) {
+		const link = child.querySelector('a');
+		if (!link) {
+			continue;
+		}
+
+		const textFirstWord = child.innerText.split(' ')[0];
+		const matches = textFirstWord.match(regex);
+
+		if (!matches) {
+			continue;
+		}
+
+		const index = Number(matches.groups.index);
+
+		links.push({
+			index,
+			element: link,
+			href: link.href
+		});
+	}
+
+	return links;
+}
+
 const universal = {
 	// Move up
 	down(items, index, activeItem) {
@@ -114,6 +153,22 @@ const item = {
 	// Toggle comment
 	toggle(activeItem) {
 		activeItem.querySelector('a.togg').click();
+	},
+
+	// Open reference links
+	openLink(event, activeItem) {
+		const targetIndex = event.keyCode - 48;
+		const links = parseReferenceLinks(activeItem);
+
+		const link = links.find(obj => obj.index === targetIndex);
+		if (!link) {
+			return;
+		}
+
+		browser.runtime.sendMessage({
+			url: link.href,
+			active: !event.shiftKey
+		});
 	}
 };
 
