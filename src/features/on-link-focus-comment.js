@@ -1,12 +1,12 @@
 function init() {
-    const comments = document.querySelectorAll('tr.athing');
-    for (const comment of comments) {
-        const {id} = comment;
-        const onStory = comment.querySelector('span.storyon a');
-        if (onStory && id) {
-            onStory.href += '#' + id;
-        }
-    }
+	const comments = document.querySelectorAll('tr.athing');
+	for (const comment of comments) {
+		const {id} = comment;
+		const onStory = comment.querySelector('span.storyon a');
+		if (onStory && id) {
+			onStory.href += '#' + id;
+		}
+	}
 
 	return true;
 }
@@ -18,7 +18,6 @@ const details = {
 		exclude: []
 	},
 	loginRequired: false,
-	runOnJobItems: true,
 	init
 };
 
