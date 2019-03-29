@@ -19,6 +19,10 @@ function init() {
 			description: 'Most active current discussions'
 		},
 		{
+			title: 'newpoll',
+			description: 'Create a new poll'
+		},
+		{
 			title: 'bestcomments',
 			description: 'Highest-voted recent comments'
 		},
