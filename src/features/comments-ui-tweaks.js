@@ -4,8 +4,13 @@ import {getItemInfo} from '../libs/api';
 
 async function init() {
 	const me = isLoggedIn() ? getLoggedInUser() : null;
-	const itemId = new URLSearchParams(window.location.search.replace('?', '&')).get('id');
-	const op = (await getItemInfo(itemId)).by;
+
+	const {location} = window;
+	const itemId = location.pathname === '/item' ?
+		new URLSearchParams(location.search.replace('?', '&')).get('id') :
+		null;
+	const op = itemId ? (await getItemInfo(itemId)).by : null;
+
 	const comments = getAllComments();
 
 	for (const comment of comments) {
@@ -16,7 +21,7 @@ async function init() {
 		}
 
 		// Highlight-op-username
-		if (op === commentAuthor.innerText) {
+		if (op && op === commentAuthor.innerText) {
 			commentAuthor.innerText += ' [op]';
 			commentAuthor.classList.add('__rhn__highlight-op');
 		}
@@ -31,7 +36,10 @@ async function init() {
 const details = {
 	id: 'comments-ui-tweaks',
 	pages: {
-		include: ['/item'],
+		include: [
+			'/item',
+			'/threads'
+		],
 		exclude: []
 	},
 	loginRequired: false,

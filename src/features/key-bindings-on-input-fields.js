@@ -91,6 +91,7 @@ const details = {
 	pages: {
 		include: [
 			'/item',
+			'/threads',
 			'/reply',
 			'/submit'
 		],

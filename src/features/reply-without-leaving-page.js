@@ -55,7 +55,10 @@ function init() {
 const details = {
 	id: 'reply-without-leaving-page',
 	pages: {
-		include: ['/item'],
+		include: [
+			'/item',
+			'/threads'
+		],
 		exclude: []
 	},
 	loginRequired: true,

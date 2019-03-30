@@ -42,7 +42,10 @@ function init() {
 const details = {
 	id: 'toggle-all-replies',
 	pages: {
-		include: ['/item'],
+		include: [
+			'/item',
+			'/threads'
+		],
 		exclude: []
 	},
 	loginRequired: false,

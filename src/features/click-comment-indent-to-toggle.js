@@ -16,7 +16,10 @@ function init() {
 const details = {
 	id: 'click-comment-indent-to-toggle',
 	pages: {
-		include: ['/item'],
+		include: [
+			'/item',
+			'/threads'
+		],
 		exclude: []
 	},
 	loginRequired: false,

@@ -13,7 +13,7 @@ async function init() {
 	const user = getLoggedInUser();
 	const options = await getOptions;
 
-	if (path === '/item') {
+	if (['/item', '/threads'].includes(path)) {
 		const alreadyFaveStories = [];
 		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user);
 		if (!page) {
@@ -142,7 +142,8 @@ const details = {
 			'/shownew',
 			'/ask',
 			'/active',
-			'/item'
+			'/item',
+			'/threads'
 		],
 		exclude: []
 	},

@@ -15,7 +15,10 @@ function init() {
 const details = {
 	id: 'change-dead-comments-color',
 	pages: {
-		include: ['/item'],
+		include: [
+			'/item',
+			'/threads'
+		],
 		exclude: []
 	},
 	loginRequired: false,
