@@ -45,6 +45,12 @@ p:last-child {
 	padding-top: 10px;
 }
 
+code {
+	font-weight: bold;
+	letter-spacing: 0.7px;
+	color: #333;
+}
+
 @-moz-document url-prefix('') {
 	:root {
 		background: none !important;

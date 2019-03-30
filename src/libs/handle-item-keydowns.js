@@ -33,7 +33,6 @@ function parseReferenceLinks(activeItem) {
 
 		links.push({
 			index,
-			element: link,
 			href: link.href
 		});
 	}
@@ -156,7 +155,7 @@ const item = {
 	},
 
 	// Open reference links
-	openLink(event, activeItem) {
+	openReferenceLink(event, activeItem, openReferenceLinksInNewTab) {
 		const targetIndex = event.keyCode - 48;
 		const links = parseReferenceLinks(activeItem);
 
@@ -165,10 +164,15 @@ const item = {
 			return;
 		}
 
-		browser.runtime.sendMessage({
-			url: link.href,
-			active: !event.shiftKey
-		});
+		if (openReferenceLinksInNewTab || event.shiftKey) {
+			browser.runtime.sendMessage({
+				url: link.href,
+				active: !event.shiftKey
+			});
+		} else {
+			window.open(link.href, '_self');
+		}
+
 	}
 };
 

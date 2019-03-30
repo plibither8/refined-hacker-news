@@ -7,7 +7,8 @@ new OptionsSync().define({
 		logging: true,
 		autoRefreshEnabled: false,
 		autoRefreshValue: 0,
-		immediatelyCloseFavorite: false
+		immediatelyCloseFavorite: false,
+		openReferenceLinksInNewTab: true
 	}
 });
 

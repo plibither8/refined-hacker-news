@@ -1,13 +1,12 @@
-import {keydown} from '../libs/handle-keydowns';
+import {keydown} from '../libs/handle-item-keydowns';
+import {getOptions} from '../libs/utils'
 
-function init() {
+async function init() {
 	const path = window.location.pathname;
 	const focusClass = '__rhn__focussed-item';
-	let items;
-	let index = 0;
-	let activeItem;
-
 	const isCommentList = ['/item', '/threads'].includes(path);
+
+	const {openReferenceLinksInNewTab} = await getOptions;
 
 	function getItemList() {
 		return isCommentList ?
@@ -18,6 +17,10 @@ function init() {
 	function comboKeyCheck(event) {
 		return event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
 	}
+
+	let items;
+	let index = 0;
+	let activeItem;
 
 	window.addEventListener('keydown', event => {
 		if (document.activeElement.tagName !== 'BODY') {
@@ -126,7 +129,7 @@ function init() {
 				case 55:
 				case 56:
 				case 57:
-					keydown.item.openLink(event, activeItem);
+					keydown.item.openReferenceLink(event, activeItem, openReferenceLinksInNewTab);
 					break;
 
 				default: break;
