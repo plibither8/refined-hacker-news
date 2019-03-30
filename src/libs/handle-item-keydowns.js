@@ -85,69 +85,53 @@ function parseReferenceLinks(activeItem) {
 
 const universal = {
 	// Move up
-	down(items, index, activeItem) {
-		if (index === items.length - 1) {
-			activeItem = items[index];
-			activeItem.classList.add(focusClass);
+	down(itemData) {
+		if (itemData.index === itemData.items.length - 1) {
+			itemData.activeItem = itemData.items[itemData.index];
+			itemData.activeItem.classList.add(focusClass);
 
-			return {
-				activeItem,
-				items,
-				index
-			};
+			return itemData;
 		}
 
-		if (index !== -1) {
-			items[index].classList.remove(focusClass);
+		if (itemData.index !== -1) {
+			itemData.items[itemData.index].classList.remove(focusClass);
 		}
 
-		if (activeItem) {
-			index++;
+		if (itemData.activeItem) {
+			itemData.index++;
 		}
 
-		activeItem = items[index];
-		activeItem.classList.add(focusClass);
-		if (!elementInScrollView(activeItem)) {
-			activeItem.scrollIntoView(true);
+		itemData.activeItem = itemData.items[itemData.index];
+		itemData.activeItem.classList.add(focusClass);
+		if (!elementInScrollView(itemData.activeItem)) {
+			itemData.activeItem.scrollIntoView(true);
 		}
 
-		return {
-			activeItem,
-			items,
-			index
-		};
+		return itemData;
 	},
 
 	// Move down
-	up(items, index, activeItem) {
-		if (index === 0) {
-			activeItem = items[index];
-			activeItem.classList.add(focusClass);
+	up(itemData) {
+		if (itemData.index === 0) {
+			itemData.activeItem = itemData.items[itemData.index];
+			itemData.activeItem.classList.add(focusClass);
 
-			return {
-				activeItem,
-				items,
-				index
-			};
+			return itemData;
 		}
 
-		items[index].classList.remove(focusClass);
+		itemData.items[itemData.index].classList.remove(focusClass);
 
-		if (activeItem) {
-			index--;
+		if (itemData.activeItem) {
+			itemData.index--;
 		}
 
-		activeItem = items[index];
-		activeItem.classList.add(focusClass);
-		if (!elementInScrollView(activeItem)) {
-			activeItem.scrollIntoView(true);
+		itemData.activeItem = itemData.items[itemData.index];
+		itemData.activeItem.classList.add(focusClass);
+		if (!elementInScrollView(itemData.activeItem)) {
+			itemData.activeItem.scrollIntoView(true);
 		}
 
-		return {
-			activeItem,
-			items,
-			index
-		};
+		return itemData;
 	},
 
 	// De-activate item

@@ -18,16 +18,18 @@ async function init() {
 		return event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
 	}
 
-	let items;
-	let index = 0;
-	let activeItem;
+	let itemData = {
+		items: [],
+		index: 0,
+		activeItem: undefined
+	}
 
 	window.addEventListener('keydown', event => {
 		if (document.activeElement.tagName !== 'BODY') {
 			return;
 		}
 
-		items = getItemList();
+		itemData.items = getItemList();
 		const combo = comboKeyCheck(event);
 
 		// Universal
@@ -38,11 +40,7 @@ async function init() {
 					return;
 				}
 
-				({
-					items,
-					index,
-					activeItem
-				} = keydown.universal.down(items, index, activeItem));
+				itemData = keydown.universal.down(itemData);
 				return;
 
 			// Up-arrow
@@ -51,11 +49,7 @@ async function init() {
 					return;
 				}
 
-				({
-					items,
-					index,
-					activeItem
-				} = keydown.universal.up(items, index, activeItem));
+				itemData = keydown.universal.up(itemData);
 				return;
 
 			// Escape
@@ -64,8 +58,8 @@ async function init() {
 					return;
 				}
 
-				if (keydown.universal.escape(activeItem)) {
-					activeItem = undefined;
+				if (keydown.universal.escape(itemData.activeItem)) {
+					itemData.activeItem = undefined;
 				}
 
 				return;
@@ -73,7 +67,7 @@ async function init() {
 			default: break;
 		}
 
-		if (!activeItem) {
+		if (!itemData.activeItem) {
 			return;
 		}
 
@@ -87,7 +81,7 @@ async function init() {
 						return;
 					}
 
-					keydown.item.reply(activeItem);
+					keydown.item.reply(itemData.activeItem);
 					return;
 
 				// F: favorite comment/reply
@@ -96,7 +90,7 @@ async function init() {
 						return;
 					}
 
-					keydown.item.favorite(activeItem);
+					keydown.item.favorite(itemData.activeItem);
 					return;
 
 				// U: upvote comment/reply
@@ -105,7 +99,7 @@ async function init() {
 						return;
 					}
 
-					keydown.item.vote(activeItem);
+					keydown.item.vote(itemData.activeItem);
 					return;
 
 				// Enter: Toggle
@@ -114,8 +108,8 @@ async function init() {
 						return;
 					}
 
-					keydown.item.toggle(activeItem);
-					items = getItemList();
+					keydown.item.toggle(itemData.activeItem);
+					itemData.items = getItemList();
 					return;
 
 				// 0 - 9: Open Refence Links
@@ -129,7 +123,7 @@ async function init() {
 				case 55:
 				case 56:
 				case 57:
-					keydown.item.openReferenceLink(event, activeItem, openReferenceLinksInNewTab);
+					keydown.item.openReferenceLink(event, itemData.activeItem, openReferenceLinksInNewTab);
 					break;
 
 				default: break;
@@ -140,12 +134,12 @@ async function init() {
 		// For all other pages where this feature is active
 		// Basically story lists
 		else {
-			const next = items[index].nextElementSibling;
+			const next = itemData.items[itemData.index].nextElementSibling;
 
 			switch (event.keyCode) {
 				// Enter: open story link
 				case 13:
-					keydown.story.open(activeItem, event);
+					keydown.story.open(itemData.activeItem, event);
 					return;
 
 				// U: upvote story
@@ -154,7 +148,7 @@ async function init() {
 						return;
 					}
 
-					keydown.story.vote(activeItem, next);
+					keydown.story.vote(itemData.activeItem, next);
 					return;
 
 				// H: hide story
@@ -164,8 +158,8 @@ async function init() {
 					}
 
 					if (keydown.story.hide(next)) {
-						items = getItemList();
-						activeItem = items[index--];
+						itemData.items = getItemList();
+						itemData.activeItem = itemData.items[itemData.index--];
 					}
 
 					return;
@@ -190,11 +184,11 @@ async function init() {
 		}
 	});
 
-	// If there has been a click, de-activate the activeItem
+	// If there has been a click, de-activate the active item
 	window.addEventListener('click', () => {
-		if (activeItem) {
-			activeItem.classList.remove(focusClass);
-			activeItem = undefined;
+		if (itemData.activeItem) {
+			itemData.activeItem.classList.remove(focusClass);
+			itemData.activeItem = undefined;
 		}
 	});
 
