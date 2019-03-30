@@ -1,5 +1,5 @@
 import {keydown} from '../libs/handle-item-keydowns';
-import {getOptions} from '../libs/utils'
+import {getOptions} from '../libs/utils';
 
 async function init() {
 	const path = window.location.pathname;

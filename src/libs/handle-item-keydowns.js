@@ -172,7 +172,6 @@ const item = {
 		} else {
 			window.open(link.href, '_self');
 		}
-
 	}
 };
 
