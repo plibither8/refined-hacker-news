@@ -1,4 +1,5 @@
-import {paths} from "../libs/paths";
+import {paths} from '../libs/paths';
+import {newReplyTextareasObserver} from '../libs/dom-utils';
 
 const shortcuts = {
 	italicise(event) {
@@ -58,32 +59,7 @@ function init() {
 		field.addEventListener('keydown', handleKeydown);
 	}
 
-	const commentTree = document.querySelector('table.comment-tree');
-	if (paths.comments.includes(window.location.pathname) && commentTree) {
-		const observer = new MutationObserver(mutationsList => {
-			for (const mutation of mutationsList) {
-				const {addedNodes} = mutation;
-				for (const node of addedNodes) {
-					if (node.nodeType !== Node.ELEMENT_NODE) {
-						continue;
-					}
-
-					const textarea = node.querySelector('textarea');
-					if (textarea) {
-						textarea.addEventListener('keydown', handleKeydown);
-					}
-				}
-			}
-		});
-
-		const observerConfig = {
-			attributes: false,
-			childList: true,
-			subtree: true
-		};
-
-		window.addEventListener('load', observer.observe(commentTree, observerConfig));
-	}
+	newReplyTextareasObserver(handleKeydown);
 
 	return true;
 }

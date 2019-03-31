@@ -1,3 +1,5 @@
+import {paths} from './paths';
+
 // Creates the option bar to display the options
 export function createOptionsBar() {
 	let optionsBar = document.querySelector('.__rhn__options-bar');
@@ -75,4 +77,34 @@ export function getGroupedStories(itemlist) {
 	}
 
 	return stories;
+}
+
+export function newReplyTextareasObserver(callback) {
+	const mainTable = document.querySelector('table#hnmain');
+
+	if (paths.comments.includes(window.location.pathname) && mainTable) {
+		const observer = new MutationObserver(mutationsList => {
+			for (const mutation of mutationsList) {
+				const {addedNodes} = mutation;
+				for (const node of addedNodes) {
+					if (node.nodeType !== Node.ELEMENT_NODE) {
+						continue;
+					}
+
+					const textarea = node.querySelector('textarea');
+					if (textarea) {
+						textarea.addEventListener('keydown', callback);
+					}
+				}
+			}
+		});
+
+		const observerConfig = {
+			attributes: false,
+			childList: true,
+			subtree: true
+		};
+
+		window.addEventListener('load', observer.observe(mainTable, observerConfig));
+	}
 }
