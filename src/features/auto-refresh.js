@@ -87,11 +87,7 @@ function init(metadata) {
 	}
 
 	form.id = 'autoRefreshForm';
-	form.append(check);
-	form.append(label);
-	form.append(input);
-	form.append('seconds');
-	form.append(loader);
+	form.append(check, label, input, 'seconds', loader);
 	optionsBar.append(form);
 
 	input.disabled = !check.checked;

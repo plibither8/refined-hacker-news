@@ -25,8 +25,7 @@ function init() {
 	});
 
 	rightCell.append(toggleAllBtn);
-	row.append(leftCell);
-	row.append(rightCell);
+	row.append(leftCell, rightCell);
 	target.append(row);
 
 	return true;

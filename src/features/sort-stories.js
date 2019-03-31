@@ -32,8 +32,7 @@ function sort(method, stories) {
 		}
 	}
 
-	itemlistTable.append(morespaceRow);
-	itemlistTable.append(moreRow);
+	itemlistTable.append(morespaceRow, moreRow);
 }
 
 function init() {
@@ -55,8 +54,7 @@ function init() {
 		optionsBar.insertBefore(sortLabel, firstChild);
 		optionsBar.insertBefore(sortSelect, firstChild);
 	} else {
-		optionsBar.append(sortLabel);
-		optionsBar.append(sortSelect);
+		optionsBar.append(sortLabel, sortSelect);
 	}
 
 	let stories = getGroupedStories(document.querySelector('table.itemlist'));

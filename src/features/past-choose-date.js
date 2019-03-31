@@ -34,15 +34,7 @@ function init() {
 
 	goSpan.append(goBtn);
 
-	navigator.append(' Choose a date: ');
-	navigator.append(yearInput);
-	navigator.append('-');
-	navigator.append(monthInput);
-	navigator.append('-');
-	navigator.append(dayInput);
-	navigator.append(' ');
-	navigator.append(goSpan);
-	navigator.append('.');
+	navigator.append(' Choose a date: ', yearInput, '-', monthInput, '-', dayInput, ' ', goSpan, '.');
 
 	return true;
 }

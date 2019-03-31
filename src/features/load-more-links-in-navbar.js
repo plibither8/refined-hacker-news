@@ -68,12 +68,10 @@ function init(metadata) {
 		linkEl.title = link.description;
 		linkEl.classList.add('__rhn__no-display', '__rhn__navbar-new-links');
 
-		navbar.append(separatorText);
-		navbar.append(linkEl);
+		navbar.append(separatorText, linkEl);
 	}
 
-	navbar.append(moreLinkSepartor);
-	navbar.append(moreLinksBtn);
+	navbar.append(moreLinkSepartor, moreLinksBtn);
 
 	return true;
 }

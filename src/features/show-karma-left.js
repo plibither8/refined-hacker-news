@@ -16,8 +16,7 @@ function init(metadata) {
 			const downvoteRow = document.createElement('tr');
 			const downvoteKarmaLeft = document.createElement('td');
 			downvoteKarmaLeft.innerHTML = `${downvoteThreshold - karma} karma points left to downvote comments`;
-			downvoteRow.append(indent);
-			downvoteRow.append(downvoteKarmaLeft);
+			downvoteRow.append(indent, downvoteKarmaLeft);
 			karmaRow.parentNode.insertBefore(downvoteRow, karmaRow.nextSibling);
 		}
 
@@ -26,8 +25,7 @@ function init(metadata) {
 			const pollRow = document.createElement('tr');
 			const pollKarmaLeft = document.createElement('td');
 			pollKarmaLeft.innerHTML = `${pollThreshold - karma} karma points left to create polls`;
-			pollRow.append(indent);
-			pollRow.append(pollKarmaLeft);
+			pollRow.append(indent, pollKarmaLeft);
 			karmaRow.parentNode.insertBefore(pollRow, karmaRow.nextSibling);
 		}
 	}
