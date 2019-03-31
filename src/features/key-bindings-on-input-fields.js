@@ -59,7 +59,7 @@ function init() {
 	}
 
 	const commentTree = document.querySelector('table.comment-tree');
-	if (path.comments.includes(window.location.pathname) && commentTree) {
+	if (paths.comments.includes(window.location.pathname) && commentTree) {
 		const observer = new MutationObserver(mutationsList => {
 			for (const mutation of mutationsList) {
 				const {addedNodes} = mutation;
