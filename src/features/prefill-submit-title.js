@@ -6,7 +6,7 @@ function init() {
 			const pagetop = document.querySelector('span.pagetop');
 			for (const link of pagetop.querySelectorAll('a')) {
 				if (link.innerText === 'submit') {
-					link.href += '?title=Show HN:';
+					link.href += '?title=Show HN:%20';
 					break;
 				}
 			}
@@ -18,7 +18,7 @@ function init() {
 			const pagetop = document.querySelector('span.pagetop');
 			for (const link of pagetop.querySelectorAll('a')) {
 				if (link.innerText === 'submit') {
-					link.href += '?title=Ask HN:';
+					link.href += '?title=Ask HN:%20';
 					break;
 				}
 			}
