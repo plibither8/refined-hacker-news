@@ -19,13 +19,11 @@ function init() {
 
 	for (const user of allUsers) {
 		const userDiv = document.createElement('div');
-		const loader = document.createElement('img');
 
 		userDiv.classList.add('__rhn__hover-user-info', '__rhn__no-display');
 		userDiv.style.left = user.getBoundingClientRect().left + 'px';
-		loader.src = browser.extension.getURL('loader.gif');
+		userDiv.innerHTML = `<img src=${browser.extension.getURL('loader.gif')}>`;
 
-		userDiv.append(loader);
 		user.parentElement.append(userDiv);
 
 		user.dataset.rhnInfoLoaded = '0';
