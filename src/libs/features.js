@@ -1,11 +1,10 @@
-import {getOptions, isLoggedIn} from './utils';
-
-async function add(featureDetails, itemIsJob, firstLoad = false) {
+function add(featureDetails, metadata) {
 	const details = {
 		runOnJobItems: false,
 		...featureDetails
 	};
 
+	// Deconstructing feature details
 	const {
 		id,
 		pages,
@@ -14,8 +13,14 @@ async function add(featureDetails, itemIsJob, firstLoad = false) {
 		init
 	} = details;
 
-	const path = window.location.pathname;
-	const options = await getOptions;
+	// Deconstructing metadata object
+	const {
+		path,
+		options,
+		user,
+		isJob,
+		firstLoad
+	} = metadata;
 
 	// Don't only on `exclude`d pages
 	if (pages.exclude.includes(path)) {
@@ -36,17 +41,17 @@ async function add(featureDetails, itemIsJob, firstLoad = false) {
 		return;
 	}
 
-	if (loginRequired && !isLoggedIn()) {
+	if (loginRequired && !user.loggedIn) {
 		return;
 	}
 
 	// Don't run on job items when not allowed
-	if (itemIsJob && !runOnJobItems) {
+	if (isJob && !runOnJobItems) {
 		return;
 	}
 
 	// Initialise current feature
-	if (!init()) {
+	if (!init(metadata)) {
 		return;
 	}
 

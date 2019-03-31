@@ -1,14 +1,13 @@
 import {keydown} from '../libs/handle-item-keydowns';
-import {getOptions} from '../libs/utils';
 import {paths} from '../libs/paths';
 
-async function init() {
-	const path = window.location.pathname;
+function init(metadata) {
+	const {options, path} = metadata;
 	const focusClass = '__rhn__focussed-item';
 	// Noobcomments is functioning as a story list
 	const isCommentList = paths.comments.includes(path) && path !== '/noobcomments';
 
-	const {openReferenceLinksInNewTab} = await getOptions;
+	const {openReferenceLinksInNewTab} = options;
 
 	function getItemList() {
 		return isCommentList ?

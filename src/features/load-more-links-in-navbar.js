@@ -1,6 +1,6 @@
 import {paths} from '../libs/paths';
 
-function init() {
+function init(metadata) {
 	const navbar = document.querySelector('span.pagetop');
 
 	if (!navbar) {
@@ -54,7 +54,7 @@ function init() {
 	});
 
 	for (const link of linkDetails) {
-		if ('/' + link.title === window.location.pathname) {
+		if ('/' + link.title === metadata.path) {
 			continue;
 		}
 

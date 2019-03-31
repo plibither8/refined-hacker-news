@@ -47,12 +47,21 @@ export function getLoggedInUser() {
 	return document.querySelector('a#me').innerText.split(' ')[0];
 }
 
-export async function isItemJob(id) {
+export function getItemId() {
+	if (window.location.pathname !== '/item') {
+		return null;
+	}
+
+	const params = new URLSearchParams(window.location.search.replace('?', '&'));
+	const itemId = params.get('id');
+
+	return itemId;
+}
+
+export function isItemJob(id) {
 	return new Promise(async resolve => {
 		const details = await getItemInfo(id);
-		const {
-			type
-		} = details;
+		const {type} = details;
 
 		resolve(type === 'job');
 	});

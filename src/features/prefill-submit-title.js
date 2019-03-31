@@ -1,6 +1,5 @@
-function init() {
-	const page = window.location.pathname;
-	switch (page) {
+function init(metadata) {
+	switch (metadata.path) {
 		case '/show':
 		case '/shownew': {
 			const pagetop = document.querySelector('span.pagetop');

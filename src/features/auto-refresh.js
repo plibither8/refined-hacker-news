@@ -1,7 +1,7 @@
 import OptionsSync from 'webext-options-sync';
 
 import {initialiseSome} from '../libs/initialise';
-import {getOptions, getPageDom} from '../libs/utils';
+import {getPageDom} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
@@ -53,8 +53,8 @@ async function refresh() {
 	loader.classList.add('__rhn__no-display');
 }
 
-async function init() {
-	const options = await getOptions;
+function init(metadata) {
+	const {options, path} = metadata;
 
 	const optionsBar = createOptionsBar();
 	const form = document.createElement('form');
@@ -81,7 +81,7 @@ async function init() {
 	loader.classList.add('__rhn__no-display');
 
 	if (!options.disabledFeatures.includes('sort-stories') &&
-		sortStories.pages.include.includes(window.location.pathname)) {
+		sortStories.pages.include.includes(path)) {
 		check.style.marginLeft = '8px';
 		form.append('|');
 	}
@@ -120,9 +120,7 @@ const details = {
 	id: 'auto-refresh',
 	pages: {
 		include: paths.stories,
-		exclude: [
-			'/past'
-		]
+		exclude: ['/past']
 	},
 	loginRequired: false,
 	init

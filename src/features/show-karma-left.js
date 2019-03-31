@@ -1,9 +1,7 @@
-import {getLoggedInUser} from '../libs/utils';
-
-function init() {
+function init(metadata) {
 	const params = new URLSearchParams(window.location.search);
 	if (params.has('id')) {
-		if (getLoggedInUser() !== params.get('id')) {
+		if (metadata.user.name !== params.get('id')) {
 			return false;
 		}
 

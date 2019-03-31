@@ -1,20 +1,13 @@
-import {
-	getLoggedInUser,
-	getAuthString,
-	getPageDom,
-	getOptions
-} from '../libs/utils';
+import {getAuthString, getPageDom} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
-async function init() {
-	const path = window.location.pathname;
-	const user = getLoggedInUser();
-	const options = await getOptions;
+async function init(metadata) {
+	const {path, user, options} = metadata;
 
 	if (paths.comments.includes(path)) {
 		const alreadyFaveStories = [];
-		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user);
+		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user.name);
 		if (!page) {
 			return false;
 		}

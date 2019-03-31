@@ -23,7 +23,13 @@ import toggleAllComments from '../features/toggle-all-comments';
 import toggleAllReplies from '../features/toggle-all-replies';
 
 import features from './features';
-import {isItemJob} from './utils';
+import {
+	isItemJob,
+	getItemId,
+	getOptions,
+	isLoggedIn,
+	getLoggedInUser
+} from './utils';
 
 const featureList = [
 	autoRefresh,
@@ -51,35 +57,43 @@ const featureList = [
 	toggleAllReplies
 ];
 
+const getMetadata = new Promise(resolve => {
+	const metadata = {
+		path: window.location.pathname,
+		itemId: null,
+		user: {
+			loggedIn: false,
+			name: null
+		},
+		isJob: false,
+		options: null,
+		firstLoad: false
+	};
+
+	window.addEventListener('load', async () => {
+		metadata.itemId = getItemId();
+		metadata.user.loggedIn = isLoggedIn();
+		metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : null;
+		metadata.isJob = metadata.itemId ? await isItemJob(metadata.itemId) : false;
+		metadata.options = await getOptions;
+		resolve(metadata);
+	});
+});
+
 export async function initialiseAll() {
-	const path = window.location.pathname;
-	let isJob = false;
-
-	if (path === '/item') {
-		const params = new URLSearchParams(window.location.search.replace('?', '&'));
-		const itemId = params.get('id');
-
-		isJob = await isItemJob(itemId);
-	}
+	const metadata = await getMetadata;
+	metadata.firstLoad = true;
 
 	for (const feat of featureList) {
-		features.add(feat, isJob, true);
+		features.add(feat, metadata);
 	}
 }
 
 export async function initialiseSome(...args) {
-	const path = window.location.pathname;
-	let isJob = false;
-
-	if (path === '/item') {
-		const params = new URLSearchParams(window.location.search.replace('?', '&'));
-		const itemId = params.get('id');
-
-		isJob = await isItemJob(itemId);
-	}
+	const metadata = await getMetadata;
 
 	for (const id of args) {
 		const feat = featureList.find(f => f.id === id);
-		features.add(feat, isJob);
+		features.add(feat, metadata);
 	}
 }

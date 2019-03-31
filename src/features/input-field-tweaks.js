@@ -17,8 +17,8 @@ function watchTextareas() {
 }
 
 // Dynamically increase / decrease title field length
-function dynamicallyChangeWidth() {
-	if (['/reply', ...paths.comments].includes(window.location.pathname)) {
+function dynamicallyChangeWidth(path) {
+	if (['/reply', ...paths.comments].includes(path)) {
 		return;
 	}
 
@@ -32,8 +32,8 @@ function dynamicallyChangeWidth() {
 }
 
 // Show characters remaining beside title field
-function charactersRemainging() {
-	if (['/reply', '/newpoll', ...paths.comments].includes(window.location.pathname)) {
+function charactersRemainging(path) {
+	if (['/reply', '/newpoll', ...paths.comments].includes(path)) {
 		return;
 	}
 
@@ -54,10 +54,10 @@ function charactersRemainging() {
 	});
 }
 
-function init() {
+function init(metadata) {
 	watchTextareas();
-	dynamicallyChangeWidth();
-	charactersRemainging();
+	dynamicallyChangeWidth(metadata.path);
+	charactersRemainging(metadata.path);
 
 	return true;
 }

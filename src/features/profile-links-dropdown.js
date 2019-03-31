@@ -1,8 +1,7 @@
-import {getLoggedInUser} from '../libs/utils';
 import {paths} from '../libs/paths';
 
-function init() {
-	const user = getLoggedInUser();
+function init(metadata) {
+	const user = metadata.user.name;
 
 	const links = [
 		{

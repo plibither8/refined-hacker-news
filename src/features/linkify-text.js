@@ -1,9 +1,8 @@
 import linkifyElement from 'linkifyjs/element';
-import {isLoggedIn, getLoggedInUser} from '../libs/utils';
 
-function init() {
+function init(metadata) {
 	const currentUser = document.querySelector('.hnuser').innerText;
-	if (isLoggedIn() && currentUser === getLoggedInUser()) {
+	if (currentUser === metadata.user.name) {
 		return;
 	}
 

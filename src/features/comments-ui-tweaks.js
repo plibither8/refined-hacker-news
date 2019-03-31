@@ -1,15 +1,12 @@
-import {isLoggedIn, getLoggedInUser} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
+import {getItemId} from '../libs/utils';
 import {getItemInfo} from '../libs/api';
 import {paths} from '../libs/paths';
 
-async function init() {
-	const me = isLoggedIn() ? getLoggedInUser() : null;
+async function init(metadata) {
+	const me = metadata.user.name;
 
-	const {location} = window;
-	const itemId = location.pathname === '/item' ?
-		new URLSearchParams(location.search.replace('?', '&')).get('id') :
-		null;
+	const itemId = getItemId();
 	const op = itemId ? (await getItemInfo(itemId)).by : null;
 
 	const comments = getAllComments();
