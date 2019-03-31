@@ -5,7 +5,7 @@ import {paths} from '../libs/paths';
 async function init() {
 	const path = window.location.pathname;
 	const focusClass = '__rhn__focussed-item';
-	const isCommentList = ['/item', '/threads'].includes(path);
+	const isCommentList = paths.comments.includes(path);
 
 	const {openReferenceLinksInNewTab} = await getOptions;
 
@@ -72,7 +72,7 @@ async function init() {
 			return;
 		}
 
-		// If URL pathname is of the form: ".../[item|threads]?id=..."
+		// If URL pathname is of the form: ".../[item|threads|etc]?id=..."
 		// Basically, if it is a story item
 		if (isCommentList) {
 			switch (event.keyCode) {
