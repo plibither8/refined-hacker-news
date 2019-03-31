@@ -5,7 +5,8 @@ import {paths} from '../libs/paths';
 async function init() {
 	const path = window.location.pathname;
 	const focusClass = '__rhn__focussed-item';
-	const isCommentList = paths.comments.includes(path);
+	// Noobcomments is functioning as a story list
+	const isCommentList = paths.comments.includes(path) && path !== '/noobcomments';
 
 	const {openReferenceLinksInNewTab} = await getOptions;
 
@@ -206,7 +207,7 @@ async function init() {
 }
 
 const details = {
-	id: 'key-bindings-for-navigation',
+	id: 'key-bindings-on-items',
 	pages: {
 		include: [
 			...paths.stories,
