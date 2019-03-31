@@ -21,7 +21,7 @@ function parseReferenceLinks(activeItem) {
 	 *      These ones have the reply div inside the span.
 	 * The favourable ones for us are those which have multiple paragraphs,
 	 * since reference links are most commonly written on a separate line.
-	 * 
+	 *
 	 * So what we are basically doing here is:
 	 *   - Pop the last node out of the array of direct children of `commentSpan`.
 	 *   - If the last node is the reply div, it means this comment has multiple
@@ -35,13 +35,14 @@ function parseReferenceLinks(activeItem) {
 	if (!lastItem.matches('div.reply') || lastItem.nodeType !== Node.ELEMENT_NODE) {
 		return links;
 	}
+
 	children.shift();
 
 	/**
 	 * This expression had been made by observing the general
 	 * pattern and syntax of numbered reference links seen on HN.
 	 * If this can be refined further, it would be great :)
-	 * 
+	 *
 	 * Explanation:
 	 * - (Optional) Starts with an opening square bracker "["
 	 * - The next (or first, depends) character should be a digit from 0 to 9
@@ -52,7 +53,7 @@ function parseReferenceLinks(activeItem) {
 	for (const child of children) {
 		/**
 		 * Here we are making sure that the child contains an anchor element to
-		 * detect whether there is in fact a link or not. 
+		 * detect whether there is in fact a link or not.
 		 */
 		const link = child.querySelector('a');
 		if (!link) {
@@ -261,6 +262,14 @@ const story = {
 			} else {
 				comment.click();
 			}
+		}
+	},
+
+	// Flag/Unflag story
+	flag(next) {
+		const flagBtn = next.querySelector('a[href^="flag"]');
+		if (flagBtn) {
+			flagBtn.click();
 		}
 	}
 };

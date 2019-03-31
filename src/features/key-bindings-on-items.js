@@ -22,7 +22,7 @@ async function init() {
 		items: [],
 		index: 0,
 		activeItem: undefined
-	}
+	};
 
 	window.addEventListener('keydown', event => {
 		if (document.activeElement.tagName !== 'BODY') {
@@ -171,6 +171,15 @@ async function init() {
 					}
 
 					keydown.story.favorite(next);
+					return;
+
+				// X: flag/unflag story
+				case 88:
+					if (combo) {
+						return;
+					}
+
+					keydown.story.flag(next);
 					return;
 
 				// C: open story comments
