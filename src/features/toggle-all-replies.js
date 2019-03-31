@@ -1,4 +1,5 @@
 import {getAllComments} from '../libs/dom-utils';
+import {paths} from '../libs/paths';
 
 function init() {
 	const allComments = [...getAllComments()];
@@ -42,10 +43,7 @@ function init() {
 const details = {
 	id: 'toggle-all-replies',
 	pages: {
-		include: [
-			'/item',
-			'/threads'
-		],
+		include: paths.comments,
 		exclude: []
 	},
 	loginRequired: false,

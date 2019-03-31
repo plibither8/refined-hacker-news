@@ -1,5 +1,6 @@
 import {keydown} from '../libs/handle-item-keydowns';
 import {getOptions} from '../libs/utils';
+import {paths} from '../libs/paths';
 
 async function init() {
 	const path = window.location.pathname;
@@ -208,19 +209,9 @@ const details = {
 	id: 'key-bindings-for-navigation',
 	pages: {
 		include: [
-			'/',
-			'/newest',
-			'/news',
-			'/show',
-			'/shownew',
-			'/ask',
-			'/active',
-			'/submitted',
-			'/hidden',
-			'/upvoted',
-			'/favorites',
-			'/item',
-			'/threads'
+			...paths.stories,
+			...paths.comments,
+			...paths.userSpecific
 		],
 		exclude: []
 	},

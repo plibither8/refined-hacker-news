@@ -1,6 +1,7 @@
 import {isLoggedIn, getLoggedInUser} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 import {getItemInfo} from '../libs/api';
+import {paths} from '../libs/paths';
 
 async function init() {
 	const me = isLoggedIn() ? getLoggedInUser() : null;
@@ -36,10 +37,7 @@ async function init() {
 const details = {
 	id: 'comments-ui-tweaks',
 	pages: {
-		include: [
-			'/item',
-			'/threads'
-		],
+		include: paths.stories,
 		exclude: []
 	},
 	loginRequired: false,

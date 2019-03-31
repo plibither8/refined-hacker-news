@@ -1,4 +1,5 @@
 import {getAllComments} from '../libs/dom-utils';
+import {paths} from '../libs/paths';
 
 function init() {
 	const comments = getAllComments();
@@ -15,10 +16,7 @@ function init() {
 const details = {
 	id: 'change-dead-comments-color',
 	pages: {
-		include: [
-			'/item',
-			'/threads'
-		],
+		include: paths.comments,
 		exclude: []
 	},
 	loginRequired: false,

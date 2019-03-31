@@ -4,9 +4,8 @@ import {
 	getPageDom,
 	getOptions
 } from '../libs/utils';
-import {
-	getAllComments
-} from '../libs/dom-utils';
+import {getAllComments} from '../libs/dom-utils';
+import {paths} from '../libs/paths';
 
 async function init() {
 	const path = window.location.pathname;
@@ -27,9 +26,7 @@ async function init() {
 
 		const comments = getAllComments();
 		for (const comment of comments) {
-			const {
-				id
-			} = comment;
+			const {id} = comment;
 
 			const headSpan = comment.querySelector('span.comhead');
 			let unfave = false;
@@ -136,16 +133,10 @@ const details = {
 	id: 'more-accessible-favorite',
 	pages: {
 		include: [
-			'/',
-			'/news',
-			'/show',
-			'/shownew',
-			'/ask',
-			'/active',
-			'/item',
-			'/threads'
+			...paths.stories,
+			...paths.comments
 		],
-		exclude: []
+		exclude: ['/jobs']
 	},
 	loginRequired: true,
 	init

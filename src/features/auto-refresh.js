@@ -3,6 +3,7 @@ import OptionsSync from 'webext-options-sync';
 import {initialiseSome} from '../libs/initialise';
 import {getOptions, getPageDom} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
+import {paths} from '../libs/paths';
 
 import sortStories from './sort-stories';
 
@@ -118,13 +119,10 @@ async function init() {
 const details = {
 	id: 'auto-refresh',
 	pages: {
-		include: [
-			'/',
-			'/news',
-			'/active',
-			'/newest'
-		],
-		exclude: []
+		include: paths.stories,
+		exclude: [
+			'/past'
+		]
 	},
 	loginRequired: false,
 	init

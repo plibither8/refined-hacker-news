@@ -1,3 +1,5 @@
+import {paths} from "../libs/paths";
+
 function init() {
 	const rows = document.querySelectorAll('table.itemlist > tbody > tr.athing');
 	for (const row of rows) {
@@ -20,14 +22,7 @@ function init() {
 const details = {
 	id: 'click-rank-to-vote-unvote',
 	pages: {
-		include: [
-			'/',
-			'/news',
-			'/show',
-			'/shownew',
-			'/ask',
-			'/active'
-		],
+		include: paths.stories,
 		exclude: []
 	},
 	loginRequired: false,

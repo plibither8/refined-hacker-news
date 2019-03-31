@@ -1,4 +1,5 @@
 import {createOptionsBar, getGroupedStories} from '../libs/dom-utils';
+import {paths} from '../libs/paths';
 
 function sort(method, stories) {
 	switch (method) {
@@ -72,14 +73,7 @@ function init() {
 const details = {
 	id: 'sort-stories',
 	pages: {
-		include: [
-			'/',
-			'/news',
-			'/show',
-			'/shownew',
-			'/ask',
-			'/active'
-		],
+		include: paths.stories,
 		exclude: []
 	},
 	loginRequired: false,

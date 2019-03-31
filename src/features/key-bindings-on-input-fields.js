@@ -1,3 +1,5 @@
+import {paths} from "../libs/paths";
+
 const shortcuts = {
 	italicise(event) {
 		const {target} = event;
@@ -57,7 +59,7 @@ function init() {
 	}
 
 	const commentTree = document.querySelector('table.comment-tree');
-	if (window.location.pathname === '/item' && commentTree) {
+	if (path.comments.includes(window.location.pathname) && commentTree) {
 		const observer = new MutationObserver(mutationsList => {
 			for (const mutation of mutationsList) {
 				const {addedNodes} = mutation;
@@ -90,10 +92,8 @@ const details = {
 	id: 'key-bindings-on-input-fields',
 	pages: {
 		include: [
-			'/item',
-			'/threads',
-			'/reply',
-			'/submit'
+			...paths.comments,
+			...paths.forms
 		],
 		exclude: []
 	},

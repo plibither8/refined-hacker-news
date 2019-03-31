@@ -1,4 +1,5 @@
 import {getLoggedInUser} from '../libs/utils';
+import {paths} from '../libs/paths';
 
 function init() {
 	const user = getLoggedInUser();
@@ -70,12 +71,7 @@ const details = {
 	id: 'profile-link-dropdown',
 	pages: {
 		include: ['*'],
-		exclude: [
-			'/newsguidelines.html',
-			'/newsfaq.html',
-			'/security.html',
-			'/bookmarklet.html'
-		]
+		exclude: paths.info
 	},
 	loginRequired: true,
 	runOnJobItems: true,

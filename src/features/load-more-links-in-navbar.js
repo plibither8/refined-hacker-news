@@ -1,3 +1,5 @@
+import {paths} from "../libs/paths";
+
 function init() {
 	const navbar = document.querySelector('span.pagetop');
 
@@ -81,15 +83,8 @@ const details = {
 	pages: {
 		include: ['*'],
 		exclude: [
-			'/submit',
-			'/reply',
-			'/edit',
-			'/delete-confirm',
-			'/submitlink',
-			'/newsguidelines.html',
-			'/newsfaq.html',
-			'/security.html',
-			'/bookmarklet.html'
+			...paths.forms,
+			...paths.info
 		]
 	},
 	loginRequired: false,
