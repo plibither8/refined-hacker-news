@@ -1,4 +1,4 @@
-import {paths} from "../libs/paths";
+import {paths} from '../libs/paths';
 
 function init() {
 	const rows = document.querySelectorAll('table.itemlist > tbody > tr.athing');

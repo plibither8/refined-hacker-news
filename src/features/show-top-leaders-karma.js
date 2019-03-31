@@ -15,9 +15,9 @@ async function init() {
 
 	const responses = await Promise.all(promises);
 
-	rows.map((row, i) => {
+	rows.forEach((row, i) => {
 		row.children[2].innerText = responses[i].karma;
-	})
+	});
 
 	return true;
 }

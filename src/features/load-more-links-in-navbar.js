@@ -1,4 +1,4 @@
-import {paths} from "../libs/paths";
+import {paths} from '../libs/paths';
 
 function init() {
 	const navbar = document.querySelector('span.pagetop');
