@@ -15,6 +15,7 @@ import prefillSubmitTitle from '../features/prefill-submit-title';
 import profileLinksDropdown from '../features/profile-links-dropdown';
 import replyWithoutLeavingPage from '../features/reply-without-leaving-page';
 import showKarmaLeft from '../features/show-karma-left';
+import showTopLeadersKarma from '../features/show-top-leaders-karma';
 import showUserInfoOnHover from '../features/show-user-info-on-hover';
 import sortStories from '../features/sort-stories';
 import submissionTitleRemainingCharacters from '../features/submission-title-remaining-characters';
@@ -42,6 +43,7 @@ const featureList = [
 	profileLinksDropdown,
 	replyWithoutLeavingPage,
 	showKarmaLeft,
+	showTopLeadersKarma,
 	showUserInfoOnHover,
 	sortStories,
 	submissionTitleRemainingCharacters,

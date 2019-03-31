@@ -54,6 +54,7 @@ pages: {
 - [x] `profile-links-dropdown`
 - [x] `reply-without-leaving-page`
 - [x] `show-karma-left`
+- [x] `show-top-leaders-karma`
 - [x] `show-user-info-on-hover`
 - [x] `sort-stories`
 - [x] `submission-title-remaining-characters`
