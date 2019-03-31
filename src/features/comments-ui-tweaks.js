@@ -37,7 +37,7 @@ async function init() {
 const details = {
 	id: 'comments-ui-tweaks',
 	pages: {
-		include: paths.stories,
+		include: paths.comments,
 		exclude: []
 	},
 	loginRequired: false,
