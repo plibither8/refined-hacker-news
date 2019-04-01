@@ -6,8 +6,8 @@
 	filter: blur(0);
 }
 
-.__rhn__dead-link-color,
-.__rhn__dead-link-color * {
+.__rhn__dead-comment,
+.__rhn__dead-comment * {
 	color: #d89899 !important;
 }
 
