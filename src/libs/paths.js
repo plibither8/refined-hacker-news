@@ -10,7 +10,8 @@ const paths = {
 		'/active',
 		'/best',
 		'/noobstories',
-		'/front'
+		'/front',
+		'/from'
 	],
 
 	comments: [
