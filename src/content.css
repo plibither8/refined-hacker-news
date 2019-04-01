@@ -58,13 +58,13 @@
 	width: 4ch;
 }
 
-.__rhn__options-bar select {
-	margin-right: 10px;
-}
-
 .__rhn__options-bar form {
 	display: flex;
 	margin-bottom: 0;
+}
+
+.__rhn__options-bar form#autoRefreshForm {
+	margin: 0 10px;
 }
 
 .__rhn__options-bar form img {
