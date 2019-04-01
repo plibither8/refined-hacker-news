@@ -221,7 +221,7 @@ const story = {
 	// Vote story
 	vote(activeItem, next) {
 		const vote = activeItem.querySelector('div.votearrow');
-		const unvote = next.querySelector('a[id^="un_"]');
+		const unvote = next.querySelector('a[id^="un_"]') || activeItem.querySelector('a[id^="un_"]');
 
 		if (unvote) {
 			unvote.click();

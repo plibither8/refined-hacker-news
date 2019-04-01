@@ -18,7 +18,7 @@ function watchTextareas() {
 
 // Dynamically increase / decrease title field length
 function dynamicallyChangeWidth(path) {
-	if (['/reply', ...paths.comments].includes(path)) {
+	if (['/reply', '/user', ...paths.comments].includes(path)) {
 		return;
 	}
 
@@ -33,7 +33,7 @@ function dynamicallyChangeWidth(path) {
 
 // Show characters remaining beside title field
 function charactersRemainging(path) {
-	if (['/reply', '/newpoll', ...paths.comments].includes(path)) {
+	if (['/reply', '/newpoll', '/user', ...paths.comments].includes(path)) {
 		return;
 	}
 
@@ -67,7 +67,8 @@ const details = {
 	pages: {
 		include: [
 			...paths.forms,
-			...paths.comments
+			...paths.comments,
+			'/user'
 		],
 		exclude: [
 			'/delete-confirm',

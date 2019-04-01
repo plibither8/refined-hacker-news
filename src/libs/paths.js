@@ -15,7 +15,10 @@ const paths = {
 
 	comments: [
 		'/item',
-		'/threads',
+		'/threads'
+	],
+
+	specialComments: [
 		'/bestcomments',
 		'/noobcomments',
 		'/newcomments'

@@ -211,6 +211,7 @@ const details = {
 		include: [
 			...paths.stories,
 			...paths.comments,
+			...paths.specialComments,
 			...paths.userSpecific
 		],
 		exclude: []
