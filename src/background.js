@@ -1,14 +1,20 @@
 import OptionsSync from 'webext-options-sync';
+import {getOptions} from './libs/utils';
 
 new OptionsSync().define({
 	defaults: {
+		// popup options:
 		disabledFeatures: '',
 		customCSS: '',
 		logging: true,
+		immediatelyCloseFavorite: false,
+		openReferenceLinksInNewTab: true,
+		hideStoryCommentsPage: false,
+
+		// options bar:
 		autoRefreshEnabled: false,
 		autoRefreshValue: 0,
-		immediatelyCloseFavorite: false,
-		openReferenceLinksInNewTab: true
+		hideReadStories: false
 	}
 });
 
@@ -48,6 +54,11 @@ browser.runtime.onMessage.addListener(
 
 			for (const [id, links] of Object.entries(storyIds)) {
 				for (const link of links) {
+					if (request.hideStoryCommentsPage &&
+						link.includes('news.ycombinator.com/item')) {
+							continue;
+					}
+
 					const visits = await browser.history.getVisits({ url: link });
 
 					if (visits.length > 0) {

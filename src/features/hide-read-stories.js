@@ -7,7 +7,7 @@ import {paths} from '../libs/paths';
 
 import sortStories from './sort-stories';
 
-function requestVisitedStories() {
+function requestVisitedStories(options) {
 	const itemList = document.querySelector('table.itemlist');
 	const stories = getGroupedStories(itemList);
 	const links = {};
@@ -17,7 +17,8 @@ function requestVisitedStories() {
 	}
 
 	browser.runtime.sendMessage({
-		searchHistory: links
+		searchHistory: links,
+		hideStoryCommentsPage: !options.hideStoryCommentsPage
 	});
 }
 
@@ -69,7 +70,10 @@ function init(metadata) {
 	form.append(check, label);
 	optionsBar.append(form);
 
-	check.addEventListener('input', requestVisitedStories);
+	requestVisitedStories(options);
+	check.addEventListener('input', () => {
+		requestVisitedStories(options);
+	});
 
 	browser.runtime.onMessage.addListener(request => {
 		if (request.visitedIds) {
@@ -77,6 +81,7 @@ function init(metadata) {
 		}
 	});
 
+	new OptionsSync().syncForm('#hideReadStoriesForm');
 	return true;
 }
 
