@@ -124,6 +124,10 @@ function init(metadata) {
 				case 55:
 				case 56:
 				case 57:
+					if (combo && !event.shiftKey) {
+						return;
+					}
+
 					keydown.item.openReferenceLink(event, itemData.activeItem, openReferenceLinksInNewTab);
 					break;
 
