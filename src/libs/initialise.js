@@ -91,6 +91,7 @@ export async function initialiseAll() {
 
 export async function initialiseSome(...args) {
 	const metadata = await getMetadata;
+	metadata.firstLoad = false;
 
 	for (const id of args) {
 		const feat = featureList.find(f => f.id === id);
