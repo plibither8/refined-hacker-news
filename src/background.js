@@ -41,5 +41,23 @@ browser.runtime.onMessage.addListener(
 				browser.tabs.remove(tab.id);
 			}
 		}
+
+		else if (request.searchHistory) {
+			const storyIds = request.searchHistory;
+			const visitedIds = [];
+
+			for (const [id, links] of Object.entries(storyIds)) {
+				for (const link of links) {
+					const visits = await browser.history.getVisits({ url: link });
+
+					if (visits.length > 0) {
+						visitedIds.push(Number(id));
+						break;
+					}
+				}
+			}
+
+			browser.tabs.sendMessage(sender.tab.id, {visitedIds});
+		}
 	}
 );

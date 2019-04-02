@@ -55,19 +55,26 @@ export function getGroupedStories(itemlist) {
 
 	for (let i = 0; i < rows.length - 2; i += 3) {
 		const id = parseInt(rows[i].id, 10);
+		const storyUrl = rows[i].querySelector('a.storylink').href;
+
 		const scoreSpan = rows[i + 1].querySelector('span.score');
 		const score = scoreSpan ? parseInt(scoreSpan.innerText, 10) : null;
+
 		const defaultRank = parseInt(rows[i].querySelector('span.rank').innerText, 10);
+
 		const commentsLink = [...rows[i + 1].querySelectorAll('a')]
 			.find(a => a.innerText.includes('comment') || a.innerText.includes('discuss'));
 		const commentsCount = commentsLink ? parseInt(commentsLink.innerText, 10) : null;
+
 		const elements = [
 			rows[i],
 			rows[i + 1],
 			rows[i + 2]
 		];
+
 		stories.push({
 			id,
+			storyUrl,
 			score,
 			elements,
 			defaultRank,

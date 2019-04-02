@@ -2,26 +2,44 @@ import OptionsSync from 'webext-options-sync';
 
 import {initialiseSome} from '../libs/initialise';
 import {getPageDom} from '../libs/utils';
-import {createOptionsBar} from '../libs/dom-utils';
+import {createOptionsBar, getGroupedStories} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
 import sortStories from './sort-stories';
 
-function getVisitedStories() {
-	const stories = document.querySelectorAll('tr.athing');
-	const visited = [];
+function requestVisitedStories() {
+	const itemList = document.querySelector('table.itemlist');
+	const stories = getGroupedStories(itemList);
+	const links = {};
+
 	for (const story of stories) {
-		const title = story.querySelector('td.title');
-		if (window.getComputedStyle(title).color === 'rgb(130, 130, 130)') {
-			visited.push(
-				story,
-				story.nextElementSibling,
-				story.nextElementSibling.nextElementSibling
-			);
-		}
+		links[story.id] = [story.storyUrl, story.commentsLink.href];
 	}
 
-	return visited;
+	browser.runtime.sendMessage({
+		searchHistory: links
+	});
+}
+
+function hideStories(idList, hide) {
+	const itemList = document.querySelector('table.itemlist');
+	const stories = getGroupedStories(itemList);
+
+	for (const id of idList) {
+		const story = stories.find(obj => obj.id === id);
+
+		if (!story) {
+			continue;
+		}
+
+		for (const el of story.elements) {
+			if (hide) {
+				el.classList.add('__rhn__no-display');
+			} else {
+				el.classList.remove('__rhn__no-display');
+			}
+		}
+	}
 }
 
 function init(metadata) {
@@ -51,12 +69,14 @@ function init(metadata) {
 	form.append(check, label);
 	optionsBar.append(form);
 
-	check.addEventListener('input', () => {
-		const visitedStories = getVisitedStories();
-		for (const story of visitedStories) {
-			// Story.classList.toggle('__rhn__no-display');
+	check.addEventListener('input', requestVisitedStories);
+
+	browser.runtime.onMessage.addListener(request => {
+		if (request.visitedIds) {
+			hideStories(request.visitedIds, check.checked);
 		}
 	});
+
 	return true;
 }
 
