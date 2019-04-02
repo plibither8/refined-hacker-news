@@ -33,12 +33,10 @@ import {
 } from './utils';
 
 const featureList = [
-	autoRefresh,
 	changeDeadCommentsColor,
 	clickCommentIndentToToggle,
 	clickRankToVoteUnvote,
 	commentsUiTweaks,
-	hideReadStories,
 	inputFieldTweaks,
 	keyBindingsOnInputFields,
 	keyBindingsOnItems,
@@ -54,9 +52,12 @@ const featureList = [
 	showKarmaLeft,
 	showTopLeadersKarma,
 	showUserInfoOnHover,
-	sortStories,
 	toggleAllComments,
-	toggleAllReplies
+	toggleAllReplies,
+	// Options bar (order matters)
+	sortStories,
+	hideReadStories,
+	autoRefresh
 ];
 
 const getMetadata = new Promise(resolve => {

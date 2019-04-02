@@ -1,11 +1,8 @@
 import OptionsSync from 'webext-options-sync';
 
-import {initialiseSome} from '../libs/initialise';
-import {getPageDom, optionsBarEnabledOptions} from '../libs/utils';
+import {optionsBarEnabledOptions} from '../libs/utils';
 import {createOptionsBar, getGroupedStories} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
-
-import sortStories from './sort-stories';
 
 function requestVisitedStories(options) {
 	const itemList = document.querySelector('table.itemlist');
@@ -44,7 +41,7 @@ function hideStories(idList, hide) {
 }
 
 function init(metadata) {
-	const {options, path} = metadata;
+	const {options} = metadata;
 
 	const optionsBar = createOptionsBar();
 	const form = document.createElement('form');
@@ -61,7 +58,7 @@ function init(metadata) {
 	label.setAttribute('for', 'hide-read-stories-check');
 
 	const enabledOptions = optionsBarEnabledOptions(options);
-	if (enabledOptions.includes('auto-refresh') || enabledOptions.includes('sort-stories')) {
+	if (enabledOptions.includes('sort-stories')) {
 		check.style.marginLeft = '8px';
 
 		form.append('|');

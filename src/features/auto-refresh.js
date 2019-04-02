@@ -52,7 +52,7 @@ async function refresh() {
 }
 
 function init(metadata) {
-	const {options, path} = metadata;
+	const {options} = metadata;
 
 	const optionsBar = createOptionsBar();
 	const form = document.createElement('form');
@@ -79,7 +79,7 @@ function init(metadata) {
 	loader.classList.add('__rhn__no-display');
 
 	const enabledOptions = optionsBarEnabledOptions(options);
-	if (enabledOptions.includes('sort-stories')) {
+	if (enabledOptions.includes('hide-read-stories') || enabledOptions.includes('sort-stories')) {
 		check.style.marginLeft = '8px';
 
 		form.append('|');
