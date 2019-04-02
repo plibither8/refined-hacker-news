@@ -3,6 +3,7 @@ import changeDeadCommentsColor from '../features/change-dead-comments-color';
 import clickCommentIndentToToggle from '../features/click-comment-indent-to-toggle';
 import clickRankToVoteUnvote from '../features/click-rank-to-vote-unvote';
 import commentsUiTweaks from '../features/comments-ui-tweaks';
+import hideReadStories from '../features/hide-read-stories';
 import inputFieldTweaks from '../features/input-field-tweaks';
 import keyBindingsOnInputFields from '../features/key-bindings-on-input-fields';
 import keyBindingsOnItems from '../features/key-bindings-on-items';
@@ -32,7 +33,6 @@ import {
 } from './utils';
 
 const featureList = [
-	autoRefresh,
 	changeDeadCommentsColor,
 	clickCommentIndentToToggle,
 	clickRankToVoteUnvote,
@@ -52,9 +52,12 @@ const featureList = [
 	showKarmaLeft,
 	showTopLeadersKarma,
 	showUserInfoOnHover,
-	sortStories,
 	toggleAllComments,
-	toggleAllReplies
+	toggleAllReplies,
+	// Options bar (order matters)
+	sortStories,
+	hideReadStories,
+	autoRefresh
 ];
 
 const getMetadata = new Promise(resolve => {

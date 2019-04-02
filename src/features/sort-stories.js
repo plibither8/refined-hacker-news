@@ -1,7 +1,10 @@
 import {createOptionsBar, getGroupedStories} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
-function sort(method, stories) {
+function sort() {
+	const method = document.querySelector('#sort-stories-input').value;
+	const stories = getGroupedStories(document.querySelector('table.itemlist'));
+
 	switch (method) {
 		case 'time': {
 			stories.sort((a, b) => a.id < b.id ? 1 : -1);
@@ -57,13 +60,8 @@ function init() {
 		optionsBar.append(sortLabel, sortSelect);
 	}
 
-	let stories = getGroupedStories(document.querySelector('table.itemlist'));
-	sort('default', stories);
-
-	sortSelect.addEventListener('change', () => {
-		stories = getGroupedStories(document.querySelector('table.itemlist'));
-		sort(sortSelect.value, stories);
-	});
+	sort();
+	sortSelect.addEventListener('change', sort);
 
 	return true;
 }
@@ -79,3 +77,5 @@ const details = {
 };
 
 export default details;
+
+export {sort as sortStories};

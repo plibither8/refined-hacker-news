@@ -2,13 +2,18 @@ import OptionsSync from 'webext-options-sync';
 
 new OptionsSync().define({
 	defaults: {
+		// Popup options:
 		disabledFeatures: '',
 		customCSS: '',
 		logging: true,
+		immediatelyCloseFavorite: false,
+		openReferenceLinksInNewTab: true,
+		hideStoryCommentsPage: false,
+
+		// Options bar:
 		autoRefreshEnabled: false,
 		autoRefreshValue: 0,
-		immediatelyCloseFavorite: false,
-		openReferenceLinksInNewTab: true
+		hideReadStories: false
 	}
 });
 
@@ -40,6 +45,27 @@ browser.runtime.onMessage.addListener(
 			if (immediatelyCloseFavorite) {
 				browser.tabs.remove(tab.id);
 			}
+		} else if (request.searchHistory) {
+			const storyIds = request.searchHistory;
+			const visitedIds = [];
+
+			for (const [id, links] of Object.entries(storyIds)) {
+				for (const link of links) {
+					if (request.hideStoryCommentsPage && link.includes('news.ycombinator.com/item')) {
+						continue;
+					}
+
+					/* eslint-disable-next-line no-await-in-loop */
+					const visits = await browser.history.getVisits({url: link});
+
+					if (visits.length > 0) {
+						visitedIds.push(Number(id));
+						break;
+					}
+				}
+			}
+
+			browser.tabs.sendMessage(sender.tab.id, {visitedIds});
 		}
 	}
 );
