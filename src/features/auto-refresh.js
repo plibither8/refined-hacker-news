@@ -5,7 +5,10 @@ import {getPageDom, optionsBarEnabledOptions} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
-function handleInterval(input) {
+import {hideStories} from './hide-read-stories';
+import {sortStories} from './sort-stories';
+
+function handleInterval(input, options) {
 	if (input.disabled) {
 		return;
 	}
@@ -25,11 +28,11 @@ function handleInterval(input) {
 			return;
 		}
 
-		refresh();
+		refresh(options);
 	}, duration);
 }
 
-async function refresh() {
+async function refresh(options) {
 	const loader = document.querySelector('form#autoRefreshForm img');
 	loader.classList.remove('__rhn__no-display');
 
@@ -49,6 +52,16 @@ async function refresh() {
 	);
 
 	loader.classList.add('__rhn__no-display');
+
+	const enabledOptions = optionsBarEnabledOptions(options);
+
+	if (enabledOptions.includes('hide-read-stories')) {
+		hideStories(options);
+	}
+
+	if (enabledOptions.includes('sort-stories')) {
+		sortStories();
+	}
 }
 
 function init(metadata) {

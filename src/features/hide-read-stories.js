@@ -10,7 +10,10 @@ function requestVisitedStories(options) {
 	const links = {};
 
 	for (const story of stories) {
-		links[story.id] = [story.storyUrl, story.commentsLink.href];
+		links[story.id] = [story.storyUrl];
+		if (story.commentsLink) {
+			links[story.id].push(story.commentsLink.href);
+		}
 	}
 
 	browser.runtime.sendMessage({
@@ -95,3 +98,5 @@ const details = {
 };
 
 export default details;
+
+export {requestVisitedStories as hideStories};
