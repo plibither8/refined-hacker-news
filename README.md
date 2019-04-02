@@ -42,6 +42,7 @@ pages: {
 - [x] `click-comment-indent-to-toggle`
 - [x] `click-rank-to-vote-unvote`
 - [x] `comments-ui-tweaks`
+- [x] `hide-read-stories`
 - [x] `input-field-ui-tweaks`
 - [x] `key-bindings-on-input-fields`
 - [x] `key-bindings-on-items`
@@ -64,5 +65,4 @@ pages: {
 #### Abandoned
 
 - `blur-story-scores`
-- `hide-read-stories`
 - `load-more-stories`

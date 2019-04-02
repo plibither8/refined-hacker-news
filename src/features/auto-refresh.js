@@ -1,11 +1,9 @@
 import OptionsSync from 'webext-options-sync';
 
 import {initialiseSome} from '../libs/initialise';
-import {getPageDom} from '../libs/utils';
+import {getPageDom, optionsBarEnabledOptions} from '../libs/utils';
 import {createOptionsBar} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
-
-import sortStories from './sort-stories';
 
 function handleInterval(input) {
 	if (input.disabled) {
@@ -80,10 +78,12 @@ function init(metadata) {
 	loader.src = browser.extension.getURL('loader.gif');
 	loader.classList.add('__rhn__no-display');
 
-	if (!options.disabledFeatures.includes('sort-stories') &&
-		sortStories.pages.include.includes(path)) {
+	const enabledOptions = optionsBarEnabledOptions(options);
+	if (enabledOptions.includes('sort-stories')) {
 		check.style.marginLeft = '8px';
+
 		form.append('|');
+		form.style.marginLeft = '10px';
 	}
 
 	form.id = 'autoRefreshForm';

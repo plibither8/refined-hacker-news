@@ -1,7 +1,7 @@
 import OptionsSync from 'webext-options-sync';
 
 import {initialiseSome} from '../libs/initialise';
-import {getPageDom} from '../libs/utils';
+import {getPageDom, optionsBarEnabledOptions} from '../libs/utils';
 import {createOptionsBar, getGroupedStories} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
@@ -60,10 +60,12 @@ function init(metadata) {
 	label.innerHTML = 'hide read stories';
 	label.setAttribute('for', 'hide-read-stories-check');
 
-	if (!options.disabledFeatures.includes('sort-stories') &&
-		sortStories.pages.include.includes(path)) {
+	const enabledOptions = optionsBarEnabledOptions(options);
+	if (enabledOptions.includes('auto-refresh') || enabledOptions.includes('sort-stories')) {
 		check.style.marginLeft = '8px';
+
 		form.append('|');
+		form.style.marginLeft = '10px';
 	}
 
 	form.id = 'hideReadStoriesForm';
