@@ -1,9 +1,8 @@
 import OptionsSync from 'webext-options-sync';
-import {getOptions} from './libs/utils';
 
 new OptionsSync().define({
 	defaults: {
-		// popup options:
+		// Popup options:
 		disabledFeatures: '',
 		customCSS: '',
 		logging: true,
@@ -11,7 +10,7 @@ new OptionsSync().define({
 		openReferenceLinksInNewTab: true,
 		hideStoryCommentsPage: false,
 
-		// options bar:
+		// Options bar:
 		autoRefreshEnabled: false,
 		autoRefreshValue: 0,
 		hideReadStories: false
@@ -46,20 +45,18 @@ browser.runtime.onMessage.addListener(
 			if (immediatelyCloseFavorite) {
 				browser.tabs.remove(tab.id);
 			}
-		}
-
-		else if (request.searchHistory) {
+		} else if (request.searchHistory) {
 			const storyIds = request.searchHistory;
 			const visitedIds = [];
 
 			for (const [id, links] of Object.entries(storyIds)) {
 				for (const link of links) {
-					if (request.hideStoryCommentsPage &&
-						link.includes('news.ycombinator.com/item')) {
-							continue;
+					if (request.hideStoryCommentsPage && link.includes('news.ycombinator.com/item')) {
+						continue;
 					}
 
-					const visits = await browser.history.getVisits({ url: link });
+					/* eslint-disable-next-line no-await-in-loop */
+					const visits = await browser.history.getVisits({url: link});
 
 					if (visits.length > 0) {
 						visitedIds.push(Number(id));
