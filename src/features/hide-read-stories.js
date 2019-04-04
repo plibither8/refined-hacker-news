@@ -91,7 +91,7 @@ const details = {
 	id: 'hide-read-stories',
 	pages: {
 		include: paths.stories,
-		exclude: ['/past']
+		exclude: ['/front']
 	},
 	loginRequired: false,
 	init

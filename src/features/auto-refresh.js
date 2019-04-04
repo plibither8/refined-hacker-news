@@ -129,7 +129,7 @@ const details = {
 	id: 'auto-refresh',
 	pages: {
 		include: paths.stories,
-		exclude: ['/past']
+		exclude: ['/front']
 	},
 	loginRequired: false,
 	init

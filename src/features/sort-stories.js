@@ -70,7 +70,7 @@ const details = {
 	id: 'sort-stories',
 	pages: {
 		include: paths.stories,
-		exclude: []
+		exclude: ['/front']
 	},
 	loginRequired: false,
 	init
