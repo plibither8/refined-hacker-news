@@ -66,3 +66,6 @@ pages: {
 
 - `blur-story-scores`
 - `load-more-stories`
+- `hide-bad-words`
+- `custom-font-face`
+- `scale-font-size`
