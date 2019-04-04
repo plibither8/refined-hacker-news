@@ -1,3 +1,5 @@
+import linkifyElement from 'linkifyjs/element';
+
 import {getUserInfo} from '../libs/api';
 
 function init() {
@@ -16,6 +18,12 @@ function init() {
 		'November',
 		'December'
 	];
+
+	const linkifyOptions = {
+		attributes: {
+			rel: 'noopener'
+		}
+	};
 
 	for (const user of allUsers) {
 		const userDiv = document.createElement('div');
@@ -57,7 +65,9 @@ function init() {
 						</tbody>
 					</table>
 				`;
+
 				userDiv.innerHTML = table;
+				linkifyElement(userDiv, linkifyOptions)
 			}
 		});
 
