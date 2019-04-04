@@ -1,3 +1,5 @@
+import {paths} from "./paths";
+
 function add(featureDetails, metadata) {
 	const details = {
 		runOnJobItems: false,
@@ -22,8 +24,8 @@ function add(featureDetails, metadata) {
 		firstLoad
 	} = metadata;
 
-	// Don't only on `exclude`d pages
-	if (pages.exclude.includes(path)) {
+	// Don't allow on `exclude`d pages or action/info pages
+	if ([...pages.exclude, ...paths.actions, ...paths.info].includes(path)) {
 		return;
 	}
 

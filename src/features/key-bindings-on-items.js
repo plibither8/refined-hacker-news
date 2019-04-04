@@ -5,14 +5,14 @@ function init(metadata) {
 	const {options, path} = metadata;
 	const focusClass = '__rhn__focussed-item';
 	// Noobcomments is functioning as a story list
-	const isCommentList = paths.comments.includes(path) && path !== '/noobcomments';
+	const isCommentList = paths.comments.includes(path);
 
 	const {openReferenceLinksInNewTab} = options;
 
 	function getItemList() {
 		return isCommentList ?
 			document.querySelectorAll('tr.comtr:not(.noshow) td.default') :
-			document.querySelectorAll('table.itemlist tr.athing');
+			document.querySelectorAll('table.itemlist tr.athing:not(.__rhn__no-display)');
 	}
 
 	function comboKeyCheck(event) {

@@ -38,13 +38,23 @@ const paths = {
 		'/newpoll',
 		'/edit',
 		'/delete-confirm',
-		'/submitlink',
-		'/changepw'
+		'/submitlink'
 	],
 
 	misc: [
 		'/leaders',
-		'/user'
+		'/user',
+	],
+
+	actions: [
+		'/login',
+		'/changepw',
+		'/x',
+		'/reply',
+		'/vote',
+		'/flag',
+		'/fave',
+		'/hide'
 	],
 
 	info: [
@@ -52,7 +62,8 @@ const paths = {
 		'/newsguidelines.html',
 		'/newsfaq.html',
 		'/security.html',
-		'/bookmarklet.html'
+		'/bookmarklet.html',
+		'/showhn.html'
 	]
 };
 
