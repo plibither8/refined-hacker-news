@@ -48,7 +48,7 @@ function parseReferenceLinks(activeItem) {
 	 * - The next (or first, depends) character should be a digit from 0 to 9
 	 * - (Optional) End with a closing square bracket "]" or a colon ":" or both
 	 */
-	const indexMarkerRegex = /^\[?(?<index>\d)\]?:?$/;
+	const indexMarkerRegex = /^\[?(?<index>\d)[\]:.]?$/;
 
 	for (const child of children) {
 		/**
