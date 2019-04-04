@@ -33,6 +33,7 @@
 		],
 		"rules": {
 			"import/no-unassigned-import": "off",
+			"import/no-named-as-default": 0,
 			"no-script-url": "off"
 		}
 	},

@@ -28,7 +28,7 @@ function init() {
 	for (const user of allUsers) {
 		const userDiv = document.createElement('div');
 
-		userDiv.classList.add('__rhn__hover-user-info', '__rhn__no-display');
+		userDiv.classList.add('__rhn__hover-info', '__rhn__no-display');
 		userDiv.style.left = user.getBoundingClientRect().left + 'px';
 		userDiv.innerHTML = `<img src=${browser.extension.getURL('loader.gif')}>`;
 
@@ -67,7 +67,7 @@ function init() {
 				`;
 
 				userDiv.innerHTML = table;
-				linkifyElement(userDiv, linkifyOptions)
+				linkifyElement(userDiv, linkifyOptions);
 			}
 		});
 

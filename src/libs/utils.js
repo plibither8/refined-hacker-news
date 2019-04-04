@@ -51,12 +51,12 @@ export function getLoggedInUser() {
 	return document.querySelector('a#me').innerText.split(' ')[0];
 }
 
-export function getItemId() {
+export function getItemId(url) {
 	if (window.location.pathname !== '/item') {
 		return null;
 	}
 
-	const params = new URLSearchParams(window.location.search.replace('?', '&'));
+	const params = new URLSearchParams((url || window.location.search).replace('?', '&'));
 	const itemId = params.get('id');
 
 	return itemId;

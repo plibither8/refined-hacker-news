@@ -98,7 +98,7 @@
 	color: #000;
 }
 
-.__rhn__hover-user-info {
+.__rhn__hover-info {
 	position: absolute;
 	background: #f6f6ef;
 	z-index: 2;
@@ -107,22 +107,22 @@
 	max-width: 500px;
 }
 
-.__rhn__hover-user-info td {
+.__rhn__hover-info td {
 	font-size: 10px !important;
 	vertical-align: top;
 }
 
-.__rhn__hover-user-info td p {
+.__rhn__hover-info td p {
 	word-break: break-word;
 }
 
-.__rhn__hover-user-info td a {
+.__rhn__hover-info td a {
 	color: #000 !important;
 	text-decoration: none !important;
 }
 
-a.hnuser:hover ~ .__rhn__hover-user-info,
-.__rhn__hover-user-info:hover {
+a.hnuser:hover ~ .__rhn__hover-info,
+.__rhn__hover-info:hover {
 	display: block;
 }
 

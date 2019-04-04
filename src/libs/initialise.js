@@ -16,6 +16,7 @@ import pastChooseDate from '../features/past-choose-date';
 import prefillSubmitTitle from '../features/prefill-submit-title';
 import profileLinksDropdown from '../features/profile-links-dropdown';
 import replyWithoutLeavingPage from '../features/reply-without-leaving-page';
+import showItemInfoOnHover from '../features/show-item-info-on-hover';
 import showKarmaLeft from '../features/show-karma-left';
 import showTopLeadersKarma from '../features/show-top-leaders-karma';
 import showUserInfoOnHover from '../features/show-user-info-on-hover';
@@ -49,11 +50,13 @@ const featureList = [
 	prefillSubmitTitle,
 	profileLinksDropdown,
 	replyWithoutLeavingPage,
+	showItemInfoOnHover,
 	showKarmaLeft,
 	showTopLeadersKarma,
 	showUserInfoOnHover,
 	toggleAllComments,
 	toggleAllReplies,
+
 	// Options bar (order matters)
 	sortStories,
 	hideReadStories,
