@@ -34,7 +34,7 @@ function init() {
 		itemDiv.style.left = link.getBoundingClientRect().left + 'px';
 		itemDiv.innerHTML = `<img src=${browser.extension.getURL('loader.gif')}>`;
 
-		link.parentElement.insertBefore(itemDiv, link);
+		link.parentElement.insertBefore(itemDiv, link.nextSibling);
 
 		link.dataset.rhnInfoLoaded = '0';
 
