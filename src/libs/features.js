@@ -37,7 +37,7 @@ function add(featureDetails, metadata) {
 	// Skip if feature has been marked as disabled
 	if (options.disabledFeatures.includes(id)) {
 		if (firstLoad) {
-			options.log('RHN:', '↩️️', 'Skipping', id);
+			options.log('↩️️', 'Skipping', id);
 		}
 
 		return;
@@ -58,7 +58,7 @@ function add(featureDetails, metadata) {
 	}
 
 	if (firstLoad) {
-		options.log('RHN:', '️️️✓', id);
+		options.log('️️️✓', id);
 	}
 }
 
