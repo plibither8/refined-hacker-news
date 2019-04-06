@@ -43,7 +43,7 @@ const paths = {
 
 	misc: [
 		'/leaders',
-		'/user',
+		'/user'
 	],
 
 	actions: [
