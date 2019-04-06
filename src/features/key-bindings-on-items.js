@@ -11,15 +11,15 @@ function init(metadata) {
 	const {openReferenceLinksInNewTab} = options;
 
 	function getItemList() {
-		return isCommentList ?
-			[
-				...document.querySelectorAll('tr.comtr:not(.noshow) td.default'),
-				...(moreLink ? [moreLink] : [])
-			] :
-			[
-				...document.querySelectorAll('table.itemlist tr.athing:not(.__rhn__no-display)'),
-				...(moreLink ? [moreLink] : [])
-			];
+		const itemList = isCommentList ?
+			[...document.querySelectorAll('tr.comtr:not(.noshow) td.default')] :
+			[...document.querySelectorAll('table.itemlist tr.athing:not(.__rhn__no-display)')];
+
+		if (moreLink) {
+			itemList.push(moreLink);
+		}
+
+		return itemList;
 	}
 
 	function comboKeyCheck(event) {
