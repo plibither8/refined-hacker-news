@@ -136,6 +136,10 @@ a.hnuser:hover ~ .__rhn__hover-info,
 	margin: -2px;
 }
 
+a.morelink.__rhn__focussed-item {
+	margin: 0;
+}
+
 .__rhn__rank {
 	cursor: pointer;
 }

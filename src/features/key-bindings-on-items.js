@@ -4,15 +4,22 @@ import {paths} from '../libs/paths';
 function init(metadata) {
 	const {options, path} = metadata;
 	const focusClass = '__rhn__focussed-item';
-	// Noobcomments is functioning as a story list
+
 	const isCommentList = paths.comments.includes(path);
+	const moreLink = document.querySelector('a.morelink');
 
 	const {openReferenceLinksInNewTab} = options;
 
 	function getItemList() {
 		return isCommentList ?
-			document.querySelectorAll('tr.comtr:not(.noshow) td.default') :
-			document.querySelectorAll('table.itemlist tr.athing:not(.__rhn__no-display)');
+			[
+				...document.querySelectorAll('tr.comtr:not(.noshow) td.default'),
+				...(moreLink ? [moreLink] : [])
+			] :
+			[
+				...document.querySelectorAll('table.itemlist tr.athing:not(.__rhn__no-display)'),
+				...(moreLink ? [moreLink] : [])
+			];
 	}
 
 	function comboKeyCheck(event) {
@@ -69,6 +76,14 @@ function init(metadata) {
 		}
 
 		if (!itemData.activeItem) {
+			return;
+		}
+
+		if (itemData.activeItem.matches('a.morelink')) {
+			if (event.keyCode === 13) {
+				itemData.activeItem.click();
+			}
+
 			return;
 		}
 

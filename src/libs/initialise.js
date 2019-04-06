@@ -94,6 +94,7 @@ export async function initialiseAll() {
 	for (const feat of featureList) {
 		features.add(feat, metadata);
 	}
+
 	console.groupEnd();
 }
 
