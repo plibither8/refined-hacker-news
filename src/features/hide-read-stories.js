@@ -83,7 +83,7 @@ function init(metadata) {
 		}
 	});
 
-	new OptionsSync().syncForm('#hideReadStoriesForm');
+	new OptionsSync({logging: false}).syncForm('#hideReadStoriesForm');
 	return true;
 }
 

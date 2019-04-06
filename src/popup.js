@@ -5,4 +5,4 @@ import indentTextarea from 'indent-textarea';
 fitTextarea.watch('textarea');
 indentTextarea.watch('textarea');
 
-new OptionsSync().syncForm('#options-form');
+new OptionsSync({logging: false}).syncForm('#options-form');

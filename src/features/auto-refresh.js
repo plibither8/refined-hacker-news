@@ -121,7 +121,7 @@ function init(metadata) {
 		handleInterval(input, options);
 	});
 
-	new OptionsSync().syncForm('#autoRefreshForm');
+	new OptionsSync({logging: false}).syncForm('#autoRefreshForm');
 	return true;
 }
 
