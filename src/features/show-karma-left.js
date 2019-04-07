@@ -1,7 +1,10 @@
+import {getUrlParams} from "../libs/utils";
+
 function init(metadata) {
-	const params = new URLSearchParams(window.location.search);
-	if (params.has('id')) {
-		if (metadata.user.name !== params.get('id')) {
+	const id = getUrlParams('id');
+
+	if (id) {
+		if (metadata.user.name !== id) {
 			return false;
 		}
 

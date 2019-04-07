@@ -1,3 +1,5 @@
+import {getUrlParams} from "../libs/utils";
+
 function init(metadata) {
 	switch (metadata.path) {
 		case '/show':
@@ -26,11 +28,8 @@ function init(metadata) {
 		}
 
 		case '/submit': {
-			const searchStr = window.location.search;
-			if (searchStr.length > 0) {
-				const title = new URLSearchParams(searchStr.replace('?', '&')).get('title');
-				document.querySelector('input[name="title"]').value = title;
-			}
+			const title = getUrlParams('title');
+			document.querySelector('input[name="title"]').value = title ? title : '';
 
 			break;
 		}

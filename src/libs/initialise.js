@@ -27,7 +27,7 @@ import toggleAllReplies from '../features/toggle-all-replies';
 import features from './features';
 import {
 	isItemJob,
-	getItemId,
+	getUrlParams,
 	getOptions,
 	isLoggedIn,
 	getLoggedInUser
@@ -77,10 +77,10 @@ const getMetadata = new Promise(resolve => {
 	};
 
 	window.addEventListener('load', async () => {
-		metadata.itemId = getItemId();
+		metadata.itemId = getUrlParams('id');
 		metadata.user.loggedIn = isLoggedIn();
 		metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : null;
-		metadata.isJob = metadata.itemId ? await isItemJob(metadata.itemId) : false;
+		metadata.isJob = (metadata.itemId && metadata.path === '/item') ? await isItemJob(metadata.itemId) : false;
 		metadata.options = await getOptions;
 		resolve(metadata);
 	});

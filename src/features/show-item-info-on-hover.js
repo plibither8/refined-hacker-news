@@ -2,7 +2,7 @@ import linkifyElement from 'linkifyjs/element';
 
 import {getItemInfo} from '../libs/api';
 import {paths} from '../libs/paths';
-import {getItemId} from '../libs/utils';
+import {getUrlParams} from '../libs/utils';
 
 function init() {
 	const links = document.querySelectorAll('span.commtext a[href*="news.ycombinator.com/item?id="]');
@@ -44,7 +44,7 @@ function init() {
 
 			if (link.dataset.rhnInfoLoaded === '0') {
 				link.dataset.rhnInfoLoaded = '1';
-				const id = getItemId(link.href);
+				const id = getUrlParams('id', link.href);
 
 				const itemInfo = await getItemInfo(id);
 				const itemDate = new Date(itemInfo.time * 1000);

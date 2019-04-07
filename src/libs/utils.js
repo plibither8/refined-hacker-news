@@ -36,8 +36,7 @@ export function getAuthString(id) {
 
 		const row = page.querySelector('table.fatitem td.subtext') || page.querySelector('table.fatitem span.comhead');
 		const target = row.querySelector('a[href^="hide"]') || row.querySelector('a[href^="fave"]');
-		const params = new URLSearchParams(target.href.replace('?', '&'));
-		const auth = params.get('auth');
+		const auth = getUrlParams('auth', target.href);
 
 		resolve(auth);
 	});
@@ -51,15 +50,9 @@ export function getLoggedInUser() {
 	return document.querySelector('a#me').innerText.split(' ')[0];
 }
 
-export function getItemId(url) {
-	if (window.location.pathname !== '/item') {
-		return null;
-	}
-
+export function getUrlParams(param, url) {
 	const params = new URLSearchParams((url || window.location.search).replace('?', '&'));
-	const itemId = params.get('id');
-
-	return itemId;
+	return param ? params.get(param) : params;
 }
 
 export function isItemJob(id) {

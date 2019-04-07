@@ -1,4 +1,4 @@
-import {getAuthString, getPageDom} from '../libs/utils';
+import {getAuthString, getPageDom, getUrlParams} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
@@ -85,9 +85,8 @@ async function init(metadata) {
 				break;
 			}
 
-			const params = new URLSearchParams(hideLink);
-			const auth = params.get('auth');
-			const id = params.get('id');
+			const auth = getUrlParams('auth', hideLink);
+			const id = getUrlParams('id', hideLink);
 
 			const faveLink = document.createElement('a');
 			const faveSeparator = document.createTextNode(' | ');

@@ -112,6 +112,6 @@ export function newReplyTextareasObserver(callback) {
 			subtree: true
 		};
 
-		window.addEventListener('load', observer.observe(mainTable, observerConfig));
+		observer.observe(mainTable, observerConfig);
 	}
 }
