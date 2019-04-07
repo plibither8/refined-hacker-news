@@ -7,7 +7,7 @@ function toggleAllReplies() {
 	allComments.forEach((comment, id) => {
 		const currentIndent = comment.querySelector('td.ind img').width / 40;
 		const nextIndent = id + 1 === allComments.length ?
-			null :
+			undefined :
 			allComments[id + 1].querySelector('td.ind img').width / 40;
 
 		if (nextIndent && nextIndent > currentIndent) {

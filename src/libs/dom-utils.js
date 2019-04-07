@@ -58,13 +58,13 @@ export function getGroupedStories(itemlist) {
 		const storyUrl = rows[i].querySelector('a.storylink').href;
 
 		const scoreSpan = rows[i + 1].querySelector('span.score');
-		const score = scoreSpan ? parseInt(scoreSpan.innerText, 10) : null;
+		const score = scoreSpan ? parseInt(scoreSpan.innerText, 10) : undefined;
 
 		const defaultRank = parseInt(rows[i].querySelector('span.rank').innerText, 10);
 
 		const commentsLink = [...rows[i + 1].querySelectorAll('a')]
 			.find(a => a.innerText.includes('comment') || a.innerText.includes('discuss'));
-		const commentsCount = commentsLink ? parseInt(commentsLink.innerText, 10) : null;
+		const commentsCount = commentsLink ? parseInt(commentsLink.innerText, 10) : undefined;
 
 		const elements = [
 			rows[i],

@@ -6,8 +6,12 @@ import {paths} from '../libs/paths';
 async function init(metadata) {
 	const me = metadata.user.name;
 
-	const itemId = getUrlParams('id');
-	const op = itemId ? (await getItemInfo(itemId)).by : null;
+	let op;
+
+	if (metadata.path === '/item') {
+		const itemId = getUrlParams('id');
+		op = itemId ? (await getItemInfo(itemId)).by : undefined;
+	}
 
 	const comments = getAllComments();
 

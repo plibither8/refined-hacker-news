@@ -64,20 +64,20 @@ const featureList = [
 const getMetadata = new Promise(resolve => {
 	const metadata = {
 		path: window.location.pathname,
-		itemId: null,
+		itemId: undefined,
 		user: {
 			loggedIn: false,
-			name: null
+			name: undefined
 		},
 		isJob: false,
-		options: null,
+		options: undefined,
 		firstLoad: false
 	};
 
 	window.addEventListener('load', async () => {
 		metadata.itemId = getUrlParams('id');
 		metadata.user.loggedIn = isLoggedIn();
-		metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : null;
+		metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : undefined;
 		metadata.isJob = (metadata.itemId && metadata.path === '/item') ? await isItemJob(metadata.itemId) : false;
 		metadata.options = await getOptions;
 		resolve(metadata);
