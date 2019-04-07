@@ -21,8 +21,7 @@ import showKarmaLeft from '../features/show-karma-left';
 import showTopLeadersKarma from '../features/show-top-leaders-karma';
 import showUserInfoOnHover from '../features/show-user-info-on-hover';
 import sortStories from '../features/sort-stories';
-import toggleAllComments from '../features/toggle-all-comments';
-import toggleAllReplies from '../features/toggle-all-replies';
+import toggleAllCommentsAndReplies from '../features/toggle-all-comments-and-replies';
 
 import features from './features';
 import {
@@ -54,8 +53,7 @@ const featureList = [
 	showKarmaLeft,
 	showTopLeadersKarma,
 	showUserInfoOnHover,
-	toggleAllComments,
-	toggleAllReplies,
+	toggleAllCommentsAndReplies,
 
 	// Options bar (order matters)
 	sortStories,
