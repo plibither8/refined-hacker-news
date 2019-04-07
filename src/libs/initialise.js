@@ -90,12 +90,17 @@ export async function initialiseAll() {
 	const metadata = await getMetadata;
 	metadata.firstLoad = true;
 
-	console.group('Refined Hacker News');
+	if (metadata.options.logging) {
+		console.group('Refined Hacker News');
+	}
+
 	for (const feat of featureList) {
 		features.add(feat, metadata);
 	}
 
-	console.groupEnd();
+	if (metadata.options.logging) {
+		console.groupEnd();
+	}
 }
 
 export async function initialiseSome(...args) {
