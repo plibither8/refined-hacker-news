@@ -1,5 +1,6 @@
 import {keydown} from '../libs/handle-item-keydowns';
 import {paths} from '../libs/paths';
+import {getUrlParams} from '../libs/utils';
 
 function init(metadata) {
 	const {options, path} = metadata;
@@ -72,6 +73,28 @@ function init(metadata) {
 
 				return;
 
+			// 0 - 9: Open Refence Links
+			case 48:
+			case 49:
+			case 50:
+			case 51:
+			case 52:
+			case 53:
+			case 54:
+			case 55:
+			case 56:
+			case 57:
+				if (combo && !event.shiftKey) {
+					return;
+				}
+
+				if ([...paths.comments, ...paths.specialComments].includes(path) ||
+					(paths.userSpecific.includes(path) && getUrlParams('comments') === 't')) {
+					keydown.universal.openReferenceLink(event, itemData.activeItem, openReferenceLinksInNewTab);
+				}
+
+				return;
+
 			default: break;
 		}
 
@@ -97,7 +120,7 @@ function init(metadata) {
 						return;
 					}
 
-					keydown.item.reply(itemData.activeItem);
+					keydown.comment.reply(itemData.activeItem);
 					return;
 
 				// F: favorite comment/reply
@@ -106,7 +129,7 @@ function init(metadata) {
 						return;
 					}
 
-					keydown.item.favorite(itemData.activeItem);
+					keydown.comment.favorite(itemData.activeItem);
 					return;
 
 				// U: upvote comment/reply
@@ -115,7 +138,7 @@ function init(metadata) {
 						return;
 					}
 
-					keydown.item.vote(itemData.activeItem);
+					keydown.comment.vote(itemData.activeItem);
 					return;
 
 				// Enter: Toggle
@@ -124,26 +147,8 @@ function init(metadata) {
 						return;
 					}
 
-					keydown.item.toggle(itemData.activeItem);
+					keydown.comment.toggle(itemData.activeItem);
 					itemData.items = getItemList();
-					return;
-
-				// 0 - 9: Open Refence Links
-				case 48:
-				case 49:
-				case 50:
-				case 51:
-				case 52:
-				case 53:
-				case 54:
-				case 55:
-				case 56:
-				case 57:
-					if (combo && !event.shiftKey) {
-						return;
-					}
-
-					keydown.item.openReferenceLink(event, itemData.activeItem, openReferenceLinksInNewTab);
 					break;
 
 				default: break;
@@ -204,7 +209,7 @@ function init(metadata) {
 
 				// C: open story comments
 				case 67:
-					keydown.story.comment(next, event);
+					keydown.story.comments(next, event);
 
 					break;
 

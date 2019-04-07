@@ -143,10 +143,30 @@ const universal = {
 		}
 
 		return false;
+	},
+
+	// Open reference links
+	openReferenceLink(event, activeItem, openReferenceLinksInNewTab) {
+		const targetIndex = event.keyCode - 48;
+		const links = parseReferenceLinks(activeItem);
+
+		const link = links.find(obj => obj.index === targetIndex);
+		if (!link) {
+			return;
+		}
+
+		if (openReferenceLinksInNewTab || event.shiftKey) {
+			browser.runtime.sendMessage({
+				url: link.href,
+				active: !event.shiftKey
+			});
+		} else {
+			window.open(link.href, '_self');
+		}
 	}
 };
 
-const item = {
+const comment = {
 	// Reply to comment
 	reply(activeItem) {
 		const replyBtn = activeItem.querySelector('a[href^="reply"]');
@@ -180,26 +200,6 @@ const item = {
 	// Toggle comment
 	toggle(activeItem) {
 		activeItem.querySelector('a.togg').click();
-	},
-
-	// Open reference links
-	openReferenceLink(event, activeItem, openReferenceLinksInNewTab) {
-		const targetIndex = event.keyCode - 48;
-		const links = parseReferenceLinks(activeItem);
-
-		const link = links.find(obj => obj.index === targetIndex);
-		if (!link) {
-			return;
-		}
-
-		if (openReferenceLinksInNewTab || event.shiftKey) {
-			browser.runtime.sendMessage({
-				url: link.href,
-				active: !event.shiftKey
-			});
-		} else {
-			window.open(link.href, '_self');
-		}
 	}
 };
 
@@ -251,7 +251,7 @@ const story = {
 	},
 
 	// Open comments
-	comment(next, event) {
+	comments(next, event) {
 		const comment = next.querySelector('a[href^="item"]');
 
 		if (comment) {
@@ -276,7 +276,7 @@ const story = {
 
 const keydown = {
 	universal,
-	item,
+	comment,
 	story
 };
 
