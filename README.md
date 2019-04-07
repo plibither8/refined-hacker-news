@@ -43,7 +43,7 @@ pages: {
 - [x] `click-rank-to-vote-unvote`
 - [x] `comments-ui-tweaks`
 - [x] `hide-read-stories`
-- [x] `input-field-ui-tweaks`
+- [x] `input-field-tweaks`
 - [x] `key-bindings-on-input-fields`
 - [x] `key-bindings-on-items`
 - [x] `linkify-text`
@@ -60,8 +60,7 @@ pages: {
 - [x] `show-top-leaders-karma`
 - [x] `show-user-info-on-hover`
 - [x] `sort-stories`
-- [x] `toggle-all-comments`
-- [x] `toggle-all-replies`
+- [x] `toggle-all-comments-and-replies`
 
 #### Abandoned
 
