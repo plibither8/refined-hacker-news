@@ -1,4 +1,4 @@
-import {getUrlParams} from "../libs/utils";
+import {getUrlParams} from '../libs/utils';
 
 function init(metadata) {
 	const id = getUrlParams('id');
