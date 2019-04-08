@@ -22,22 +22,28 @@ function init() {
 
 			btn.addEventListener('click', async event => {
 				event.preventDefault();
+
+				const selection = window.getSelection().toString().trim();
+
 				if (comment.dataset.rhnFormInjected === '0') {
 					const page = await getPageDom(btn.href);
 					if (!page) {
 						return false;
 					}
 
-					const replyForm = page.querySelector('form');
-					replyForm.classList.add('__rhn__injected-form');
+					const form = page.querySelector('form');
+					form.classList.add('__rhn__injected-form');
 
 					comment.dataset.rhnFormInjected = '1';
 					btn.innerText = 'hide ' + btn.innerText;
 					btn.dataset.rhnBtnActive = '1';
-					replyDiv.append(replyForm);
+					replyDiv.append(form);
 
-					const textarea = replyForm.querySelector('textarea');
+					const textarea = form.querySelector('textarea');
 					if (textarea) {
+						if (selection.length > 0) {
+							textarea.value += `${textarea.value.length > 0 ? '\n\n' : ''}> *${selection}*\n\n`;
+						}
 						textarea.focus();
 					}
 				} else if (btn.dataset.rhnBtnActive === '1') {
