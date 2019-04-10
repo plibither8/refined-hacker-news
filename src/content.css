@@ -147,3 +147,9 @@ a.morelink.__rhn__focussed-item {
 table.itemlist {
 	border-collapse: collapse;
 }
+
+.__rhn__fetch-title a {
+	margin: 0 10px;
+	text-decoration: underline !important;
+	color: #828282 !important;
+}

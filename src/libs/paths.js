@@ -49,12 +49,14 @@ const paths = {
 	actions: [
 		'/login',
 		'/changepw',
-		'/x',
 		'/reply',
 		'/vote',
 		'/flag',
 		'/fave',
-		'/hide'
+		'/hide',
+		'/deadlink',
+		'/x',
+		'/r'
 	],
 
 	info: [

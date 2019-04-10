@@ -44,6 +44,7 @@ function init() {
 						if (selection.length > 0) {
 							textarea.value += `${textarea.value.length > 0 ? '\n\n' : ''}> *${selection}*\n\n`;
 						}
+
 						textarea.focus();
 					}
 				} else if (btn.dataset.rhnBtnActive === '1') {
