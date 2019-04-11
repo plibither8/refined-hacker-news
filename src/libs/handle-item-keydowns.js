@@ -1,4 +1,5 @@
 import {elementInScrollView} from './dom-utils';
+import {parseReferenceLinks} from './parse-reference-links';
 
 const focusClass = '__rhn__focussed-item';
 
@@ -26,6 +27,7 @@ function getNextCommentWithSameIndent(itemData, direction) {
 		if (index === (direction === 1 ? items.length - 1 : 0)) {
 			return index;
 		}
+
 		index += direction;
 
 		// If index is of 'More' link, then make it undefined
@@ -33,88 +35,6 @@ function getNextCommentWithSameIndent(itemData, direction) {
 	} while (nextItemIndent && nextItemIndent > activeItemIndentation);
 
 	return index;
-}
-
-function parseReferenceLinks(activeItem) {
-	/**
-	 * The array that will collect all reference links found
-	 * in the form of an object, containing the link's URL and
-	 * the index number.
-	 */
-	const links = [];
-
-	const commentSpan = activeItem.querySelector('span.commtext');
-	const children = [...commentSpan.childNodes];
-
-	/**
-	 * There are two type of `commentSpan`s:
-	 *   1. The ones that have only one child, which are text nodes.
-	 *      These ones have the reply div outside the span.
-	 *   2. The ones that have multiple children (comments with >1 paras).
-	 *      These ones have the reply div inside the span.
-	 * The favourable ones for us are those which have multiple paragraphs,
-	 * since reference links are most commonly written on a separate line.
-	 *
-	 * So what we are basically doing here is:
-	 *   - Pop the last node out of the array of direct children of `commentSpan`.
-	 *   - If the last node is the reply div, it means this comment has multiple
-	 *     paragraphs, and so it is favourable.
-	 *     Extra checK: If the last node is text node, we won't consider it either.
-	 *   - Once we have ascertained that this is a favourable comment for reference
-	 *     links, we remove the first node out of the array since it is a text node
-	 *     and hence useless.
-	 */
-	const lastItem = children.pop();
-	if (!lastItem.matches('div.reply') || lastItem.nodeType !== Node.ELEMENT_NODE) {
-		return links;
-	}
-
-	children.shift();
-
-	/**
-	 * This expression had been made by observing the general
-	 * pattern and syntax of numbered reference links seen on HN.
-	 * If this can be refined further, it would be great :)
-	 *
-	 * Explanation:
-	 * - (Optional) Starts with an opening square bracker "["
-	 * - The next (or first, depends) character should be a digit from 0 to 9
-	 * - (Optional) End with a closing square bracket, colon or period
-	 */
-	const indexMarkerRegex = /^\[?(?<index>\d)[\]:.]?:?$/;
-
-	for (const child of children) {
-		/**
-		 * Here we are making sure that the child contains an anchor element to
-		 * detect whether there is in fact a link or not.
-		 */
-		const link = child.querySelector('a');
-		if (!link) {
-			continue;
-		}
-
-		/**
-		 * I am making a (safe) assumption here that reference links have a space between
-		 * where their marker ends, and where the link starts. So:
-		 * "[1] https://mihir.ch" will be detected
-		 * "[1]https://mihir.ch" will *not* be detected
-		 */
-		const textFirstWord = child.innerText.split(' ')[0];
-		const matches = textFirstWord.match(indexMarkerRegex);
-
-		if (!matches) {
-			continue;
-		}
-
-		const index = Number(matches.groups.index);
-
-		links.push({
-			index,
-			href: link.href
-		});
-	}
-
-	return links;
 }
 
 const universal = {
@@ -145,7 +65,7 @@ const universal = {
 	},
 
 	// Move up
-	up(itemData) {
+	up(itemData, event) {
 		if (itemData.index === 0) {
 			document.body.scrollTop = 0;
 			return;
