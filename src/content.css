@@ -110,10 +110,7 @@
 .__rhn__hover-info td {
 	font-size: 10px !important;
 	vertical-align: top;
-}
-
-.__rhn__hover-info td p {
-	word-break: break-word;
+	word-break: break-all;
 }
 
 .__rhn__hover-info td a {

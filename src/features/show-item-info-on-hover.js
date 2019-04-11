@@ -137,7 +137,10 @@ function init() {
 const details = {
 	id: 'show-item-info-on-hover',
 	pages: {
-		include: paths.comments,
+		include: [
+			...paths.comments,
+			...paths.specialComments
+		],
 		exclude: ['']
 	},
 	loginRequired: false,
