@@ -50,7 +50,7 @@ function init(metadata) {
 					return;
 				}
 
-				itemData = keydown.universal.down(itemData);
+				keydown.universal.down(itemData);
 				return;
 
 			// K: Go up
@@ -59,7 +59,7 @@ function init(metadata) {
 					return;
 				}
 
-				itemData = keydown.universal.up(itemData);
+				keydown.universal.up(itemData);
 				return;
 
 			// Escape
@@ -68,10 +68,7 @@ function init(metadata) {
 					return;
 				}
 
-				if (keydown.universal.escape(itemData.activeItem)) {
-					itemData.activeItem = undefined;
-				}
-
+				keydown.universal.escape(itemData);
 				return;
 
 			// 0 - 9: Open Refence Links

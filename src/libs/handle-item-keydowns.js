@@ -2,19 +2,44 @@ import {elementInScrollView} from './dom-utils';
 
 const focusClass = '__rhn__focussed-item';
 
-function getCommentsWithSameIndentaion(activeItem) {
-	const parent = activeItem.parentElement;
+function getCommentIndentation(element) {
+	const parent = element.parentElement;
 	const indentation = parent.querySelector('.ind img').width / 40;
+	return indentation;
+}
 
-	const indentImgs = document.querySelectorAll(`.ind img[width="${indentation * 40}"]`);
-	const comments = [];
+function getNextCommentWithSameIndentaion(itemData, direction) {
+	// Making `itemData` a copy of itself so the value
+	// changes are not being reflected in the original
+	// `itemData` object (shitty explanation, I know :P)
+	itemData = Object.assign({}, itemData);
 
-	for (const img of indentImgs) {
-		const comment = img.parentElement.parentElement.querySelector(':scope > td.default');
-		comments.push(comment);
+	const indentation = getCommentIndentation(itemData.activeItem);
+
+	// if direction is -1: up
+	if (direction === -1) {
+		do {
+			// Reached the first comment, and still it isn't found :(
+			if (itemData.index === 0) {
+				return undefined;
+			}
+			itemData.index--;
+		} while (getCommentIndentation(itemData.items[itemData.index]) !== indentation);
+		
+		return itemData.items[itemData.index];
 	}
+	// if direction is 1: down
+	else {
+		do {
+			// Reached the last comment, and still it isn't found :(
+			if (itemData.index === itemData.items.length - 1) {
+				return undefined;
+			}
+			itemData.index++;
+		} while (getCommentIndentation(itemData.items[itemData.index]) !== indentation);
 
-	return comments;
+		return itemData.items[itemData.index];
+	}
 }
 
 function parseReferenceLinks(activeItem) {
@@ -106,7 +131,7 @@ const universal = {
 			itemData.activeItem = itemData.items[itemData.index];
 			itemData.activeItem.classList.add(focusClass);
 
-			return itemData;
+			return;
 		}
 
 		if (itemData.index !== -1) {
@@ -123,14 +148,14 @@ const universal = {
 			itemData.activeItem.scrollIntoView(true);
 		}
 
-		return itemData;
+		return;
 	},
 
 	// Move up
 	up(itemData) {
 		if (itemData.index === 0) {
 			document.body.scrollTop = 0;
-			return itemData;
+			return;
 		}
 
 		itemData.items[itemData.index].classList.remove(focusClass);
@@ -145,17 +170,15 @@ const universal = {
 			itemData.activeItem.scrollIntoView(true);
 		}
 
-		return itemData;
+		return;
 	},
 
 	// De-activate item
-	escape(activeItem) {
-		if (activeItem) {
-			activeItem.classList.remove(focusClass);
-			return true;
+	escape(itemData) {
+		if (itemData.activeItem) {
+			itemData.activeItem.classList.remove(focusClass);
+			itemData.activeItem = undefined;
 		}
-
-		return false;
 	},
 
 	// Open reference links
