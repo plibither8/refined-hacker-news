@@ -30,7 +30,8 @@ function init(metadata) {
 	let itemData = {
 		items: [],
 		index: 0,
-		activeItem: undefined
+		activeItem: undefined,
+		commentList: isCommentList
 	};
 
 	window.addEventListener('keydown', event => {
@@ -43,22 +44,22 @@ function init(metadata) {
 
 		// Universal
 		switch (event.keyCode) {
-			// Down-arrow
+			// J: Go down
 			case 74:
-				if (combo) {
+				if (combo && !event.shiftKey) {
 					return;
 				}
 
-				itemData = keydown.universal.down(itemData);
+				keydown.universal.down(itemData, event);
 				return;
 
-			// Up-arrow
+			// K: Go up
 			case 75:
-				if (combo) {
+				if (combo && !event.shiftKey) {
 					return;
 				}
 
-				itemData = keydown.universal.up(itemData);
+				keydown.universal.up(itemData);
 				return;
 
 			// Escape
@@ -67,10 +68,7 @@ function init(metadata) {
 					return;
 				}
 
-				if (keydown.universal.escape(itemData.activeItem)) {
-					itemData.activeItem = undefined;
-				}
-
+				keydown.universal.escape(itemData);
 				return;
 
 			// 0 - 9: Open Refence Links
