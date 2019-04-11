@@ -2,6 +2,21 @@ import {elementInScrollView} from './dom-utils';
 
 const focusClass = '__rhn__focussed-item';
 
+function getCommentsWithSameIndentaion(activeItem) {
+	const parent = activeItem.parentElement;
+	const indentation = parent.querySelector('.ind img').width / 40;
+
+	const indentImgs = document.querySelectorAll(`.ind img[width="${indentation * 40}"]`);
+	const comments = [];
+
+	for (const img of indentImgs) {
+		const comment = img.parentElement.parentElement.querySelector(':scope > td.default');
+		comments.push(comment);
+	}
+
+	return comments;
+}
+
 function parseReferenceLinks(activeItem) {
 	/**
 	 * The array that will collect all reference links found

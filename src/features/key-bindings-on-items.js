@@ -30,7 +30,8 @@ function init(metadata) {
 	let itemData = {
 		items: [],
 		index: 0,
-		activeItem: undefined
+		activeItem: undefined,
+		commentList: isCommentList
 	};
 
 	window.addEventListener('keydown', event => {
@@ -43,18 +44,18 @@ function init(metadata) {
 
 		// Universal
 		switch (event.keyCode) {
-			// Down-arrow
+			// J: Go down
 			case 74:
-				if (combo) {
+				if (combo && !event.shiftKey) {
 					return;
 				}
 
 				itemData = keydown.universal.down(itemData);
 				return;
 
-			// Up-arrow
+			// K: Go up
 			case 75:
-				if (combo) {
+				if (combo && !event.shiftKey) {
 					return;
 				}
 
