@@ -8,38 +8,31 @@ function getCommentIndentation(element) {
 	return indentation;
 }
 
-function getNextCommentWithSameIndentaion(itemData, direction) {
-	// Making `itemData` a copy of itself so the value
-	// changes are not being reflected in the original
-	// `itemData` object (shitty explanation, I know :P)
-	itemData = Object.assign({}, itemData);
+function getNextCommentWithSameIndent(itemData, direction) {
+	let {
+		items,
+		index,
+		activeItem
+	} = itemData;
 
-	const indentation = getCommentIndentation(itemData.activeItem);
-
-	// if direction is -1: up
-	if (direction === -1) {
-		do {
-			// Reached the first comment, and still it isn't found :(
-			if (itemData.index === 0) {
-				return undefined;
-			}
-			itemData.index--;
-		} while (getCommentIndentation(itemData.items[itemData.index]) !== indentation);
-		
-		return itemData.items[itemData.index];
+	if (activeItem.matches('a.morelink')) {
+		return index;
 	}
-	// if direction is 1: down
-	else {
-		do {
-			// Reached the last comment, and still it isn't found :(
-			if (itemData.index === itemData.items.length - 1) {
-				return undefined;
-			}
-			itemData.index++;
-		} while (getCommentIndentation(itemData.items[itemData.index]) !== indentation);
 
-		return itemData.items[itemData.index];
-	}
+	const activeItemIndentation = getCommentIndentation(activeItem);
+
+	let nextItemIndent;
+	do {
+		if (index === (direction === 1 ? items.length - 1 : 0)) {
+			return index;
+		}
+		index += direction;
+
+		// If index is of 'More' link, then make it undefined
+		nextItemIndent = index === items.length - 1 ? undefined : getCommentIndentation(items[index]);
+	} while (nextItemIndent && nextItemIndent > activeItemIndentation);
+
+	return index;
 }
 
 function parseReferenceLinks(activeItem) {
@@ -126,29 +119,29 @@ function parseReferenceLinks(activeItem) {
 
 const universal = {
 	// Move down
-	down(itemData) {
+	down(itemData, event) {
 		if (itemData.index === itemData.items.length - 1) {
 			itemData.activeItem = itemData.items[itemData.index];
 			itemData.activeItem.classList.add(focusClass);
-
 			return;
 		}
 
-		if (itemData.index !== -1) {
-			itemData.items[itemData.index].classList.remove(focusClass);
-		}
+		itemData.items[itemData.index].classList.remove(focusClass);
 
 		if (itemData.activeItem) {
-			itemData.index++;
+			if (itemData.commentList && event.shiftKey) {
+				itemData.index = getNextCommentWithSameIndent(itemData, 1);
+			} else {
+				itemData.index++;
+			}
 		}
 
 		itemData.activeItem = itemData.items[itemData.index];
 		itemData.activeItem.classList.add(focusClass);
+
 		if (!elementInScrollView(itemData.activeItem)) {
 			itemData.activeItem.scrollIntoView(true);
 		}
-
-		return;
 	},
 
 	// Move up
@@ -161,16 +154,19 @@ const universal = {
 		itemData.items[itemData.index].classList.remove(focusClass);
 
 		if (itemData.activeItem) {
-			itemData.index--;
+			if (itemData.commentList && event.shiftKey) {
+				itemData.index = getNextCommentWithSameIndent(itemData, -1);
+			} else {
+				itemData.index--;
+			}
 		}
 
 		itemData.activeItem = itemData.items[itemData.index];
 		itemData.activeItem.classList.add(focusClass);
+
 		if (!elementInScrollView(itemData.activeItem)) {
 			itemData.activeItem.scrollIntoView(true);
 		}
-
-		return;
 	},
 
 	// De-activate item

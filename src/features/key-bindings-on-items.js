@@ -50,7 +50,7 @@ function init(metadata) {
 					return;
 				}
 
-				keydown.universal.down(itemData);
+				keydown.universal.down(itemData, event);
 				return;
 
 			// K: Go up
