@@ -164,6 +164,10 @@ function init(metadata) {
 			switch (event.keyCode) {
 				// Enter: open story link
 				case 13:
+					if (combo && !(event.ctrlKey || event.metaKey)) {
+						return;
+					}
+
 					keydown.story.open(itemData.activeItem, event);
 					return;
 
@@ -199,8 +203,9 @@ function init(metadata) {
 					return;
 
 				// X: flag/unflag story
+				// Works only when 'Shift' key is pressed too
 				case 88:
-					if (combo) {
+					if (combo && !event.shiftKey || !event.shiftKey) {
 						return;
 					}
 
@@ -208,7 +213,12 @@ function init(metadata) {
 					return;
 
 				// C: open story comments
+				// If 'Control/Command' key is pressed, comments will open in new tab
 				case 67:
+					if (combo && !(event.ctrlKey || event.metaKey)) {
+						return;
+					}
+
 					keydown.story.comments(next, event);
 
 					break;
