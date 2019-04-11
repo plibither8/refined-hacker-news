@@ -27,7 +27,7 @@ function init(metadata) {
 		return event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
 	}
 
-	let itemData = {
+	const itemData = {
 		items: [],
 		index: 0,
 		activeItem: undefined,
@@ -59,7 +59,7 @@ function init(metadata) {
 					return;
 				}
 
-				keydown.universal.up(itemData);
+				keydown.universal.up(itemData, event);
 				return;
 
 			// Escape
@@ -203,7 +203,7 @@ function init(metadata) {
 				// X: flag/unflag story
 				// Works only when 'Shift' key is pressed too
 				case 88:
-					if (combo && !event.shiftKey || !event.shiftKey) {
+					if ((combo && !event.shiftKey) || !event.shiftKey) {
 						return;
 					}
 

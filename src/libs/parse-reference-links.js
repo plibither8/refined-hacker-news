@@ -5,7 +5,7 @@ export function parseReferenceLinks(activeItem) {
 	const links = [];
 
 	const commentSpan = activeItem.querySelector('span.commtext');
-	const children = [...commentSpan.children]; // only collect Elements, not all nodes
+	const children = [...commentSpan.children]; // Only collect Elements, not all nodes
 
 	// This means that there are no children in the <span> element
 	// and hence it is useless to check any further for reference links

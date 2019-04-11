@@ -27,6 +27,7 @@ function getNextCommentWithSameIndent(itemData, direction) {
 		if (index === (direction === 1 ? items.length - 1 : 0)) {
 			return index;
 		}
+
 		index += direction;
 
 		// If index is of 'More' link, then make it undefined
@@ -64,7 +65,7 @@ const universal = {
 	},
 
 	// Move up
-	up(itemData) {
+	up(itemData, event) {
 		if (itemData.index === 0) {
 			document.body.scrollTop = 0;
 			return;
