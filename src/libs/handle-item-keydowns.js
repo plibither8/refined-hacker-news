@@ -85,7 +85,7 @@ function parseReferenceLinks(activeItem) {
 }
 
 const universal = {
-	// Move up
+	// Move down
 	down(itemData) {
 		if (itemData.index === itemData.items.length - 1) {
 			itemData.activeItem = itemData.items[itemData.index];
@@ -111,12 +111,10 @@ const universal = {
 		return itemData;
 	},
 
-	// Move down
+	// Move up
 	up(itemData) {
 		if (itemData.index === 0) {
-			itemData.activeItem = itemData.items[itemData.index];
-			itemData.activeItem.classList.add(focusClass);
-
+			document.body.scrollTop = 0;
 			return itemData;
 		}
 
