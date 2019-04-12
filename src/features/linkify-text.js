@@ -3,7 +3,7 @@ import linkifyElement from 'linkifyjs/element';
 function init(metadata) {
 	const currentUser = document.querySelector('.hnuser').innerText;
 	if (currentUser === metadata.user.name) {
-		return;
+		return false;
 	}
 
 	const infoTable = document.querySelector('table#hnmain').querySelectorAll('table')[1];

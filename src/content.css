@@ -150,3 +150,9 @@ table.itemlist {
 	text-decoration: underline !important;
 	color: #828282 !important;
 }
+
+.__rhn__extension-loader {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}

@@ -92,17 +92,17 @@ export async function initialiseAll() {
 
 	const loader = document.createElement('img');
 	loader.src = browser.extension.getURL('loader.gif');
-	loader.classList.add('__rhn__extension-loader');
+	loader.classList.add('__rhn__extension-loader', metadata.options.featureLoader ? undefined : '__rhn__no-display');
 	document.body.append(loader);
-	
+
 	if (metadata.options.logging) {
 		console.group('Refined Hacker News');
 	}
-	
+
 	for (const feat of featureList) {
-		await features.add(feat, metadata);
+		await features.add(feat, metadata); // eslint-disable-line no-await-in-loop
 	}
-	
+
 	if (metadata.options.logging) {
 		console.groupEnd();
 	}

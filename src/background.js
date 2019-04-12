@@ -6,6 +6,7 @@ new OptionsSync().define({
 		disabledFeatures: '',
 		customCSS: '',
 		logging: true,
+		featureLoader: true,
 		immediatelyCloseFavorite: false,
 		openReferenceLinksInNewTab: true,
 		hideStoryCommentsPage: false,

@@ -40,7 +40,7 @@ h2 img {
 	border-radius: 7px;
 }
 
-p:last-child {
+p:nth-last-child(2) {
 	border-top: 1px solid #ccc;
 	padding-top: 10px;
 }

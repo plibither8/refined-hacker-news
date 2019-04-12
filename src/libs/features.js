@@ -24,7 +24,7 @@ function add(featureDetails, metadata) {
 		firstLoad
 	} = metadata;
 
-	return new Promise((resolve, reject) => {
+	return new Promise(resolve => {
 		// Don't allow on `exclude`d pages or action/info pages
 		if ([...pages.exclude, ...paths.actions, ...paths.info].includes(path)) {
 			return resolve();
