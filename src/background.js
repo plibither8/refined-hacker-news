@@ -10,6 +10,7 @@ new OptionsSync().define({
 		immediatelyCloseFavorite: false,
 		openReferenceLinksInNewTab: true,
 		hideStoryCommentsPage: false,
+		toggleAllReplies: false,
 
 		// Options bar:
 		autoRefreshEnabled: false,

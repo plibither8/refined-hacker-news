@@ -44,34 +44,29 @@ function init(metadata) {
 	const moreLinksBtn = document.createElement('a');
 	moreLinksBtn.href = 'javascript:void(0)';
 	moreLinksBtn.innerHTML = 'more links >';
-	moreLinksBtn.addEventListener('click', () => {
-		moreLinksBtn.classList.add('__rhn__no-display');
-		moreLinkSepartor.classList.add('__rhn__no-display');
-		const newLinks = document.querySelectorAll('.__rhn__navbar-new-links');
-		for (const link of newLinks) {
-			link.classList.remove('__rhn__no-display');
-		}
-	});
-
-	for (const link of linkDetails) {
-		if ('/' + link.title === metadata.path) {
-			continue;
-		}
-
-		const separatorText = document.createElement('span');
-		separatorText.innerHTML = ' | ';
-		separatorText.classList.add('__rhn__no-display', '__rhn__navbar-new-links');
-
-		const linkEl = document.createElement('a');
-		linkEl.href = link.title;
-		linkEl.innerHTML = link.title;
-		linkEl.title = link.description;
-		linkEl.classList.add('__rhn__no-display', '__rhn__navbar-new-links');
-
-		navbar.append(separatorText, linkEl);
-	}
 
 	navbar.append(moreLinkSepartor, moreLinksBtn);
+
+	moreLinksBtn.addEventListener('click', () => {
+		moreLinksBtn.remove();
+		moreLinkSepartor.remove();
+
+		for (const link of linkDetails) {
+			if ('/' + link.title === metadata.path) {
+				continue;
+			}
+
+			const separatorText = document.createElement('span');
+			separatorText.innerHTML = ' | ';
+
+			const linkEl = document.createElement('a');
+			linkEl.href = link.title;
+			linkEl.innerHTML = link.title;
+			linkEl.title = link.description;
+
+			navbar.append(separatorText, linkEl);
+		}
+	});
 
 	return true;
 }
