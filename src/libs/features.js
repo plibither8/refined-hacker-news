@@ -24,42 +24,43 @@ function add(featureDetails, metadata) {
 		firstLoad
 	} = metadata;
 
-	// Don't allow on `exclude`d pages or action/info pages
-	if ([...pages.exclude, ...paths.actions, ...paths.info].includes(path)) {
-		return;
-	}
-
-	// Allow only on `include`d pages
-	if (!(pages.include.includes(path) || pages.include[0] === '*')) {
-		return;
-	}
-
-	// Skip if feature has been marked as disabled
-	if (options.disabledFeatures.includes(id)) {
-		if (firstLoad) {
-			options.log('↩️️', 'Skipping', id);
+	return new Promise((resolve, reject) => {
+		// Don't allow on `exclude`d pages or action/info pages
+		if ([...pages.exclude, ...paths.actions, ...paths.info].includes(path)) {
+			return resolve();
 		}
 
-		return;
-	}
+		// Allow only on `include`d pages
+		if (!(pages.include.includes(path) || pages.include[0] === '*')) {
+			return resolve();
+		}
 
-	if (loginRequired && !user.loggedIn) {
-		return;
-	}
+		// Skip if feature has been marked as disabled
+		if (options.disabledFeatures.includes(id)) {
+			if (firstLoad) {
+				options.log('↩️️', 'Skipping', id);
+			}
 
-	// Don't run on job items when not allowed
-	if (isJob && !runOnJobItems) {
-		return;
-	}
+			return resolve();
+		}
 
-	// Initialise current feature
-	if (!init(metadata)) {
-		return;
-	}
+		if (loginRequired && !user.loggedIn) {
+			return resolve();
+		}
 
-	if (firstLoad) {
-		options.log('️️️✓', id);
-	}
+		// Don't run on job items when not allowed
+		if (isJob && !runOnJobItems) {
+			return resolve();
+		}
+
+		const successfulInitialisation = init(metadata);
+
+		if (firstLoad && successfulInitialisation) {
+			options.log('️️️✓', id);
+		}
+
+		resolve(successfulInitialisation);
+	});
 }
 
 export default {add};

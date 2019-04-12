@@ -34,28 +34,28 @@ import {
 } from './utils';
 
 const featureList = [
-	changeDeadCommentsColor,
-	clickCommentIndentToToggle,
-	clickRankToVoteUnvote,
-	commentsUiTweaks,
-	fetchSubmissionTitleFromUrl,
-	inputFieldTweaks,
-	keyBindingsOnInputFields,
 	keyBindingsOnItems,
-	linkifyText,
-	loadMoreLinksInNavbar,
+	commentsUiTweaks,
 	moreAccessibleFavorite,
+	loadMoreLinksInNavbar,
+	clickCommentIndentToToggle,
+	toggleAllCommentsAndReplies,
+	changeDeadCommentsColor,
+	clickRankToVoteUnvote,
+	fetchSubmissionTitleFromUrl,
+	keyBindingsOnInputFields,
+	inputFieldTweaks,
+	linkifyText,
 	onLinkFocusComment,
 	openStoryLinksInNewTab,
 	pastChooseDate,
 	prefillSubmitTitle,
 	profileLinksDropdown,
-	replyWithoutLeavingPage,
 	showItemInfoOnHover,
 	showKarmaLeft,
 	showTopLeadersKarma,
 	showUserInfoOnHover,
-	toggleAllCommentsAndReplies,
+	replyWithoutLeavingPage,
 
 	// Options bar (order matters)
 	sortStories,
@@ -90,17 +90,24 @@ export async function initialiseAll() {
 	const metadata = await getMetadata;
 	metadata.firstLoad = true;
 
+	const loader = document.createElement('img');
+	loader.src = browser.extension.getURL('loader.gif');
+	loader.classList.add('__rhn__extension-loader');
+	document.body.append(loader);
+	
 	if (metadata.options.logging) {
 		console.group('Refined Hacker News');
 	}
-
+	
 	for (const feat of featureList) {
-		features.add(feat, metadata);
+		await features.add(feat, metadata);
 	}
-
+	
 	if (metadata.options.logging) {
 		console.groupEnd();
 	}
+
+	loader.classList.add('__rhn__no-display');
 }
 
 export async function initialiseSome(...args) {
