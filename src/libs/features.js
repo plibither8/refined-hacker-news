@@ -53,13 +53,12 @@ function add(featureDetails, metadata) {
 			return resolve();
 		}
 
-		const successfulInitialisation = init(metadata);
-
-		if (firstLoad && successfulInitialisation) {
+		// Initialise and check for firstLoad
+		if (init(metadata) && firstLoad) {
 			options.log('️️️✓', id);
 		}
 
-		resolve(successfulInitialisation);
+		resolve();
 	});
 }
 
