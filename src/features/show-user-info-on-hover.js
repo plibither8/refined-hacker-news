@@ -31,13 +31,13 @@ function init() {
 
 			if (!userDiv) {
 				userDiv = document.createElement('div');
-	
+
 				userDiv.classList.add('__rhn__hover-info', '__rhn__no-display');
 				userDiv.style.left = user.getBoundingClientRect().left + 'px';
 				userDiv.innerHTML = `<img src=${browser.extension.getURL('loader.gif')}>`;
-	
+
 				user.parentElement.append(userDiv);
-	
+
 				user.dataset.rhnInfoLoaded = '0';
 			}
 
