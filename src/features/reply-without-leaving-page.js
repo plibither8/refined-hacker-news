@@ -8,10 +8,10 @@ function init() {
 		comment.dataset.rhnFormInjected = '0';
 
 		const btns = [];
-		['reply', 'edit', 'delete-confirm'].forEach(s => {
-			const el = comment.querySelector(`a[href^="${s}"]`);
-			if (el) {
-				btns.push(el);
+		['reply', 'edit', 'delete-confirm'].forEach(action => {
+			const link = comment.querySelector(`a[href^="${action}"]`);
+			if (link) {
+				btns.push(link);
 			}
 		});
 

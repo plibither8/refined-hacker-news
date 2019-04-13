@@ -92,7 +92,11 @@ export async function initialiseAll() {
 
 	const loader = document.createElement('img');
 	loader.src = browser.extension.getURL('loader.gif');
-	loader.classList.add('__rhn__extension-loader', metadata.options.featureLoader ? undefined : '__rhn__no-display');
+	loader.classList.add('__rhn__extension-loader');
+	if (!metadata.options.featureLoader) {
+		loader.classList.add('__rhn__no-display');
+	}
+
 	document.body.append(loader);
 
 	if (metadata.options.logging) {
