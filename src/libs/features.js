@@ -58,7 +58,7 @@ function add(featureDetails, metadata) {
 			options.log('️️️✓', id);
 		}
 
-		resolve();
+		resolve(true);
 	});
 }
 

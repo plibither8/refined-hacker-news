@@ -26,17 +26,21 @@ function init() {
 	};
 
 	for (const user of allUsers) {
-		const userDiv = document.createElement('div');
-
-		userDiv.classList.add('__rhn__hover-info', '__rhn__no-display');
-		userDiv.style.left = user.getBoundingClientRect().left + 'px';
-		userDiv.innerHTML = `<img src=${browser.extension.getURL('loader.gif')}>`;
-
-		user.parentElement.append(userDiv);
-
-		user.dataset.rhnInfoLoaded = '0';
-
 		user.addEventListener('mouseover', async () => {
+			let userDiv = user.parentElement.querySelector('.__rhn__hover-info');
+
+			if (!userDiv) {
+				userDiv = document.createElement('div');
+
+				userDiv.classList.add('__rhn__hover-info', '__rhn__no-display');
+				userDiv.style.left = user.getBoundingClientRect().left + 'px';
+				userDiv.innerHTML = `<img src=${browser.extension.getURL('loader.gif')}>`;
+
+				user.parentElement.append(userDiv);
+
+				user.dataset.rhnInfoLoaded = '0';
+			}
+
 			userDiv.classList.remove('__rhn__no-display');
 			userDiv.style.left = user.getBoundingClientRect().left + 'px';
 
@@ -72,7 +76,7 @@ function init() {
 		});
 
 		user.addEventListener('mouseout', () => {
-			userDiv.classList.add('__rhn__no-display');
+			user.parentElement.querySelector('.__rhn__hover-info').classList.add('__rhn__no-display');
 		});
 	}
 

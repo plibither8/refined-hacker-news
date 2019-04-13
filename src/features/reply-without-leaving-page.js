@@ -51,7 +51,7 @@ function init() {
 					comment.dataset.rhnFormInjected = '0';
 					btn.dataset.rhnBtnActive = '0';
 					btn.innerText = btn.innerText.split(' ')[1];
-					replyDiv.removeChild(replyDiv.querySelector('form'));
+					replyDiv.querySelector('form').remove();
 				}
 			});
 		}

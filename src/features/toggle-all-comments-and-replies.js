@@ -68,7 +68,9 @@ function toggleAllComments() {
 }
 
 function init(metadata) {
-	toggleAllReplies();
+	if (metadata.options.toggleAllReplies) {
+		toggleAllReplies();
+	}
 
 	if (metadata.path === '/item') {
 		toggleAllComments();
