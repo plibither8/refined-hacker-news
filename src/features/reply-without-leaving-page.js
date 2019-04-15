@@ -16,16 +16,20 @@ function init() {
 		});
 
 		const replyDiv = comment.querySelector('div.reply');
+		const ACTIVE_DATA = {
+			form: undefined,
+			button: undefined
+		};
 
 		for (const btn of btns) {
-			btn.dataset.rhnBtnActive = '0';
+			btn.dataset.rhnActionName = btn.innerText;
 
 			btn.addEventListener('click', async event => {
 				event.preventDefault();
 
 				const selection = window.getSelection().toString().trim();
 
-				if (comment.dataset.rhnFormInjected === '0') {
+				if (!ACTIVE_DATA.form) {
 					const page = await getPageDom(btn.href);
 					if (!page) {
 						return false;
@@ -34,9 +38,10 @@ function init() {
 					const form = page.querySelector('form');
 					form.classList.add('__rhn__injected-form');
 
-					comment.dataset.rhnFormInjected = '1';
-					btn.innerText = 'hide ' + btn.innerText;
-					btn.dataset.rhnBtnActive = '1';
+					ACTIVE_DATA.form = form;
+					ACTIVE_DATA.button = btn;
+
+					btn.innerText = 'hide ' + btn.dataset.rhnActionName;
 					replyDiv.append(form);
 
 					const textarea = form.querySelector('textarea');
@@ -47,11 +52,21 @@ function init() {
 
 						textarea.focus();
 					}
-				} else if (btn.dataset.rhnBtnActive === '1') {
-					comment.dataset.rhnFormInjected = '0';
-					btn.dataset.rhnBtnActive = '0';
-					btn.innerText = btn.innerText.split(' ')[1];
+				} else {
+					// Removing currently present form
+					ACTIVE_DATA.form = undefined;
 					replyDiv.querySelector('form').remove();
+
+					if (ACTIVE_DATA.button) {
+						ACTIVE_DATA.button.innerText = ACTIVE_DATA.button.dataset.rhnActionName;
+					}
+
+					// Adding newly clicked form
+					if (ACTIVE_DATA.button !== btn) {
+						btn.click();
+					} else {
+						ACTIVE_DATA.button = undefined;
+					}
 				}
 			});
 		}
