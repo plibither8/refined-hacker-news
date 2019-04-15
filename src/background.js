@@ -53,10 +53,6 @@ browser.runtime.onMessage.addListener(
 
 			for (const [id, links] of Object.entries(storyIds)) {
 				for (const link of links) {
-					if (request.hideStoryCommentsPage && link.includes('news.ycombinator.com/item')) {
-						continue;
-					}
-
 					/* eslint-disable-next-line no-await-in-loop */
 					const visits = await browser.history.getVisits({url: link});
 

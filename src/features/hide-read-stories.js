@@ -11,14 +11,14 @@ function requestVisitedStories(options) {
 
 	for (const story of stories) {
 		links[story.id] = [story.storyUrl];
-		if (story.commentsLink) {
+
+		if (story.commentsLink && options.hideStoryCommentsPage) {
 			links[story.id].push(story.commentsLink.href);
 		}
 	}
 
 	browser.runtime.sendMessage({
-		searchHistory: links,
-		hideStoryCommentsPage: !options.hideStoryCommentsPage
+		searchHistory: links
 	});
 }
 
