@@ -105,12 +105,17 @@
 	border: 1px solid #000;
 	padding: 3px;
 	max-width: 500px;
+	max-height: 400px;
+	overflow-y: auto;
 }
 
 .__rhn__hover-info td {
 	font-size: 10px !important;
 	vertical-align: top;
-	word-break: break-all;
+}
+
+.__rhn__hover-info td:nth-child(2) {
+	word-break: break-word;
 }
 
 .__rhn__hover-info td a {
