@@ -4,12 +4,12 @@ import {getItemInfo} from '../libs/api';
 import {paths} from '../libs/paths';
 
 async function init(metadata) {
-	const me = metadata.user.name;
-
-	let op;
+	const me = metadata.user.name; // username of the user logged in
+	let op; // username of OP (on '/item' paths only)
 
 	if (metadata.path === '/item') {
 		const itemId = getUrlParams('id');
+		// use the HN API to get OP username
 		op = itemId ? (await getItemInfo(itemId)).by : undefined;
 	}
 
@@ -17,12 +17,14 @@ async function init(metadata) {
 
 	for (const comment of comments) {
 		const commentAuthor = comment.querySelector('a.hnuser');
-		// Highlight-my-username
+		// Highlight-my-username:
+		// if logged in username matches username of commenter
 		if (me && me === commentAuthor.innerText) {
 			commentAuthor.classList.add('__rhn__highlight-me');
 		}
 
 		// Highlight-op-username
+		// if OP's username matches username of commenter
 		if (op && op === commentAuthor.innerText) {
 			commentAuthor.innerText += ' [op]';
 			commentAuthor.classList.add('__rhn__highlight-op');

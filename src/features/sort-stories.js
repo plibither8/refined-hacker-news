@@ -1,4 +1,4 @@
-import {createOptionsBar, getGroupedStories} from '../libs/dom-utils';
+import {createOrGetOptionsBar, getGroupedStories} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
 function sort() {
@@ -39,7 +39,7 @@ function sort() {
 }
 
 function init() {
-	const optionsBar = createOptionsBar();
+	const optionsBar = createOrGetOptionsBar();
 	const sortLabel = document.createElement('label');
 	const sortSelect = document.createElement('select');
 

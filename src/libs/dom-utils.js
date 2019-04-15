@@ -1,7 +1,7 @@
 import {paths} from './paths';
 
 // Creates the option bar to display the options
-export function createOptionsBar() {
+export function createOrGetOptionsBar() {
 	let optionsBar = document.querySelector('.__rhn__options-bar');
 	if (optionsBar) {
 		return optionsBar;
