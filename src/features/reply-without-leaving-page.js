@@ -29,7 +29,23 @@ function init() {
 
 				const selection = window.getSelection().toString().trim();
 
-				if (!ACTIVE_DATA.form) {
+				if (ACTIVE_DATA.form) {
+					// Removing currently present form
+					ACTIVE_DATA.form = undefined;
+					replyDiv.querySelector('form').remove();
+
+					if (ACTIVE_DATA.button) {
+						ACTIVE_DATA.button.innerText = ACTIVE_DATA.button.dataset.rhnActionName;
+					}
+
+					// Adding newly clicked form
+					// eslint-disable-next-line no-negated-condition
+					if (ACTIVE_DATA.button !== btn) {
+						btn.click();
+					} else {
+						ACTIVE_DATA.button = undefined;
+					}
+				} else {
 					const page = await getPageDom(btn.href);
 					if (!page) {
 						return false;
@@ -51,21 +67,6 @@ function init() {
 						}
 
 						textarea.focus();
-					}
-				} else {
-					// Removing currently present form
-					ACTIVE_DATA.form = undefined;
-					replyDiv.querySelector('form').remove();
-
-					if (ACTIVE_DATA.button) {
-						ACTIVE_DATA.button.innerText = ACTIVE_DATA.button.dataset.rhnActionName;
-					}
-
-					// Adding newly clicked form
-					if (ACTIVE_DATA.button !== btn) {
-						btn.click();
-					} else {
-						ACTIVE_DATA.button = undefined;
 					}
 				}
 			});
