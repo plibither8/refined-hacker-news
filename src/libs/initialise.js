@@ -120,6 +120,6 @@ export async function initialiseSome(...args) {
 
 	for (const id of args) {
 		const feat = featureList.find(f => f.id === id);
-		features.add(feat, metadata);
+		await features.add(feat, metadata); // eslint-disable-line no-await-in-loop
 	}
 }
