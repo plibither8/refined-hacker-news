@@ -7,7 +7,6 @@ function init(metadata) {
 	const focusClass = '__rhn__focussed-item';
 
 	const isCommentList = paths.comments.includes(path);
-	const moreLink = document.querySelector('a.morelink');
 
 	const {openReferenceLinksInNewTab} = options;
 
@@ -16,6 +15,7 @@ function init(metadata) {
 			[...document.querySelectorAll('tr.comtr:not(.noshow) td.default')] :
 			[...document.querySelectorAll('table.itemlist tr.athing:not(.__rhn__no-display)')];
 
+		const moreLink = document.querySelector('a.morelink');
 		if (moreLink) {
 			itemList.push(moreLink);
 		}
