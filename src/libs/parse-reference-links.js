@@ -1,4 +1,4 @@
-export function parseReferenceLinks(activeItem) {
+export default function (activeItem) {
 	// The array that will collect all reference links found
 	// in the form of an object, containing the link's URL and
 	// the index number.

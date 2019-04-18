@@ -1,5 +1,5 @@
 import {elementInScrollView} from './dom-utils';
-import {parseReferenceLinks} from './parse-reference-links';
+import parseReferenceLinks from './parse-reference-links';
 
 const focusClass = '__rhn__focussed-item';
 
