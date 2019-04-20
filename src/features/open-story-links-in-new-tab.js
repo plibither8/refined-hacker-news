@@ -1,5 +1,9 @@
 function init() {
 	const storyLinks = document.querySelectorAll('a.storylink');
+	if (storyLinks.length === 0) {
+		return false;
+	}
+
 	for (const link of storyLinks) {
 		link.target = '_blank';
 		link.rel = 'noopener';

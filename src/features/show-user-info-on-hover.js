@@ -4,6 +4,10 @@ import {getUserInfo} from '../libs/api';
 
 function init() {
 	const allUsers = document.querySelectorAll('a.hnuser');
+	if (allUsers.length === 0) {
+		return false;
+	}
+
 	const monthNames = [
 		'January',
 		'February',
