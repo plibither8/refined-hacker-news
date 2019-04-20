@@ -7,12 +7,12 @@ export function createOptionsBar() {
 		return optionsBar;
 	}
 
-	const mainTbody = document.querySelector('table#hnmain > tbody');
+	const mainTableBody = document.querySelector('table#hnmain > tbody');
 	optionsBar = document.createElement('div');
 	optionsBar.classList.add('__rhn__options-bar');
 
-	const insertBeforeTr = mainTbody.querySelectorAll('tr')[3];
-	mainTbody.insertBefore(optionsBar, insertBeforeTr);
+	const pageSpaceRow = document.querySelector('#pagespace');
+	mainTableBody.insertBefore(optionsBar, pageSpaceRow.nextElementSibling);
 
 	return optionsBar;
 }
