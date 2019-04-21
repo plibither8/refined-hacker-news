@@ -30,11 +30,11 @@ function init(metadata) {
 		},
 		{
 			title: 'favorite submissions',
-			path: `favorites?n&id=${user}`
+			path: `favorites?id=${user}`
 		},
 		{
 			title: 'favorite comments',
-			path: `favorites?n&id=${user}&comments=t`
+			path: `favorites?id=${user}&comments=t`
 		}
 	];
 
