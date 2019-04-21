@@ -57,7 +57,7 @@ async function init(metadata) {
 	} else {
 		const subtexts = document.querySelectorAll('td.subtext');
 		const alreadyFaveStories = [];
-		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + user);
+		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + user.name);
 		if (!page) {
 			return false;
 		}
