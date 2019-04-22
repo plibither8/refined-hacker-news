@@ -80,11 +80,11 @@ const getMetadata = new Promise(async resolve => {
 
 	metadata.user.loggedIn = isLoggedIn();
 	metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : undefined;
+	metadata.options = await getOptions;
 
-	metadata.itemId = getUrlParams('id');
+	metadata.itemId = metadata.path === '/item' ? getUrlParams('id') : undefined;
 	metadata.itemType = metadata.itemId ? await getItemType(metadata.itemId) : undefined;
 	metadata.isJob = metadata.itemType === 'job';
-	metadata.options = await getOptions;
 
 	resolve(metadata);
 });
