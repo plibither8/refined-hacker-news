@@ -2,24 +2,10 @@ import linkifyElement from 'linkifyjs/element';
 
 import {getItemInfo} from '../libs/api';
 import {paths} from '../libs/paths';
-import {getUrlParams} from '../libs/utils';
+import {getUrlParams, monthNames} from '../libs/utils';
 
 function init() {
 	const links = document.querySelectorAll('span.commtext a[href*="news.ycombinator.com/item?id="]');
-	const monthNames = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December'
-	];
 
 	const linkifyOptions = {
 		attributes: {

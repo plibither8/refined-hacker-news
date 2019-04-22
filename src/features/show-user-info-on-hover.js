@@ -1,27 +1,13 @@
 import linkifyElement from 'linkifyjs/element';
 
 import {getUserInfo} from '../libs/api';
+import {monthNames} from '../libs/utils';
 
 function init() {
 	const allUsers = document.querySelectorAll('a.hnuser');
 	if (allUsers.length === 0) {
 		return false;
 	}
-
-	const monthNames = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December'
-	];
 
 	const linkifyOptions = {
 		attributes: {
