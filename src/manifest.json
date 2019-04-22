@@ -28,7 +28,7 @@
 	},
 	"content_scripts": [
 		{
-			"run_at": "document_start",
+			"run_at": "document_end",
 			"matches": [
 				"https://news.ycombinator.com/*"
 			],

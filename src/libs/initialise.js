@@ -61,7 +61,7 @@ const featureList = [
 	autoRefresh
 ];
 
-const getMetadata = new Promise(resolve => {
+const getMetadata = new Promise(async resolve => {
 	const metadata = {
 		path: window.location.pathname,
 		itemId: undefined,
@@ -74,14 +74,13 @@ const getMetadata = new Promise(resolve => {
 		firstLoad: false
 	};
 
-	window.addEventListener('load', async () => {
-		metadata.itemId = getUrlParams('id');
-		metadata.user.loggedIn = isLoggedIn();
-		metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : undefined;
-		metadata.isJob = (metadata.itemId && metadata.path === '/item') ? await isItemJob(metadata.itemId) : false;
-		metadata.options = await getOptions;
-		resolve(metadata);
-	});
+	metadata.itemId = getUrlParams('id');
+	metadata.user.loggedIn = isLoggedIn();
+	metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : undefined;
+	metadata.isJob = (metadata.itemId && metadata.path === '/item') ? await isItemJob(metadata.itemId) : false;
+	metadata.options = await getOptions;
+
+	resolve(metadata);
 });
 
 export async function initialiseAll() {
