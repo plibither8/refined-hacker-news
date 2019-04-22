@@ -26,7 +26,6 @@ import toggleAllCommentsAndReplies from '../features/toggle-all-comments-and-rep
 
 import features from './features';
 import {
-	isItemJob,
 	getUrlParams,
 	getOptions,
 	isLoggedIn,
@@ -64,6 +63,7 @@ const featureList = [
 	autoRefresh
 ];
 
+// eslint-disable-next-line no-async-promise-executor
 const getMetadata = new Promise(async resolve => {
 	const metadata = {
 		path: window.location.pathname,

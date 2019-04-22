@@ -33,9 +33,9 @@
 			"browser"
 		],
 		"rules": {
-			"import/no-unassigned-import": "off",
+			"import/no-unassigned-import": 0,
 			"import/no-named-as-default": 0,
-			"no-script-url": "off"
+			"no-script-url": 0
 		}
 	},
 	"stylelint": {

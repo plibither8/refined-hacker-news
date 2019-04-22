@@ -3,6 +3,7 @@ import compareUrls from 'compare-urls';
 import {monthNames} from '../libs/utils';
 
 function getSimilarSubmissions(storyLink, itemId) {
+	// eslint-disable-next-line no-async-promise-executor
 	return new Promise(async resolve => {
 		const API_URL = 'https://hn.algolia.com/api/v1/search_by_date?tags=story&query=';
 		const safeStoryLink = encodeURI(storyLink);
@@ -61,7 +62,7 @@ async function init(metadata) {
 		dicussionRowList.innerHTML += `
 			<li><a href="${result.link}">${result.title}</a> (${result.date} &mdash; ${result.points} points, ${result.comments} comments)</li>
 		`;
-	};
+	}
 
 	const rowContainingFooter = document.querySelector('tr#pagespace').nextSibling.nextSibling;
 	rowContainingFooter.parentElement.insertBefore(discussionRow, rowContainingFooter);
