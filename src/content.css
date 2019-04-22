@@ -161,3 +161,13 @@ table.itemlist {
 	top: 10px;
 	left: 10px;
 }
+
+.__rhn__discussions-row {
+	border-top: 1px solid #ccc;
+	padding: 10px 10px 0 10px;
+	font-size: 12px;
+}
+
+.__rhn__discussions-row li {
+	margin: 2px 0;
+}

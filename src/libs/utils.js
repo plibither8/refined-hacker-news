@@ -55,12 +55,12 @@ export function getUrlParams(param, url) {
 	return param ? params.get(param) : params;
 }
 
-export function isItemJob(id) {
+export function getItemType(id) {
 	return new Promise(async resolve => {
+		id = id || getUrlParams('id');
 		const details = await getItemInfo(id);
-		const {type} = details;
 
-		resolve(type === 'job');
+		resolve(details.type);
 	});
 }
 
@@ -97,3 +97,18 @@ export const getOptions = new Promise(async resolve => {
 
 	resolve(options);
 });
+
+export const monthNames = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+];

@@ -18,6 +18,7 @@ import prefillSubmitTitle from '../features/prefill-submit-title';
 import profileLinksDropdown from '../features/profile-links-dropdown';
 import replyWithoutLeavingPage from '../features/reply-without-leaving-page';
 import showItemInfoOnHover from '../features/show-item-info-on-hover';
+import showSimilarSubmissions from '../features/show-similar-submissions';
 import showTopLeadersKarma from '../features/show-top-leaders-karma';
 import showUserInfoOnHover from '../features/show-user-info-on-hover';
 import sortStories from '../features/sort-stories';
@@ -29,7 +30,8 @@ import {
 	getUrlParams,
 	getOptions,
 	isLoggedIn,
-	getLoggedInUser
+	getLoggedInUser,
+	getItemType
 } from './utils';
 
 const featureList = [
@@ -54,6 +56,7 @@ const featureList = [
 	showTopLeadersKarma,
 	showUserInfoOnHover,
 	replyWithoutLeavingPage,
+	showSimilarSubmissions,
 
 	// Options bar (order matters)
 	sortStories,
@@ -64,20 +67,23 @@ const featureList = [
 const getMetadata = new Promise(async resolve => {
 	const metadata = {
 		path: window.location.pathname,
-		itemId: undefined,
 		user: {
 			loggedIn: false,
 			name: undefined
 		},
+		itemId: undefined,
+		itemType: undefined,
 		isJob: false,
 		options: undefined,
 		firstLoad: false
 	};
 
-	metadata.itemId = getUrlParams('id');
 	metadata.user.loggedIn = isLoggedIn();
 	metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : undefined;
-	metadata.isJob = (metadata.itemId && metadata.path === '/item') ? await isItemJob(metadata.itemId) : false;
+
+	metadata.itemId = getUrlParams('id');
+	metadata.itemType = metadata.itemId ? await getItemType(metadata.itemId) : undefined;
+	metadata.isJob = metadata.itemType === 'job';
 	metadata.options = await getOptions;
 
 	resolve(metadata);
