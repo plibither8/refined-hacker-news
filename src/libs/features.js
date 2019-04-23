@@ -20,7 +20,8 @@ function isEnabled(featureDetails, metadata) {
 		options,
 		user,
 		item,
-		firstLoad
+		firstLoad,
+		logSkip = true
 	} = metadata;
 
 	// Don't allow on `exclude`d pages or action/info pages
@@ -35,7 +36,7 @@ function isEnabled(featureDetails, metadata) {
 
 	// Skip if feature has been marked as disabled
 	if (options.disabledFeatures.includes(id)) {
-		if (firstLoad) {
+		if (logSkip) {
 			options.log('↩️️', 'Skipping', id);
 		}
 

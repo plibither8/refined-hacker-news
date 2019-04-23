@@ -68,6 +68,7 @@ export function getItemType(id) {
 
 export function optionsBarEnabledOptions(metadata) {
 	const enabledOptions = [];
+	metadata.logSkip = false;
 
 	[sortStories, hideReadStories, autoRefresh].forEach(feat => {
 		if (features.isEnabled(feat, metadata)) {
