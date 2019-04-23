@@ -58,6 +58,7 @@ function add(featureDetails, metadata) {
 	const {id, init} = featureDetails;
 	const {options, firstLoad} = metadata;
 
+	// eslint-disable-next-line no-async-promise-executor
 	return new Promise(async resolve => {
 		if (!isEnabled(featureDetails, metadata)) {
 			return resolve();

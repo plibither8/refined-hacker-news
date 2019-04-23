@@ -3,7 +3,7 @@ import {getItemInfo} from '../libs/api';
 import {paths} from '../libs/paths';
 
 async function init(metadata) {
-	const {item} =  metadata;
+	const {item} = metadata;
 
 	const me = metadata.user.name;
 	const op = item.id ? (await getItemInfo(item.id)).by : undefined;
