@@ -176,3 +176,7 @@ table.itemlist {
 .__rhn__discussions-row li {
 	margin: 2px 0;
 }
+
+.__rhn__discussions-row li a {
+	color: #000;
+}

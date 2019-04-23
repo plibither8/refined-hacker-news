@@ -16,7 +16,7 @@ function getSimilarSubmissions(storyLink, itemId) {
 				continue;
 			}
 
-			if (!compareUrls(result.url, storyLink)) {
+			if (!compareUrls(result.url.split('://').pop(), storyLink)) {
 				continue;
 			}
 
@@ -41,7 +41,7 @@ async function init(metadata) {
 		return false;
 	}
 
-	const storyLink = document.querySelector('a.storylink').href;
+	const storyLink = document.querySelector('a.storylink').href.split('://').pop();
 	const results = await getSimilarSubmissions(storyLink, metadata.item.id);
 
 	if (results.length === 0) {
