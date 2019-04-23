@@ -27,7 +27,14 @@ function sort() {
 	const moreRow = itemlistTable.lastChild;
 	const morespaceRow = moreRow.previousSibling;
 
+	let extraItems = [];
+	if (window.location.pathname === '/show') {
+		extraItems = [...document.querySelectorAll('table.itemlist > tbody > tr')].slice(0, 3);
+	}
+
 	itemlistTable.innerHTML = '';
+
+	itemlistTable.append(...extraItems);
 
 	for (const story of stories) {
 		for (const el of story.elements) {
