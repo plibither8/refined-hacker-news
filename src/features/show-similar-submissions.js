@@ -2,7 +2,7 @@ import compareUrls from 'compare-urls';
 
 import {monthNames} from '../libs/utils';
 
-function getSimilarSubmissions(storyLink, itemId) {
+function getSimilarSubmissions(storyLink, metadata) {
 	// eslint-disable-next-line no-async-promise-executor
 	return new Promise(async resolve => {
 		const API_URL = 'https://hn.algolia.com/api/v1/search_by_date?tags=story&query=';
@@ -12,11 +12,15 @@ function getSimilarSubmissions(storyLink, itemId) {
 		const rawResults = await fetch(API_URL + safeStoryLink).then(res => res.json()).then(obj => obj.hits);
 
 		for (const result of rawResults) {
-			if (result.objectID === itemId) {
+			if (result.objectID === metadata.item.id) {
 				continue;
 			}
 
 			if (!compareUrls(result.url.split('://').pop(), storyLink)) {
+				continue;
+			}
+
+			if (!metadata.options.showDiscussionsWithNoComments && result.num_comments === 0) {
 				continue;
 			}
 
@@ -42,7 +46,7 @@ async function init(metadata) {
 	}
 
 	const storyLink = document.querySelector('a.storylink').href.split('://').pop();
-	const results = await getSimilarSubmissions(storyLink, metadata.item.id);
+	const results = await getSimilarSubmissions(storyLink, metadata);
 
 	if (results.length === 0) {
 		return false;

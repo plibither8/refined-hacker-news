@@ -11,6 +11,7 @@ new OptionsSync().define({
 		openReferenceLinksInNewTab: true,
 		hideStoryCommentsPage: false,
 		toggleAllReplies: false,
+		showDiscussionsWithNoComments: false,
 
 		// Options bar:
 		autoRefreshEnabled: false,
