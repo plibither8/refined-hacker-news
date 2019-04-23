@@ -94,17 +94,17 @@ const getMetadata = new Promise(async resolve => {
 });
 
 export async function initialiseAll() {
-	const metadata = await getMetadata;
-	metadata.firstLoad = true;
-
 	const loader = document.createElement('img');
 	loader.src = browser.extension.getURL('loader.gif');
 	loader.classList.add('__rhn__extension-loader');
+	document.body.append(loader);
+
+	const metadata = await getMetadata;
+	metadata.firstLoad = true;
+
 	if (!metadata.options.featureLoader) {
 		loader.classList.add('__rhn__no-display');
 	}
-
-	document.body.append(loader);
 
 	if (metadata.options.logging) {
 		console.group('Refined Hacker News');
