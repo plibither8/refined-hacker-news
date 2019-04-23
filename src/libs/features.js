@@ -1,6 +1,6 @@
 import {paths} from './paths';
 
-function add(featureDetails, metadata) {
+function isEnabled(featureDetails, metadata) {
 	const details = {
 		runOnJobItems: false,
 		...featureDetails
@@ -11,8 +11,7 @@ function add(featureDetails, metadata) {
 		id,
 		pages,
 		loginRequired,
-		runOnJobItems,
-		init
+		runOnJobItems
 	} = details;
 
 	// Deconstructing metadata object
@@ -20,36 +19,47 @@ function add(featureDetails, metadata) {
 		path,
 		options,
 		user,
-		isJob,
+		item,
 		firstLoad
 	} = metadata;
 
+	// Don't allow on `exclude`d pages or action/info pages
+	if ([...pages.exclude, ...paths.actions, ...paths.info].includes(path)) {
+		return false;
+	}
+
+	// Allow only on `include`d pages
+	if (!(pages.include.includes(path) || pages.include[0] === '*')) {
+		return false;
+	}
+
+	// Skip if feature has been marked as disabled
+	if (options.disabledFeatures.includes(id)) {
+		if (firstLoad) {
+			options.log('↩️️', 'Skipping', id);
+		}
+
+		return false;
+	}
+
+	if (loginRequired && !user.loggedIn) {
+		return false;
+	}
+
+	// Don't run on job items when not allowed
+	if (item.type === 'job' && !runOnJobItems) {
+		return false;
+	}
+
+	return true;
+}
+
+function add(featureDetails, metadata) {
+	const {id, init} = featureDetails;
+	const {options, firstLoad} = metadata;
+
 	return new Promise(resolve => {
-		// Don't allow on `exclude`d pages or action/info pages
-		if ([...pages.exclude, ...paths.actions, ...paths.info].includes(path)) {
-			return resolve();
-		}
-
-		// Allow only on `include`d pages
-		if (!(pages.include.includes(path) || pages.include[0] === '*')) {
-			return resolve();
-		}
-
-		// Skip if feature has been marked as disabled
-		if (options.disabledFeatures.includes(id)) {
-			if (firstLoad) {
-				options.log('↩️️', 'Skipping', id);
-			}
-
-			return resolve();
-		}
-
-		if (loginRequired && !user.loggedIn) {
-			return resolve();
-		}
-
-		// Don't run on job items when not allowed
-		if (isJob && !runOnJobItems) {
+		if (!isEnabled(featureDetails, metadata)) {
 			return resolve();
 		}
 
@@ -58,8 +68,8 @@ function add(featureDetails, metadata) {
 			options.log('️️️✓', id);
 		}
 
-		resolve(true);
+		resolve();
 	});
 }
 
-export default {add};
+export default {add, isEnabled};

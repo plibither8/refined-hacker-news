@@ -1,17 +1,12 @@
 import {getAllComments} from '../libs/dom-utils';
-import {getUrlParams} from '../libs/utils';
 import {getItemInfo} from '../libs/api';
 import {paths} from '../libs/paths';
 
 async function init(metadata) {
+	const {item} =  metadata;
+
 	const me = metadata.user.name;
-
-	let op;
-
-	if (metadata.path === '/item') {
-		const itemId = getUrlParams('id');
-		op = itemId ? (await getItemInfo(itemId)).by : undefined;
-	}
+	const op = item.id ? (await getItemInfo(item.id)).by : undefined;
 
 	const comments = getAllComments();
 

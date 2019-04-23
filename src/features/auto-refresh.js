@@ -8,7 +8,7 @@ import {paths} from '../libs/paths';
 import {hideStories} from './hide-read-stories';
 import {sortStories} from './sort-stories';
 
-function handleInterval(input, options) {
+function handleInterval(input, options, enabledOptions) {
 	if (input.disabled) {
 		return;
 	}
@@ -28,11 +28,11 @@ function handleInterval(input, options) {
 			return;
 		}
 
-		refresh(options);
+		refresh(options, enabledOptions);
 	}, duration);
 }
 
-async function refresh(options) {
+async function refresh(options, enabledOptions) {
 	const loader = document.querySelector('form#autoRefreshForm img');
 	loader.classList.remove('__rhn__no-display');
 
@@ -52,8 +52,6 @@ async function refresh(options) {
 	);
 
 	loader.classList.add('__rhn__no-display');
-
-	const enabledOptions = optionsBarEnabledOptions(options);
 
 	if (enabledOptions.includes('hide-read-stories')) {
 		hideStories(options);
@@ -91,7 +89,7 @@ function init(metadata) {
 	loader.src = browser.extension.getURL('loader.gif');
 	loader.classList.add('__rhn__no-display');
 
-	const enabledOptions = optionsBarEnabledOptions(options);
+	const enabledOptions = optionsBarEnabledOptions(metadata);
 	if (enabledOptions.includes('hide-read-stories') || enabledOptions.includes('sort-stories')) {
 		check.style.marginLeft = '8px';
 
@@ -104,7 +102,7 @@ function init(metadata) {
 	optionsBar.append(form);
 
 	input.disabled = !check.checked;
-	handleInterval(input, options);
+	handleInterval(input, metadata.options, enabledOptions);
 
 	input.addEventListener('input', () => {
 		input.style.width = (input.value.length + 3) + 'ch';
@@ -118,7 +116,7 @@ function init(metadata) {
 			loader.classList.add('__rhn__no-display');
 		}
 
-		handleInterval(input, options);
+		handleInterval(input, metadata.options, enabledOptions);
 	});
 
 	new OptionsSync({logging: false}).syncForm('#autoRefreshForm');

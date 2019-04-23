@@ -71,9 +71,11 @@ const getMetadata = new Promise(async resolve => {
 			loggedIn: false,
 			name: undefined
 		},
-		itemId: undefined,
-		itemType: undefined,
-		isJob: false,
+		item: {
+			isItem: false,
+			id: undefined,
+			type: undefined
+		},
 		options: undefined,
 		firstLoad: false
 	};
@@ -82,9 +84,11 @@ const getMetadata = new Promise(async resolve => {
 	metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : undefined;
 	metadata.options = await getOptions;
 
-	metadata.itemId = metadata.path === '/item' ? getUrlParams('id') : undefined;
-	metadata.itemType = metadata.itemId ? await getItemType(metadata.itemId) : undefined;
-	metadata.isJob = metadata.itemType === 'job';
+	metadata.item.isItem = metadata.path === '/item';
+	if (metadata.item.isItem) {
+		metadata.item.id = getUrlParams('id');
+		metadata.item.type = await getItemType(metadata.item.id);
+	}
 
 	resolve(metadata);
 });

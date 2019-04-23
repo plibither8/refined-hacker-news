@@ -72,7 +72,7 @@ function init(metadata) {
 		toggleAllReplies();
 	}
 
-	if (metadata.path === '/item') {
+	if (metadata.item.isItem) {
 		toggleAllComments();
 	}
 

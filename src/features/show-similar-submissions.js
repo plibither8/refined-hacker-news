@@ -37,12 +37,12 @@ function getSimilarSubmissions(storyLink, itemId) {
 }
 
 async function init(metadata) {
-	if (metadata.itemType !== 'story') {
+	if (metadata.item.type !== 'story') {
 		return false;
 	}
 
 	const storyLink = document.querySelector('a.storylink').href;
-	const results = await getSimilarSubmissions(storyLink, metadata.itemId);
+	const results = await getSimilarSubmissions(storyLink, metadata.item.id);
 
 	if (results.length === 0) {
 		return false;

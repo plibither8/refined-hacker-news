@@ -7,7 +7,9 @@ import OptionsSync from 'webext-options-sync';
 import sortStories from '../features/sort-stories';
 import hideReadStories from '../features/hide-read-stories';
 import autoRefresh from '../features/auto-refresh';
+
 import {getItemInfo} from './api';
+import features from './features';
 
 export function getPageDom(url) {
 	return new Promise(async resolve => {
@@ -64,12 +66,11 @@ export function getItemType(id) {
 	});
 }
 
-export function optionsBarEnabledOptions(options) {
+export function optionsBarEnabledOptions(metadata) {
 	const enabledOptions = [];
 
 	[sortStories, hideReadStories, autoRefresh].forEach(feat => {
-		if (!options.disabledFeatures.includes(feat.id) &&
-			feat.pages.include.includes(window.location.pathname)) {
+		if (features.isEnabled(feat, metadata)) {
 			enabledOptions.push(feat.id);
 		}
 	});

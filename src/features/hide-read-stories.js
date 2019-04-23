@@ -33,11 +33,11 @@ function hideStories(idList, hide) {
 			continue;
 		}
 
-		for (const el of story.elements) {
+		for (const element of story.elements) {
 			if (hide) {
-				el.classList.add('__rhn__no-display');
+				element.classList.add('__rhn__no-display');
 			} else {
-				el.classList.remove('__rhn__no-display');
+				element.classList.remove('__rhn__no-display');
 			}
 		}
 	}
@@ -60,7 +60,7 @@ function init(metadata) {
 	label.innerHTML = 'hide read stories';
 	label.setAttribute('for', 'hide-read-stories-check');
 
-	const enabledOptions = optionsBarEnabledOptions(options);
+	const enabledOptions = optionsBarEnabledOptions(metadata);
 	if (enabledOptions.includes('sort-stories')) {
 		check.style.marginLeft = '8px';
 
