@@ -58,13 +58,13 @@ function add(featureDetails, metadata) {
 	const {id, init} = featureDetails;
 	const {options, firstLoad} = metadata;
 
-	return new Promise(resolve => {
+	return new Promise(async resolve => {
 		if (!isEnabled(featureDetails, metadata)) {
 			return resolve();
 		}
 
 		// Initialise and check for firstLoad
-		if (init(metadata) && firstLoad) {
+		if (await init(metadata) && firstLoad) {
 			options.log('️️️✓', id);
 		}
 
