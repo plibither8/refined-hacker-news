@@ -44,13 +44,16 @@ export function getAuthString(id) {
 	});
 }
 
-export function isLoggedIn() {
-	return Boolean(document.querySelector('a#me'));
-}
+export const getLoggedInUser = new Promise(async resolve => {
+	const homepage = await getPageDom('https://news.ycombinator.com');
+	const userElement = homepage.querySelector('a#me');
 
-export function getLoggedInUser() {
-	return document.querySelector('a#me').innerText.split(' ')[0];
-}
+	if (userElement) {
+		resolve(userElement.innerText);
+	} else {
+		resolve(undefined);
+	}
+});
 
 export function getUrlParams(param, url) {
 	const params = new URLSearchParams((url || window.location.search).replace('?', '&'));

@@ -5,7 +5,7 @@ import {paths} from '../libs/paths';
 async function init(metadata) {
 	const {item} = metadata;
 
-	const me = metadata.user.name;
+	const me = metadata.user;
 	const op = item.id ? (await getItemInfo(item.id)).by : undefined;
 
 	const comments = getAllComments();

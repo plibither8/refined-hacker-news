@@ -2,7 +2,7 @@ import linkifyElement from 'linkifyjs/element';
 
 function init(metadata) {
 	const currentUser = document.querySelector('.hnuser').innerText;
-	if (currentUser === metadata.user.name) {
+	if (currentUser === metadata.user) {
 		return false;
 	}
 

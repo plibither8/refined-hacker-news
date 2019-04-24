@@ -1,7 +1,7 @@
 import {paths} from '../libs/paths';
 
 function init(metadata) {
-	const user = metadata.user.name;
+	const {user} = metadata;
 
 	const links = [
 		{
@@ -41,6 +41,11 @@ function init(metadata) {
 	const dropdownEl = document.createElement('div');
 	const targetCell = document.querySelectorAll('span.pagetop')[1];
 	const userLink = document.querySelector('a#me');
+
+	if (!userLink) {
+		return false;
+	}
+
 	userLink.innerHTML += ' ▾';
 
 	dropdownEl.classList.add('__rhn__no-display', '__rhn__profile-dropdown');

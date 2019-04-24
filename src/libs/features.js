@@ -42,7 +42,7 @@ function isEnabled(featureDetails, metadata) {
 		return false;
 	}
 
-	if (loginRequired && !user.loggedIn) {
+	if (loginRequired && !user) {
 		return false;
 	}
 

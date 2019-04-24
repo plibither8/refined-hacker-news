@@ -16,6 +16,7 @@ import openStoryLinksInNewTab from '../features/open-story-links-in-new-tab';
 import pastChooseDate from '../features/past-choose-date';
 import prefillSubmitTitle from '../features/prefill-submit-title';
 import profileLinksDropdown from '../features/profile-links-dropdown';
+import quicklySetTopBarColor from '../features/quickly-set-top-bar-color';
 import replyWithoutLeavingPage from '../features/reply-without-leaving-page';
 import showItemInfoOnHover from '../features/show-item-info-on-hover';
 import showSimilarSubmissions from '../features/show-similar-submissions';
@@ -28,7 +29,6 @@ import features from './features';
 import {
 	getUrlParams,
 	getOptions,
-	isLoggedIn,
 	getLoggedInUser,
 	getItemType
 } from './utils';
@@ -56,6 +56,7 @@ const featureList = [
 	showUserInfoOnHover,
 	replyWithoutLeavingPage,
 	showSimilarSubmissions,
+	quicklySetTopBarColor,
 
 	// Options bar (order matters)
 	sortStories,
@@ -67,10 +68,7 @@ const featureList = [
 const getMetadata = new Promise(async resolve => {
 	const metadata = {
 		path: window.location.pathname,
-		user: {
-			loggedIn: false,
-			name: undefined
-		},
+		user: undefined,
 		item: {
 			isItem: false,
 			id: undefined,
@@ -80,8 +78,7 @@ const getMetadata = new Promise(async resolve => {
 		firstLoad: false
 	};
 
-	metadata.user.loggedIn = isLoggedIn();
-	metadata.user.name = metadata.user.loggedIn ? getLoggedInUser() : undefined;
+	metadata.user = await getLoggedInUser;
 	metadata.options = await getOptions;
 
 	metadata.item.isItem = metadata.path === '/item';
@@ -98,7 +95,7 @@ export async function initialiseAll() {
 	let loadCount = 0;
 
 	const loader = document.createElement('div');
-	loader.innerHTML = `<img src='${browser.extension.getURL('loader.gif')}'><span>${loadCount}/${featureCount}</span>`
+	loader.innerHTML = `<img src='${browser.extension.getURL('loader.gif')}'><span>${loadCount}/${featureCount}</span>`;
 	loader.classList.add('__rhn__extension-loader');
 	const counter = loader.querySelector('span');
 
