@@ -16,7 +16,7 @@ function getSimilarSubmissions(storyLink, metadata) {
 				continue;
 			}
 
-			if (!compareUrls(result.url.split('://').pop(), storyLink)) {
+			if (!result.url || !compareUrls(result.url.split('://').pop(), storyLink)) {
 				continue;
 			}
 
