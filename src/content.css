@@ -157,7 +157,7 @@ table.itemlist {
 }
 
 .__rhn__extension-loader {
-	position: absolute;
+	position: fixed;
 	top: 10px;
 	left: 10px;
 	border: 1px solid;
