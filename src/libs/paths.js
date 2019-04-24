@@ -43,7 +43,8 @@ const paths = {
 
 	misc: [
 		'/leaders',
-		'/user'
+		'/user',
+		'/topcolors'
 	],
 
 	actions: [
@@ -55,6 +56,7 @@ const paths = {
 		'/fave',
 		'/hide',
 		'/deadlink',
+		'/xuser',
 		'/x',
 		'/r'
 	],

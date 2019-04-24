@@ -56,6 +56,7 @@ pages: {
 - [x] `prefill-submit-title`
 - [x] `profile-links-dropdown`
 - [x] `reply-without-leaving-page`
+- [x] `quickly-set-top-bar-color`
 - [x] `show-item-info-on-hover`
 - [x] `show-similar-submissions`
 - [x] `show-top-leaders-karma`

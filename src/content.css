@@ -193,3 +193,7 @@ table.itemlist {
 .__rhn__discussions-row li a {
 	color: #000;
 }
+
+.__rhn__top-colors td {
+	cursor: pointer;
+}
