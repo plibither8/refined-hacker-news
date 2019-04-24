@@ -20,7 +20,6 @@ function isEnabled(featureDetails, metadata) {
 		options,
 		user,
 		item,
-		firstLoad,
 		logSkip = true
 	} = metadata;
 

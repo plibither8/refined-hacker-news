@@ -160,6 +160,19 @@ table.itemlist {
 	position: absolute;
 	top: 10px;
 	left: 10px;
+	border: 1px solid;
+	padding: 2px;
+	background: #f6f6ef;
+}
+
+.__rhn__extension-loader span {
+	margin-left: 5px;
+	font-family: monospace;
+	font-size: 11px;
+}
+
+.__rhn__extension-loader img {
+	vertical-align: middle;
 }
 
 .__rhn__discussions-row {

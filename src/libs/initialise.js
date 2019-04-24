@@ -94,27 +94,32 @@ const getMetadata = new Promise(async resolve => {
 });
 
 export async function initialiseAll() {
-	const loader = document.createElement('img');
-	loader.src = browser.extension.getURL('loader.gif');
+	const featureCount = featureList.length;
+	let loadCount = 0;
+
+	const loader = document.createElement('div');
+	loader.innerHTML = `<img src='${browser.extension.getURL('loader.gif')}'><span>${loadCount}/${featureCount}</span>`
 	loader.classList.add('__rhn__extension-loader');
-	document.body.append(loader);
+	const counter = loader.querySelector('span');
+
+	const options = await getOptions;
+	if (options.featureLoader) {
+		document.body.append(loader);
+	}
 
 	const metadata = await getMetadata;
 	metadata.firstLoad = true;
 
-	if (!metadata.options.featureLoader) {
-		loader.classList.add('__rhn__no-display');
-	}
-
-	if (metadata.options.logging) {
+	if (options.logging) {
 		console.group('Refined Hacker News');
 	}
 
 	for (const feat of featureList) {
+		counter.innerText = `${++loadCount}/${featureCount}`;
 		await features.add(feat, metadata); // eslint-disable-line no-await-in-loop
 	}
 
-	if (metadata.options.logging) {
+	if (options.logging) {
 		console.groupEnd();
 	}
 
