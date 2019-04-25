@@ -31,10 +31,10 @@ function navbarLink(colorItWhite = false) {
 
 async function getPollItems(page) {
 	const rawResults = await fetch(`https://hn.algolia.com/api/v1/search_by_date?tags=poll&page=${page}&hitsPerPage=30`)
-							.then(res => res.json())
-							.then(obj => obj.hits);
+		.then(res => res.json())
+		.then(obj => obj.hits);
 
-	let results = [];
+	const results = [];
 	for (const result of rawResults) {
 		results.push({
 			id: result.objectID,
@@ -76,7 +76,7 @@ async function init(metadata) {
 			itemlistTable.innerHTML += `
 				<tr class='athing' id='${item.id}'>
 					<td align="right" valign="top" class="title">
-						<span class="rank">${(realPageNumber - 1)*30 + index + 1}.</span>
+						<span class="rank">${((realPageNumber - 1) * 30) + index + 1}.</span>
 					</td>
 					<td valign="top" class="votelinks">
 						<center>
@@ -122,9 +122,7 @@ async function init(metadata) {
 		pollsLink = navbarLink(true);
 
 		getPollItems(0);
-	}
-
-	else {
+	} else {
 		pollsLink = navbarLink();
 	}
 

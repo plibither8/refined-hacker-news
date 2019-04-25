@@ -29,9 +29,20 @@ function isEnabled(featureDetails, metadata) {
 	}
 
 	// Don't allow *any* feature if `list-hn-polls...` is disabled and path is 'polls'
-	if (path === '/polls' &&
-		(options.disabledFeatures.includes('list-hn-polls-on-dedicated-page') || id === 'sort-stories')) {
-		return false;
+	if (path === '/polls') {
+		if (options.disabledFeatures.includes('list-hn-polls-on-dedicated-page')) {
+			return false;
+		}
+
+		const disallowedFeatures = [
+			'sort-stories',
+			'more-accessible-favorite',
+			'auto-refresh'
+		];
+
+		if (disallowedFeatures.includes(id)) {
+			return false;
+		}
 	}
 
 	// Allow only on `include`d pages
