@@ -29,7 +29,8 @@ function isEnabled(featureDetails, metadata) {
 	}
 
 	// Don't allow *any* feature if `list-hn-polls...` is disabled and path is 'polls'
-	if (path === '/polls' && options.disabledFeatures.includes('list-hn-polls-on-dedicated-page')) {
+	if (path === '/polls' &&
+		(options.disabledFeatures.includes('list-hn-polls-on-dedicated-page') || id === 'sort-stories')) {
 		return false;
 	}
 
