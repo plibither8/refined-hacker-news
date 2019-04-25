@@ -7,6 +7,7 @@ const paths = {
 		'/shownew',
 		'/ask',
 		'/jobs',
+		'/polls',
 		'/active',
 		'/best',
 		'/noobstories',

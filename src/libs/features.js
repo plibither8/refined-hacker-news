@@ -28,6 +28,11 @@ function isEnabled(featureDetails, metadata) {
 		return false;
 	}
 
+	// Don't allow *any* feature if `list-hn-polls-on-dedicated-page` is disabled and path is 'polls'
+	if (path === '/polls'&& options.disabledFeatures.includes('list-hn-polls-on-dedicated-page')) {
+		return false;
+	}
+
 	// Allow only on `include`d pages
 	if (!(pages.include.includes(path) || pages.include[0] === '*')) {
 		return false;
