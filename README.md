@@ -54,9 +54,9 @@ pages: {
 - [x] `open-story-links-in-new-tab`
 - [x] `past-choose-date`
 - [x] `prefill-submit-title`
+- [x] `preview-and-set-top-bar-color`
 - [x] `profile-links-dropdown`
 - [x] `reply-without-leaving-page`
-- [x] `quickly-set-top-bar-color`
 - [x] `show-item-info-on-hover`
 - [x] `show-similar-submissions`
 - [x] `show-top-leaders-karma`

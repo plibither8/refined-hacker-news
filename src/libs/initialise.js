@@ -15,8 +15,8 @@ import onLinkFocusComment from '../features/on-link-focus-comment';
 import openStoryLinksInNewTab from '../features/open-story-links-in-new-tab';
 import pastChooseDate from '../features/past-choose-date';
 import prefillSubmitTitle from '../features/prefill-submit-title';
+import previewAndSetTopBarColor from '../features/preview-and-set-top-bar-color';
 import profileLinksDropdown from '../features/profile-links-dropdown';
-import quicklySetTopBarColor from '../features/quickly-set-top-bar-color';
 import replyWithoutLeavingPage from '../features/reply-without-leaving-page';
 import showItemInfoOnHover from '../features/show-item-info-on-hover';
 import showSimilarSubmissions from '../features/show-similar-submissions';
@@ -55,8 +55,8 @@ const featureList = [
 	showTopLeadersKarma,
 	showUserInfoOnHover,
 	replyWithoutLeavingPage,
+	previewAndSetTopBarColor,
 	showSimilarSubmissions,
-	quicklySetTopBarColor,
 
 	// Options bar (order matters)
 	sortStories,
