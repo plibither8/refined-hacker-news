@@ -28,8 +28,8 @@ function isEnabled(featureDetails, metadata) {
 		return false;
 	}
 
-	// Don't allow *any* feature if `list-hn-polls-on-dedicated-page` is disabled and path is 'polls'
-	if (path === '/polls'&& options.disabledFeatures.includes('list-hn-polls-on-dedicated-page')) {
+	// Don't allow *any* feature if `list-hn-polls...` is disabled and path is 'polls'
+	if (path === '/polls' && options.disabledFeatures.includes('list-hn-polls-on-dedicated-page')) {
 		return false;
 	}
 
