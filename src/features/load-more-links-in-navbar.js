@@ -35,6 +35,10 @@ function init(metadata) {
 		{
 			title: 'noobcomments',
 			description: 'Comments from new accounts'
+		},
+		{
+			title: 'topcolor',
+			description: 'List of custom topcolors',
 		}
 	];
 
