@@ -193,6 +193,8 @@ table.itemlist {
 	color: #000;
 }
 
-.__rhn__top-colors td {
-	cursor: pointer;
+.__rhn__top-colors a {
+	text-decoration: underline !important;
+	color: #828282 !important;
+	margin: 0 0 0 5px;
 }
