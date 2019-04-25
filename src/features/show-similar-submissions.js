@@ -5,7 +5,7 @@ import {monthNames} from '../libs/utils';
 function getSimilarSubmissions(storyLink, metadata) {
 	// eslint-disable-next-line no-async-promise-executor
 	return new Promise(async resolve => {
-		const API_URL = 'https://hn.algolia.com/api/v1/search_by_date?tags=story&query=';
+		const API_URL = 'https://hn.algolia.com/api/v1/search_by_date?tags=story&restrictSearchableAttributes=url&query=';
 		const safeStoryLink = encodeURI(storyLink);
 
 		const results = [];
