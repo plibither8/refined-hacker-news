@@ -11,7 +11,7 @@
 		"fit-textarea": "^1.0.0",
 		"indent-textarea": "^1.0.2",
 		"linkifyjs": "^2.1.8",
-		"webext-options-sync": "github:plibither8/webext-options-sync#options-logging",
+		"webext-options-sync": "^0.16.0",
 		"webextension-polyfill": "^0.4.0"
 	},
 	"devDependencies": {
