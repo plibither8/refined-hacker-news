@@ -38,11 +38,7 @@ function init(metadata) {
 		},
 		{
 			title: 'topcolors',
-<<<<<<< 38da322551fe72eebebd32be9d7ee5cb6b3a442f
 			description: 'List of custom topcolors'
-=======
-			description: 'List of custom topcolors',
->>>>>>> Fix: Fault rebase merge, fixing here
 		}
 	];
 
