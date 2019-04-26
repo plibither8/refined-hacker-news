@@ -11,6 +11,10 @@ function getSimilarSubmissions(storyLink, metadata) {
 		const results = [];
 		const rawResults = await fetch(API_URL + safeStoryLink).then(res => res.json()).then(obj => obj.hits);
 
+		if (!rawResults) {
+			return resolve(results);
+		}
+
 		for (const result of rawResults) {
 			if (result.objectID === metadata.item.id) {
 				continue;
