@@ -1,4 +1,6 @@
 import {getUrlParams} from '../libs/utils';
+import features from '../libs/features';
+import listHnPollsOnDedicatedPage from './list-hn-polls-on-dedicated-page';
 
 function init(metadata) {
 	switch (metadata.path) {
@@ -27,6 +29,22 @@ function init(metadata) {
 			break;
 		}
 
+		case '/polls': {
+			if (!features.isEnabled(listHnPollsOnDedicatedPage, metadata)) {
+				return false;
+			}
+
+			const pagetop = document.querySelector('span.pagetop');
+			for (const link of pagetop.querySelectorAll('a')) {
+				if (link.innerText === 'submit') {
+					link.href += '?title=Poll:%20';
+					break;
+				}
+			}
+
+			break;
+		}
+
 		case '/submit': {
 			const title = getUrlParams('title');
 			document.querySelector('input[name="title"]').value = title ? title : '';
@@ -47,6 +65,7 @@ const details = {
 			'/show',
 			'/shownew',
 			'/ask',
+			'/polls',
 			'/submit'
 		],
 		exclude: []
