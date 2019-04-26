@@ -95,6 +95,10 @@ function init() {
 										<td>score:</td>
 										<td>${itemInfo.score}</td>
 									</tr>
+									<tr>
+										<td>comments:</td>
+										<td>${itemInfo.kids.length}</td>
+									</tr>
 									${text}
 								</tbody>
 							</table>
