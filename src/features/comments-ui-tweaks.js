@@ -11,6 +11,9 @@ async function init(metadata) {
 	const comments = getAllComments();
 
 	for (const comment of comments) {
+		// Indent-border
+		comment.querySelector('td.ind').classList.add('__rhn__comment-indent');
+
 		const commentAuthor = comment.querySelector('a.hnuser');
 		// Highlight-my-username
 		if (me && me === commentAuthor.innerText) {
@@ -22,9 +25,6 @@ async function init(metadata) {
 			commentAuthor.innerText += ' [op]';
 			commentAuthor.classList.add('__rhn__highlight-op');
 		}
-
-		// Indent-border
-		comment.querySelector('td.ind').classList.add('__rhn__comment-indent');
 	}
 
 	return true;
