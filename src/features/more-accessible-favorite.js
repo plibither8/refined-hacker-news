@@ -6,41 +6,41 @@ async function init(metadata) {
 	const {path, user, options} = metadata;
 
 	if (paths.comments.includes(path)) {
-		const alreadyFaveStories = [];
-		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user.name);
-		if (!page) {
-			return false;
-		}
-
-		const stories = page.querySelectorAll('table.itemlist > tbody > tr.athing');
-		for (const story of stories) {
-			alreadyFaveStories.push(story.id);
-		}
-
 		const comments = getAllComments();
 		for (const comment of comments) {
-			const {id} = comment;
-
 			const headSpan = comment.querySelector('span.comhead');
-			let unfave = false;
 
 			const faveLink = document.createElement('a');
 			const faveSeparator = document.createTextNode('| ');
-
-			faveLink.href = 'javascript:void(0)';
-			faveLink.classList.add('__rhn__favelink');
-
-			if (alreadyFaveStories.includes(id)) {
-				faveLink.innerHTML = 'un-favorite';
-				unfave = true;
-			} else {
-				faveLink.innerHTML = 'favorite';
-			}
+			faveLink.innerText = 'favorite';
+			faveLink.classList.add('__rhn__fave-link');
 
 			const toggleBtn = comment.querySelector('a.togg');
 			toggleBtn.style.marginLeft = '4px';
 			headSpan.insertBefore(faveSeparator, toggleBtn);
 			headSpan.insertBefore(faveLink, toggleBtn);
+		}
+
+		const alreadyFaveComments = [];
+		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user.name);
+		const remoteComments = page.querySelectorAll('table.itemlist > tbody > tr.athing');
+		[...remoteComments].map(story => alreadyFaveComments.push(story.id));
+
+		for (const comment of comments) {
+			const {id} = comment;
+			const faveLink = comment.querySelector('.__rhn__fave-link');
+
+			let unfave = false;
+
+			faveLink.href = 'javascript:void(0)';
+			faveLink.classList.add('__rhn__favelink');
+
+			if (alreadyFaveComments.includes(id)) {
+				faveLink.innerHTML = 'un-favorite';
+				unfave = true;
+			} else {
+				faveLink.innerHTML = 'favorite';
+			}
 
 			faveLink.addEventListener('click', async () => {
 				const auth = await getAuthString(id);
@@ -56,40 +56,36 @@ async function init(metadata) {
 		}
 	} else {
 		const subtexts = document.querySelectorAll('td.subtext');
-		const alreadyFaveStories = [];
-		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + user.name);
-		if (!page) {
-			return false;
-		}
-
-		const stories = page.querySelectorAll('table.itemlist > tbody > tr.athing');
-		for (const story of stories) {
-			alreadyFaveStories.push(story.id);
-		}
-
 		for (const subtext of subtexts) {
 			const commentsLink = [...subtext.querySelectorAll('a')].pop();
-			let faveLinkExists = false;
+
+			const faveLink = document.createElement('a');
+			const faveSeparator = document.createTextNode(' | ');
+			faveLink.innerText = 'favorite';
+			faveLink.classList.add('__rhn__fave-link');
+
+			subtext.insertBefore(faveLink, commentsLink);
+			subtext.insertBefore(faveSeparator, commentsLink);
+		}
+
+		const alreadyFaveStories = [];
+		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + user.name);
+		const stories = page.querySelectorAll('table.itemlist > tbody > tr.athing');
+		[...stories].map(story => alreadyFaveStories.push(story.id));
+
+		for (const subtext of subtexts) {
+			const faveLink = subtext.querySelector('.__rhn__fave-link');
 
 			let hideLink;
 			for (const link of subtext.querySelectorAll('a')) {
 				if (link.innerText === 'hide') {
 					hideLink = link.href.replace('?', '&');
-				} else if (link.innerText === 'favorite') {
-					faveLinkExists = true;
-					break;
 				}
-			}
-
-			if (faveLinkExists) {
-				break;
 			}
 
 			const auth = getUrlParams('auth', hideLink);
 			const id = getUrlParams('id', hideLink);
 
-			const faveLink = document.createElement('a');
-			const faveSeparator = document.createTextNode(' | ');
 			let unfave = false;
 
 			if (alreadyFaveStories.includes(id)) {
@@ -98,11 +94,7 @@ async function init(metadata) {
 				unfave = true;
 			} else {
 				faveLink.href = `fave?id=${id}&auth=${auth}`;
-				faveLink.innerHTML = 'favorite';
 			}
-
-			subtext.insertBefore(faveLink, commentsLink);
-			subtext.insertBefore(faveSeparator, commentsLink);
 
 			faveLink.addEventListener('click', event => {
 				event.preventDefault();

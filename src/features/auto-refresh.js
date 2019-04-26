@@ -45,10 +45,10 @@ async function refresh(options, enabledOptions) {
 	document.querySelector('table.itemlist').innerHTML = newStories.innerHTML;
 
 	initialiseSome(
-		'click-rank-to-vote-unvote',
-		'open-story-links-in-new-tab',
 		'more-accessible-favorite',
-		'show-user-info-on-hover'
+		'show-user-info-on-hover',
+		'open-story-links-in-new-tab',
+		'click-rank-to-vote-unvote'
 	);
 
 	loader.classList.add('__rhn__no-display');

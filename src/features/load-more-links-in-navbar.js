@@ -38,7 +38,7 @@ function init(metadata) {
 		},
 		{
 			title: 'topcolors',
-			description: 'List of custom topcolors',
+			description: 'List of custom topcolors'
 		}
 	];
 
