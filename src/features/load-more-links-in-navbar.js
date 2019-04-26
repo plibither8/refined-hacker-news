@@ -37,7 +37,7 @@ function init(metadata) {
 			description: 'Comments from new accounts'
 		},
 		{
-			title: 'topcolor',
+			title: 'topcolors',
 			description: 'List of custom topcolors',
 		}
 	];
