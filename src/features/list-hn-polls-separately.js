@@ -59,7 +59,7 @@ async function setPollItems() {
 		<tr>
 			<td colspan="2"></td>
 			<td>
-			Polls are listed in chronologically decreasing order. You can also create a new poll <a href="/newpoll"><u>here</u></a>.
+			Polls are listed in reverse chronological order. You can also create a new poll <a href="/newpoll"><u>here</u></a>.
 			</td>
 		</tr>
 		<tr style="height:12px"></tr>
