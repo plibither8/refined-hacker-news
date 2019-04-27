@@ -55,13 +55,21 @@ async function setPollItems() {
 		row.remove();
 	}
 
+	itemlistTable.innerHTML = `
+		<tr style="height:6px"></tr>
+		<tr>
+			<td colspan="2"></td>
+			<td>
+			Polls are listed in chronologically decreasing order. You can also create a new poll <a href="/newpoll"><u>here</u></a>.
+			</td>
+		</tr>
+		<tr style="height:12px"></tr>
+	`;
+
 	const pageNumber = Number(getUrlParams('p'));
 	const realPageNumber = pageNumber === 0 ? 1 : pageNumber;
 
-	moreButton.querySelector('a').href = `/?p=${realPageNumber + 1}#polls`;
-
 	const items = await getPollItems(realPageNumber - 1);
-
 	items.forEach((item, index) => {
 		itemlistTable.innerHTML += `
 		<tr class='athing' id='${item.id}'>
@@ -99,6 +107,7 @@ async function setPollItems() {
 	`;
 	});
 
+	moreButton.querySelector('a').href = `/?p=${realPageNumber + 1}#polls`;
 	itemlistTable.append(moreSpace, moreButton);
 
 	document.title = 'Polls | Hacker News';
