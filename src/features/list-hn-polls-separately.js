@@ -37,7 +37,6 @@ async function getPollItems(page) {
 			author: result.author,
 			comments: result.num_comments + ' comment' + (result.num_comments === 1 ? '' : 's'),
 			points: result.points + ' point' + (result.points === 1 ? '' : 's'),
-			link: `https://news.ycombinator.com/item?id=${result.objectID}`,
 			title: result.title,
 			date: format(result.created_at)
 		});
