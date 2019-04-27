@@ -119,13 +119,13 @@ async function init(metadata) {
 		if (window.location.hash === '#polls') {
 			await setPollItems();
 			pollsLink.style.color = '#ffffff';
+		} else {
+			window.addEventListener('hashchange', () => {
+				if (window.location.hash === '#polls') {
+					window.location.reload();
+				}
+			});
 		}
-
-		window.addEventListener('hashchange', () => {
-			if (window.location.hash === '#polls') {
-				window.location.reload();
-			}
-		});
 	}
 
 	return Boolean(pollsLink);
