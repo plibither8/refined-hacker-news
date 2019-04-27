@@ -9,7 +9,7 @@ import inputFieldTweaks from '../features/input-field-tweaks';
 import keyBindingsOnInputFields from '../features/key-bindings-on-input-fields';
 import keyBindingsOnItems from '../features/key-bindings-on-items';
 import linkifyText from '../features/linkify-text';
-import listHnPollsOnDedicatedPage from '../features/list-hn-polls-on-dedicated-page';
+import listHnPollsSeparately from '../features/list-hn-polls-separately';
 import loadMoreLinksInNavbar from '../features/load-more-links-in-navbar';
 import moreAccessibleFavorite from '../features/more-accessible-favorite';
 import onLinkFocusComment from '../features/on-link-focus-comment';
@@ -35,7 +35,7 @@ import {
 } from './utils';
 
 const featureList = [
-	listHnPollsOnDedicatedPage,
+	listHnPollsSeparately,
 	keyBindingsOnItems,
 	commentsUiTweaks,
 	moreAccessibleFavorite,

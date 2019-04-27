@@ -1,6 +1,4 @@
 import {getUrlParams} from '../libs/utils';
-import features from '../libs/features';
-import listHnPollsOnDedicatedPage from './list-hn-polls-on-dedicated-page';
 
 function init(metadata) {
 	switch (metadata.path) {

@@ -33,7 +33,7 @@ pages: {
 
 #### Left
 
-- [ ] `list-hn-polls-on-dedicated-page`
+- [ ] `list-hn-polls-separately`
 <!-- *Nothing :)* -->
 
 #### Done
