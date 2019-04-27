@@ -1,6 +1,6 @@
 import {format} from 'timeago.js';
 
-import {getPageDom, getUrlParams} from '../libs/utils';
+import {getUrlParams} from '../libs/utils';
 
 function navbarLink() {
 	const navbar = document.querySelector('span.pagetop');
@@ -72,39 +72,39 @@ async function setPollItems() {
 	const items = await getPollItems(realPageNumber - 1);
 	items.forEach((item, index) => {
 		itemlistTable.innerHTML += `
-		<tr class='athing' id='${item.id}'>
-			<td align="right" valign="top" class="title">
-				<span class="rank">${((realPageNumber - 1) * 30) + index + 1}.</span>
-			</td>
-			<td valign="top" class="votelinks">
-				<center>
-					<a href='javascript:void(0)'>
-						<div class="votearrow" title="upvote"></div>
-					</a>
-				</center>
-			</td>
-			<td class="title">
-				<a href="item?id=${item.id}" class="storylink">${item.title}</a>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2"></td>
-			<td class="subtext">
-				<span class="score" id="score_${item.id}">${item.points}</span>
-				by
-				<a href="user?id=${item.author}" class="hnuser">${item.author}</a>
-				<span class="age"><a href="item?id=${item.id}">${item.date}</a></span>
-				<span id="unv_${item.id}"></span>
-				|
-				<a href="https://hn.algolia.com/?query=${encodeURI(item.title)}&sort=byDate&dateRange=all&type=poll&storyText=false&prefix&page=0" class="hnpast">past</a>
-				|
-				<a href="https://www.google.com/search?q=${encodeURI(item.title)}">web</a>
-				|
-				<a href="item?id=${item.id}">${item.comments}</a>
-			</td>
-		</tr>
-		<tr class="spacer" style="height:5px"></tr>
-	`;
+			<tr class='athing' id='${item.id}'>
+				<td align="right" valign="top" class="title">
+					<span class="rank">${((realPageNumber - 1) * 30) + index + 1}.</span>
+				</td>
+				<td valign="top" class="votelinks">
+					<center>
+						<a href='javascript:void(0)'>
+							<div class="votearrow" title="upvote"></div>
+						</a>
+					</center>
+				</td>
+				<td class="title">
+					<a href="item?id=${item.id}" class="storylink">${item.title}</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"></td>
+				<td class="subtext">
+					<span class="score" id="score_${item.id}">${item.points}</span>
+					by
+					<a href="user?id=${item.author}" class="hnuser">${item.author}</a>
+					<span class="age"><a href="item?id=${item.id}">${item.date}</a></span>
+					<span id="unv_${item.id}"></span>
+					|
+					<a href="https://hn.algolia.com/?query=${encodeURI(item.title)}&sort=byDate&dateRange=all&type=poll&storyText=false&prefix&page=0" class="hnpast">past</a>
+					|
+					<a href="https://www.google.com/search?q=${encodeURI(item.title)}">web</a>
+					|
+					<a href="item?id=${item.id}">${item.comments}</a>
+				</td>
+			</tr>
+			<tr class="spacer" style="height:5px"></tr>
+		`;
 	});
 
 	moreButton.querySelector('a').href = `/?p=${realPageNumber + 1}#polls`;
