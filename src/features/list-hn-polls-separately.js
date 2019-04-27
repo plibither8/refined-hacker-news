@@ -88,7 +88,7 @@ async function setPollItems() {
 				<span class="age"><a href="item?id=${item.id}">${item.date}</a></span>
 				<span id="unv_${item.id}"></span>
 				|
-				<a href="https://hn.algolia.com/?query=${encodeURI(item.title)}&sort=byDate&dateRange=all&type=story&storyText=false&prefix&page=0" class="hnpast">past</a>
+				<a href="https://hn.algolia.com/?query=${encodeURI(item.title)}&sort=byDate&dateRange=all&type=poll&storyText=false&prefix&page=0" class="hnpast">past</a>
 				|
 				<a href="https://www.google.com/search?q=${encodeURI(item.title)}">web</a>
 				|
@@ -108,16 +108,16 @@ async function init(metadata) {
 	const pollsLink = navbarLink();
 
 	if (metadata.path === '/') {
+		if (window.location.hash === '#polls') {
+			await setPollItems();
+			pollsLink.style.color = '#ffffff';
+		}
+
 		window.addEventListener('hashchange', () => {
 			if (window.location.hash === '#polls') {
 				window.location.reload();
 			}
 		});
-
-		if (window.location.hash === '#polls') {
-			await setPollItems();
-			pollsLink.style.color = '#ffffff';
-		}
 	}
 
 	return Boolean(pollsLink);
