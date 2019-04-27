@@ -36,7 +36,7 @@ function isEnabled(featureDetails, metadata) {
 			'auto-refresh'
 		];
 
-		if (disallowedFeatures.includes(id)) {
+		if (disallowedFeatures.includes(id) && !options.disabledFeatures.includes('list-hn-polls-separately')) {
 			return false;
 		}
 	}

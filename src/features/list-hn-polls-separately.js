@@ -132,7 +132,7 @@ async function init(metadata) {
 }
 
 const details = {
-	id: 'list-hn-polls-on-dedicated-page',
+	id: 'list-hn-polls-separately',
 	pages: {
 		include: ['*'],
 		exclude: []
