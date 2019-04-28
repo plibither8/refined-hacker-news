@@ -9,6 +9,7 @@ import inputFieldTweaks from '../features/input-field-tweaks';
 import keyBindingsOnInputFields from '../features/key-bindings-on-input-fields';
 import keyBindingsOnItems from '../features/key-bindings-on-items';
 import linkifyText from '../features/linkify-text';
+import listHnPollsSeparately from '../features/list-hn-polls-separately';
 import loadMoreLinksInNavbar from '../features/load-more-links-in-navbar';
 import moreAccessibleFavorite from '../features/more-accessible-favorite';
 import onLinkFocusComment from '../features/on-link-focus-comment';
@@ -34,6 +35,7 @@ import {
 } from './utils';
 
 const featureList = [
+	listHnPollsSeparately,
 	keyBindingsOnItems,
 	commentsUiTweaks,
 	moreAccessibleFavorite,
@@ -90,12 +92,11 @@ const getMetadata = new Promise(async resolve => {
 	resolve(metadata);
 });
 
-export async function initialiseAll() {
+async function createLoader() {
 	const featureCount = featureList.length;
-	let loadCount = 0;
 
 	const loader = document.createElement('div');
-	loader.innerHTML = `<img src='${browser.extension.getURL('loader.gif')}'><span>${loadCount}/${featureCount}</span>`;
+	loader.innerHTML = `<img src='${browser.extension.getURL('loader.gif')}'><span>0/${featureCount}</span>`;
 	loader.classList.add('__rhn__extension-loader');
 	const counter = loader.querySelector('span');
 
@@ -104,10 +105,18 @@ export async function initialiseAll() {
 		document.body.append(loader);
 	}
 
+	return [loader, counter];
+}
+
+export async function initialiseAll() {
+	const [loader, counter] = await createLoader();
+	const featureCount = featureList.length;
+	let loadCount = 0;
+
 	const metadata = await getMetadata;
 	metadata.firstLoad = true;
 
-	if (options.logging) {
+	if (metadata.options.logging) {
 		console.group('Refined Hacker News');
 	}
 
@@ -116,7 +125,7 @@ export async function initialiseAll() {
 		await features.add(feat, metadata); // eslint-disable-line no-await-in-loop
 	}
 
-	if (options.logging) {
+	if (metadata.options.logging) {
 		console.groupEnd();
 	}
 

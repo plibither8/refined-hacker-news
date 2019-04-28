@@ -45,7 +45,8 @@ const paths = {
 	misc: [
 		'/leaders',
 		'/user',
-		'/topcolors'
+		'/topcolors',
+		'/lists'
 	],
 
 	actions: [
