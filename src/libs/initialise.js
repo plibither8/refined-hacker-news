@@ -8,7 +8,7 @@ import hideReadStories from '../features/hide-read-stories';
 import inputFieldTweaks from '../features/input-field-tweaks';
 import keyBindingsOnInputFields from '../features/key-bindings-on-input-fields';
 import keyBindingsOnItems from '../features/key-bindings-on-items';
-import linkifyText from '../features/linkify-text';
+import linkifyUserAbout from '../features/linkify-user-about';
 import listHnPollsSeparately from '../features/list-hn-polls-separately';
 import loadMoreLinksInNavbar from '../features/load-more-links-in-navbar';
 import moreAccessibleFavorite from '../features/more-accessible-favorite';
@@ -47,7 +47,7 @@ const featureList = [
 	fetchSubmissionTitleFromUrl,
 	keyBindingsOnInputFields,
 	inputFieldTweaks,
-	linkifyText,
+	linkifyUserAbout,
 	onLinkFocusComment,
 	openStoryLinksInNewTab,
 	pastChooseDate,

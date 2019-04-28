@@ -22,7 +22,7 @@ function init(metadata) {
 }
 
 const details = {
-	id: 'linkify-text',
+	id: 'linkify-user-about',
 	pages: {
 		include: ['/user'],
 		exclude: []

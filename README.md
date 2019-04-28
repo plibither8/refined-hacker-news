@@ -47,7 +47,7 @@ pages: {
 - [x] `input-field-tweaks`
 - [x] `key-bindings-on-input-fields`
 - [x] `key-bindings-on-items`
-- [x] `linkify-text`
+- [x] `linkify-user-about`
 - [x] `list-hn-polls-separately`
 - [x] `load-more-links-in-navbar`
 - [x] `more-accessible-favorite`
