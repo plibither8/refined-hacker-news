@@ -75,9 +75,8 @@ async function setPollItems() {
 				<td align="right" valign="top" class="title">
 					<span class="rank">${((realPageNumber - 1) * 30) + index + 1}.</span>
 				</td>
-				<td valign="top" class="votelinks">
+				<td valign="top" class="votelinks nosee">
 					<center>
-						<a href='javascript:void(0)'>
 							<div class="votearrow" title="upvote"></div>
 						</a>
 					</center>
@@ -93,7 +92,6 @@ async function setPollItems() {
 					by
 					<a href="user?id=${item.author}" class="hnuser">${item.author}</a>
 					<span class="age"><a href="item?id=${item.id}">${item.date}</a></span>
-					<span id="unv_${item.id}"></span>
 					|
 					<a href="https://hn.algolia.com/?query=${encodeURI(item.title)}&sort=byDate&dateRange=all&type=poll&storyText=false&prefix&page=0" class="hnpast">past</a>
 					|
