@@ -33,8 +33,7 @@ pages: {
 
 #### Left
 
-- [ ] `list-hn-polls-separately`
-<!-- *Nothing :)* -->
+*Nothing :)*
 
 #### Done
 
@@ -49,6 +48,7 @@ pages: {
 - [x] `key-bindings-on-input-fields`
 - [x] `key-bindings-on-items`
 - [x] `linkify-text`
+- [x] `list-hn-polls-separately`
 - [x] `load-more-links-in-navbar`
 - [x] `more-accessible-favorite`
 - [x] `on-link-focus-comment`
