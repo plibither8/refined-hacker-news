@@ -75,6 +75,12 @@ function init() {
 								<td>${itemInfo.url}</td>
 							</tr>` : '';
 
+						const comments = itemInfo.kids ?
+							`<tr>
+								<td>comments:</td>
+								<td>${itemInfo.kids.length}</td>
+							</tr>` : '';
+
 						table = `
 							<table>
 								<tbody>
@@ -95,10 +101,7 @@ function init() {
 										<td>score:</td>
 										<td>${itemInfo.score}</td>
 									</tr>
-									<tr>
-										<td>comments:</td>
-										<td>${itemInfo.kids.length}</td>
-									</tr>
+									${comments}
 									${text}
 								</tbody>
 							</table>
