@@ -22,7 +22,7 @@ async function init(metadata) {
 		}
 
 		const alreadyFaveComments = [];
-		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user.name);
+		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user);
 		const remoteComments = page.querySelectorAll('table.itemlist > tbody > tr.athing');
 		[...remoteComments].map(story => alreadyFaveComments.push(story.id));
 
@@ -69,7 +69,7 @@ async function init(metadata) {
 		}
 
 		const alreadyFaveStories = [];
-		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + user.name);
+		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + user);
 		const stories = page.querySelectorAll('table.itemlist > tbody > tr.athing');
 		[...stories].map(story => alreadyFaveStories.push(story.id));
 
