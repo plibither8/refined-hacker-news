@@ -7,6 +7,7 @@ new OptionsSync().define({
 		customCSS: '',
 		logging: true,
 		featureLoader: true,
+		commentsIndentWidth: 40,
 		immediatelyCloseFavorite: false,
 		openReferenceLinksInNewTab: true,
 		hideStoryCommentsPage: false,

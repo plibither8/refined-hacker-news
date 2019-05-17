@@ -4,6 +4,7 @@ import {paths} from '../libs/paths';
 
 async function init(metadata) {
 	const {item} = metadata;
+	const customWidth = metadata.options.commentsIndentWidth;
 
 	const me = metadata.user;
 	const op = item.id ? (await getItemInfo(item.id)).by : undefined;
@@ -13,6 +14,9 @@ async function init(metadata) {
 	for (const comment of comments) {
 		// Indent-border
 		comment.querySelector('td.ind').classList.add('__rhn__comment-indent');
+
+		// Custom indent width
+		comment.querySelector('td.ind img').width *= customWidth / 40;
 
 		const commentAuthor = comment.querySelector('a.hnuser');
 		// Highlight-my-username
