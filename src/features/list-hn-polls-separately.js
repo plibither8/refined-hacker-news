@@ -26,7 +26,9 @@ function navbarLink() {
 }
 
 async function getPollItems(page) {
-	const rawResults = await fetch(`https://hn.algolia.com/api/v1/search_by_date?tags=poll&page=${page}&hitsPerPage=30`)
+	const order = getUrlParams('order') === 'score' ? 'score' : undefined;
+
+	const rawResults = await fetch(`https://hn.algolia.com/api/v1/${order ? 'search' : 'search_by_date'}?tags=poll&page=${page}&hitsPerPage=30`)
 		.then(res => res.json())
 		.then(obj => obj.hits);
 
@@ -54,19 +56,23 @@ async function setPollItems() {
 		row.remove();
 	}
 
+	const pageNumber = Number(getUrlParams('p'));
+	const realPageNumber = pageNumber === 0 ? 1 : pageNumber;
+
+	const order = getUrlParams('order') === 'score' ? 'score' : undefined;
+	const orderUrl = `/?p=${realPageNumber}${order ? '' : '&order=score'}#polls`;
 	itemlistTable.innerHTML = `
 		<tr style="height:6px"></tr>
 		<tr>
 			<td colspan="2"></td>
 			<td>
-			Polls are listed in reverse chronological order. You can also create a new poll <a href="/newpoll"><u>here</u></a>.
+			Polls are listed in ${order ? 'order of \'most points\'' : 'reverse chronological order'}.
+			<a href='${orderUrl}'><u>Order by ${order ? 'date' : 'score'}</u>.</a>
+			<br>You can also <a href="/newpoll"><u>create a new poll</u></a>.
 			</td>
 		</tr>
 		<tr style="height:12px"></tr>
 	`;
-
-	const pageNumber = Number(getUrlParams('p'));
-	const realPageNumber = pageNumber === 0 ? 1 : pageNumber;
 
 	const items = await getPollItems(realPageNumber - 1);
 	items.forEach((item, index) => {
@@ -115,8 +121,8 @@ async function init(metadata) {
 
 	if (metadata.path === '/') {
 		if (window.location.hash === '#polls') {
-			await setPollItems();
 			pollsLink.style.color = '#ffffff';
+			await setPollItems();
 		} else {
 			window.addEventListener('hashchange', () => {
 				if (window.location.hash === '#polls') {
