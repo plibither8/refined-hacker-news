@@ -6,8 +6,8 @@ async function init(metadata) {
 	const {item} = metadata;
 	const customWidth = metadata.options.commentsIndentWidth;
 
-	const me = metadata.user;
-	const op = item.id ? (await getItemInfo(item.id)).by : undefined;
+	const currentUser = metadata.user;
+	const itemAuthor = item.id ? (await getItemInfo(item.id)).by : undefined;
 
 	const comments = getAllComments();
 
@@ -20,12 +20,12 @@ async function init(metadata) {
 
 		const commentAuthor = comment.querySelector('a.hnuser');
 		// Highlight-my-username
-		if (me && me === commentAuthor.innerText) {
+		if (currentUser && currentUser === commentAuthor.innerText) {
 			commentAuthor.classList.add('__rhn__highlight-me');
 		}
 
 		// Highlight-op-username
-		if (op && op === commentAuthor.innerText) {
+		if (itemAuthor && itemAuthor === commentAuthor.innerText) {
 			commentAuthor.innerText += ' [op]';
 			commentAuthor.classList.add('__rhn__highlight-op');
 		}
