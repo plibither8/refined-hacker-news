@@ -12,17 +12,18 @@ indentTextarea.watch('textarea');
 })();
 
 // Live changing of indentation width on comments
+let activeItemTabs;
+(async () => {
+	activeItemTabs = await browser.tabs.query({url: '*://news.ycombinator.com/item?id=*'});
+})();
+
 const indentWidthInput = document.querySelector('input[name="commentsIndentWidth"]');
 indentWidthInput.addEventListener('input', () => {
-	const queryTabs = browser.tabs.query({url: '*://news.ycombinator.com/item?id=*'});
-
-	queryTabs.then(tabs => {
-		for (const tab of tabs) {
-			browser.tabs.sendMessage(tab.id, {
-				indentWidth: indentWidthInput.value
-			});
-		}
-	});
+	for (const tab of activeItemTabs) {
+		browser.tabs.sendMessage(tab.id, {
+			indentWidth: indentWidthInput.value
+		});
+	}
 });
 
 new OptionsSync({logging: false}).syncForm('#options-form');
