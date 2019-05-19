@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	border: 5px solid #f7694c;
+	border: 5px solid #ff6000;
 	min-width: 430px;
 	background: #f6f6ef;
 }
@@ -36,7 +36,7 @@ h2 img {
 	height: 40px;
 	width: auto;
 	margin-right: 6px;
-	border: 1px solid #f7694c;
+	border: 1px solid #ff6000;
 	border-radius: 7px;
 }
 

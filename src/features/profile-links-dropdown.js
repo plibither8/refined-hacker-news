@@ -49,7 +49,7 @@ function init(metadata) {
 	userLink.innerHTML += ' ▾';
 
 	dropdownEl.classList.add('__rhn__no-display', '__rhn__profile-dropdown');
-	dropdownEl.style.background = document.querySelector('table#hnmain > tbody > tr > td').bgColor;
+	dropdownEl.style.background = metadata.options.topcolor;
 	let state = 0;
 
 	for (const link of links) {

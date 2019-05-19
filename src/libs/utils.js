@@ -9,6 +9,7 @@ import hideReadStories from '../features/hide-read-stories';
 import autoRefresh from '../features/auto-refresh';
 
 import {getItemInfo} from './api';
+import defaultConfigs from './default-configs';
 import features from './features';
 
 export function getPageDom(url) {
@@ -44,15 +45,13 @@ export function getAuthString(id) {
 	});
 }
 
-export const getLoggedInUser = new Promise(async resolve => {
+export const getUserAndColor = new Promise(async resolve => {
 	const homepage = await getPageDom('https://news.ycombinator.com');
 	const userElement = homepage.querySelector('a#me');
+	const topcolor = homepage.querySelector('table#hnmain > tbody > tr > td').getAttribute('bgcolor');
+	const username = userElement ? userElement.innerText : undefined;
 
-	if (userElement) {
-		resolve(userElement.innerText);
-	} else {
-		resolve(undefined);
-	}
+	resolve({username, topcolor});
 });
 
 export function getUrlParams(param, url) {
@@ -85,9 +84,7 @@ export function optionsBarEnabledOptions(metadata) {
 export const getOptions = new Promise(async resolve => {
 	// Options defaults
 	const options = {
-		disabledFeatures: '',
-		customCSS: '',
-		logging: true,
+		...defaultConfigs,
 		...await new OptionsSync().getAll()
 	};
 

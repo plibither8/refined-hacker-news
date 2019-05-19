@@ -1,24 +1,9 @@
 import OptionsSync from 'webext-options-sync';
 
-new OptionsSync().define({
-	defaults: {
-		// Popup options:
-		disabledFeatures: '',
-		customCSS: '',
-		logging: true,
-		featureLoader: true,
-		commentsIndentWidth: 40,
-		immediatelyCloseFavorite: false,
-		openReferenceLinksInNewTab: true,
-		hideStoryCommentsPage: false,
-		toggleAllReplies: false,
-		showDiscussionsWithNoComments: false,
+import defaultConfigs from './libs/default-configs';
 
-		// Options bar:
-		autoRefreshEnabled: false,
-		autoRefreshValue: 0,
-		hideReadStories: false
-	}
+new OptionsSync().define({
+	defaults: defaultConfigs
 });
 
 function createTab(request, sender) {

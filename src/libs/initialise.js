@@ -1,3 +1,6 @@
+import OptionsSync from 'webext-options-sync';
+
+// All features, imported in alphabetical order
 import autoRefresh from '../features/auto-refresh';
 import changeDeadCommentsColor from '../features/change-dead-comments-color';
 import clickCommentIndentToToggle from '../features/click-comment-indent-to-toggle';
@@ -30,7 +33,7 @@ import features from './features';
 import {
 	getUrlParams,
 	getOptions,
-	getLoggedInUser,
+	getUserAndColor,
 	getItemType
 } from './utils';
 
@@ -80,8 +83,15 @@ const getMetadata = new Promise(async resolve => {
 		firstLoad: false
 	};
 
-	metadata.user = await getLoggedInUser;
-	metadata.options = await getOptions;
+	const {username, topcolor} = await getUserAndColor;
+
+	metadata.user = username;
+	metadata.options = {
+		...await getOptions,
+		topcolor
+	};
+
+	new OptionsSync({logging: false}).setAll(metadata.options);
 
 	metadata.item.isItem = metadata.path === '/item';
 	if (metadata.item.isItem) {
