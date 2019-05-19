@@ -14,7 +14,7 @@ indentTextarea.watch('textarea');
 // Live changing of indentation width on comments
 const indentWidthInput = document.querySelector('input[name="commentsIndentWidth"]');
 indentWidthInput.addEventListener('input', () => {
-	const queryTabs = browser.tabs.query({url: "*://news.ycombinator.com/item?id=*"});
+	const queryTabs = browser.tabs.query({url: '*://news.ycombinator.com/item?id=*'});
 
 	queryTabs.then(tabs => {
 		for (const tab of tabs) {
@@ -23,6 +23,6 @@ indentWidthInput.addEventListener('input', () => {
 			});
 		}
 	});
-})
+});
 
 new OptionsSync({logging: false}).syncForm('#options-form');
