@@ -115,11 +115,11 @@ async function createLoader() {
 		document.body.append(loader);
 	}
 
-	return [loader, counter];
+	return {loader, counter};
 }
 
 export async function initialiseAll() {
-	const [loader, counter] = await createLoader();
+	const {loader, counter} = await createLoader();
 	const featureCount = featureList.length;
 	let loadCount = 0;
 
@@ -147,7 +147,7 @@ export async function initialiseSome(...args) {
 	metadata.firstLoad = false;
 
 	for (const id of args) {
-		const feat = featureList.find(f => f.id === id);
-		await features.add(feat, metadata); // eslint-disable-line no-await-in-loop
+		const featureDetails = featureList.find(feat => feat.id === id);
+		await features.add(featureDetails, metadata); // eslint-disable-line no-await-in-loop
 	}
 }
