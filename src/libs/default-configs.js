@@ -12,7 +12,7 @@ export default {
 	showDiscussionsWithNoComments: false,
 
 	// Dev options
-	logging: true,
+	logging: false,
 	featureLoader: true,
 
 	// Options bar:
