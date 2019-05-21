@@ -22,6 +22,10 @@ async function init(metadata) {
 		indentImage.dataset.indentLevel = indentLevel;
 
 		const commentAuthor = comment.querySelector('a.hnuser');
+		if (!commentAuthor) {
+			continue;
+		}
+
 		// Highlight-my-username
 		if (currentUser && currentUser === commentAuthor.innerText) {
 			commentAuthor.classList.add('__rhn__highlight-me');
