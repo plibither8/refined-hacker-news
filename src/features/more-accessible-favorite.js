@@ -133,6 +133,7 @@ const details = {
 		exclude: ['/jobs']
 	},
 	loginRequired: true,
+	dontAwait: true,
 	init
 };
 

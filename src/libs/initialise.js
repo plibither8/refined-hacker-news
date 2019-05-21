@@ -132,7 +132,11 @@ export async function initialiseAll() {
 
 	for (const feat of featureList) {
 		counter.innerText = `${++loadCount}/${featureCount}`;
-		await features.add(feat, metadata); // eslint-disable-line no-await-in-loop
+		if (feat.dontAwait) {
+			features.add(feat, metadata);
+		} else {
+			await features.add(feat, metadata); // eslint-disable-line no-await-in-loop
+		}
 	}
 
 	if (metadata.options.logging) {
