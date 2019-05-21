@@ -180,7 +180,7 @@ function init(metadata) {
 
 				// H: hide story
 				case 72:
-					if (combo) {
+					if (!event.shiftKey || (combo && !(event.shiftKey))) {
 						return;
 					}
 
