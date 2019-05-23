@@ -25,16 +25,7 @@ function createTab(request, sender) {
 
 browser.runtime.onMessage.addListener(
 	async (request, sender) => {
-		if (request.url) {
-			const {immediatelyCloseFavorite} = request;
-			delete request.immediatelyCloseFavorite;
-
-			const tab = await createTab(request, sender);
-
-			if (immediatelyCloseFavorite) {
-				browser.tabs.remove(tab.id);
-			}
-		} else if (request.searchHistory) {
+		if (request.searchHistory) {
 			const storyIds = request.searchHistory;
 			const visitedIds = [];
 

@@ -5,7 +5,6 @@ export default {
 
 	// Other options:
 	commentsIndentWidth: 40,
-	immediatelyCloseFavorite: false,
 	openReferenceLinksInNewTab: true,
 	hideStoryCommentsPage: false,
 	toggleAllReplies: false,

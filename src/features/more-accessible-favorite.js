@@ -43,12 +43,17 @@ async function init(metadata) {
 			}
 
 			faveLink.addEventListener('click', async () => {
+				const loader = document.createElement('img');
+				loader.src = browser.extension.getURL('loader.gif');
+				loader.style = 'height: 9px;margin-left: 5px;';
+
+				faveLink.parentNode.insertBefore(loader, faveLink.nextSibling);
+
 				const auth = await getAuthString(id);
 				const url = `https://news.ycombinator.com/fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
-				browser.runtime.sendMessage({
-					url,
-					immediatelyCloseFavorite: options.immediatelyCloseFavorite
-				});
+
+				await fetch(url);
+				loader.remove();
 
 				unfave = !unfave;
 				faveLink.innerHTML = unfave ? 'un-favorite' : 'favorite';
@@ -96,12 +101,17 @@ async function init(metadata) {
 				faveLink.href = `fave?id=${id}&auth=${auth}`;
 			}
 
-			faveLink.addEventListener('click', event => {
+			faveLink.addEventListener('click', async event => {
 				event.preventDefault();
-				browser.runtime.sendMessage({
-					url: faveLink.href,
-					immediatelyCloseFavorite: options.immediatelyCloseFavorite
-				});
+
+				const loader = document.createElement('img');
+				loader.src = browser.extension.getURL('loader.gif');
+				loader.style = 'height: 9px;margin-left: 5px;';
+
+				subtext.insertBefore(loader, faveLink.nextSibling);
+
+				await fetch(faveLink.href);
+				loader.remove();
 
 				unfave = !unfave;
 				faveLink.innerHTML = unfave ? 'un-favorite' : 'favorite';
