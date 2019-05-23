@@ -25,7 +25,9 @@ function createTab(request, sender) {
 
 browser.runtime.onMessage.addListener(
 	async (request, sender) => {
-		if (request.searchHistory) {
+		if (request.url) {
+			await createTab(request, sender);
+		} else if (request.searchHistory) {
 			const storyIds = request.searchHistory;
 			const visitedIds = [];
 
