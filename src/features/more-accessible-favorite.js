@@ -42,7 +42,15 @@ async function init(metadata) {
 				faveLink.innerHTML = 'favorite';
 			}
 
+			let ongoingFavorite = false;
+
 			faveLink.addEventListener('click', async () => {
+				if (ongoingFavorite) {
+					return;
+				}
+
+				ongoingFavorite = true;
+
 				const loader = document.createElement('img');
 				loader.src = browser.extension.getURL('loader.gif');
 				loader.style = 'height: 9px;margin-left: 5px;';
@@ -57,6 +65,8 @@ async function init(metadata) {
 
 				unfave = !unfave;
 				faveLink.innerHTML = unfave ? 'un-favorite' : 'favorite';
+
+				ongoingFavorite = false;
 			});
 		}
 	} else {
@@ -101,8 +111,16 @@ async function init(metadata) {
 				faveLink.href = `fave?id=${id}&auth=${auth}`;
 			}
 
+			let ongoingFavorite = false;
+
 			faveLink.addEventListener('click', async event => {
 				event.preventDefault();
+
+				if (ongoingFavorite) {
+					return;
+				}
+
+				ongoingFavorite = true;
 
 				const loader = document.createElement('img');
 				loader.src = browser.extension.getURL('loader.gif');
@@ -116,6 +134,8 @@ async function init(metadata) {
 				unfave = !unfave;
 				faveLink.innerHTML = unfave ? 'un-favorite' : 'favorite';
 				faveLink.href = `fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
+
+				ongoingFavorite = false;
 			});
 		}
 	}
@@ -133,6 +153,7 @@ const details = {
 		exclude: ['/jobs']
 	},
 	loginRequired: true,
+	dontAwait: true,
 	init
 };
 
