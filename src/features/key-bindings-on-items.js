@@ -109,7 +109,7 @@ function init(metadata) {
 		}
 
 		// If URL pathname is of the form: ".../[item|threads|etc]?id=..."
-		// Basically, if it is a story item
+		// Basically, if it is a comment list
 		if (isCommentList) {
 			switch (event.keyCode) {
 				// R: Reply
@@ -180,7 +180,7 @@ function init(metadata) {
 
 				// H: hide story
 				case 72:
-					if (!event.shiftKey || (combo && !(event.shiftKey))) {
+					if (!combo || (combo && !(event.shiftKey))) {
 						return;
 					}
 
@@ -203,7 +203,7 @@ function init(metadata) {
 				// X: flag/unflag story
 				// Works only when 'Shift' key is pressed too
 				case 88:
-					if ((combo && !event.shiftKey) || !event.shiftKey) {
+					if (!combo || (combo && !event.shiftKey)) {
 						return;
 					}
 
