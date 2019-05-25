@@ -3,7 +3,7 @@ import {getAllComments} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
 async function init(metadata) {
-	const {path, user, options} = metadata;
+	const {path, user} = metadata;
 
 	if (paths.comments.includes(path)) {
 		const comments = getAllComments();

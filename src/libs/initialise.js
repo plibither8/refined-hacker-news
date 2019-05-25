@@ -6,6 +6,7 @@ import changeDeadCommentsColor from '../features/change-dead-comments-color';
 import clickCommentIndentToToggle from '../features/click-comment-indent-to-toggle';
 import clickRankToVoteUnvote from '../features/click-rank-to-vote-unvote';
 import commentsUiTweaks from '../features/comments-ui-tweaks';
+import favoriteWithoutLeavingPage from '../features/favorite-without-leaving-page';
 import fetchSubmissionTitleFromUrl from '../features/fetch-submission-title-from-url';
 import hideReadStories from '../features/hide-read-stories';
 import inputFieldTweaks from '../features/input-field-tweaks';
@@ -41,6 +42,7 @@ const featureList = [
 	listHnPollsSeparately,
 	keyBindingsOnItems,
 	commentsUiTweaks,
+	favoriteWithoutLeavingPage,
 	moreAccessibleFavorite,
 	loadMoreLinksInNavbar,
 	clickCommentIndentToToggle,
