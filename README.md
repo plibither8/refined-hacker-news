@@ -42,7 +42,6 @@ pages: {
 - [x] `click-comment-indent-to-toggle`
 - [x] `click-rank-to-vote-unvote`
 - [x] `comments-ui-tweaks`
-- [x] `favorite-without-leaving-page`
 - [x] `fetch-submission-title-from-url`
 - [x] `hide-read-stories`
 - [x] `input-field-tweaks`
