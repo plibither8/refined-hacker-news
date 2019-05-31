@@ -10,6 +10,7 @@ import click_rank_to_vote_unvote from '../features/click-rank-to-vote-unvote';
 import comments_ui_tweaks from '../features/comments-ui-tweaks';
 import fetch_submission_title_from_url from '../features/fetch-submission-title-from-url';
 import hide_read_stories from '../features/hide-read-stories';
+import highlight_unread_comments from '../features/highlight-unread-comment';
 import input_field_tweaks from '../features/input-field-tweaks';
 import key_bindings_on_input_fields from '../features/key-bindings-on-input-fields';
 import key_bindings_on_items from '../features/key-bindings-on-items';
@@ -35,14 +36,15 @@ import features from './features';
 import {
 	getUrlParams,
 	getOptions,
-	getUserAndColor,
-	getItemType
+	getUserAndColor
 } from './utils';
+import {getItemInfo} from './api';
 
 const featureList = [
 	list_hn_polls_separately,
 	key_bindings_on_items,
 	comments_ui_tweaks,
+	highlight_unread_comments,
 	more_accessible_favorite,
 	load_more_links_in_navbar,
 	click_comment_indent_to_toggle,
@@ -98,7 +100,10 @@ const getMetadata = new Promise(async resolve => {
 	metadata.item.isItem = metadata.path === '/item';
 	if (metadata.item.isItem) {
 		metadata.item.id = getUrlParams('id');
-		metadata.item.type = await getItemType(metadata.item.id);
+		metadata.item = {
+			...metadata.item,
+			...await getItemInfo(metadata.item.id)
+		}
 	}
 
 	resolve(metadata);
