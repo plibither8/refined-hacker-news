@@ -2,10 +2,7 @@ import {getAllComments} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
 async function init(metadata) {
-	// browser.storage.local.clear();
 	const readCommentsList = (await browser.storage.local.get('readComments')).readComments || {};
-
-	console.log(readCommentsList)
 
 	const currentMilliseconds = new Date().getTime();
 	for (const [id, itemObj] of Object.entries(readCommentsList)) {
@@ -21,42 +18,32 @@ async function init(metadata) {
 		return false;
 	}
 
-	switch (metadata.path) {
-		case '/item': {
-			const itemId = metadata.item.id.toString();
-			if (!itemId) {
-				return false;
-			}
-
-			const currentComments = [];
-			[...getAllComments()].map(comment => currentComments.push(comment.id));
-
-			const itemData = readCommentsList[itemId] || {};
-			const readComments = itemData.comments || [];
-			if (readComments.length > 0) {
-				const newComments = currentComments.filter(id => !readComments.includes(id));
-				console.log(newComments)
-				for (const comment of newComments) {
-					const commentElement = document.getElementById(comment);
-					commentElement.querySelector('td.ind').classList.add('__rhn__new-comment-indent');
-				}
-			}
-
-			readCommentsList[itemId] = {
-				expiry: itemData.expiry || (new Date()).getTime() + 259200000, // 3 days: 3*24*60*60*1000,
-				comments: [...new Set([...currentComments, ...readComments])] // remove duplication
-			}
-			browser.storage.local.set({readComments: readCommentsList});
-
-			break;
-		}
-
-		case '/threads': {
-			break;
-		}
-
-		default: break;
+	const itemId = metadata.item.id.toString();
+	if (!itemId) {
+		return false;
 	}
+
+	const currentComments = [];
+	[...getAllComments()].map(comment => currentComments.push(comment.id));
+
+	const itemData = readCommentsList[itemId] || {};
+	const readComments = itemData.comments || [];
+
+	if (readComments.length > 0) {
+		const newComments = currentComments.filter(id => !readComments.includes(id));
+
+		for (const comment of newComments) {
+			const commentElement = document.getElementById(comment);
+			commentElement.querySelector('td.ind').classList.add('__rhn__new-comment-indent');
+		}
+	}
+
+	readCommentsList[itemId] = {
+		expiry: itemData.expiry || (new Date()).getTime() + 259200000, // 3 days: 3*24*60*60*1000,
+		comments: [...new Set([...currentComments, ...readComments])] // remove duplication
+	}
+
+	browser.storage.local.set({readComments: readCommentsList});
 
 	return true;
 }
@@ -64,7 +51,7 @@ async function init(metadata) {
 const details = {
 	id: 'highlight-unread-comments',
 	pages: {
-		include: paths.comments,
+		include: ['/item'],
 		exclude: []
 	},
 	loginRequired: false,
