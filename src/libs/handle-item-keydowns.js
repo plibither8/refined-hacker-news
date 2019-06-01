@@ -3,6 +3,11 @@ import parseReferenceLinks from './parse-reference-links';
 
 const focusClass = '__rhn__focussed-item';
 
+function activateItem(itemData) {
+	itemData.activeItem = itemData.items[itemData.index];
+	itemData.activeItem.classList.add(focusClass);
+}
+
 function getCommentIndentation(element) {
 	const parent = element.parentElement;
 	const indentation = parent.querySelector('.ind img').width / 40;
@@ -41,8 +46,7 @@ const universal = {
 	// Move down
 	down(itemData, event) {
 		if (itemData.index === itemData.items.length - 1) {
-			itemData.activeItem = itemData.items[itemData.index];
-			itemData.activeItem.classList.add(focusClass);
+			activateItem(itemData);
 			return;
 		}
 
@@ -56,8 +60,7 @@ const universal = {
 			}
 		}
 
-		itemData.activeItem = itemData.items[itemData.index];
-		itemData.activeItem.classList.add(focusClass);
+		activateItem(itemData);
 
 		if (!elementInScrollView(itemData.activeItem)) {
 			itemData.activeItem.scrollIntoView(true);
@@ -81,8 +84,7 @@ const universal = {
 			}
 		}
 
-		itemData.activeItem = itemData.items[itemData.index];
-		itemData.activeItem.classList.add(focusClass);
+		activateItem(itemData);
 
 		if (!elementInScrollView(itemData.activeItem)) {
 			itemData.activeItem.scrollIntoView(true);
