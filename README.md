@@ -44,6 +44,7 @@ pages: {
 - [x] `comments-ui-tweaks`
 - [x] `fetch-submission-title-from-url`
 - [x] `hide-read-stories`
+- [x] `highlight-unread-comments`
 - [x] `input-field-tweaks`
 - [x] `key-bindings-on-input-fields`
 - [x] `key-bindings-on-items`
