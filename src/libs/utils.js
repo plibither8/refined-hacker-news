@@ -59,15 +59,6 @@ export function getUrlParams(param, url) {
 	return param ? params.get(param) : params;
 }
 
-export function getItemType(id) {
-	return new Promise(async resolve => {
-		id = id || getUrlParams('id');
-		const details = await getItemInfo(id);
-
-		resolve(details.type);
-	});
-}
-
 export function optionsBarEnabledOptions(metadata) {
 	const enabledOptions = [];
 	metadata.logSkip = false;
