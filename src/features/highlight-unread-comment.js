@@ -14,6 +14,13 @@ async function init(metadata) {
 		}
 	}
 
+	// If the item is so old that one cannot reply anymore
+	// there is no point in storing comments
+	const replyForm = document.querySelector('table.fatitem form');
+	if (!replyForm) {
+		return false;
+	}
+
 	switch (metadata.path) {
 		case '/item': {
 			const itemId = metadata.item.id.toString();
