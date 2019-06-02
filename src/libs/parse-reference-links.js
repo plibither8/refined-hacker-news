@@ -18,7 +18,7 @@ export default function (activeItem) {
 	// This expression had been made by observing the general
 	// pattern and syntax of numbered reference links seen on HN.
 	// If this can be refined further, it would be great :)
-	const indexMarkerRegex = /^\[?(?<index>\d)[\]:.]?[:.]?$/;
+	const indexMarkerRegex = /^\[?((\d))[\]:.]?[:.]?$/;
 
 	for (const child of children) {
 		// Here we are making sure that the child contains an anchor element to
@@ -37,7 +37,7 @@ export default function (activeItem) {
 			continue;
 		}
 
-		const index = Number(matches.groups.index);
+		const index = Number(matches[1]);
 
 		links.push({
 			index,

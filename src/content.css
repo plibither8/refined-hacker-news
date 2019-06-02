@@ -54,6 +54,7 @@
 	display: flex;
 	font-size: 13px;
 	color: #000;
+	align-items: center;
 }
 
 .__rhn__options-bar label {
@@ -64,7 +65,8 @@
 .__rhn__options-bar input[type='number'] {
 	margin-right: 5px;
 	padding: 0;
-	width: 4ch;
+	width: 5ch;
+	-moz-appearance: none;
 }
 
 .__rhn__options-bar form {

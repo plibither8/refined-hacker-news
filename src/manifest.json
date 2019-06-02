@@ -10,6 +10,7 @@
 		"history",
 		"tabs",
 		"*://news.ycombinator.com/*",
+		"*://hacker-news.firebaseio.com/v0/*",
 		"*://textance.herokuapp.com/*",
 		"*://hn.algolia.com/*"
 	],
@@ -25,13 +26,13 @@
 			"browser-polyfill.min.js",
 			"background.js"
 		],
-		"persistent": false
+		"persistent": true
 	},
 	"content_scripts": [
 		{
 			"run_at": "document_end",
 			"matches": [
-				"https://news.ycombinator.com/*"
+				"*://news.ycombinator.com/*"
 			],
 			"css": [
 				"content.css"
@@ -44,5 +45,10 @@
 	],
 	"web_accessible_resources": [
 		"loader.gif"
-	]
+	],
+	"applications": {
+		"gecko": {
+			"id": "refinedhackernews@mihir.ch"
+		}
+	}
 }

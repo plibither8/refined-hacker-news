@@ -2,6 +2,7 @@ body {
 	margin: 0;
 	border: 5px solid #ff6000;
 	min-width: 430px;
+	max-width: 450px;
 	background: #f6f6ef;
 }
 

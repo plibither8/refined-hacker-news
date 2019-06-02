@@ -105,7 +105,7 @@ function init(metadata) {
 	handleInterval(input, metadata.options, enabledOptions);
 
 	input.addEventListener('input', () => {
-		input.style.width = (input.value.length + 3) + 'ch';
+		input.style.width = (input.value.length + 4) + 'ch';
 	});
 
 	form.addEventListener('change', () => {
