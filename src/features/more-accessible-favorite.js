@@ -61,10 +61,9 @@ async function commentsFavoriteLinks(user) {
 		headSpan.insertBefore(faveLink, toggleBtn);
 	}
 
-	const alreadyFaveComments = [];
 	const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user);
-	const remoteComments = page.querySelectorAll('table.itemlist > tbody > tr.athing');
-	[...remoteComments].map(story => alreadyFaveComments.push(story.id));
+	const alreadyFaveComments = [...page.querySelectorAll('table.itemlist > tbody > tr.athing')]
+									.map(story => story.id);
 
 	for (const comment of comments) {
 		const {id} = comment;
@@ -177,9 +176,9 @@ async function init(metadata) {
 	await defaultFavoriteLinks();
 
 	if (paths.comments.includes(path)) {
-		await commentsFavoriteLinks(metadata);
+		await commentsFavoriteLinks(metadata.user);
 	} else if (paths.stories.includes(path)) {
-		await storiesFavoriteLinks(metadata);
+		await storiesFavoriteLinks(metadata.user);
 	}
 
 	return true;
