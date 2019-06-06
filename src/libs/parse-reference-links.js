@@ -30,8 +30,9 @@ export default function (activeItem) {
 
 		// The first word of the first text node of the <p> tag aftering trimming
 		// trailing whitespace.
-		const textFirstWord = child.childNodes[0].textContent.trim().split(' ')[0];
-		const matches = textFirstWord.match(indexMarkerRegex);
+		const splitText = child.childNodes[0].textContent.trim().split(' ');
+		const stringToMatch = ['-', '*'].includes(splitText[0]) && splitText[1] ? splitText[1] : splitText[0];
+		const matches = stringToMatch.match(indexMarkerRegex);
 
 		if (!matches) {
 			continue;
