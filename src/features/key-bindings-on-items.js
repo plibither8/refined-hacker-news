@@ -40,7 +40,7 @@ function init(metadata) {
 	};
 
 	window.addEventListener('keydown', event => {
-		if (document.activeElement.tagName !== 'BODY') {
+		if (document.activeElement.tagName !== 'BODY' && document.activeElement.tagName !== 'A') {
 			return;
 		}
 
@@ -243,14 +243,6 @@ function init(metadata) {
 
 				default: break;
 			}
-		}
-	});
-
-	// If there has been a click, de-activate the active item
-	window.addEventListener('click', () => {
-		if (itemData.activeItem) {
-			itemData.activeItem.classList.remove(focusClass);
-			itemData.activeItem = undefined;
 		}
 	});
 
