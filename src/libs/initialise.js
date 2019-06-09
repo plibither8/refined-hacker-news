@@ -1,7 +1,5 @@
 /* eslint-disable camelcase */
 
-import OptionsSync from 'webext-options-sync';
-
 // All features, imported in alphabetical order
 import auto_refresh from '../features/auto-refresh';
 import change_dead_comments_color from '../features/change-dead-comments-color';
@@ -90,12 +88,10 @@ const getMetadata = new Promise(async resolve => {
 	const {username, topcolor} = await getUserAndColor;
 
 	metadata.user = username;
-	metadata.options = {
-		...await getOptions,
-		topcolor
-	};
+	metadata.topcolor = topcolor;
+	metadata.options = await getOptions;
 
-	new OptionsSync({logging: false}).setAll(metadata.options);
+	await browser.storage.sync.set({topcolor});
 
 	metadata.item.isItem = metadata.path === '/item';
 	if (metadata.item.isItem) {
@@ -104,10 +100,11 @@ const getMetadata = new Promise(async resolve => {
 			metadata.item = {
 				...metadata.item,
 				...getItemInfo(metadata.item.id)
-			}
+			};
 		}
 	}
 
+	console.log(typeof metadata.item.id);
 	resolve(metadata);
 });
 

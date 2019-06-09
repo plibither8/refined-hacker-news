@@ -17,8 +17,5 @@ export default {
 	// Options bar:
 	autoRefreshEnabled: false,
 	autoRefreshValue: 0,
-	hideReadStories: false,
-
-	// Miscellaneous:
-	topcolor: '#ff6000'
+	hideReadStories: false
 };

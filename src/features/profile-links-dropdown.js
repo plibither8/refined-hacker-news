@@ -1,6 +1,6 @@
 import {paths} from '../libs/paths';
 
-function init(metadata) {
+async function init(metadata) {
 	const {user} = metadata;
 
 	const links = [
@@ -49,7 +49,7 @@ function init(metadata) {
 	userLink.innerHTML += ' ▾';
 
 	dropdownEl.classList.add('__rhn__no-display', '__rhn__profile-dropdown');
-	dropdownEl.style.background = metadata.options.topcolor;
+	dropdownEl.style.background = metadata.topcolor;
 	let state = 0;
 
 	for (const link of links) {
