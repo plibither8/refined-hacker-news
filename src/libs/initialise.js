@@ -100,9 +100,11 @@ const getMetadata = new Promise(async resolve => {
 	metadata.item.isItem = metadata.path === '/item';
 	if (metadata.item.isItem) {
 		metadata.item.id = getUrlParams('id');
-		metadata.item = {
-			...metadata.item,
-			...await getItemInfo(metadata.item.id)
+		if (metadata.item.id) {
+			metadata.item = {
+				...metadata.item,
+				...getItemInfo(metadata.item.id)
+			}
 		}
 	}
 
