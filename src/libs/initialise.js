@@ -104,7 +104,6 @@ const getMetadata = new Promise(async resolve => {
 		}
 	}
 
-	console.log(typeof metadata.item.id);
 	resolve(metadata);
 });
 
