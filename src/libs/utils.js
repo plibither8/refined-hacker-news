@@ -8,7 +8,6 @@ import sortStories from '../features/sort-stories';
 import hideReadStories from '../features/hide-read-stories';
 import autoRefresh from '../features/auto-refresh';
 
-import {getItemInfo} from './api';
 import defaultConfigs from './default-configs';
 import features from './features';
 

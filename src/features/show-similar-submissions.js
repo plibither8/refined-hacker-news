@@ -16,7 +16,7 @@ function getSimilarSubmissions(storyLink, metadata) {
 		}
 
 		for (const result of rawResults) {
-			if (result.objectID == metadata.item.id) {
+			if (result.objectID.toString() === metadata.item.id) {
 				continue;
 			}
 

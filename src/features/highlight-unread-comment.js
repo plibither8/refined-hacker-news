@@ -1,5 +1,4 @@
 import {getAllComments} from '../libs/dom-utils';
-import {paths} from '../libs/paths';
 
 async function init(metadata) {
 	const readCommentsList = (await browser.storage.sync.get('readComments')).readComments || {};
@@ -33,15 +32,15 @@ async function init(metadata) {
 		const newComments = currentComments.filter(id => !readComments.includes(id));
 
 		for (const comment of newComments) {
-			const commentElement = document.getElementById(comment);
+			const commentElement = document.querySelector('#' + comment);
 			commentElement.querySelector('td.ind').classList.add('__rhn__new-comment-indent');
 		}
 	}
 
 	readCommentsList[itemId] = {
 		expiry: itemData.expiry || (new Date()).getTime() + 259200000, // 3 days: 3*24*60*60*1000,
-		comments: [...new Set([...currentComments, ...readComments])] // remove duplication
-	}
+		comments: [...new Set([...currentComments, ...readComments])] // Remove duplication
+	};
 
 	browser.storage.sync.set({readComments: readCommentsList});
 

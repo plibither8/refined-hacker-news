@@ -63,7 +63,7 @@ async function commentsFavoriteLinks(user) {
 
 	const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user);
 	const alreadyFaveComments = [...page.querySelectorAll('table.itemlist > tbody > tr.athing')]
-									.map(story => story.id);
+		.map(story => story.id);
 
 	for (const comment of comments) {
 		const {id} = comment;
