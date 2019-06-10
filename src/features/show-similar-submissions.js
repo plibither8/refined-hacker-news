@@ -16,7 +16,8 @@ function getSimilarSubmissions(storyLink, metadata) {
 		}
 
 		for (const result of rawResults) {
-			if (result.objectID.toString() === metadata.item.id) {
+			// eslint-disable-next-line eqeqeq
+			if (result.objectID == metadata.item.id) {
 				continue;
 			}
 

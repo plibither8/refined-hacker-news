@@ -4,7 +4,6 @@ import {getUrlParams} from '../libs/utils';
 
 function init(metadata) {
 	const {options, path} = metadata;
-	const focusClass = '__rhn__focussed-item';
 
 	const isCommentList = paths.comments.includes(path);
 

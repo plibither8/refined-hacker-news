@@ -97,9 +97,10 @@ const getMetadata = new Promise(async resolve => {
 	if (metadata.item.isItem) {
 		metadata.item.id = getUrlParams('id');
 		if (metadata.item.id) {
+			const itemData = await getItemInfo(metadata.item.id);
 			metadata.item = {
 				...metadata.item,
-				...await getItemInfo(metadata.item.id)
+				...itemData
 			};
 		}
 	}
