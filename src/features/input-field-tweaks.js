@@ -14,30 +14,42 @@ function watchTextareas() {
 	newReplyTextareasObserver(event => {
 		fitTextarea.watch(event.target);
 	});
+
+	return true;
 }
 
 // Dynamically increase / decrease title field length
 function dynamicallyChangeWidth(path) {
 	if (['/reply', '/user', ...paths.comments].includes(path)) {
-		return;
+		return false;
 	}
 
 	const titleInput = document.querySelector('input[name="title"]');
+	if (!titleInput) {
+		return false;
+	}
+
 	titleInput.style.width = '49ch';
 
 	titleInput.addEventListener('input', () => {
 		const {length} = titleInput.value;
 		titleInput.style.width = length < 49 ? '49ch' : (length + 1) + 'ch';
 	});
+
+	return true;
 }
 
 // Show characters remaining beside title field
 function charactersRemainging(path) {
 	if (['/reply', '/newpoll', '/user', ...paths.comments].includes(path)) {
-		return;
+		return false;
 	}
 
 	const titleInput = document.querySelector('input[name="title"]');
+	if (!titleInput) {
+		return false;
+	}
+
 	const titleLengthLimit = 80;
 
 	const span = document.createElement('span');
@@ -52,14 +64,14 @@ function charactersRemainging(path) {
 			`${titleLengthLimit - length} remaining` :
 			'';
 	});
+
+	return true;
 }
 
 function init(metadata) {
-	watchTextareas();
-	dynamicallyChangeWidth(metadata.path);
-	charactersRemainging(metadata.path);
-
-	return true;
+	return watchTextareas() ||
+		dynamicallyChangeWidth(metadata.path) ||
+		charactersRemainging(metadata.path);
 }
 
 const details = {

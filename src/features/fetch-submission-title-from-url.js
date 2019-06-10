@@ -1,4 +1,4 @@
-import {createSiblingLoader} from "../libs/dom-utils";
+import {createSiblingLoader} from '../libs/dom-utils';
 
 async function fetchTitle() {
 	const apiUrl = 'https://textance.herokuapp.com/title/';
