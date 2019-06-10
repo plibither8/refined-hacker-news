@@ -1,5 +1,5 @@
 import {getPageDom} from '../libs/utils';
-import {getAllComments} from '../libs/dom-utils';
+import {getAllComments, createSiblingLoader} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
 function init(metadata) {
@@ -53,10 +53,9 @@ function init(metadata) {
 						ACTIVE_DATA.button = undefined;
 					}
 				} else {
+					const loader = createSiblingLoader(button, 'height:9px;margin-left:5px;');
 					const page = await getPageDom(button.href);
-					if (!page) {
-						return false;
-					}
+					loader.remove();
 
 					const form = page.querySelector('form');
 					form.classList.add('__rhn__injected-form');

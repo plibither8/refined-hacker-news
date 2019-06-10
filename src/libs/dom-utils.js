@@ -115,3 +115,12 @@ export function newReplyTextareasObserver(callback) {
 		observer.observe(mainTable, observerConfig);
 	}
 }
+
+export function createSiblingLoader(element, customStyle) {
+	const loader = document.createElement('img');
+	loader.src = browser.extension.getURL('loader.gif');
+	loader.style = customStyle;
+	element.parentElement.insertBefore(loader, element.nextSibling);
+
+	return loader;
+}

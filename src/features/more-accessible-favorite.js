@@ -1,15 +1,11 @@
 import {getAuthString, getPageDom, getUrlParams} from '../libs/utils';
-import {getAllComments} from '../libs/dom-utils';
+import {getAllComments, createSiblingLoader} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
-function createLoader(faveLink) {
-	const loader = document.createElement('img');
-	loader.src = browser.extension.getURL('loader.gif');
-	loader.style = 'height: 9px;margin-left: 5px;';
-	faveLink.parentElement.insertBefore(loader, faveLink.nextSibling);
-
-	return loader;
-}
+const loaderCustomStyle = `
+	height: 9px;
+	margin-left: 5px;
+`;
 
 async function defaultFavoriteLinks() {
 	// Query all faveLinks that are, by default, present on the page
@@ -33,7 +29,7 @@ async function defaultFavoriteLinks() {
 
 			ongoingFavorite = true;
 
-			const loader = createLoader(faveLink);
+			const loader = createSiblingLoader(faveLink, loaderCustomStyle);
 			await fetch(faveLink.href).then(() => loader.remove());
 
 			unfave = !unfave;
@@ -90,7 +86,7 @@ async function commentsFavoriteLinks(user) {
 
 			ongoingFavorite = true;
 
-			const loader = createLoader(faveLink);
+			const loader = createSiblingLoader(faveLink, loaderCustomStyle);
 
 			const auth = await getAuthString(id);
 			const url = `https://news.ycombinator.com/fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
@@ -158,7 +154,7 @@ async function storiesFavoriteLinks(user) {
 
 			ongoingFavorite = true;
 
-			const loader = createLoader(faveLink);
+			const loader = createSiblingLoader(faveLink, loaderCustomStyle);
 			await fetch(faveLink.href).then(() => loader.remove());
 
 			unfave = !unfave;
