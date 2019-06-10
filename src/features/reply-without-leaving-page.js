@@ -2,7 +2,14 @@ import {getPageDom} from '../libs/utils';
 import {getAllComments} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
-function init() {
+function init(metadata) {
+	if (metadata.path === '/item') {
+		const replyForm = document.querySelector('table.fatitem form');
+		if (!replyForm) {
+			return false;
+		}
+	}
+
 	const comments = getAllComments();
 	for (const comment of comments) {
 		comment.dataset.rhnFormInjected = '0';
