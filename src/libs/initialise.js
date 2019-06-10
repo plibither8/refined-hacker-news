@@ -99,7 +99,7 @@ const getMetadata = new Promise(async resolve => {
 		if (metadata.item.id) {
 			metadata.item = {
 				...metadata.item,
-				...getItemInfo(metadata.item.id)
+				...await getItemInfo(metadata.item.id)
 			};
 		}
 	}
