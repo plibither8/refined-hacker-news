@@ -8,65 +8,77 @@ This is a small browser that tweaks a few stuff on Hacker News to make the exper
 
 Inspired by [Sindre Sorhus](https://github.com/sindresorhus)'s extension [Refined GitHub](https://github.com/sindresorhus/refined-github).
 
-## To-do
+## Features
 
-### Extension
+### [`auto-refresh`](src/features/auto-refresh)
 
-- [x] Options
+Refresh the news feed periodically, after a set interval (in seconds), without refreshing the entire page.
 
-### Code
+<img src="assets/demo-gifs/auto-refresh.gif" title="auto-refresh" width=500>
 
-- [x] When features are "add"ed, the details object containing information about the feature should include a check whether to see if being logged in is required to access the feature. This will help in removing extra checks from all features. Something like: `login_required: true`
+### [`change-dead-comments-color`](src/features/change-dead-comments-color)
 
-- [x] In the feaure details, make it something like:
+If "showdead" has been enabled in your profile settings, the color of dead comments will be light-red (`#d89899`) instead of the barely visible light grey.
 
-```js
-...
-pages: {
-    include: [...],
-    exclude: [...]
-}
-...
-```
+### [`click-comment-indent-to-toggle`](src/features/click-comment-indent-to-toggle)
 
-### Features
+Click the indented area to the left of the comment to quickly toggle it.
 
-#### Left
+<img src="assets/demo-gifs/click-comment-indent-to-toggle.gif" title="click-comment-indent-to-toggle" width=500>
 
-*Nothing :)*
+### [`click-rank-to-vote-unvote`](src/features/click-rank-to-vote-unvote)
 
-#### Done
+Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-vote an item.
 
-- [x] `auto-refresh`
-- [x] `change-dead-comments-color`
-- [x] `click-comment-indent-to-toggle`
-- [x] `click-rank-to-vote-unvote`
-- [x] `comments-ui-tweaks`
-- [x] `fetch-submission-title-from-url`
-- [x] `hide-read-stories`
-- [x] `highlight-unread-comments`
-- [x] `input-field-tweaks`
-- [x] `key-bindings-on-input-fields`
-- [x] `key-bindings-on-items`
-- [x] `linkify-user-about`
-- [x] `list-hn-polls-separately`
-- [x] `load-more-links-in-navbar`
-- [x] `more-accessible-favorite`
-- [x] `on-link-focus-comment`
-- [x] `open-story-links-in-new-tab`
-- [x] `past-choose-date`
-- [x] `prefill-submit-title`
-- [x] `preview-and-set-top-bar-color`
-- [x] `profile-links-dropdown`
-- [x] `reply-without-leaving-page`
-- [x] `show-item-info-on-hover`
-- [x] `show-similar-submissions`
-- [x] `show-top-leaders-karma`
-- [x] `show-user-info-on-hover`
-- [x] `sort-stories`
-- [x] `toggle-all-comments-and-replies`
+### [`comments-ui-tweaks`](src/features/comments-ui-tweaks)
 
-#### Abandoned
+### [`fetch-submission-title-from-url`](src/features/fetch-submission-title-from-url)
+
+### [`hide-read-stories`](src/features/hide-read-stories)
+
+### [`highlight-unread-comments`](src/features/highlight-unread-comments)
+
+### [`input-field-tweaks`](src/features/input-field-tweaks)
+
+### [`key-bindings-on-input-fields`](src/features/key-bindings-on-input-fields)
+
+### [`key-bindings-on-items`](src/features/key-bindings-on-items)
+
+### [`linkify-user-about`](src/features/linkify-user-about)
+
+### [`list-hn-polls-separately`](src/features/list-hn-polls-separately)
+
+### [`load-more-links-in-navbar`](src/features/load-more-links-in-navbar)
+
+### [`more-accessible-favorite`](src/features/more-accessible-favorite)
+
+### [`on-link-focus-comment`](src/features/on-link-focus-comment)
+
+### [`open-story-links-in-new-tab`](src/features/open-story-links-in-new-tab)
+
+### [`past-choose-date`](src/features/past-choose-date)
+
+### [`prefill-submit-title`](src/features/prefill-submit-title)
+
+### [`preview-and-set-top-bar-color`](src/features/preview-and-set-top-bar-color)
+
+### [`profile-links-dropdown`](src/features/profile-links-dropdown)
+
+### [`reply-without-leaving-page`](src/features/reply-without-leaving-page)
+
+### [`show-item-info-on-hover`](src/features/show-item-info-on-hover)
+
+### [`show-similar-submissions`](src/features/show-similar-submissions)
+
+### [`show-top-leaders-karma`](src/features/show-top-leaders-karma)
+
+### [`show-user-info-on-hover`](src/features/show-user-info-on-hover)
+
+### [`sort-stories`](src/features/sort-stories)
+
+### [`toggle-all-comments-and-replies`](src/features/toggle-all-comments-and-replies)
+
+### Abandoned
 
 - `blur-story-scores`
 - `custom-font-face`
