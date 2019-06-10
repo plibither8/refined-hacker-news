@@ -32,7 +32,8 @@ async function init(metadata) {
 		const newComments = currentComments.filter(id => !readComments.includes(id));
 
 		for (const comment of newComments) {
-			const commentElement = document.querySelector('#' + comment);
+			// eslint-disable-next-line unicorn/prefer-query-selector
+			const commentElement = document.getElementById(comment);
 			commentElement.querySelector('td.ind').classList.add('__rhn__new-comment-indent');
 		}
 	}
