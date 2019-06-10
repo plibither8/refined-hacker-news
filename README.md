@@ -5,11 +5,80 @@
 
 > ✨ Browser extension that adds useful features and tweaks a few stuff on [Hacker News](https://news.ycombinator.com) to make the experience better... without changing the look and feel.
 
-The minimalist design of Hacker News is best at offering news the way we like it. Yet there are a few small interface tweaks and additional features that can drastically improve our experience while browsing through items and comments.
+The minimalist design of Hacker News is best at offering news the way we like it. Yet there are a few small interface tweaks and additional features that can drastically improve our experience while browsing through items and comments which this extension implements.
 
 Hopefully, in due course, a few of these tweaks can be implemented by Hacker News themselves. You can help too by emailing [hn@ycombinator.com](mailto:hn@ycombinator.com)!
 
 *Inspired by [Sindre Sorhus](https://github.com/sindresorhus)'s extension [Refined GitHub](https://github.com/sindresorhus/refined-github).*
+
+## Install
+
+- [**Chrome** extension][link-cws] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/.svg?label=%20">][link-cws]
+- [**Firefox** add-on][link-amo] [<img valign="middle" src="https://img.shields.io/amo/v/.svg?label=%20">][link-amo]
+- **Opera** extension: Use [this Opera extension](https://addons.opera.com/en/extensions/details/download-chrome-extension-9/) to install the Chrome version.
+
+## Highlights
+
+
+<table>
+	<tr>
+		<th width="50%">
+			Reply to comments without leaving page
+		</th>
+		<th width="50%">
+			Navigate through items and comments using your keyboard
+		</th>
+	</tr>
+	<tr><!-- Prevent zebra stripes --></tr>
+	<tr>
+		<td>
+			<center><img src="assets/demos/reply-same-page.gif"></center>
+		</td>
+		<td>
+			<center><img src="assets/demos/keyboard-nav.gif"></center>
+		</td>
+	</tr>
+</table>
+
+<table>
+	<tr>
+		<th width="50%">
+			Easily <i>favorite</i> items and comments
+		</th>
+		<th width="50%">
+			Hide and sort stories, and auto-refresh the page from the options bar
+		</th>
+	</tr>
+	<tr><!-- Prevent zebra stripes --></tr>
+	<tr>
+		<td>
+			<center><img src="assets/demos/favorite.gif"></center>
+		</td>
+		<td>
+			<center><img src="assets/demos/options-bar.gif"></center>
+		</td>
+	</tr>
+</table>
+
+<table>
+	<tr>
+		<th width="50%">
+			Show user or item information when hovering over the links
+		</th>
+		<th width="50%">
+			Highlight new, unread comments from previous visits
+		</th>
+	</tr>
+	<tr><!-- Prevent zebra stripes --></tr>
+	<tr>
+		<td>
+			<center><img src="assets/demos/user-item-hover.gif"></center>
+		</td>
+		<td>
+			<center><img src="assets/demos/highlight-unread-comments.png"></center>
+		</td>
+	</tr>
+</table>
 
 ## Features
 
