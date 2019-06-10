@@ -22,11 +22,6 @@ function init(metadata) {
 		return itemList;
 	}
 
-	function activateItem(itemData) {
-		itemData.activeItem = itemData.items[itemData.index];
-		itemData.activeItem.classList.add(focusClass);
-	}
-
 	function comboKeyCheck(event) {
 		return event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
 	}
@@ -123,7 +118,6 @@ function init(metadata) {
 					}
 
 					keydown.comment.reply(itemData.activeItem);
-					activateItem(itemData);
 
 					return;
 
@@ -134,7 +128,6 @@ function init(metadata) {
 					}
 
 					keydown.comment.favorite(itemData.activeItem);
-					activateItem(itemData);
 
 					return;
 
@@ -145,7 +138,6 @@ function init(metadata) {
 					}
 
 					keydown.comment.vote(itemData.activeItem);
-					activateItem(itemData);
 
 					return;
 
@@ -177,7 +169,6 @@ function init(metadata) {
 					}
 
 					keydown.story.open(itemData.activeItem, event);
-					activateItem(itemData);
 
 					return;
 
@@ -188,7 +179,6 @@ function init(metadata) {
 					}
 
 					keydown.story.vote(itemData.activeItem, next);
-					activateItem(itemData);
 
 					return;
 
@@ -212,7 +202,6 @@ function init(metadata) {
 					}
 
 					keydown.story.favorite(next);
-					activateItem(itemData);
 
 					return;
 
@@ -224,7 +213,6 @@ function init(metadata) {
 					}
 
 					keydown.story.flag(next);
-					activateItem(itemData);
 
 					return;
 
@@ -236,7 +224,6 @@ function init(metadata) {
 					}
 
 					keydown.story.comments(next, event);
-					activateItem(itemData);
 
 					break;
 
