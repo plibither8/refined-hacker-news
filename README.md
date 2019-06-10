@@ -13,7 +13,7 @@ Inspired by [Sindre Sorhus](https://github.com/sindresorhus)'s extension [Refine
 <details>
 
 <summary>
-	<strong><code><a href="src/features/auto-refresh.js">auto-refresh</a></code></strong>
+	<strong><code>auto-refresh</code></strong><a href="src/features/auto-refresh.js"> 📁</a>
 </summary>
 
 Refresh the news feed periodically, after a set interval (in seconds), without refreshing the entire page.
@@ -25,7 +25,7 @@ Refresh the news feed periodically, after a set interval (in seconds), without r
 <details>
 
 <summary>
-	<strong><code><a href="src/features/change-dead-comments-color.js">change-dead-comments-color</a></code></strong>
+	<strong><code>change-dead-comments-color</code></strong><a href="src/features/change-dead-comments-color.js"> 📁</a>
 </summary>
 
 If "showdead" has been enabled in your profile settings, the color of dead comments will be light-red (`#d89899`) instead of the barely visible light grey.
@@ -35,7 +35,7 @@ If "showdead" has been enabled in your profile settings, the color of dead comme
 <details>
 
 <summary>
-	<strong><code><a href="src/features/click-comment-indent-to-toggle.js">click-comment-indent-to-toggle</a></code></strong>
+	<strong><code>click-comment-indent-to-toggle</code></strong><a href="src/features/click-comment-indent-to-toggle.js"> 📁</a>
 </summary>
 
 Click the indented area to the left of the comment to quickly toggle it.
@@ -47,7 +47,7 @@ Click the indented area to the left of the comment to quickly toggle it.
 <details>
 
 <summary>
-	<strong><code><a href="src/features/click-rank-to-vote-unvote.js">click-rank-to-vote-unvote</a></code></strong>
+	<strong><code>click-rank-to-vote-unvote</code></strong><a href="src/features/click-rank-to-vote-unvote.js"> 📁</a>
 </summary>
 
 Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-vote an item.
@@ -57,7 +57,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/comments-ui-tweaks.js">comments-ui-tweaks</a></code></strong>
+	<strong><code>comments-ui-tweaks</code></strong><a href="src/features/comments-ui-tweaks.js"> 📁</a>
 </summary>
 
 </details>
@@ -65,7 +65,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/fetch-submission-title-from-url.js">fetch-submission-title-from-url</a></code></strong>
+	<strong><code>fetch-submission-title-from-url</code></strong><a href="src/features/fetch-submission-title-from-url.js"> 📁</a>
 </summary>
 
 </details>
@@ -73,7 +73,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/hide-read-stories.js">hide-read-stories</a></code></strong>
+	<strong><code>hide-read-stories</code></strong><a href="src/features/hide-read-stories.js"> 📁</a>
 </summary>
 
 </details>
@@ -81,7 +81,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/highlight-unread-comments.js">highlight-unread-comments</a></code></strong>
+	<strong><code>highlight-unread-comments</code></strong><a href="src/features/highlight-unread-comments.js"> 📁</a>
 </summary>
 
 </details>
@@ -89,7 +89,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/input-field-tweaks.js">input-field-tweaks</a></code></strong>
+	<strong><code>input-field-tweaks</code></strong><a href="src/features/input-field-tweaks.js"> 📁</a>
 </summary>
 
 </details>
@@ -97,7 +97,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/key-bindings-on-input-fields.js">key-bindings-on-input-fields</a></code></strong>
+	<strong><code>key-bindings-on-input-fields</code></strong><a href="src/features/key-bindings-on-input-fields.js"> 📁</a>
 </summary>
 
 </details>
@@ -105,7 +105,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/key-bindings-on-items.js">key-bindings-on-items</a></code></strong>
+	<strong><code>key-bindings-on-items</code></strong><a href="src/features/key-bindings-on-items.js"> 📁</a>
 </summary>
 
 </details>
@@ -113,7 +113,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/linkify-user-about.js">linkify-user-about</a></code></strong>
+	<strong><code>linkify-user-about</code></strong><a href="src/features/linkify-user-about.js"> 📁</a>
 </summary>
 
 </details>
@@ -121,7 +121,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/list-hn-polls-separately.js">list-hn-polls-separately</a></code></strong>
+	<strong><code>list-hn-polls-separately</code></strong><a href="src/features/list-hn-polls-separately.js"> 📁</a>
 </summary>
 
 </details>
@@ -129,7 +129,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/load-more-links-in-navbar.js">load-more-links-in-navbar</a></code></strong>
+	<strong><code>load-more-links-in-navbar</code></strong><a href="src/features/load-more-links-in-navbar.js"> 📁</a>
 </summary>
 
 </details>
@@ -137,7 +137,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/more-accessible-favorite.js">more-accessible-favorite</a></code></strong>
+	<strong><code>more-accessible-favorite</code></strong><a href="src/features/more-accessible-favorite.js"> 📁</a>
 </summary>
 
 </details>
@@ -145,7 +145,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/on-link-focus-comment.js">on-link-focus-comment</a></code></strong>
+	<strong><code>on-link-focus-comment</code></strong><a href="src/features/on-link-focus-comment.js"> 📁</a>
 </summary>
 
 </details>
@@ -153,7 +153,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/open-story-links-in-new-tab.js">open-story-links-in-new-tab</a></code></strong>
+	<strong><code>open-story-links-in-new-tab</code></strong><a href="src/features/open-story-links-in-new-tab.js"> 📁</a>
 </summary>
 
 </details>
@@ -161,7 +161,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/past-choose-date.js">past-choose-date</a></code></strong>
+	<strong><code>past-choose-date</code></strong><a href="src/features/past-choose-date.js"> 📁</a>
 </summary>
 
 </details>
@@ -169,7 +169,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/prefill-submit-title.js">prefill-submit-title</a></code></strong>
+	<strong><code>prefill-submit-title</code></strong><a href="src/features/prefill-submit-title.js"> 📁</a>
 </summary>
 
 </details>
@@ -177,7 +177,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/preview-and-set-top-bar-color.js">preview-and-set-top-bar-color</a></code></strong>
+	<strong><code>preview-and-set-top-bar-color</code></strong><a href="src/features/preview-and-set-top-bar-color.js"> 📁</a>
 </summary>
 
 </details>
@@ -185,7 +185,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/profile-links-dropdown.js">profile-links-dropdown</a></code></strong>
+	<strong><code>profile-links-dropdown</code></strong><a href="src/features/profile-links-dropdown.js"> 📁</a>
 </summary>
 
 </details>
@@ -193,7 +193,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/reply-without-leaving-page.js">reply-without-leaving-page</a></code></strong>
+	<strong><code>reply-without-leaving-page</code></strong><a href="src/features/reply-without-leaving-page.js"> 📁</a>
 </summary>
 
 </details>
@@ -201,7 +201,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/show-item-info-on-hover.js">show-item-info-on-hover</a></code></strong>
+	<strong><code>show-item-info-on-hover</code></strong><a href="src/features/show-item-info-on-hover.js"> 📁</a>
 </summary>
 
 </details>
@@ -209,7 +209,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/show-similar-submissions.js">show-similar-submissions</a></code></strong>
+	<strong><code>show-similar-submissions</code></strong><a href="src/features/show-similar-submissions.js"> 📁</a>
 </summary>
 
 </details>
@@ -217,7 +217,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/show-top-leaders-karma.js">show-top-leaders-karma</a></code></strong>
+	<strong><code>show-top-leaders-karma</code></strong><a href="src/features/show-top-leaders-karma.js"> 📁</a>
 </summary>
 
 </details>
@@ -225,7 +225,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/show-user-info-on-hover.js">show-user-info-on-hover</a></code></strong>
+	<strong><code>show-user-info-on-hover</code></strong><a href="src/features/show-user-info-on-hover.js"> 📁</a>
 </summary>
 
 </details>
@@ -233,7 +233,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/sort-stories.js">sort-stories</a></code></strong>
+	<strong><code>sort-stories</code></strong><a href="src/features/sort-stories.js"> 📁</a>
 </summary>
 
 </details>
@@ -241,7 +241,7 @@ Increase the hit-area of the "upvote" button by clicking the rank to upvote/un-v
 <details>
 
 <summary>
-	<strong><code><a href="src/features/toggle-all-comments-and-replies.js">toggle-all-comments-and-replies</a></code></strong>
+	<strong><code>toggle-all-comments-and-replies</code></strong><a href="src/features/toggle-all-comments-and-replies.js"> 📁</a>
 </summary>
 
 </details>
