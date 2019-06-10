@@ -116,10 +116,11 @@ export function newReplyTextareasObserver(callback) {
 	}
 }
 
-export function createSiblingLoader(element, customStyle) {
+export function createSiblingLoader(element, customStyle = '') {
 	const loader = document.createElement('img');
 	loader.src = browser.extension.getURL('loader.gif');
 	loader.style = customStyle;
+	loader.classList.add('__rhn__loader');
 	element.parentElement.insertBefore(loader, element.nextSibling);
 
 	return loader;

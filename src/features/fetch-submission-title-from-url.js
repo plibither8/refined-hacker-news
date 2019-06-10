@@ -1,3 +1,5 @@
+import {createSiblingLoader} from "../libs/dom-utils";
+
 async function fetchTitle() {
 	const apiUrl = 'https://textance.herokuapp.com/title/';
 
@@ -32,11 +34,15 @@ function init() {
 	fetchTitleBtn.innerHTML = '<a href="javascript:void(0)">fetch title</a>';
 	fetchTitleBtn.addEventListener('click', fetchTitle);
 
-	const loader = document.createElement('img');
-	loader.src = browser.extension.getURL('loader.gif');
-	loader.classList.add('__rhn__no-display', '__rhn__loader');
+	urlInputParent.append(fetchTitleBtn);
 
-	urlInputParent.append(fetchTitleBtn, loader);
+	const loaderCustomStyle = `
+		height: 12px;
+		vertical-align: middle;
+		margin-left: -5px;
+	`;
+	const loader = createSiblingLoader(fetchTitleBtn, loaderCustomStyle);
+	loader.classList.add('__rhn__no-display');
 
 	return true;
 }
