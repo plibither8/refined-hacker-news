@@ -14,11 +14,11 @@ function init(metadata) {
 	for (const comment of comments) {
 		comment.dataset.rhnFormInjected = '0';
 
-		const btns = [];
+		const buttons = [];
 		['reply', 'edit', 'delete-confirm'].forEach(action => {
 			const link = comment.querySelector(`a[href^="${action}"]`);
 			if (link) {
-				btns.push(link);
+				buttons.push(link);
 			}
 		});
 
@@ -28,10 +28,10 @@ function init(metadata) {
 			button: undefined
 		};
 
-		for (const btn of btns) {
-			btn.dataset.rhnActionName = btn.innerText;
+		for (const button of buttons) {
+			button.dataset.rhnActionName = button.innerText;
 
-			btn.addEventListener('click', async event => {
+			button.addEventListener('click', async event => {
 				event.preventDefault();
 
 				const selection = window.getSelection().toString().trim();
@@ -47,13 +47,13 @@ function init(metadata) {
 
 					// Adding newly clicked form
 					// eslint-disable-next-line no-negated-condition
-					if (ACTIVE_DATA.button !== btn) {
-						btn.click();
+					if (ACTIVE_DATA.button !== button) {
+						button.click();
 					} else {
 						ACTIVE_DATA.button = undefined;
 					}
 				} else {
-					const page = await getPageDom(btn.href);
+					const page = await getPageDom(button.href);
 					if (!page) {
 						return false;
 					}
@@ -62,9 +62,9 @@ function init(metadata) {
 					form.classList.add('__rhn__injected-form');
 
 					ACTIVE_DATA.form = form;
-					ACTIVE_DATA.button = btn;
+					ACTIVE_DATA.button = button;
 
-					btn.innerText = 'hide ' + btn.dataset.rhnActionName;
+					button.innerText = 'hide ' + button.dataset.rhnActionName;
 					replyDiv.append(form);
 
 					const textarea = form.querySelector('textarea');
