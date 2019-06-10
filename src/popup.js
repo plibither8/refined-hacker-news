@@ -7,9 +7,7 @@ indentTextarea.watch('textarea');
 
 // Set border color of popup to topcolor of navbar on HN
 (async () => {
-	browser.storage.sync.get('topcolor').then(res => {
-		document.body.style.borderColor = res.topcolor || '#ff6000';
-	});
+	document.body.style.borderColor = (await browser.storage.sync.get('topcolor')).topcolor || '#ff6000';
 })();
 
 // Live changing of indentation width on comments
