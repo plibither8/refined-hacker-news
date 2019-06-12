@@ -79,42 +79,58 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 	</tr>
 </table>
 
-## Features
+### Added features
 
+* [**`reply-without-leaving-page`**](src/features/reply-without-leaving-page.js)
 * [**`auto-refresh`**](src/features/auto-refresh.js) Auto-refresh stories on the page periodically, after a fixed interval, without reloading the page.
+* [**`hide-read-stories`**](src/features/hide-read-stories.js)
+* [**`sort-stories`**](src/features/sort-stories.js)
+* [**`fetch-submission-title-from-url`**](src/features/fetch-submission-title-from-url.js)
+* [**`list-hn-polls-separately`**](src/features/list-hn-polls-separately.js)
+* [**`prefill-submit-title`**](src/features/prefill-submit-title.js)
+* [**`past-choose-date`**](src/features/past-choose-date.js)
+
+### UI tweaks
+
 * [**`change-dead-comments-color`**](src/features/change-dead-comments-color.js)
+* [**`comments-ui-tweaks`**](src/features/comments-ui-tweaks.js)
+* [**`highlight-unread-comments`**](src/features/highlight-unread-comments.js)
+* [**`linkify-user-about`**](src/features/linkify-user-about.js)
+
+### More actions
+
+* [**`key-bindings-on-items`**](src/features/key-bindings-on-items.js)
+* [**`key-bindings-on-input-fields`**](src/features/key-bindings-on-input-fields.js)
 * [**`click-comment-indent-to-toggle`**](src/features/click-comment-indent-to-toggle.js)
 * [**`click-rank-to-vote-unvote`**](src/features/click-rank-to-vote-unvote.js)
-* [**`comments-ui-tweaks`**](src/features/comments-ui-tweaks.js)
-* [**`fetch-submission-title-from-url`**](src/features/fetch-submission-title-from-url.js)
-* [**`hide-read-stories`**](src/features/hide-read-stories.js)
-* [**`highlight-unread-comments`**](src/features/highlight-unread-comments.js)
-* [**`input-field-tweaks`**](src/features/input-field-tweaks.js)
-* [**`key-bindings-on-input-fields`**](src/features/key-bindings-on-input-fields.js)
-* [**`key-bindings-on-items`**](src/features/key-bindings-on-items.js)
-* [**`linkify-user-about`**](src/features/linkify-user-about.js)
-* [**`list-hn-polls-separately`**](src/features/list-hn-polls-separately.js)
-* [**`load-more-links-in-navbar`**](src/features/load-more-links-in-navbar.js)
 * [**`more-accessible-favorite`**](src/features/more-accessible-favorite.js)
-* [**`on-link-focus-comment`**](src/features/on-link-focus-comment.js)
 * [**`open-story-links-in-new-tab`**](src/features/open-story-links-in-new-tab.js)
-* [**`past-choose-date`**](src/features/past-choose-date.js)
-* [**`prefill-submit-title`**](src/features/prefill-submit-title.js)
 * [**`preview-and-set-top-bar-color`**](src/features/preview-and-set-top-bar-color.js)
+* [**`toggle-all-comments-and-replies`**](src/features/toggle-all-comments-and-replies.js)
+
+### More info at a glance
+
+* [**`load-more-links-in-navbar`**](src/features/load-more-links-in-navbar.js)
 * [**`profile-links-dropdown`**](src/features/profile-links-dropdown.js)
-* [**`reply-without-leaving-page`**](src/features/reply-without-leaving-page.js)
 * [**`show-item-info-on-hover`**](src/features/show-item-info-on-hover.js)
 * [**`show-similar-submissions`**](src/features/show-similar-submissions.js)
 * [**`show-top-leaders-karma`**](src/features/show-top-leaders-karma.js)
 * [**`show-user-info-on-hover`**](src/features/show-user-info-on-hover.js)
-* [**`sort-stories`**](src/features/sort-stories.js)
-* [**`toggle-all-comments-and-replies`**](src/features/toggle-all-comments-and-replies.js)
+
+### Miscellaneous
+
+* [**`input-field-tweaks`**](src/features/input-field-tweaks.js)
+* [**`on-link-focus-comment`**](src/features/on-link-focus-comment.js)
+
+---
 
 ### Abandoned
 
-- `blur-story-scores`
-- `custom-font-face`
-- `hide-bad-words`
-- `load-more-stories`
-- `scale-font-size`
-- `show-karma-left`
+* `blur-story-scores`
+* `custom-font-face`
+* `hide-bad-words`
+* `load-more-stories`
+* `scale-font-size`
+* `show-karma-left`
+
+---
