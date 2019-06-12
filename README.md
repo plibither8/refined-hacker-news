@@ -66,7 +66,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 			Show user or item information when hovering over the links
 		</th>
 		<th width="50%">
-			Highlight new, unread comments from previous visits
+			Highlight new, unread comments on subsequent visits
 		</th>
 	</tr>
 	<tr><!-- Prevent zebra stripes --></tr>
