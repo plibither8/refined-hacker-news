@@ -109,7 +109,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 - [**`click-comment-indent-to-toggle`**](src/features/click-comment-indent-to-toggle.js) Click indentation of the comment (on the left of it) to toggle (show/hide) that comment.
 - [**`click-rank-to-vote-unvote`**](src/features/click-rank-to-vote-unvote.js) Increase hit-area of upvote button by clicking the rank number of the item to upvote it too.
 - [**`open-story-links-in-new-tab`**](src/features/open-story-links-in-new-tab.js) Open items in a new tab, instead of the same tab.
-- [**`preview-and-set-top-bar-color`**](src/features/preview-and-set-top-bar-color.js) Quickly "test" topbar colors and set them on [https://news.ycombinator.com/topcolors](https://news.ycombinator.com/topcolors). *Note: you can choose a custom topbar color once you have 250+ karma*.
+- [**`preview-and-set-top-bar-color`**](src/features/preview-and-set-top-bar-color.js) Quickly "test" topbar colors and set them on [https://news.ycombinator.com/topcolors](https://news.ycombinator.com/topcolors). *Note: you must have 250+ karma to set a custom topcolor*.
 - [**`toggle-all-comments-and-replies`**](src/features/toggle-all-comments-and-replies.js) Clickable button to toggle all comments on the page, or all replies to a certain comment.
 
 ### More info at a glance
