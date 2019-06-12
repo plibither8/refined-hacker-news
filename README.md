@@ -178,3 +178,9 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 |--------------------------------------|--------------------------------------------------------------|
 | <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd> | Submit form                                                  |
 | <kbd>Ctrl/Cmd</kbd>+<kbd>I</kbd>     | Italicise selected portion (wrap selected text in asterisks) |
+
+## Customisation and options
+
+Extension options can be found in the extension's popup. There, you can
+* specify which features you want to disable by entering features' IDs (listed above), preferably listed on new lines
+* specify custom CSS, which is useful to override CSS implemented by this extension, or any other UI tweaks you prefer.
