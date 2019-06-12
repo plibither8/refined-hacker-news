@@ -88,7 +88,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 * [**`fetch-submission-title-from-url`**](src/features/fetch-submission-title-from-url.js) When submitting an item, get the title of the page of the URL entered.
 * [**`list-hn-polls-separately`**](src/features/list-hn-polls-separately.js) Show *HN Polls* on a separate page (like *Show HN*, *Ask HN*, etc). Linked on topbar: [https://news.ycombinator.com/#polls](https://news.ycombinator.com/#polls).
 * [**`prefill-submit-title`**](src/features/prefill-submit-title.js) Prefill submission title field with "Show HN: " or "Ask HN: " when 'Submit' link is accessed/clicked from *Show HN* or *Ask HN* pages.
-* [**`past-choose-date`**](src/features/past-choose-date.js) Choose a custom date in `'/front` to go back to that date.
+* [**`past-choose-date`**](src/features/past-choose-date.js) Choose a custom date in `/front` to go back to that date.
 
 ### UI tweaks
 
@@ -103,8 +103,8 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 ### More actions
 
-* [**`key-bindings-on-items`**](src/features/key-bindings-on-items.js) Enable key bindings on items and comments to improve navigation and item/comment-related actions. [Go to mappings]().
-* [**`key-bindings-on-input-fields`**](src/features/key-bindings-on-input-fields.js) Enable key bindings/shortcuts on input fields. [Go to mappings]().
+* [**`key-bindings-on-items`**](src/features/key-bindings-on-items.js) Enable key bindings on items and comments to improve navigation and item/comment-related actions. [Go to mappings](#on-items-and-comments).
+* [**`key-bindings-on-input-fields`**](src/features/key-bindings-on-input-fields.js) Enable key bindings/shortcuts on input fields. [Go to mappings](#on-input-fields).
 * [**`more-accessible-favorite`**](src/features/more-accessible-favorite.js) Add a 'favorite' button next to items and comments to quickly *favorite* them. Go to `https://news.ycombinator.com/favorites?id=<your-username>` to view favorite-d items.
 * [**`click-comment-indent-to-toggle`**](src/features/click-comment-indent-to-toggle.js) Click indentation of the comment (on the left of it) to toggle (show/hide) that comment.
 * [**`click-rank-to-vote-unvote`**](src/features/click-rank-to-vote-unvote.js) Increase hit-area of upvote button by clicking the rank number of the item to upvote it too.
@@ -146,4 +146,35 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 #### On items and comments
 
+*On items/stories:*
+
+| Key-binding                                                | Action                                                                |
+|------------------------------------------------------------|-----------------------------------------------------------------------|
+| <kbd>J</kbd>                                               | Next item (down)                                                      |
+| <kbd>K</kbd>                                               | Previous item (up)                                                    |
+| <kbd>Enter</kbd> <br> <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd> | Open link and focus tab <br> Open link in the background              |
+| <kbd>Esc</kbd>                                             | Un-highlight item                                                     |
+| <kbd>U</kbd>                                               | Upvote item                                                           |
+| <kbd>F</kbd>                                               | Favorite item                                                         |
+| <kbd>C</kbd> <br> <kbd>Ctrl/Cmd</kbd>+<kbd>C</kbd>         | Open item's comments on same tab <br> Open item's comments on new tab |
+| <kbd>Shift</kbd>+<kbd>X</kbd>                              | Flag/unflag item                                                      |
+| <kbd>Shift</kbd>+<kbd>H</kbd>                              | Hide item                                                             |
+
+*On comments:*
+
+| Key-binding                                     | Action                                                                         |
+|-------------------------------------------------|--------------------------------------------------------------------------------|
+| <kbd>J</kbd> <br> <kbd>Shift</kbd>+<kbd>J</kbd> | Next comment (down) <br> Next comment with same indentation and parent         |
+| <kbd>K</kbd> <br> <kbd>Shift</kbd>+<kbd>K</kbd> | Previous comment (down) <br> Previous comment with same indentation and parent |
+| <kbd>Enter</kbd>                                | Toggle comment                                                                 |
+| <kbd>Esc</kbd>                                  | Un-highlight comment                                                           |
+| <kbd>U</kbd>                                    | Upvote comment                                                                 |
+| <kbd>R</kbd>                                    | Reply to comment                                                               |
+| <kbd>F</kbd>                                    | Favorite comment                                                               |
+
 #### On input fields
+
+| Key-binding                          | Action                                                       |
+|--------------------------------------|--------------------------------------------------------------|
+| <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd> | Submit form                                                  |
+| <kbd>Ctrl/Cmd</kbd>+<kbd>I</kbd>     | Italicise selected portion (wrap selected text in asterisks) |
