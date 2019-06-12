@@ -1,10 +1,18 @@
 {
 	"private": true,
 	"scripts": {
-		"lint": "xo && stylelint src/*.css",
-		"lint-fix": "xo --fix; stylelint --fix src/*.css",
+		"lint": "run-p --silent lint:*",
+		"lint:js": "xo",
+		"lint:css": "stylelint src/**/*.css",
+		"lint-fix": "run-p --silent 'lint:* -- --fix'",
 		"build": "webpack --mode=production",
-		"watch": "webpack --mode=development --watch"
+		"watch": "webpack --mode=development --watch",
+		"watch:firefox": "web-ext run --source-dir=dist",
+		"version": "dot-json dist/manifest.json version $VER",
+		"release:amo": "cd dist && web-ext-submit",
+		"release:cws": "cd dist && webstore upload --auto-publish",
+		"release": "VER=$(daily-version) npm-run-all build version release:* create-git-tag",
+		"create-git-tag": "git tag $VER -m $VER && git push origin $VER"
 	},
 	"dependencies": {
 		"compare-urls": "^2.0.0",
@@ -16,11 +24,16 @@
 		"webextension-polyfill": "^0.4.0"
 	},
 	"devDependencies": {
+		"chrome-webstore-upload-cli": "^1.2.0",
 		"copy-webpack-plugin": "^5.0.0",
+		"daily-version": "^0.12.0",
+		"dot-json": "^1.1.0",
+		"npm-run-all": "^4.1.5",
 		"size-plugin": "^1.1.2",
 		"stylelint": "^9.10.1",
 		"stylelint-config-xo": "^0.13.0",
 		"terser-webpack-plugin": "^1.2.3",
+		"web-ext": "^3.0.0",
 		"web-ext-submit": "^2.9.3",
 		"webpack": "^4.29.4",
 		"webpack-cli": "^3.2.3",
