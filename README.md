@@ -185,3 +185,11 @@ Extension options can be found in the extension's popup. There, you can
 
 - specify which features you want to disable by entering features' IDs (listed above), preferably listed on new lines
 - specify custom CSS, which is useful to override CSS implemented by this extension, or any other UI tweaks you prefer.
+
+## Contribute
+
+*Currently WIP.*
+
+## License
+
+[MIT](LICENSE)
