@@ -171,7 +171,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 | <kbd>U</kbd>                                    | Upvote comment                                                                        |
 | <kbd>R</kbd>                                    | Reply to comment                                                                      |
 | <kbd>F</kbd>                                    | Favorite comment                                                                      |
-| <kbd>0</kbd> — <kbd>9</kbd>                     | Open numbered/index reference link in the comment <br> Eg: `[1] https://mihir.ch ...` |
+| <kbd>0</kbd> to <kbd>9</kbd>                    | Open numbered/index reference link in the comment <br> Eg: `[1] https://mihir.ch ...` |
 
 #### On input fields
 
