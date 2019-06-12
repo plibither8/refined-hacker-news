@@ -162,15 +162,16 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 *On comments:*
 
-| Key-binding                                     | Action                                                                         |
-|-------------------------------------------------|--------------------------------------------------------------------------------|
-| <kbd>J</kbd> <br> <kbd>Shift</kbd>+<kbd>J</kbd> | Next comment (down) <br> Next comment with same indentation and parent         |
-| <kbd>K</kbd> <br> <kbd>Shift</kbd>+<kbd>K</kbd> | Previous comment (down) <br> Previous comment with same indentation and parent |
-| <kbd>Enter</kbd>                                | Toggle comment                                                                 |
-| <kbd>Esc</kbd>                                  | Un-highlight comment                                                           |
-| <kbd>U</kbd>                                    | Upvote comment                                                                 |
-| <kbd>R</kbd>                                    | Reply to comment                                                               |
-| <kbd>F</kbd>                                    | Favorite comment                                                               |
+| Key-binding                                     | Action                                                                                |
+|-------------------------------------------------|---------------------------------------------------------------------------------------|
+| <kbd>J</kbd> <br> <kbd>Shift</kbd>+<kbd>J</kbd> | Next comment (down) <br> Next comment with same indentation and parent                |
+| <kbd>K</kbd> <br> <kbd>Shift</kbd>+<kbd>K</kbd> | Previous comment (down) <br> Previous comment with same indentation and parent        |
+| <kbd>Enter</kbd>                                | Toggle comment                                                                        |
+| <kbd>Esc</kbd>                                  | Un-highlight comment                                                                  |
+| <kbd>U</kbd>                                    | Upvote comment                                                                        |
+| <kbd>R</kbd>                                    | Reply to comment                                                                      |
+| <kbd>F</kbd>                                    | Favorite comment                                                                      |
+| <kbd>0</kbd> — <kbd>9</kbd>                     | Open numbered/index reference link in the comment <br> Eg: `[1] https://mihir.ch ...` |
 
 #### On input fields
 
