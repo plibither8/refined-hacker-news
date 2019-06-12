@@ -1,7 +1,7 @@
 import {getAllComments} from '../libs/dom-utils';
 
 async function init(metadata) {
-	const readCommentsList = (await browser.storage.sync.get('readComments')).readComments || {};
+	const readCommentsList = (await browser.storage.local.get('readComments')).readComments || {};
 
 	const currentMilliseconds = new Date().getTime();
 	for (const [id, itemObj] of Object.entries(readCommentsList)) {
@@ -43,7 +43,7 @@ async function init(metadata) {
 		comments: [...new Set([...currentComments, ...readComments])] // Remove duplication
 	};
 
-	browser.storage.sync.set({readComments: readCommentsList});
+	browser.storage.local.set({readComments: readCommentsList});
 
 	return true;
 }
