@@ -12,21 +12,20 @@
 }
 
 .__rhn__comment-indent {
-	border-right: 1px solid #ccc;
+	box-shadow: inset -1px 0 #ccc;
 	cursor: pointer;
 }
 
 .__rhn__comment-indent:hover {
-	border-color: #888;
+	box-shadow: inset -1px 0 #888;
 }
 
 .__rhn__new-comment-indent {
-	border-color: #f6b391;
-	border-width: 3px;
+	box-shadow: inset -3px 0 #f6b391;
 }
 
 .__rhn__new-comment-indent:hover {
-	border-color: #f7694c;
+	box-shadow: inset -3px 0 #f7694c;
 }
 
 .__rhn__toggle-btn {
