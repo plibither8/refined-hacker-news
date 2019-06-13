@@ -131,17 +131,6 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 ---
 
-### Abandoned features
-
-- `blur-story-scores`
-- `custom-font-face`
-- `hide-bad-words`
-- `load-more-stories`
-- `scale-font-size`
-- `show-karma-left`
-
----
-
 ### Keyboard bindings
 
 #### On items and comments
@@ -180,7 +169,18 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 | <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd> | Submit form                                                  |
 | <kbd>Ctrl/Cmd</kbd>+<kbd>I</kbd>     | Italicise selected portion (wrap selected text in asterisks) |
 
-## Customisation and options
+---
+
+### Abandoned features
+
+- `blur-story-scores`
+- `custom-font-face`
+- `hide-bad-words`
+- `load-more-stories`
+- `scale-font-size`
+- `show-karma-left`
+
+## Customisation and Options
 
 Extension options can be found in the extension's popup. There, you can
 
@@ -189,7 +189,15 @@ Extension options can be found in the extension's popup. There, you can
 
 ## Contribute
 
-*Currently WIP.*
+*WIP.*
+
+## Donate
+
+Refined Hacker News was made by me during my study-breaks and free time. If you like and have enjoyed it, please consider donating a small amount (any amount will be really appreciated!) to support and sustain its development. Thank you!
+
+[![Donate](https://img.shields.io/badge/donate-PayPal-blue.svg?style=for-the-badge&logo=paypal)](https://paypal.me/plibither8)
+
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://www.buymeacoffee.com/plibither8)
 
 ## License
 
