@@ -1,7 +1,8 @@
 {
 	"name": "Refined Hacker News",
+	"short_name": "Refined HN",
 	"version": "0.0.0",
-	"description": "✨ Hacker News, but refined.",
+	"description": "✨ Add useful features and tweak a few stuff to make the HN experience better without changing the look and feel",
 	"homepage_url": "https://github.com/plibither8/refined-hacker-news",
 	"manifest_version": 2,
 	"permissions": [

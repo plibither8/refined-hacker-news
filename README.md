@@ -1,7 +1,7 @@
 # <img src="src/icon.png" width="45" align="left"> Refined Hacker News
 
-[link-cws]: https://chrome.google.com/webstore/detail/ "Version published on Chrome Web Store"
-[link-amo]: https://addons.mozilla.org/en-US/firefox/addon/ "Version published on Mozilla Add-ons"
+[link-cws]: https://chrome.google.com/webstore/detail/gcibdgjaladjjloeocimnijdgopejkfk "Version published on Chrome Web Store"
+[link-amo]: https://addons.mozilla.org/en-US/firefox/addon/refined-hacker-news/ "Version published on Mozilla Add-ons"
 
 [![Licence](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE) ![Made with love in India](https://madewithlove.now.sh/in?heart=true&colorB=%23ff701f&template=flat-square)
 
@@ -15,8 +15,8 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 ## Install
 
-- [**Chrome** extension][link-cws] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/.svg?label=%20">][link-cws]
-- [**Firefox** add-on][link-amo] [<img valign="middle" src="https://img.shields.io/amo/v/.svg?label=%20">][link-amo]
+- [**Chrome** extension][link-cws] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/gcibdgjaladjjloeocimnijdgopejkfk.svg?label=%20">][link-cws]
+- [**Firefox** add-on][link-amo] [<img valign="middle" src="https://img.shields.io/amo/v/refined-hacker-news.svg?label=%20">][link-amo]
 - **Opera** extension: Use [this Opera extension](https://addons.opera.com/en/extensions/details/download-chrome-extension-9/) to install the Chrome version.
 
 ## Highlights
