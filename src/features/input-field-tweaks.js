@@ -69,9 +69,11 @@ function charactersRemainging(path) {
 }
 
 function init(metadata) {
-	return watchTextareas() ||
-		dynamicallyChangeWidth(metadata.path) ||
-		charactersRemainging(metadata.path);
+	watchTextareas();
+	dynamicallyChangeWidth(metadata.path);
+	charactersRemainging(metadata.path);
+
+	return true;
 }
 
 const details = {
