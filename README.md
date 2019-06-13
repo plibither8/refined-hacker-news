@@ -189,7 +189,9 @@ Extension options can be found in the extension's popup. There, you can
 
 ## Contribute
 
-*WIP.*
+Issues and feature requests can be created on the [issues page](https://github.com/plibither8/refined-hacker-news/issues).
+
+To create new features, please take a look at the format of any one of the features' file [here](src/features). Proper documentation for contributing is a work in progress. Thanks for the patience! 🙂
 
 ## Donate
 
