@@ -1,4 +1,4 @@
-import {getPageDom} from '../libs/utils';
+import {getPageDom, isClickModified} from '../libs/utils';
 import {getAllComments, createSiblingLoader} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
@@ -32,6 +32,10 @@ function init(metadata) {
 			button.dataset.rhnActionName = button.innerText;
 
 			button.addEventListener('click', async event => {
+				if (isClickModified(event)) {
+					return;
+				}
+
 				event.preventDefault();
 
 				const selection = window.getSelection().toString().trim();

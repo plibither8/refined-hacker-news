@@ -62,7 +62,12 @@ async function init(metadata) {
 	targetCell.append(dropdownEl);
 
 	userLink.addEventListener('click', event => {
+		if (isClickModified(event)) {
+			return;
+		}
+
 		event.preventDefault();
+
 		dropdownEl.style.left = userLink.getBoundingClientRect().left + 'px';
 		dropdownEl.classList.toggle('__rhn__no-display');
 		userLink.innerHTML = `${user} ${state ? '▾' : '▴'}`;

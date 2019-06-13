@@ -21,6 +21,10 @@ async function defaultFavoriteLinks() {
 		let ongoingFavorite = false;
 
 		faveLink.addEventListener('click', async event => {
+			if (isClickModified(event)) {
+				return;
+			}
+
 			event.preventDefault();
 
 			if (ongoingFavorite) {
