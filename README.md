@@ -13,6 +13,25 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 *Inspired by [Sindre Sorhus](https://github.com/sindresorhus)'s extension [Refined GitHub](https://github.com/sindresorhus/refined-github).*
 
+## Contents
+
+- [Contents](#contents)
+- [Install](#install)
+- [Highlights](#highlights)
+	- [Added features](#added-features)
+	- [UI tweaks](#ui-tweaks)
+	- [More actions](#more-actions)
+	- [More info at a glance](#more-info-at-a-glance)
+	- [Miscellaneous](#miscellaneous)
+	- [Keyboard bindings](#keyboard-bindings)
+		- [On items and comments](#on-items-and-comments)
+		- [On input fields](#on-input-fields)
+	- [Abandoned features](#abandoned-features)
+- [Customization and Options](#customization-and-options)
+- [Contribute](#contribute)
+- [Donate](#donate)
+- [License](#license)
+
 ## Install
 
 - [**Chrome** extension][link-cws] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/gcibdgjaladjjloeocimnijdgopejkfk.svg?label=%20">][link-cws]
@@ -182,7 +201,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 - `scale-font-size`
 - `show-karma-left`
 
-## Customisation and Options
+## Customization and Options
 
 Extension options can be found in the extension's popup. There, you can
 
@@ -193,7 +212,7 @@ Extension options can be found in the extension's popup. There, you can
 
 Issues and feature requests can be created on the [issues page](https://github.com/plibither8/refined-hacker-news/issues).
 
-To create new features, please take a look at the format of any one of the features' file [here](src/features). Proper documentation for contributing is a work in progress. Thanks for the patience! 🙂
+For development contribution, please refer to the [contribution guide](./CONTRIBUTING.md).
 
 ## Donate
 
