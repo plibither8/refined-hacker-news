@@ -9,6 +9,7 @@ export default {
 	hideStoryCommentsPage: false,
 	toggleAllReplies: false,
 	showDiscussionsWithNoComments: false,
+	optionsBarPosition: 'top',
 
 	// Dev options
 	logging: false,

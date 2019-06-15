@@ -1,18 +1,26 @@
 import {paths} from './paths';
 
 // Creates the option bar to display the options
-export function createOptionsBar() {
+export function createOptionsBar(position) {
 	let optionsBar = document.querySelector('.__rhn__options-bar');
 	if (optionsBar) {
 		return optionsBar;
 	}
 
-	const mainTableBody = document.querySelector('table#hnmain > tbody');
 	optionsBar = document.createElement('div');
 	optionsBar.classList.add('__rhn__options-bar');
-
-	const pageSpaceRow = document.querySelector('#pagespace');
-	mainTableBody.insertBefore(optionsBar, pageSpaceRow.nextElementSibling);
+	
+	if (position === 'top') {
+		optionsBar.classList.add('__rhn__options-bar-top');
+		const mainTableBody = document.querySelector('table#hnmain > tbody');
+		const pageSpaceRow = document.querySelector('#pagespace');
+		mainTableBody.insertBefore(optionsBar, pageSpaceRow.nextElementSibling);
+	} else {
+		optionsBar.classList.add('__rhn__options-bar-bottom');
+		const itemlistTableParent = document.querySelector('table.itemlist').parentElement; 
+		const itemlistTableBody = document.querySelector('table.itemlist > tbody');
+		itemlistTableParent.insertBefore(optionsBar, itemlistTableBody.nextElementSibling);
+	}
 
 	return optionsBar;
 }

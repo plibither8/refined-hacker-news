@@ -46,7 +46,7 @@ function hideStories(idList, hide) {
 function init(metadata) {
 	const {options} = metadata;
 
-	const optionsBar = createOptionsBar();
+	const optionsBar = createOptionsBar(options.optionsBarPosition);
 	const form = document.createElement('form');
 	const check = document.createElement('input');
 	const label = document.createElement('label');

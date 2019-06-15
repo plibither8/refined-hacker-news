@@ -45,8 +45,8 @@ function sort() {
 	itemlistTable.append(morespaceRow, moreRow);
 }
 
-function init() {
-	const optionsBar = createOptionsBar();
+function init(metadata) {
+	const optionsBar = createOptionsBar(metadata.options.optionsBarPosition);
 	const sortLabel = document.createElement('label');
 	const sortSelect = document.createElement('select');
 
