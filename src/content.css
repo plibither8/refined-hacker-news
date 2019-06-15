@@ -28,11 +28,6 @@
 	box-shadow: inset -3px 0 #f7694c;
 }
 
-.__rhn__toggle-btn {
-	font-size: 10px;
-	text-decoration: underline !important;
-}
-
 .__rhn__no-display {
 	display: none;
 }

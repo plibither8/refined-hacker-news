@@ -15,7 +15,6 @@ function toggleAllReplies() {
 			fontTag.setAttribute('size', 1);
 
 			const toggleAllBtn = document.createElement('a');
-			toggleAllBtn.classList.add('__rhn__toggle-btn');
 			toggleAllBtn.innerHTML = 'toggle all replies';
 			toggleAllBtn.href = 'javascript:void(0)';
 
@@ -28,8 +27,9 @@ function toggleAllReplies() {
 
 			fontTag.append(toggleAllBtn);
 
-			const fontTagParent = comment.querySelector('div.reply p');
+			const fontTagParent = comment.querySelector('div.reply p');			
 			if (fontTagParent.innerText.includes('reply')) {
+				fontTagParent.style.fontSize = '10px';
 				fontTagParent.append(' | ');
 			}
 
@@ -44,15 +44,10 @@ function toggleAllComments() {
 		return false;
 	}
 
-	const target = document.querySelector('table.fatitem > tbody');
-
-	const row = document.createElement('tr');
-	const leftCell = document.createElement('td');
-	const rightCell = document.createElement('td');
-	leftCell.setAttribute('colspan', '2');
+	const target = document.querySelector('table.fatitem td.subtext')
+		|| document.querySelector('table.fatitem span.comhead');
 
 	const toggleAllBtn = document.createElement('a');
-	toggleAllBtn.classList.add('__rhn__toggle-btn');
 	toggleAllBtn.innerHTML = 'toggle all comments';
 	toggleAllBtn.href = 'javascript:void(0)';
 
@@ -62,9 +57,7 @@ function toggleAllComments() {
 		}
 	});
 
-	rightCell.append(toggleAllBtn);
-	row.append(leftCell, rightCell);
-	target.append(row);
+	target.append(' | ', toggleAllBtn);
 }
 
 function init(metadata) {
