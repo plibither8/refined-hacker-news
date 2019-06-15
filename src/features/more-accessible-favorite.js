@@ -1,4 +1,4 @@
-import {getAuthString, getPageDom, getUrlParams} from '../libs/utils';
+import {getAuthString, getPageDom, getUrlParams, isClickModified} from '../libs/utils';
 import {getAllComments, createSiblingLoader} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 

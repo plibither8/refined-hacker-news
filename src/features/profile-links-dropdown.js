@@ -1,3 +1,4 @@
+import {isClickModified} from '../libs/utils';
 import {paths} from '../libs/paths';
 
 async function init(metadata) {
