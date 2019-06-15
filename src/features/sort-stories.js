@@ -24,8 +24,8 @@ function sort() {
 	}
 
 	const itemlistTable = document.querySelector('table.itemlist > tbody');
-	const moreRow = itemlistTable.lastChild;
-	const morespaceRow = moreRow.previousSibling;
+	const moreRow = itemlistTable.lastElementChild;
+	const morespaceRow = moreRow.previousElementSibling;
 
 	let extraItems = [];
 	if (window.location.pathname === '/show') {
