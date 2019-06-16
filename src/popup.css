@@ -24,8 +24,21 @@ textarea {
 	margin-top: 5px;
 }
 
+p {
+	margin: 8px 0;
+}
+
+a {
+	color: #000;
+}
+
 input[type='checkbox'] {
 	vertical-align: -0.16em;
+}
+
+label,
+footer {
+	line-height: 1.5;
 }
 
 h2 {
@@ -41,9 +54,16 @@ h2 img {
 	border-radius: 7px;
 }
 
-p:nth-last-child(2) {
+p.hr {
 	border-top: 1px solid #ccc;
 	padding-top: 10px;
+}
+
+footer {
+	border-top: 1px solid #ccc;
+	padding: 10px 0;
+	color: #555;
+	text-align: center;
 }
 
 code {

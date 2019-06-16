@@ -25,4 +25,9 @@ indentWidthInput.addEventListener('input', () => {
 	}
 });
 
+const links = document.querySelectorAll('a');
+for (const link of links) {
+	link.addEventListener('click', () => browser.tabs.create({url: link.href}));
+}
+
 new OptionsSync({logging: false}).syncForm('#options-form');
