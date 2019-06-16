@@ -29,14 +29,15 @@ p {
 }
 
 a {
-	color: black;
+	color: #000;
 }
 
 input[type='checkbox'] {
 	vertical-align: -0.16em;
 }
 
-label, footer {
+label,
+footer {
 	line-height: 1.5;
 }
 
