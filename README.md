@@ -210,33 +210,19 @@ Refined Hacker News was made by me during my study-breaks and free time. If you 
 
 No data is ever uploaded to a remote server, or is sent anywhere else. All data that is used by this extension is stored locally.
 
-**`storage`**
+**`storage`:** Required to save extension options in `sync` storage area so that your options are synced across devices. Also used to save other data such as list of read comments (`highlight-unread-comments`) locally.
 
-Required to save extension options in `sync` storage area so that your options are synced across devices. Also used to save other data such as list of read comments (`highlight-unread-comments`) locally.
+**`history`:** Required for `hide-read-stories` feature. The feature needs to check whether the story has been visited by you in the past, that is, whether that story is in your history.
 
-**`history`**
+**`tabs`:** Required to open a link in a new tab, but in the background. Also required to send and receive data between the extension popup, background scripts and the active Hacker News tabs.
 
-Required for `hide-read-stories` feature. The feature needs to check whether the story has been visited by you in the past, that is, whether that story is in your history.
+**`*://news.ycombinator.com/*`:** Required to fetch subpages, submit forms, inline replies, etc.
 
-**`tabs`**
+**`*://hacker-news.firebaseio.com/v0/*`:** Hacker News API - required to fetch `item` and `user` details.
 
-Required to open a link in a new tab, but in the background. Also required to send and receive data between the extension popup, background scripts and the active Hacker News tabs.
+**`*://textance.herokuapp.com/*`:** Required by the `fetch-submission-title-from-url` feature to fetch the title.
 
-**`news.ycombinator.com/`**
-
-Required to fetch subpages, submit forms, inline replies, etc.
-
-**`hacker-news.firebaseio.com/v0/`**
-
-Hacker News API - required to fetch `item` and `user` details.
-
-**`textance.herokuapp.com/`**
-
-Required by the `fetch-submission-title-from-url` feature to fetch the title.
-
-**`hn.algolia.com`**
-
-Required by `show-simillar-submission` and `list-hn-polls-separately` features to get filtered search results.
+**`*://hn.algolia.com/*`:** Required by `show-simillar-submission` and `list-hn-polls-separately` features to get filtered search results.
 
 ## License
 
