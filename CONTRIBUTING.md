@@ -21,7 +21,7 @@ To run the extension in development:
 
 1. Clone the repository
 2. [Install](#installing) and [run](#running)
-3. Enable development extensions in [Chrome](#enabling-developer-extensions-in-chrome)/[Firefox](#enabling-developer-extensions-in-firefox) 
+3. Enable development extensions in [Chrome](#enabling-developer-extensions-in-chrome) or [Firefox](#enabling-developer-extensions-in-firefox) 
 
 ### Installing
 
@@ -60,7 +60,7 @@ To run via command-line (with automatic reloading when files change):
     ```
     $ npm install -g web-ext
     ```
-2. Make sure the development build is running (in watch mode).
+2. Make sure the development build is running (in watch mode)
 3. Navigate into the `dist` directory, and run `web-ext`:
     ```
     $ web-ext run
