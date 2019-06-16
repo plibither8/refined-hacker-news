@@ -9,7 +9,7 @@ export function createOptionsBar(position) {
 
 	optionsBar = document.createElement('div');
 	optionsBar.classList.add('__rhn__options-bar');
-	
+
 	if (position === 'top') {
 		optionsBar.classList.add('__rhn__options-bar-top');
 		const mainTableBody = document.querySelector('table#hnmain > tbody');
@@ -17,7 +17,7 @@ export function createOptionsBar(position) {
 		mainTableBody.insertBefore(optionsBar, pageSpaceRow.nextElementSibling);
 	} else {
 		optionsBar.classList.add('__rhn__options-bar-bottom');
-		const itemlistTableParent = document.querySelector('table.itemlist').parentElement; 
+		const itemlistTableParent = document.querySelector('table.itemlist').parentElement;
 		const itemlistTableBody = document.querySelector('table.itemlist > tbody');
 		itemlistTableParent.insertBefore(optionsBar, itemlistTableBody.nextElementSibling);
 	}

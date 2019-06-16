@@ -27,7 +27,7 @@ function toggleAllReplies() {
 
 			fontTag.append(toggleAllBtn);
 
-			const fontTagParent = comment.querySelector('div.reply p');			
+			const fontTagParent = comment.querySelector('div.reply p');
 			if (fontTagParent.innerText.includes('reply')) {
 				fontTagParent.style.fontSize = '10px';
 				fontTagParent.append(' | ');
@@ -44,8 +44,8 @@ function toggleAllComments() {
 		return false;
 	}
 
-	const target = document.querySelector('table.fatitem td.subtext')
-		|| document.querySelector('table.fatitem span.comhead');
+	const target = document.querySelector('table.fatitem td.subtext') ||
+		document.querySelector('table.fatitem span.comhead');
 
 	const toggleAllBtn = document.createElement('a');
 	toggleAllBtn.innerHTML = 'toggle all comments';
