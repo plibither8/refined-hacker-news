@@ -77,7 +77,10 @@ const details = {
 	id: 'sort-stories',
 	pages: {
 		include: paths.stories,
-		exclude: ['/front']
+		exclude: [
+			'/front',
+			'/jobs'
+		]
 	},
 	loginRequired: false,
 	init
