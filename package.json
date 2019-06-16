@@ -9,9 +9,9 @@
 		"watch": "webpack --mode=development --watch",
 		"watch:firefox": "web-ext run --source-dir=dist",
 		"version": "dot-json dist/manifest.json version $VER",
-		"release:amo": "cd dist && web-ext-submit",
+		"release:amo": "cd dist && web-ext-submit --api-key=\"$WEB_EXT_API_KEY\" --api-secret=\"$WEB_EXT_API_SECRET\"",
 		"release:cws": "cd dist && webstore upload --auto-publish",
-		"release": "VER=$(daily-version) npm-run-all build version release:* create-git-tag",
+		"release": "VER=$(daily-version) npm-run-all build version release:amo create-git-tag",
 		"create-git-tag": "git tag $VER -m $VER && git push origin $VER"
 	},
 	"dependencies": {
