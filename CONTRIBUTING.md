@@ -59,7 +59,7 @@ $ npm run lint
 To automatically fix linting errors:
 
 ```
-$ npm run lint:fix
+$ npm run lint-fix
 ```
 
 ## Creating Features
