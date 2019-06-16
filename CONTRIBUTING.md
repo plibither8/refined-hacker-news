@@ -5,7 +5,7 @@
 
 - [Contents](#contents)
 - [Developing](#developing)
-  - [Workflow](#workflow)
+  - [Workflows](#workflows)
   - [Installing](#installing)
   - [Running](#running)
   - [Enabling Developer Extensions in Chrome](#enabling-developer-extensions-in-chrome)
@@ -14,10 +14,18 @@
 
 ## Developing
 
-### Workflow
+### Workflows
+
+To run the extension in development:
+
+1. Clone the repository
+2. Install and run
+3. Enable development extensions in Chrome/Firefox 
+
+To contribute via pull request:
 
 1. Fork the repository
-2. Do development on a branch
+2. Do development work on a branch
 3. Submit a pull request from that branch to the upstream repository (`master`)
 
 ### Installing
