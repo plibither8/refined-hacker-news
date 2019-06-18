@@ -8,8 +8,9 @@
   - [Workflows](#workflows)
   - [Installing](#installing)
   - [Running](#running)
-  - [Enabling Developer Extensions in Chrome](#enabling-developer-extensions-in-chrome)
-  - [Enabling Developer Extensions in Firefox](#enabling-developer-extensions-in-firefox)
+  - [Enabling Developer Extensions](#enabling-developer-extensions)
+    - [Chrome](#chrome)
+    - [Firefox](#firefox)
   - [Linting](#linting)
 - [Creating Features](#creating-features)
 
