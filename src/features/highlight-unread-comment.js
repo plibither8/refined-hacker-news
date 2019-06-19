@@ -1,7 +1,7 @@
 import {getAllComments} from '../libs/dom-utils';
 
 async function init(metadata) {
-	const readCommentsList = (await browser.storage.local.get('readComments')).readComments || {};
+	const readCommentsList = (await browser.storage.local.get()).readComments || {};
 
 	const currentMilliseconds = new Date().getTime();
 	for (const [id, itemObj] of Object.entries(readCommentsList)) {
