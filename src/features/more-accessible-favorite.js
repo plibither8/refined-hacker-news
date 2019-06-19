@@ -48,7 +48,7 @@ async function defaultButtons() {
 async function commentButtons(metadata) {
 	const items = getAllComments();
 
-	for (const item of items) {		
+	for (const item of items) {
 		const separatorPipe = document.createTextNode('| ');
 		const faveButton = document.createElement('a');
 		faveButton.innerText = 'favorite';

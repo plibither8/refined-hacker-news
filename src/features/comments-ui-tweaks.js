@@ -1,5 +1,4 @@
 import {getAllComments} from '../libs/dom-utils';
-import {getItemInfo} from '../libs/api';
 import {paths} from '../libs/paths';
 
 async function init(metadata) {
@@ -8,8 +7,6 @@ async function init(metadata) {
 	}
 
 	const customWidth = metadata.options.commentsIndentWidth;
-
-	const currentUser = metadata.user;
 	const itemAuthor = metadata.item.by;
 
 	const comments = getAllComments();
