@@ -49,11 +49,11 @@ export function getUserData(path) {
 	const BASE_URL = 'https://news.ycombinator.com';
 
 	return new Promise(async resolve => {
-		let username = (await browser.storage.local.get()).username;
+		let {username} = await browser.storage.local.get();
 		let fetchedPage;
 		let userElement;
 
-		let favorites = undefined;
+		let favorites;
 
 		if (username && [...paths.stories, ...paths.comments].includes(path)) {
 			const FAVE_URL = `${BASE_URL}/favorites?${paths.comments.includes(path) ? 'comments=t&' : ''}id=${username}`;
