@@ -31,11 +31,7 @@ import sort_stories from '../features/sort-stories';
 import toggle_all_comments_and_replies from '../features/toggle-all-comments-and-replies';
 
 import features from './features';
-import {
-	getUrlParams,
-	getOptions,
-	getUserAndColor
-} from './utils';
+import {getUrlParams, getOptions, getUserData} from './utils';
 import {getItemInfo} from './api';
 
 const featureList = [
@@ -85,13 +81,14 @@ const getMetadata = new Promise(async resolve => {
 		firstLoad: false
 	};
 
-	const {username, topcolor} = await getUserAndColor;
+	const userData = await getUserData(metadata.path);
+	metadata.user = userData.username;
+	metadata.topcolor = userData.topcolor;
+	metadata.favorites = userData.favorites;
 
-	metadata.user = username;
-	metadata.topcolor = topcolor;
 	metadata.options = await getOptions;
 
-	await browser.storage.sync.set({topcolor});
+	await browser.storage.sync.set({topcolor: metadata.topcolor});
 
 	metadata.item.isItem = metadata.path === '/item';
 	if (metadata.item.isItem) {

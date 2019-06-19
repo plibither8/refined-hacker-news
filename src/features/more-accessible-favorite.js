@@ -45,7 +45,7 @@ async function defaultFavoriteLinks() {
 	}
 }
 
-async function commentsFavoriteLinks(user) {
+async function commentsFavoriteLinks(metadata) {
 	const comments = getAllComments();
 	for (const comment of comments) {
 		const headSpan = comment.querySelector('span.comhead');
@@ -61,9 +61,13 @@ async function commentsFavoriteLinks(user) {
 		headSpan.insertBefore(faveLink, toggleBtn);
 	}
 
-	const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + user);
-	const alreadyFaveComments = [...page.querySelectorAll('table.itemlist > tbody > tr.athing')]
-		.map(story => story.id);
+	let alreadyFaveComments = metadata.favorites;
+
+	if (!alreadyFaveComments) {
+		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + metadata.user);
+		const items = page.querySelectorAll('table.itemlist > tbody > tr.athing');
+		alreadyFaveComments = [...items].map(comm => comm.id);
+	}
 
 	for (const comment of comments) {
 		const {id} = comment;
@@ -105,7 +109,7 @@ async function commentsFavoriteLinks(user) {
 	}
 }
 
-async function storiesFavoriteLinks(user) {
+async function storiesFavoriteLinks(metadata) {
 	const subtexts = document.querySelectorAll('td.subtext');
 	for (const subtext of subtexts) {
 		const commentsLink = [...subtext.querySelectorAll('a')].pop();
@@ -119,10 +123,13 @@ async function storiesFavoriteLinks(user) {
 		subtext.insertBefore(faveSeparator, commentsLink);
 	}
 
-	const alreadyFaveStories = [];
-	const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + user);
-	const stories = page.querySelectorAll('table.itemlist > tbody > tr.athing');
-	[...stories].map(story => alreadyFaveStories.push(story.id));
+	let alreadyFaveStories = metadata.favorites;
+
+	if (!alreadyFaveStories) {
+		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + metadata.user);
+		const stories = page.querySelectorAll('table.itemlist > tbody > tr.athing');
+		alreadyFaveStories = [...stories].map(story => story.id);
+	}
 
 	for (const subtext of subtexts) {
 		const faveLink = subtext.querySelector('.__rhn__fave-link');
@@ -176,9 +183,9 @@ async function init(metadata) {
 	await defaultFavoriteLinks();
 
 	if (paths.comments.includes(path)) {
-		await commentsFavoriteLinks(metadata.user);
+		await commentsFavoriteLinks(metadata);
 	} else if (paths.stories.includes(path)) {
-		await storiesFavoriteLinks(metadata.user);
+		await storiesFavoriteLinks(metadata);
 	}
 
 	return true;

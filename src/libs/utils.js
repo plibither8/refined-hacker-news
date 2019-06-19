@@ -8,6 +8,7 @@ import sortStories from '../features/sort-stories';
 import hideReadStories from '../features/hide-read-stories';
 import autoRefresh from '../features/auto-refresh';
 
+import {paths} from './paths';
 import defaultConfigs from './default-configs';
 import features from './features';
 
@@ -44,14 +45,41 @@ export function getAuthString(id) {
 	});
 }
 
-export const getUserAndColor = new Promise(async resolve => {
-	const homepage = await getPageDom('https://news.ycombinator.com');
-	const userElement = homepage.querySelector('a#me');
-	const topcolor = homepage.querySelector('table#hnmain > tbody > tr > td').getAttribute('bgcolor');
-	const username = userElement ? userElement.innerText : undefined;
+export function getUserData(path) {
+	const BASE_URL = 'https://news.ycombinator.com';
 
-	resolve({username, topcolor});
-});
+	return new Promise(async resolve => {
+		let username = (await browser.storage.local.get()).username;
+		let fetchedPage;
+		let userElement;
+
+		let favorites = undefined;
+
+		if (username && [...paths.stories, ...paths.comments].includes(path)) {
+			const FAVE_URL = `${BASE_URL}/favorites?${paths.comments.includes(path) ? 'comments=t&' : ''}id=${username}`;
+			fetchedPage = await getPageDom(FAVE_URL);
+			userElement = fetchedPage.querySelector('a#me');
+
+			if (userElement && username === userElement.innerText) {
+				const favoriteElements = [...fetchedPage.querySelectorAll('table.itemlist > tbody > tr.athing')];
+				favorites = favoriteElements.map(item => item.id);
+			}
+		} else {
+			fetchedPage = await getPageDom(BASE_URL);
+			userElement = fetchedPage.querySelector('a#me');
+		}
+
+		const topcolor = fetchedPage.querySelector('table#hnmain > tbody > tr > td').getAttribute('bgcolor');
+		username = userElement ? userElement.innerText : undefined;
+		await browser.storage.local.set({username});
+
+		resolve({
+			username,
+			topcolor,
+			favorites
+		});
+	});
+}
 
 export function getUrlParams(param, url) {
 	const params = new URLSearchParams((url || window.location.search).replace('?', '&'));
