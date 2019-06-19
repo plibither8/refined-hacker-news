@@ -122,7 +122,6 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
   - Add border to indentation to make to show indent separation between comments
   - Custom indent-width (default is 40px), which can be set using the extension popup
   - Highlight item's original poster, displayed as `[op]` next to username
-  - Bolden your own comments' username.
 - [**`highlight-unread-comments`**](src/features/highlight-unread-comments.js) Highlight new and unread comments after your second and subsequent visits to the comments page of an item. Data resets after three days.
 - [**`linkify-user-about`**](src/features/linkify-user-about.js) Linkify all links and emails IDs that are on the "about" of the user's profile.
 
