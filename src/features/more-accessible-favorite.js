@@ -7,20 +7,20 @@ const loaderCustomStyle = `
 	margin-left: 5px;
 `;
 
-async function defaultFavoriteLinks() {
-	// Query all faveLinks that are, by default, present on the page
+async function defaultButtons() {
+	// Query all faveButtons that are, by default, present on the page
 	// and have not been injected by this extension. This is achieved
 	// by initialising this feature before `more-accessible-favorite`
-	const faveLinksList = document.querySelectorAll('a[href^="fave"]');
+	const faveButtonsList = document.querySelectorAll('a[href^="fave"]');
 
-	for (const faveLink of faveLinksList) {
-		const auth = getUrlParams('auth', faveLink.href);
-		const id = getUrlParams('id', faveLink.href);
+	for (const faveButton of faveButtonsList) {
+		const auth = getUrlParams('auth', faveButton.href);
+		const id = getUrlParams('id', faveButton.href);
 
-		let unfave = faveLink.innerText === 'un-favorite';
+		let unfave = faveButton.innerText === 'un-favorite';
 		let ongoingFavorite = false;
 
-		faveLink.addEventListener('click', async event => {
+		faveButton.addEventListener('click', async event => {
 			if (isClickModified(event)) {
 				return;
 			}
@@ -33,68 +33,67 @@ async function defaultFavoriteLinks() {
 
 			ongoingFavorite = true;
 
-			const loader = createSiblingLoader(faveLink, loaderCustomStyle);
-			await fetch(faveLink.href).then(() => loader.remove());
+			const loader = createSiblingLoader(faveButton, loaderCustomStyle);
+			await fetch(faveButton.href).then(() => loader.remove());
 
 			unfave = !unfave;
-			faveLink.innerHTML = unfave ? 'un-favorite' : 'favorite';
-			faveLink.href = `fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
+			faveButton.innerHTML = unfave ? 'un-favorite' : 'favorite';
+			faveButton.href = `fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
 
 			ongoingFavorite = false;
 		});
 	}
 }
 
-async function commentsFavoriteLinks(metadata) {
-	const comments = getAllComments();
-	for (const comment of comments) {
-		const headSpan = comment.querySelector('span.comhead');
+async function commentButtons(metadata) {
+	const items = getAllComments();
 
-		const faveLink = document.createElement('a');
-		const faveSeparator = document.createTextNode('| ');
-		faveLink.innerText = 'favorite';
-		faveLink.classList.add('__rhn__fave-link');
+	for (const item of items) {		
+		const separatorPipe = document.createTextNode('| ');
+		const faveButton = document.createElement('a');
+		faveButton.innerText = 'favorite';
+		faveButton.classList.add('__rhn__fave-button');
 
-		const toggleBtn = comment.querySelector('a.togg');
-		toggleBtn.style.marginLeft = '4px';
-		headSpan.insertBefore(faveSeparator, toggleBtn);
-		headSpan.insertBefore(faveLink, toggleBtn);
+		const toggleButton = item.querySelector('a.togg');
+		toggleButton.style.marginLeft = '4px';
+
+		const headSpan = item.querySelector('span.comhead');
+		headSpan.insertBefore(separatorPipe, toggleButton);
+		headSpan.insertBefore(faveButton, toggleButton);
 	}
 
-	let alreadyFaveComments = metadata.favorites;
+	let alreadyFaveItems = metadata.favorites;
 
-	if (!alreadyFaveComments) {
+	if (!alreadyFaveItems) {
 		const page = await getPageDom('https://news.ycombinator.com/favorites?comments=t&id=' + metadata.user);
-		const items = page.querySelectorAll('table.itemlist > tbody > tr.athing');
-		alreadyFaveComments = [...items].map(comm => comm.id);
+		const fetchedPageItems = page.querySelectorAll('table.itemlist > tbody > tr.athing');
+		alreadyFaveItems = [...fetchedPageItems].map(comm => comm.id);
 	}
 
-	for (const comment of comments) {
-		const {id} = comment;
-		const faveLink = comment.querySelector('.__rhn__fave-link');
+	for (const item of items) {
+		const {id} = item;
+		const faveButton = item.querySelector('.__rhn__fave-button');
+		faveButton.href = 'javascript:void(0)';
 
 		let unfave = false;
 
-		faveLink.href = 'javascript:void(0)';
-		faveLink.classList.add('__rhn__favelink');
-
-		if (alreadyFaveComments.includes(id)) {
-			faveLink.innerHTML = 'un-favorite';
+		if (alreadyFaveItems.includes(id)) {
+			faveButton.innerHTML = 'un-favorite';
 			unfave = true;
 		} else {
-			faveLink.innerHTML = 'favorite';
+			faveButton.innerHTML = 'favorite';
 		}
 
 		let ongoingFavorite = false;
 
-		faveLink.addEventListener('click', async () => {
+		faveButton.addEventListener('click', async () => {
 			if (ongoingFavorite) {
 				return;
 			}
 
 			ongoingFavorite = true;
 
-			const loader = createSiblingLoader(faveLink, loaderCustomStyle);
+			const loader = createSiblingLoader(faveButton, loaderCustomStyle);
 
 			const auth = await getAuthString(id);
 			const url = `https://news.ycombinator.com/fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
@@ -102,61 +101,56 @@ async function commentsFavoriteLinks(metadata) {
 			await fetch(url).then(() => loader.remove());
 
 			unfave = !unfave;
-			faveLink.innerHTML = unfave ? 'un-favorite' : 'favorite';
+			faveButton.innerHTML = unfave ? 'un-favorite' : 'favorite';
 
 			ongoingFavorite = false;
 		});
 	}
 }
 
-async function storiesFavoriteLinks(metadata) {
-	const subtexts = document.querySelectorAll('td.subtext');
-	for (const subtext of subtexts) {
-		const commentsLink = [...subtext.querySelectorAll('a')].pop();
+async function storyButtons(metadata) {
+	const items = document.querySelectorAll('td.subtext');
 
-		const faveLink = document.createElement('a');
-		const faveSeparator = document.createTextNode(' | ');
-		faveLink.innerText = 'favorite';
-		faveLink.classList.add('__rhn__fave-link');
+	for (const item of items) {
+		const lastAnchorButton = item.lastElementChild;
 
-		subtext.insertBefore(faveLink, commentsLink);
-		subtext.insertBefore(faveSeparator, commentsLink);
+		const separatorPipe = document.createTextNode(' | ');
+		const faveButton = document.createElement('a');
+		faveButton.innerText = 'favorite';
+		faveButton.classList.add('__rhn__fave-button');
+
+		item.insertBefore(faveButton, lastAnchorButton);
+		item.insertBefore(separatorPipe, lastAnchorButton);
 	}
 
-	let alreadyFaveStories = metadata.favorites;
+	let alreadyFaveItems = metadata.favorites;
 
-	if (!alreadyFaveStories) {
+	if (!alreadyFaveItems) {
 		const page = await getPageDom('https://news.ycombinator.com/favorites?id=' + metadata.user);
-		const stories = page.querySelectorAll('table.itemlist > tbody > tr.athing');
-		alreadyFaveStories = [...stories].map(story => story.id);
+		const fetchedPageItems = page.querySelectorAll('table.itemlist > tbody > tr.athing');
+		alreadyFaveItems = [...fetchedPageItems].map(story => story.id);
 	}
 
-	for (const subtext of subtexts) {
-		const faveLink = subtext.querySelector('.__rhn__fave-link');
+	for (const item of items) {
+		const faveButton = item.querySelector('.__rhn__fave-button');
 
-		let hideLink;
-		for (const link of subtext.querySelectorAll('a')) {
-			if (link.innerText === 'hide') {
-				hideLink = link.href.replace('?', '&');
-			}
-		}
-
-		const auth = getUrlParams('auth', hideLink);
-		const id = getUrlParams('id', hideLink);
+		const hideUrl = item.querySelector('a[href^="hide"]').href.replace('?', '&');
+		const auth = getUrlParams('auth', hideUrl);
+		const id = getUrlParams('id', hideUrl);
 
 		let unfave = false;
 
-		if (alreadyFaveStories.includes(id)) {
-			faveLink.href = `fave?id=${id}&auth=${auth}&un=t`;
-			faveLink.innerHTML = 'un-favorite';
+		if (alreadyFaveItems.includes(id)) {
+			faveButton.href = `fave?id=${id}&auth=${auth}&un=t`;
+			faveButton.innerHTML = 'un-favorite';
 			unfave = true;
 		} else {
-			faveLink.href = `fave?id=${id}&auth=${auth}`;
+			faveButton.href = `fave?id=${id}&auth=${auth}`;
 		}
 
 		let ongoingFavorite = false;
 
-		faveLink.addEventListener('click', async event => {
+		faveButton.addEventListener('click', async event => {
 			event.preventDefault();
 
 			if (ongoingFavorite) {
@@ -165,12 +159,12 @@ async function storiesFavoriteLinks(metadata) {
 
 			ongoingFavorite = true;
 
-			const loader = createSiblingLoader(faveLink, loaderCustomStyle);
-			await fetch(faveLink.href).then(() => loader.remove());
+			const loader = createSiblingLoader(faveButton, loaderCustomStyle);
+			await fetch(faveButton.href).then(() => loader.remove());
 
 			unfave = !unfave;
-			faveLink.innerHTML = unfave ? 'un-favorite' : 'favorite';
-			faveLink.href = `fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
+			faveButton.innerHTML = unfave ? 'un-favorite' : 'favorite';
+			faveButton.href = `fave?id=${id}&auth=${auth}${unfave ? '&un=t' : ''}`;
 
 			ongoingFavorite = false;
 		});
@@ -180,12 +174,12 @@ async function storiesFavoriteLinks(metadata) {
 async function init(metadata) {
 	const {path} = metadata;
 
-	await defaultFavoriteLinks();
+	await defaultButtons();
 
 	if (paths.comments.includes(path)) {
-		await commentsFavoriteLinks(metadata);
+		await commentButtons(metadata);
 	} else if (paths.stories.includes(path)) {
-		await storiesFavoriteLinks(metadata);
+		await storyButtons(metadata);
 	}
 
 	return true;

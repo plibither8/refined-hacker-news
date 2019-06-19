@@ -3,11 +3,14 @@ import {getItemInfo} from '../libs/api';
 import {paths} from '../libs/paths';
 
 async function init(metadata) {
-	const {item} = metadata;
+	if (!metadata.item.isItem) {
+		return false;
+	}
+
 	const customWidth = metadata.options.commentsIndentWidth;
 
 	const currentUser = metadata.user;
-	const itemAuthor = item.id ? (await getItemInfo(item.id)).by : undefined;
+	const itemAuthor = metadata.item.by;
 
 	const comments = getAllComments();
 
@@ -24,11 +27,6 @@ async function init(metadata) {
 		const commentAuthor = comment.querySelector('a.hnuser');
 		if (!commentAuthor) {
 			continue;
-		}
-
-		// Highlight-my-username
-		if (currentUser && currentUser === commentAuthor.innerText) {
-			commentAuthor.classList.add('__rhn__highlight-me');
 		}
 
 		// Highlight-op-username
