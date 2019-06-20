@@ -34,8 +34,8 @@ function init(metadata) {
 	};
 
 	window.addEventListener('keydown', event => {
-		if (document.activeElement.tagName !== 'BODY' && document.activeElement.tagName !== 'A') {
-			return;
+		if (document.activeElement.tagName === 'A') {
+			document.activeElement.blur();
 		}
 
 		itemData.items = getItemList();
