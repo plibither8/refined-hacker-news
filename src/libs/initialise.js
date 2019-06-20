@@ -106,25 +106,20 @@ const getMetadata = new Promise(async resolve => {
 });
 
 async function createLoader() {
-	const featureCount = featureList.length;
-
 	const loader = document.createElement('div');
-	loader.innerHTML = `<img src='${browser.extension.getURL('loader.gif')}'><span>0/${featureCount}</span>`;
+	loader.innerHTML = `<img src='${browser.extension.getURL('loader.gif')}'>`;
 	loader.classList.add('__rhn__extension-loader');
-	const counter = loader.querySelector('span');
 
 	const options = await getOptions;
 	if (options.featureLoader) {
 		document.body.append(loader);
 	}
 
-	return {loader, counter};
+	return loader;
 }
 
 export async function initialiseAll() {
-	const {loader, counter} = await createLoader();
-	const featureCount = featureList.length;
-	let loadCount = 0;
+	const loader = await createLoader();
 
 	const metadata = await getMetadata;
 	metadata.firstLoad = true;
@@ -134,7 +129,6 @@ export async function initialiseAll() {
 	}
 
 	for (const feat of featureList) {
-		counter.innerText = `${++loadCount}/${featureCount}`;
 		if (feat.awaitInit) {
 			await features.add(feat, metadata); // eslint-disable-line no-await-in-loop
 		} else {
