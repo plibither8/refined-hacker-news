@@ -205,7 +205,7 @@ function init(metadata) {
 						return;
 					}
 
-					keydown.story.favorite(next);
+					keydown.story.favorite(itemData.activeItem, next);
 
 					return;
 

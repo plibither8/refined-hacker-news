@@ -199,8 +199,10 @@ const story = {
 	},
 
 	// Favorite story
-	favorite(next) {
-		const fave = next.querySelector('a[href^="fave"]');
+	favorite(activeItem, next) {
+		const fave = next.querySelector('a[href^="fave"]') ||
+			activeItem.querySelector('a[href^="fave"]');
+
 		if (fave) {
 			fave.click();
 		}
