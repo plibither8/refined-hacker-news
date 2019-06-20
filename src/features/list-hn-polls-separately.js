@@ -142,6 +142,7 @@ const details = {
 		exclude: []
 	},
 	loginRequired: false,
+	awaitInit: true,
 	init
 };
 

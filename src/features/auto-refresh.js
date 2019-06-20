@@ -130,6 +130,7 @@ const details = {
 		exclude: ['/front']
 	},
 	loginRequired: false,
+	awaitInit: true,
 	init
 };
 

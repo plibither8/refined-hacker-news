@@ -83,6 +83,7 @@ const details = {
 		]
 	},
 	loginRequired: false,
+	awaitInit: true,
 	init
 };
 
