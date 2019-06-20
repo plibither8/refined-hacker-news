@@ -132,7 +132,7 @@ const comment = {
 
 	// Favorite comment
 	favorite(activeItem) {
-		const fave = activeItem.querySelector('.__rhn__favelink');
+		const fave = activeItem.querySelector('.__rhn__fave-button');
 
 		if (fave) {
 			fave.click();
