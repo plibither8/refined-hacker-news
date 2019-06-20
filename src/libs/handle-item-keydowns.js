@@ -93,6 +93,8 @@ const universal = {
 
 	// De-activate item
 	escape(itemData) {
+		document.activeElement.blur();
+
 		if (itemData.activeItem) {
 			itemData.activeItem.classList.remove(focusClass);
 			itemData.activeItem = undefined;

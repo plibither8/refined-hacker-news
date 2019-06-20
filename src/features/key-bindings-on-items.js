@@ -34,6 +34,10 @@ function init(metadata) {
 	};
 
 	window.addEventListener('keydown', event => {
+		if (['TEXTAREA', 'INPUT'].includes(document.activeElement.tagName)) {
+			return;
+		}
+
 		if (document.activeElement.tagName === 'A') {
 			document.activeElement.blur();
 		}
