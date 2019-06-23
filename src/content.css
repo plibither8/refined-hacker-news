@@ -118,6 +118,18 @@
 	overflow-y: auto;
 }
 
+.__rhn__hover-delay {
+	animation: 200ms step-end hover-info-delay;
+	-webkit-animation: 200ms step-end hover-info-delay;
+	-moz-animation: 200ms step-end hover-info-delay;
+	-o-animation: 200ms step-end hover-info-delay;
+}
+
+@keyframes hover-info-delay {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
 .__rhn__hover-info td {
 	font-size: 10px !important;
 	vertical-align: top;

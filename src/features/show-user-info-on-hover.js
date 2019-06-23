@@ -32,6 +32,7 @@ function init() {
 			}
 
 			userDiv.classList.remove('__rhn__no-display');
+			userDiv.classList.add('__rhn__hover-delay');
 			userDiv.style.left = user.getBoundingClientRect().left + 'px';
 
 			if (user.dataset.rhnInfoLoaded === '0') {
@@ -66,7 +67,9 @@ function init() {
 		});
 
 		user.addEventListener('mouseout', () => {
-			user.parentElement.querySelector('.__rhn__hover-info').classList.add('__rhn__no-display');
+			const userDiv = user.parentElement.querySelector('.__rhn__hover-info');
+			userDiv.classList.add('__rhn__no-display');
+			userDiv.classList.remove('__rhn__hover-delay');
 		});
 	}
 
