@@ -32,7 +32,7 @@ function init() {
 			}
 
 			userDiv.classList.remove('__rhn__no-display');
-			userDiv.classList.add('__rhn__hover-delay');
+			userDiv.classList.add('__rhn__hover-info-delay');
 			userDiv.style.left = user.getBoundingClientRect().left + 'px';
 
 			if (user.dataset.rhnInfoLoaded === '0') {
@@ -69,7 +69,7 @@ function init() {
 		user.addEventListener('mouseout', () => {
 			const userDiv = user.parentElement.querySelector('.__rhn__hover-info');
 			userDiv.classList.add('__rhn__no-display');
-			userDiv.classList.remove('__rhn__hover-delay');
+			userDiv.classList.remove('__rhn__hover-info-delay');
 		});
 	}
 

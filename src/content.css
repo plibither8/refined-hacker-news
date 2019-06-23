@@ -118,7 +118,7 @@
 	overflow-y: auto;
 }
 
-.__rhn__hover-delay {
+.__rhn__hover-info-delay {
 	animation: 200ms step-end hover-info-delay;
 	-webkit-animation: 200ms step-end hover-info-delay;
 	-moz-animation: 200ms step-end hover-info-delay;
