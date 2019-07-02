@@ -141,7 +141,17 @@ function init(metadata) {
 						return;
 					}
 
-					keydown.comment.vote(itemData.activeItem);
+					keydown.comment.upvote(itemData.activeItem);
+
+					return;
+
+				// D: downvote comment/reply
+				case 68:
+					if (combo) {
+						return;
+					}
+
+					keydown.comment.downvote(itemData.activeItem);
 
 					return;
 

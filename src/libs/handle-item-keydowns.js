@@ -141,15 +141,27 @@ const comment = {
 		}
 	},
 
-	// Vote/unvote comment
-	vote(activeItem) {
-		const vote = activeItem.previousSibling.querySelector('div.votearrow');
+	// Upvote/unvote comment
+	upvote(activeItem) {
+		const upvoteBtn = activeItem.previousSibling.querySelector('div.votearrow[title="upvote"]');
 		const unvote = activeItem.querySelector('a[id^="un_"]');
 
 		if (unvote) {
 			unvote.click();
-		} else if (vote) {
-			vote.click();
+		} else if (upvoteBtn) {
+			upvoteBtn.click();
+		}
+	},
+
+	// Downvote/undown comment
+	downvote(activeItem) {
+		const downvoteBtn = activeItem.previousSibling.querySelector('div.votearrow[title="downvote"]');
+		const undown = activeItem.querySelector('a[id^="un_"]');
+
+		if (undown) {
+			undown.click();
+		} else if (downvoteBtn) {
+			downvoteBtn.click();
 		}
 	},
 
