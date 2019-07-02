@@ -177,8 +177,8 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 | Key-binding                                     | Action                                                                                |
 |-------------------------------------------------|---------------------------------------------------------------------------------------|
-| <kbd>J</kbd> <br> <kbd>Shift</kbd>+<kbd>J</kbd> | Next comment (down) <br> Next comment with same indentation and parent                |
-| <kbd>K</kbd> <br> <kbd>Shift</kbd>+<kbd>K</kbd> | Previous comment (down) <br> Previous comment with same indentation and parent        |
+| <kbd>J</kbd> <br> <kbd>Shift</kbd>+<kbd>J</kbd> | Next comment (down) <br> Next direct sibling comment                                  |
+| <kbd>K</kbd> <br> <kbd>Shift</kbd>+<kbd>K</kbd> | Previous comment (down) <br> Previous direct sibling comment                          |
 | <kbd>Enter</kbd>                                | Toggle comment                                                                        |
 | <kbd>Esc</kbd>                                  | Un-highlight comment                                                                  |
 | <kbd>U</kbd>                                    | Upvote comment                                                                        |
