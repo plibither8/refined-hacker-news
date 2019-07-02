@@ -181,7 +181,8 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 | <kbd>K</kbd> <br> <kbd>Shift</kbd>+<kbd>K</kbd> | Previous comment (down) <br> Previous direct sibling comment                          |
 | <kbd>Enter</kbd>                                | Toggle comment                                                                        |
 | <kbd>Esc</kbd>                                  | Un-highlight comment                                                                  |
-| <kbd>U</kbd>                                    | Upvote comment                                                                        |
+| <kbd>U</kbd>                                    | Upvote/unvote comment                                                                 |
+| <kbd>D</kbd>                                    | Downvote/undown comment                                                               |
 | <kbd>R</kbd>                                    | Reply to comment                                                                      |
 | <kbd>F</kbd>                                    | Favorite comment                                                                      |
 | <kbd>0</kbd> to <kbd>9</kbd>                    | Open numbered/index reference link in the comment <br> Eg: `[1] https://mihir.ch ...` |
