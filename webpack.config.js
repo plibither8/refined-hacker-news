@@ -1,7 +1,8 @@
 'use strict';
 const path = require('path');
-const SizePlugin = require('size-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const SizePlugin = require('size-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = () => ({
@@ -17,6 +18,7 @@ module.exports = () => ({
 		filename: '[name].js'
 	},
 	plugins: [
+		new CleanWebpackPlugin(),
 		new SizePlugin(),
 		new CopyWebpackPlugin([
 			{
