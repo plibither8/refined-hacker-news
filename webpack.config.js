@@ -1,11 +1,16 @@
 'use strict';
 const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const {exec} = require('child_process');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SizePlugin = require('size-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = () => ({
+function compileStylusCommand(mode) {
+	return 'stylus ./src/*.styl --out ./dist/' +
+		(mode === 'production' ? ' --compress' : ' -m');
+}
+
+module.exports = (env, argv) => ({
 	devtool: 'sourcemap',
 	stats: 'errors-only',
 	entry: {
@@ -18,20 +23,36 @@ module.exports = () => ({
 		filename: '[name].js'
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
 		new SizePlugin(),
 		new CopyWebpackPlugin([
 			{
 				from: '*',
 				context: 'src',
 				ignore: [
-					'*.js'
+					'*.js',
+					'*.styl'
 				]
 			},
 			{
 				from: 'node_modules/webextension-polyfill/dist/browser-polyfill.min.js'
 			}
-		])
+		]),
+		{
+			apply: compiler => {
+				compiler.hooks.afterEmit.tap('AfterEmitPlugin', () => {
+					exec(compileStylusCommand(argv.mode),
+						(err, stdout, stderr) => {
+							if (stdout) {
+								process.stdout.write(stdout);
+							}
+							if (stderr) {
+								process.stderr.write(stderr);
+							}
+						}
+					);
+				});
+			}
+		}
 	],
 	resolve: {
 		extensions: [
