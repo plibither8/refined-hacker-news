@@ -1,0 +1,61 @@
+// Options bar:
+.__rhn__options-bar
+	padding-left: 10px
+	display: flex
+	font-size: 13px
+	color: #000
+	align-items: center
+
+	label
+		font-size: 13px
+		color: #000
+
+	input[type='number']
+		margin-right: 5px
+		padding: 0
+		width: 5ch
+		-moz-appearance: none
+
+	form
+		display: flex
+		margin-bottom: 0
+
+		img
+			align-self: center
+			margin-left: 4px
+
+.__rhn__options-bar-top
+	margin-bottom: 5px
+	padding-bottom: 5px
+	border-bottom: 1px solid #ddd
+
+.__rhn__options-bar-bottom
+	margin-top: 5px
+	padding-top: 10px
+	border-top: 1px solid #ddd
+
+// Hover info popup box:
+.__rhn__hover-info
+	position: absolute
+	background: #f6f6ef
+	z-index: 2
+	border: 1px solid #000
+	padding: 3px
+	max-width: 500px
+	max-height: 400px
+	overflow-y: auto
+
+	td
+		font-size: 10px !important
+		vertical-align: top
+
+		&:nth-child(2)
+			word-break: break-word
+
+		a
+			color: #000 !important
+			text-decoration: none !important
+
+a.hnuser:hover ~ .__rhn__hover-info,
+.__rhn__hover-info:hover
+	display: block

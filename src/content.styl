@@ -1,0 +1,31 @@
+// Default CSS tweaks
+table.itemlist
+	border-collapse: collapse
+
+// Modifiers:
+.__rhn__no-display
+	display: none
+
+.__rhn__select-disabled
+	pointer-events: none
+	cursor: not-allowed
+
+// Extension loader
+.__rhn__extension-loader
+	position: fixed
+	top: 10px
+	left: 10px
+	border: 1px solid
+	padding: 2px
+	background: #f6f6ef
+
+	span
+		margin-left: 5px
+		font-family: monospace
+		font-size: 11px
+
+	img
+		vertical-align: middle
+
+// All feature-specific styles
+@import 'features/*'
