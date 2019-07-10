@@ -9,6 +9,7 @@ const paths = {
 		'/jobs',
 		'/active',
 		'/best',
+		'/classic',
 		'/noobstories',
 		'/front',
 		'/from',
