@@ -2,7 +2,7 @@ import OptionsSync from 'webext-options-sync';
 
 import defaultConfigs from './libs/default-configs';
 
-new OptionsSync().define({
+new OptionsSync({
 	defaults: defaultConfigs
 });
 

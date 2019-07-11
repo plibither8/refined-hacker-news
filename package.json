@@ -21,7 +21,7 @@
 		"indent-textarea": "^1.0.4",
 		"linkifyjs": "^2.1.8",
 		"timeago.js": "^4.0.0-beta.2",
-		"webext-options-sync": "^0.16.0",
+		"webext-options-sync": "^0.21.2",
 		"webextension-polyfill": "^0.4.0"
 	},
 	"devDependencies": {
