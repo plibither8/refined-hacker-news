@@ -27,6 +27,7 @@ import show_item_info_on_hover from '../features/show-item-info-on-hover';
 import show_similar_submissions from '../features/show-similar-submissions';
 import show_top_leaders_karma from '../features/show-top-leaders-karma';
 import show_user_info_on_hover from '../features/show-user-info-on-hover';
+import site_navigation_key_bindings from '../features/site-navigation-key-bindings';
 import sort_stories from '../features/sort-stories';
 import toggle_all_comments_and_replies from '../features/toggle-all-comments-and-replies';
 
@@ -37,6 +38,7 @@ import {getItemInfo} from './api';
 const featureList = [
 	list_hn_polls_separately,
 	key_bindings_on_items,
+	site_navigation_key_bindings,
 	comments_ui_tweaks,
 	highlight_unread_comments,
 	more_accessible_favorite,
