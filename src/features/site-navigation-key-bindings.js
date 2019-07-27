@@ -6,7 +6,7 @@ function init(metadata) {
 
 	window.addEventListener('keydown', event => {
 		// Only accept 'ALT' + 'keycode'
-		if (!isClickModified(event) && !event.altKey) {
+		if (isClickModified(event) && !event.altKey) {
 			return;
 		}
 
@@ -58,7 +58,9 @@ function init(metadata) {
 			default: break;
 		}
 
-		window.location.href = locationUrl;
+		if (locationUrl) {
+			window.location.href = locationUrl;
+		}
 	});
 
 	return true;
