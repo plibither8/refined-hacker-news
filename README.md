@@ -129,6 +129,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 - [**`key-bindings-on-items`**](src/features/key-bindings-on-items.js) Enable key bindings on items and comments to improve navigation and item/comment-related actions. [Go to mappings](#on-items-and-comments).
 - [**`key-bindings-on-input-fields`**](src/features/key-bindings-on-input-fields.js) Enable key bindings/shortcuts on input fields. [Go to mappings](#on-input-fields).
+- [**`site-navigation-key-bindings`**](src/features/site-navigation-key-bindings) Universal, site-wide key bindings/shortcuts to quickly navigate to a page (eg. Home, Show HN, Threads etc.). [Go to mappings](#site-wide-navigation).
 - [**`more-accessible-favorite`**](src/features/more-accessible-favorite.js) Add a 'favorite' button next to items and comments to quickly *favorite* them. Go to `https://news.ycombinator.com/favorites?id=<your-username>` to view favorite-d items.
 - [**`click-comment-indent-to-toggle`**](src/features/click-comment-indent-to-toggle.js) Click indentation of the comment (on the left of it) to toggle (show/hide) that comment.
 - [**`click-rank-to-vote-unvote`**](src/features/click-rank-to-vote-unvote.js) Increase hit-area of upvote button by clicking the rank number of the item to upvote it too.
@@ -193,6 +194,18 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 |--------------------------------------|--------------------------------------------------------------|
 | <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd> | Submit form                                                  |
 | <kbd>Ctrl/Cmd</kbd>+<kbd>I</kbd>     | Italicise selected portion (wrap selected text in asterisks) |
+
+#### Site-wide navigation
+
+| Key-binding                 | Action   |
+|-----------------------------|----------|
+| <kbd>Alt</kbd>+<kbd>H</kbd> | Home     |
+| <kbd>Alt</kbd>+<kbd>S</kbd> | Submit   |
+| <kbd>Alt</kbd>+<kbd>N</kbd> | New      |
+| <kbd>Alt</kbd>+<kbd>O</kbd> | Show HN  |
+| <kbd>Alt</kbd>+<kbd>A</kbd> | Ask HN   |
+| <kbd>Alt</kbd>+<kbd>P</kbd> | Profile  |
+| <kbd>Alt</kbd>+<kbd>T</kbd> | Threads  |
 
 ---
 

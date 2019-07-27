@@ -101,7 +101,10 @@ export function optionsBarEnabledOptions(metadata) {
 
 export function isClickModified(event) {
 	return Boolean(event.button) ||
-		event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
+		event.altKey ||
+		event.ctrlKey ||
+		event.metaKey ||
+		event.shiftKey;
 }
 
 export const getOptions = new Promise(async resolve => {

@@ -45,6 +45,7 @@ module.exports = (env, argv) => ({
 							if (stdout) {
 								process.stdout.write(stdout);
 							}
+
 							if (stderr) {
 								process.stderr.write(stderr);
 							}

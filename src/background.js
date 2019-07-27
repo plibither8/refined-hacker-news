@@ -2,6 +2,7 @@ import OptionsSync from 'webext-options-sync';
 
 import defaultConfigs from './libs/default-configs';
 
+// eslint-disable-next-line no-new
 new OptionsSync({
 	defaults: defaultConfigs
 });
