@@ -10,7 +10,7 @@
 		"watch": "webpack --mode=development --watch",
 		"watch:firefox": "web-ext run --source-dir=dist",
 		"version": "dot-json dist/manifest.json version $VER",
-		"zip": "cd dist && zip -r ../dist_$VER.zip ./",
+		"zip": "cd dist && zip -r ../releases/$VER.zip ./",
 		"dev-dashboard": "google-chrome https://chrome.google.com/webstore/developer/dashboard",
 		"release:amo": "cd dist && web-ext-submit --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
 		"release:cws": "cd dist && webstore upload --auto-publish",
