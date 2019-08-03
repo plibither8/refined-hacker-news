@@ -29,6 +29,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 	- [Keyboard bindings](#keyboard-bindings)
 		- [On items and comments](#on-items-and-comments)
 		- [On input fields](#on-input-fields)
+		- [Site-wide navigation](#site-wide-navigation)
 	- [Abandoned features](#abandoned-features)
 - [Customization and Options](#customization-and-options)
 - [Contribute](#contribute)
