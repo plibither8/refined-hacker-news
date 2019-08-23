@@ -95,7 +95,7 @@ function init(metadata) {
 	reverseButton.addEventListener('click', () => {
 		const stories = getGroupedStories(document.querySelector('table.itemlist'));
 		updateStoriesHtml(stories.reverse());
-	})
+	});
 
 	return true;
 }
