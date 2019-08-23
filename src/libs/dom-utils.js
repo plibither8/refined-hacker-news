@@ -36,7 +36,7 @@ export function elementInScrollView(el) {
 }
 
 export function getAllComments() {
-	return document.querySelectorAll('tr.comtr');
+	return [...document.querySelectorAll('tr.comtr')];
 }
 
 export function getTopLevelComments() {

@@ -23,7 +23,7 @@ async function init(metadata) {
 	}
 
 	const currentComments = [];
-	[...getAllComments()].map(comment => currentComments.push(comment.id));
+	getAllComments().map(comment => currentComments.push(comment.id));
 
 	const itemData = readCommentsList[itemId] || {};
 	const readComments = itemData.comments || [];
