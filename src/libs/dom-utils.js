@@ -141,5 +141,6 @@ export function getCommentIndentation(element, parent = false) {
 }
 
 export function toggleCommentReplacement(comment) {
-	const isToggled = comment
+	const isToggled = comment.classList.contains('coll');
+	comment.classList.toggle()
 }
