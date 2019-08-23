@@ -1,8 +1,16 @@
-import {getTopLevelComments, getAllComments} from '../libs/dom-utils';
+import {
+	getTopLevelComments,
+	getAllComments,
+	getCommentIndentation
+} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
 function toggleAllReplies() {
-	const allComments = [...getAllComments()];
+	const allComments = getAllComments();
+
+	if (allComments.length == 0) {
+		return false;
+	}
 
 	allComments.forEach((comment, id) => {
 		const currentIndent = comment.querySelector('td.ind img').width / 40;
@@ -36,6 +44,8 @@ function toggleAllReplies() {
 			fontTagParent.append(fontTag);
 		}
 	});
+
+	return true;
 }
 
 function toggleAllComments() {
@@ -58,18 +68,49 @@ function toggleAllComments() {
 	});
 
 	target.append(' | ', toggleAllBtn);
+
+	return true;
+}
+
+function toggleChildrenReplies() {
+	const comments = getAllComments();
+	if (comments.length === 0) {
+		return false;
+	}
+
+	const target = document.querySelector('table.fatitem td.subtext') ||
+		document.querySelector('table.fatitem span.comhead');
+
+	const toggleAllBtn = document.createElement('a');
+	toggleAllBtn.innerHTML = 'toggle all children replies';
+	toggleAllBtn.href = 'javascript:void(0)';
+
+	toggleAllBtn.addEventListener('click', async () => {
+		for (const comment of comments) {
+			if (getCommentIndentation(comment) === 1) {
+				await toggleCommentReplacement(comment);
+				// comment.querySelector('a.togg').click();
+			}
+		}
+	});
+
+	target.append(' | ', toggleAllBtn);
+
+	return true;
 }
 
 function init(metadata) {
-	if (metadata.options.toggleAllReplies) {
-		toggleAllReplies();
-	}
+	let isItemActive = true;
 
 	if (metadata.item.isItem) {
-		toggleAllComments();
+		isItemActive = toggleAllComments() && toggleChildrenReplies();
+
+		if (metadata.options.toggleAllReplies) {
+			isItemActive = toggleAllReplies();
+		}
 	}
 
-	return true;
+	return isItemActive;
 }
 
 const details = {

@@ -1,4 +1,4 @@
-import {elementInScrollView} from './dom-utils';
+import {elementInScrollView, getCommentIndentation} from './dom-utils';
 import parseReferenceLinks from './parse-reference-links';
 
 const focusClass = '__rhn__focussed-item';
@@ -6,12 +6,6 @@ const focusClass = '__rhn__focussed-item';
 function activateItem(itemData) {
 	itemData.activeItem = itemData.items[itemData.index];
 	itemData.activeItem.classList.add(focusClass);
-}
-
-function getCommentIndentation(element) {
-	const parent = element.parentElement;
-	const indentation = parent.querySelector('.ind img').width / 40;
-	return indentation;
 }
 
 function getNextCommentWithSameIndent(itemData, direction) {
@@ -25,7 +19,7 @@ function getNextCommentWithSameIndent(itemData, direction) {
 		return index;
 	}
 
-	const activeItemIndentation = getCommentIndentation(activeItem);
+	const activeItemIndentation = getCommentIndentation(activeItem, true);
 
 	let nextItemIndent;
 	do {
@@ -36,7 +30,7 @@ function getNextCommentWithSameIndent(itemData, direction) {
 		index += direction;
 
 		// If index is of 'More' link, then make it undefined
-		nextItemIndent = index === items.length - 1 ? undefined : getCommentIndentation(items[index]);
+		nextItemIndent = index === items.length - 1 ? undefined : getCommentIndentation(items[index], true);
 	} while (nextItemIndent && nextItemIndent > activeItemIndentation);
 
 	return index;

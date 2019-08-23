@@ -133,3 +133,13 @@ export function createSiblingLoader(element, customStyle = '') {
 
 	return loader;
 }
+
+export function getCommentIndentation(element, parent = false) {
+	const target = parent ? element.parentElement : element;
+	const indentation = target.querySelector('.ind img').width / 40;
+	return indentation;
+}
+
+export function toggleCommentReplacement(comment) {
+	const isToggled = comment
+}
