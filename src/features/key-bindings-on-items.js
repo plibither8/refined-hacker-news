@@ -105,7 +105,13 @@ function init(metadata) {
 
 		if (itemData.activeItem.matches('a.morelink')) {
 			if (event.keyCode === 13) {
-				itemData.activeItem.click();
+				if (event.ctrlKey || event.metaKey) {
+					browser.runtime.sendMessage({
+						url: itemData.activeItem.href
+					});
+				} else {
+					itemData.activeItem.click();
+				}
 			}
 
 			return;

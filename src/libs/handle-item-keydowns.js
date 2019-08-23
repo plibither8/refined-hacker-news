@@ -53,8 +53,12 @@ const universal = {
 		itemData.items[itemData.index].classList.remove(focusClass);
 
 		if (itemData.activeItem) {
-			if (itemData.commentList && event.shiftKey) {
-				itemData.index = getNextCommentWithSameIndent(itemData, 1);
+			if (event.shiftKey) {
+				if (itemData.commentList) {
+					itemData.index = getNextCommentWithSameIndent(itemData, 1);
+				} else {
+					itemData.index = itemData.items.length - 1;
+				}
 			} else {
 				itemData.index++;
 			}
@@ -77,8 +81,12 @@ const universal = {
 		itemData.items[itemData.index].classList.remove(focusClass);
 
 		if (itemData.activeItem) {
-			if (itemData.commentList && event.shiftKey) {
-				itemData.index = getNextCommentWithSameIndent(itemData, -1);
+			if (event.shiftKey) {
+				if (itemData.commentList) {
+					itemData.index = getNextCommentWithSameIndent(itemData, -1);
+				} else {
+					itemData.index = 0;
+				}
 			} else {
 				itemData.index--;
 			}
