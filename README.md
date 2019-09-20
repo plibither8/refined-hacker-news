@@ -18,24 +18,25 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 ## Contents
 
-- [Contents](#contents)
-- [Install](#install)
-- [Highlights](#highlights)
-	- [Added features](#added-features)
-	- [UI tweaks](#ui-tweaks)
-	- [More actions](#more-actions)
-	- [More info at a glance](#more-info-at-a-glance)
-	- [Miscellaneous](#miscellaneous)
-	- [Keyboard bindings](#keyboard-bindings)
-		- [On items and comments](#on-items-and-comments)
-		- [On input fields](#on-input-fields)
-		- [Site-wide navigation](#site-wide-navigation)
-	- [Abandoned features](#abandoned-features)
-- [Customization and Options](#customization-and-options)
-- [Contribute](#contribute)
-- [Donate](#donate)
-- [Extension Permissions](#extension-permissions)
-- [License](#license)
+- [<img src="src/icon.png" width="45" align="left"> Refined Hacker News](#img-src%22srciconpng%22-width%2245%22-align%22left%22-refined-hacker-news)
+	- [Contents](#contents)
+	- [Install](#install)
+	- [Highlights](#highlights)
+		- [Added features](#added-features)
+		- [UI tweaks](#ui-tweaks)
+		- [More actions](#more-actions)
+		- [More info at a glance](#more-info-at-a-glance)
+		- [Miscellaneous](#miscellaneous)
+		- [Keyboard bindings](#keyboard-bindings)
+			- [On items and comments](#on-items-and-comments)
+			- [On input fields](#on-input-fields)
+			- [Site-wide navigation](#site-wide-navigation)
+		- [Abandoned features](#abandoned-features)
+	- [Customization and Options](#customization-and-options)
+	- [Contribute](#contribute)
+	- [Donate](#donate)
+	- [Extension Permissions](#extension-permissions)
+	- [License](#license)
 
 ## Install
 
@@ -187,6 +188,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 | <kbd>D</kbd>                                    | Downvote/undown comment                                                               |
 | <kbd>R</kbd>                                    | Reply to comment                                                                      |
 | <kbd>F</kbd>                                    | Favorite comment                                                                      |
+| <kbd>Shift</kbd>+<kbd>X</kbd>                   | Flag/unflag comment                                                                   |
 | <kbd>0</kbd> to <kbd>9</kbd>                    | Open numbered/index reference link in the comment <br> Eg: `[1] https://mihir.ch ...` |
 
 #### On input fields
