@@ -10,38 +10,36 @@ function elementPosition(el) {
 	const bodyRect = document.body.getBoundingClientRect();
 	const rect = el.getBoundingClientRect();
 	const top = rect.top - bodyRect.top;
-	return { x: rect.left, y: top };
+	return {x: rect.left, y: top};
 }
 
-async function init(metadata) {
+async function init() {
 	const comments = getAllComments();
 	let currentRootComment;
-	
-	for (const comment of comments) {
 
+	for (const comment of comments) {
 		const indentLevel = getCommentIndentation(comment);
-		
+
 		if (indentLevel === 0) {
 			currentRootComment = comment;
 			continue;
 		}
-		
-		const inst_currentRootComment = currentRootComment;
+
+		const instCurrentRootComment = currentRootComment;
 		const toggle = document.createElement('a');
-		
+
 		toggle.innerText = '[collapse root]';
 		toggle.href = 'javascript:void(0)';
 		toggle.classList.add('__rhn__collapse-root-comment');
 		toggle.addEventListener('click', () => {
-			inst_currentRootComment.querySelector('a.togg').click();
-			const { x, y } = elementPosition(inst_currentRootComment);
+			instCurrentRootComment.querySelector('a.togg').click();
+			const {x, y} = elementPosition(instCurrentRootComment);
 			window.scrollTo(x, y);
 		});
-		
+
 		comment.querySelector('span.comhead').append(toggle);
-		
 	}
-	
+
 	return true;
 }
 
