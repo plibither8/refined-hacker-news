@@ -173,6 +173,14 @@ const comment = {
 		}
 	},
 
+	// Flag/unflag comment
+	flag(next) {
+		const flagBtn = next.querySelector('a[href^="flag"]');
+		if (flagBtn) {
+			flagBtn.click();
+		}
+	}
+
 	// Toggle comment
 	toggle(activeItem) {
 		activeItem.querySelector('a.togg').click();

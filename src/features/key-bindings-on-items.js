@@ -161,6 +161,17 @@ function init(metadata) {
 
 					return;
 
+				// X: flag/unflag comment
+				// Works only when 'Shift' key is pressed too
+				case 88:
+					if (!combo || (combo && !(event.shiftKey))) {
+						return;
+					}
+
+					keydown.comment.flag(itemData.activeItem);
+
+					return;
+
 				// Enter: Toggle
 				case 13:
 					if (combo) {
