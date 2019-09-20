@@ -1,4 +1,5 @@
-import {elementInScrollView} from './dom-utils';
+import {elementInScrollView, createSiblingLoader} from './dom-utils';
+import {getAuthString} from './utils';
 import parseReferenceLinks from './parse-reference-links';
 
 const focusClass = '__rhn__focussed-item';
@@ -174,12 +175,24 @@ const comment = {
 	},
 
 	// Flag/unflag comment
-	flag(next) {
-		const flagBtn = next.querySelector('a[href^="flag"]');
-		if (flagBtn) {
-			flagBtn.click();
-		}
-	}
+	async flag(activeItem) {
+		const loaderCustomStyle = `
+			height: 9px;
+			margin-left: 5px;
+		`;
+
+		const commentHead = activeItem.querySelector('span.comhead');
+		const loader = createSiblingLoader(commentHead, loaderCustomStyle);
+
+		const flagged = activeItem.classList.contains('__rhn__item_flagged');
+		const id = activeItem.querySelector('span.age a').href.split('item?id=')[1];
+		const authString = await getAuthString(id);
+
+		await fetch(`https://news.ycombinator.com/flag?id=${id}&auth=${authString}${flagged ? '&un=t' : ''}`);
+
+		loader.remove();
+		activeItem.classList[flagged ? 'remove' : 'add']('__rhn__item_flagged');
+	},
 
 	// Toggle comment
 	toggle(activeItem) {
