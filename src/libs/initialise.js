@@ -5,6 +5,7 @@ import auto_refresh from '../features/auto-refresh';
 import change_dead_comments_color from '../features/change-dead-comments-color';
 import click_comment_indent_to_toggle from '../features/click-comment-indent-to-toggle';
 import click_rank_to_vote_unvote from '../features/click-rank-to-vote-unvote';
+import collapse_root_comment from '../features/collapse-root-comment';
 import comments_ui_tweaks from '../features/comments-ui-tweaks';
 import fetch_submission_title_from_url from '../features/fetch-submission-title-from-url';
 import hide_read_stories from '../features/hide-read-stories';
@@ -62,6 +63,7 @@ const featureList = [
 	reply_without_leaving_page,
 	preview_and_set_top_bar_color,
 	show_similar_submissions,
+	collapse_root_comment,
 
 	// Options bar (order matters)
 	sort_stories,
