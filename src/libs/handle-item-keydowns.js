@@ -176,22 +176,11 @@ const comment = {
 
 	// Flag/unflag comment
 	async flag(activeItem) {
-		const loaderCustomStyle = `
-			height: 9px;
-			margin-left: 5px;
-		`;
+		const flag = activeItem.querySelector('.__rhn__flag-button');
 
-		const commentHead = activeItem.querySelector('span.comhead');
-		const loader = createSiblingLoader(commentHead, loaderCustomStyle);
-
-		const flagged = activeItem.classList.contains('__rhn__item_flagged');
-		const id = activeItem.querySelector('span.age a').href.split('item?id=')[1];
-		const authString = await getAuthString(id);
-
-		await fetch(`https://news.ycombinator.com/flag?id=${id}&auth=${authString}${flagged ? '&un=t' : ''}`);
-
-		loader.remove();
-		activeItem.classList[flagged ? 'remove' : 'add']('__rhn__item_flagged');
+		if (flag) {
+			flag.click();
+		}
 	},
 
 	// Toggle comment
