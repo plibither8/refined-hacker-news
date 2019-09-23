@@ -7,7 +7,7 @@ const loaderCustomStyle = `
 	margin-right: 5px;
 `;
 
-async function init(metadata) {
+function init(metadata) {
 	const {path} = metadata;
 
 	const items = getAllComments();
