@@ -1,4 +1,5 @@
-import {elementInScrollView} from './dom-utils';
+import {elementInScrollView, createSiblingLoader} from './dom-utils';
+import {getAuthString} from './utils';
 import parseReferenceLinks from './parse-reference-links';
 
 const focusClass = '__rhn__focussed-item';
@@ -170,6 +171,15 @@ const comment = {
 			undown.click();
 		} else if (downvoteBtn) {
 			downvoteBtn.click();
+		}
+	},
+
+	// Flag/unflag comment
+	async flag(activeItem) {
+		const flag = activeItem.querySelector('.__rhn__flag-button');
+
+		if (flag) {
+			flag.click();
 		}
 	},
 

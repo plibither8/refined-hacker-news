@@ -17,6 +17,7 @@ import linkify_user_about from '../features/linkify-user-about';
 import list_hn_polls_separately from '../features/list-hn-polls-separately';
 import load_more_links_in_navbar from '../features/load-more-links-in-navbar';
 import more_accessible_favorite from '../features/more-accessible-favorite';
+import more_accessible_flag from '../features/more-accessible-flag';
 import on_link_focus_comment from '../features/on-link-focus-comment';
 import open_story_links_in_new_tab from '../features/open-story-links-in-new-tab';
 import past_choose_date from '../features/past-choose-date';
@@ -43,6 +44,7 @@ const featureList = [
 	comments_ui_tweaks,
 	highlight_unread_comments,
 	more_accessible_favorite,
+	more_accessible_flag,
 	load_more_links_in_navbar,
 	click_comment_indent_to_toggle,
 	toggle_all_comments_and_replies,

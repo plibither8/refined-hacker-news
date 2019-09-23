@@ -18,24 +18,25 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 ## Contents
 
-- [Contents](#contents)
-- [Install](#install)
-- [Highlights](#highlights)
-	- [Added features](#added-features)
-	- [UI tweaks](#ui-tweaks)
-	- [More actions](#more-actions)
-	- [More info at a glance](#more-info-at-a-glance)
-	- [Miscellaneous](#miscellaneous)
-	- [Keyboard bindings](#keyboard-bindings)
-		- [On items and comments](#on-items-and-comments)
-		- [On input fields](#on-input-fields)
-		- [Site-wide navigation](#site-wide-navigation)
-	- [Abandoned features](#abandoned-features)
-- [Customization and Options](#customization-and-options)
-- [Contribute](#contribute)
-- [Donate](#donate)
-- [Extension Permissions](#extension-permissions)
-- [License](#license)
+- [<img src="src/icon.png" width="45" align="left"> Refined Hacker News](#img-src%22srciconpng%22-width%2245%22-align%22left%22-refined-hacker-news)
+	- [Contents](#contents)
+	- [Install](#install)
+	- [Highlights](#highlights)
+		- [Added features](#added-features)
+		- [UI tweaks](#ui-tweaks)
+		- [More actions](#more-actions)
+		- [More info at a glance](#more-info-at-a-glance)
+		- [Miscellaneous](#miscellaneous)
+		- [Keyboard bindings](#keyboard-bindings)
+			- [On items and comments](#on-items-and-comments)
+			- [On input fields](#on-input-fields)
+			- [Site-wide navigation](#site-wide-navigation)
+		- [Abandoned features](#abandoned-features)
+	- [Customization and Options](#customization-and-options)
+	- [Contribute](#contribute)
+	- [Donate](#donate)
+	- [Extension Permissions](#extension-permissions)
+	- [License](#license)
 
 ## Install
 
@@ -132,6 +133,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 - [**`key-bindings-on-input-fields`**](src/features/key-bindings-on-input-fields.js) Enable key bindings/shortcuts on input fields. [Go to mappings](#on-input-fields).
 - [**`site-navigation-key-bindings`**](src/features/site-navigation-key-bindings) Universal, site-wide key bindings/shortcuts to quickly navigate to a page (eg. Home, Show HN, Threads etc.). [Go to mappings](#site-wide-navigation).
 - [**`more-accessible-favorite`**](src/features/more-accessible-favorite.js) Add a 'favorite' button next to items and comments to quickly *favorite* them. Go to `https://news.ycombinator.com/favorites?id=<your-username>` to view favorite-d items.
+- [**`more-accessible-flag`**](src/features/more-accessible-flag.js) Add a 'flag' button next to comments to quickly *flag* them.
 - [**`click-comment-indent-to-toggle`**](src/features/click-comment-indent-to-toggle.js) Click indentation of the comment (on the left of it) to toggle (show/hide) that comment.
 - [**`click-rank-to-vote-unvote`**](src/features/click-rank-to-vote-unvote.js) Increase hit-area of upvote button by clicking the rank number of the item to upvote it too.
 - [**`open-story-links-in-new-tab`**](src/features/open-story-links-in-new-tab.js) Open items in a new tab, instead of the same tab.
@@ -187,6 +189,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 | <kbd>D</kbd>                                    | Downvote/undown comment                                                               |
 | <kbd>R</kbd>                                    | Reply to comment                                                                      |
 | <kbd>F</kbd>                                    | Favorite comment                                                                      |
+| <kbd>Shift</kbd>+<kbd>X</kbd>                   | Flag/unflag comment                                                                   |
 | <kbd>0</kbd> to <kbd>9</kbd>                    | Open numbered/index reference link in the comment <br> Eg: `[1] https://mihir.ch ...` |
 
 #### On input fields
