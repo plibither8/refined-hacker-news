@@ -133,6 +133,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 - [**`key-bindings-on-input-fields`**](src/features/key-bindings-on-input-fields.js) Enable key bindings/shortcuts on input fields. [Go to mappings](#on-input-fields).
 - [**`site-navigation-key-bindings`**](src/features/site-navigation-key-bindings) Universal, site-wide key bindings/shortcuts to quickly navigate to a page (eg. Home, Show HN, Threads etc.). [Go to mappings](#site-wide-navigation).
 - [**`more-accessible-favorite`**](src/features/more-accessible-favorite.js) Add a 'favorite' button next to items and comments to quickly *favorite* them. Go to `https://news.ycombinator.com/favorites?id=<your-username>` to view favorite-d items.
+- [**`more-accessible-flag`**](src/features/more-accessible-flag.js) Add a 'flag' button next to comments to quickly *flag* them.
 - [**`click-comment-indent-to-toggle`**](src/features/click-comment-indent-to-toggle.js) Click indentation of the comment (on the left of it) to toggle (show/hide) that comment.
 - [**`click-rank-to-vote-unvote`**](src/features/click-rank-to-vote-unvote.js) Increase hit-area of upvote button by clicking the rank number of the item to upvote it too.
 - [**`open-story-links-in-new-tab`**](src/features/open-story-links-in-new-tab.js) Open items in a new tab, instead of the same tab.
