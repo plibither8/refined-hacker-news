@@ -257,7 +257,7 @@ No data is ever uploaded to a remote server, or is sent anywhere else. All data 
 
 **`*://hacker-news.firebaseio.com/v0/*`** Hacker News API - required to fetch `item` and `user` details.
 
-**`*://textance.herokuapp.com/*`** Required by the `fetch-submission-title-from-url` feature to fetch the title.
+**`*://url-title.now.sh/*`** Required by the `fetch-submission-title-from-url` feature to fetch the title.
 
 **`*://hn.algolia.com/*`** Required by `show-simillar-submission` and `list-hn-polls-separately` features to get filtered search results.
 

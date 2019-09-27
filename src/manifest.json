@@ -11,7 +11,7 @@
 		"tabs",
 		"*://news.ycombinator.com/*",
 		"*://hacker-news.firebaseio.com/v0/*",
-		"*://textance.herokuapp.com/*",
+		"*://url-title.now.sh/*",
 		"*://hn.algolia.com/*"
 	],
 	"browser_action": {

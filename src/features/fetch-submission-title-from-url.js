@@ -1,26 +1,26 @@
 import {createSiblingLoader} from '../libs/dom-utils';
 
 async function fetchTitle() {
-	const apiUrl = 'https://textance.herokuapp.com/title/';
+	const apiUrl = 'https://url-title.now.sh/';
 
 	const titleInput = document.querySelector('input[name="title"]');
 	const urlInput = document.querySelector('input[name="url"]');
 	const loader = document.querySelector('img.__rhn__loader');
 
-	const {value} = urlInput;
+	let {value} = urlInput;
 	if (value.length === 0) {
 		return;
+	}
+
+	if (value.startsWith('https://') || value.startsWith('http://')) {
+		value = value.split('//').slice(1).join('');
 	}
 
 	loader.classList.remove('__rhn__no-display');
 
 	const endpoint = encodeURI(value);
-
 	const title = await fetch(apiUrl + endpoint).then(res => res.text());
-	if (!title.startsWith('org.takes.HttpException:') &&
-		!title.startsWith('Empty label is not a legal name')) {
-		titleInput.value = title;
-	}
+	titleInput.value = title;
 
 	loader.classList.add('__rhn__no-display');
 }
