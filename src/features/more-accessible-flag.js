@@ -1,4 +1,4 @@
-import {getAuthString, getPageDom, getUrlParams, isClickModified} from '../libs/utils';
+import {getAuthString} from '../libs/utils';
 import {getAllComments, createSiblingLoader} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
@@ -7,9 +7,7 @@ const loaderCustomStyle = `
 	margin-right: 5px;
 `;
 
-function init(metadata) {
-	const {path} = metadata;
-
+function init() {
 	const items = getAllComments();
 
 	for (const item of items) {

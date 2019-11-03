@@ -1,5 +1,4 @@
-import {elementInScrollView, createSiblingLoader} from './dom-utils';
-import {getAuthString} from './utils';
+import {elementInScrollView} from './dom-utils';
 import parseReferenceLinks from './parse-reference-links';
 
 const focusClass = '__rhn__focussed-item';
