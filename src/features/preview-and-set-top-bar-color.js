@@ -1,7 +1,14 @@
 import {getPageDom} from '../libs/utils';
-import {elementInScrollView} from '../libs/dom-utils';
+import {elementInScrollView, createSiblingLoader} from '../libs/dom-utils';
 
 function loopAndCreate(colorRows, form) {
+	const topbar = document.querySelector('table#hnmain > tbody > tr > td');
+	const topColorInput = form.querySelector('input[name="topc"]');
+	const loaderCustomStyle = `
+		height: 10px;
+		margin-top: 5px;
+	`;
+
 	for (const row of colorRows) {
 		if (!elementInScrollView(row) && row.getBoundingClientRect().top >= 0) {
 			break;
@@ -13,17 +20,22 @@ function loopAndCreate(colorRows, form) {
 		const [preview, set] = row.querySelectorAll('a');
 
 		preview.addEventListener('click', () => {
-			const topbar = document.querySelector('table#hnmain > tbody > tr > td');
 			topbar.bgColor = color;
 		});
 
-		set.addEventListener('click', () => {
-			const topbar = document.querySelector('table#hnmain > tbody > tr > td');
-			const topColorInput = form.querySelector('input[name="topc"]');
-
+		set.addEventListener('click', async () => {
 			topbar.bgColor = color;
 			topColorInput.value = color;
-			form.submit();
+
+			const loaderSibling = row.querySelector('td:last-child');
+			const loader = createSiblingLoader(loaderSibling, loaderCustomStyle);
+
+			await fetch('/xuser', {
+				method: 'POST',
+				body: new URLSearchParams(new FormData(form))
+			});
+
+			loader.remove();
 		});
 
 		row.classList.add('__rhn__is-set');
