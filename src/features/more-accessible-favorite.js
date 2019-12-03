@@ -134,9 +134,17 @@ async function storyButtons(metadata) {
 	for (const item of items) {
 		const faveButton = item.querySelector('.__rhn__fave-button');
 
-		const hideUrl = item.querySelector('a[href^="hide"]').href.replace('?', '&');
-		const auth = getUrlParams('auth', hideUrl);
-		const id = getUrlParams('id', hideUrl);
+		const authStringElement =
+			item.querySelector('a[href^="flag"]') ||
+			item.querySelector('a[href^="hide"]');
+
+		if (!authStringElement) {
+			continue;
+		}
+
+		const authStringUrl = authStringElement.href.replace('?', '&');
+		const auth = getUrlParams('auth', authStringUrl);
+		const id = getUrlParams('id', authStringUrl);
 
 		let unfave = false;
 
