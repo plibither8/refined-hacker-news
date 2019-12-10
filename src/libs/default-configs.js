@@ -10,6 +10,7 @@ export default {
 	toggleAllReplies: false,
 	showDiscussionsWithNoComments: false,
 	optionsBarPosition: 'top',
+	italiceQuotedText: false,
 
 	// Dev options
 	logging: false,

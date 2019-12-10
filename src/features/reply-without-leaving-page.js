@@ -38,7 +38,15 @@ function init(metadata) {
 
 				event.preventDefault();
 
-				const selection = window.getSelection().toString().trim();
+				const {italiceQuotedText = false} = metadata.options;
+				const wrapperCharacter = italiceQuotedText ? '*' : '';
+
+				// Add '> ' before every new block of selection
+				const selection = window.getSelection().toString().trim()
+					.split('\n')
+					.filter(str => str.length > 0)
+					.map(str => '> ' + wrapperCharacter + str + wrapperCharacter)
+					.join('\n\n');
 
 				if (ACTIVE_DATA.form) {
 					// Removing currently present form
@@ -73,7 +81,7 @@ function init(metadata) {
 					const textarea = form.querySelector('textarea');
 					if (textarea) {
 						if (selection.length > 0) {
-							textarea.value += `${textarea.value.length > 0 ? '\n\n' : ''}> *${selection}*\n\n`;
+							textarea.value += `${textarea.value.length > 0 ? '\n\n' : ''}${selection}\n\n`;
 						}
 
 						textarea.focus();
