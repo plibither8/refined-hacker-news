@@ -130,9 +130,7 @@ export async function initialiseAll() {
 	const metadata = await getMetadata;
 	metadata.firstLoad = true;
 
-	if (metadata.options.logging) {
-		console.group('Refined Hacker News');
-	}
+	metadata.options.log('group', 'Refined Hacker News');
 
 	for (const feat of featureList) {
 		if (feat.awaitInit) {
@@ -142,9 +140,7 @@ export async function initialiseAll() {
 		}
 	}
 
-	if (metadata.options.logging) {
-		console.groupEnd();
-	}
+	metadata.options.log('groupEnd');
 
 	loader.classList.add('__rhn__no-display');
 }

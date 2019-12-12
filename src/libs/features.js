@@ -50,7 +50,7 @@ function isEnabled(featureDetails, metadata) {
 	// Skip if feature has been marked as disabled
 	if (options.disabledFeatures.includes(id)) {
 		if (logSkip) {
-			options.log('↩️️', 'Skipping', id);
+			options.log('info', '↩️️', 'Skipping', id);
 		}
 
 		return false;
@@ -80,7 +80,7 @@ function add(featureDetails, metadata) {
 
 		// Initialise and check for firstLoad
 		if (await init(metadata) && firstLoad) {
-			options.log('️️️✓', id);
+			options.log('info', '️️️✓', id);
 		}
 
 		resolve();
