@@ -124,7 +124,7 @@ export const getOptions = new Promise(async resolve => {
 	if (options.logging) {
 		options.log = (method, ...content) => {
 			console[method](...content);
-		}
+		};
 	} else {
 		options.log = () => {};
 	}
