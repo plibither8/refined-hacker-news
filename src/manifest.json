@@ -12,6 +12,7 @@
 		"*://news.ycombinator.com/*",
 		"*://hacker-news.firebaseio.com/v0/*",
 		"*://url-title.now.sh/*",
+		"*://wayback.now.sh/*",
 		"*://hn.algolia.com/*"
 	],
 	"browser_action": {

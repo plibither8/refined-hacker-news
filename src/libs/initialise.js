@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 
 // All features, imported in alphabetical order
+import archive_submission from '../features/archive-submission';
 import auto_refresh from '../features/auto-refresh';
 import change_dead_comments_color from '../features/change-dead-comments-color';
 import click_comment_indent_to_toggle from '../features/click-comment-indent-to-toggle';
@@ -37,6 +38,7 @@ import features from './features';
 import {getUrlParams, getOptions, getUserData} from './utils';
 import {getItemInfo} from './api';
 
+// List in the order they are to be loaded
 const featureList = [
 	list_hn_polls_separately,
 	key_bindings_on_items,
@@ -45,6 +47,7 @@ const featureList = [
 	highlight_unread_comments,
 	more_accessible_favorite,
 	more_accessible_flag,
+	archive_submission,
 	load_more_links_in_navbar,
 	click_comment_indent_to_toggle,
 	toggle_all_comments_and_replies,

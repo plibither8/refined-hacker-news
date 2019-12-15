@@ -18,25 +18,24 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 ## Contents
 
-- [<img src="src/icon.png" width="45" align="left"> Refined Hacker News](#img-src%22srciconpng%22-width%2245%22-align%22left%22-refined-hacker-news)
-	- [Contents](#contents)
-	- [Install](#install)
-	- [Highlights](#highlights)
-		- [Added features](#added-features)
-		- [UI tweaks](#ui-tweaks)
-		- [More actions](#more-actions)
-		- [More info at a glance](#more-info-at-a-glance)
-		- [Miscellaneous](#miscellaneous)
-		- [Keyboard bindings](#keyboard-bindings)
-			- [On items and comments](#on-items-and-comments)
-			- [On input fields](#on-input-fields)
-			- [Site-wide navigation](#site-wide-navigation)
-		- [Abandoned features](#abandoned-features)
-	- [Customization and Options](#customization-and-options)
-	- [Contribute](#contribute)
-	- [Donate](#donate)
-	- [Extension Permissions](#extension-permissions)
-	- [License](#license)
+- [Contents](#contents)
+- [Install](#install)
+- [Highlights](#highlights)
+	- [Added features](#added-features)
+	- [UI tweaks](#ui-tweaks)
+	- [More actions](#more-actions)
+	- [More info at a glance](#more-info-at-a-glance)
+	- [Miscellaneous](#miscellaneous)
+	- [Keyboard bindings](#keyboard-bindings)
+		- [On items and comments](#on-items-and-comments)
+		- [On input fields](#on-input-fields)
+		- [Site-wide navigation](#site-wide-navigation)
+	- [Abandoned features](#abandoned-features)
+- [Customization and Options](#customization-and-options)
+- [Contribute](#contribute)
+- [Donate](#donate)
+- [Extension Permissions](#extension-permissions)
+- [License](#license)
 
 ## Install
 
@@ -134,6 +133,7 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 - [**`site-navigation-key-bindings`**](src/features/site-navigation-key-bindings) Universal, site-wide key bindings/shortcuts to quickly navigate to a page (eg. Home, Show HN, Threads etc.). [Go to mappings](#site-wide-navigation).
 - [**`more-accessible-favorite`**](src/features/more-accessible-favorite.js) Add a 'favorite' button next to items and comments to quickly *favorite* them. Go to `https://news.ycombinator.com/favorites?id=<your-username>` to view favorite-d items.
 - [**`more-accessible-flag`**](src/features/more-accessible-flag.js) Add a 'flag' button next to comments to quickly *flag* them.
+- [**`archive-submission`**](src/features/archive-submission.js) Add "archive" button at the top of the comments page of a submission to view the archived version of the story's webpage or archive the webpage to the Wayback Machine.
 - [**`click-comment-indent-to-toggle`**](src/features/click-comment-indent-to-toggle.js) Click indentation of the comment (on the left of it) to toggle (show/hide) that comment.
 - [**`click-rank-to-vote-unvote`**](src/features/click-rank-to-vote-unvote.js) Increase hit-area of upvote button by clicking the rank number of the item to upvote it too.
 - [**`open-story-links-in-new-tab`**](src/features/open-story-links-in-new-tab.js) Open items in a new tab, instead of the same tab.
@@ -257,7 +257,9 @@ No data is ever uploaded to a remote server, or is sent anywhere else. All data 
 
 **`*://hacker-news.firebaseio.com/v0/*`** Hacker News API - required to fetch `item` and `user` details.
 
-**`*://url-title.now.sh/*`** Required by the `fetch-submission-title-from-url` feature to fetch the title.
+**`*://url-title.now.sh/*`** Required by the `fetch-submission-title-from-url` feature to fetch the title. _Source: [plibither8/url-title-api](https://github.com/plibither8/url-title-api)_.
+
+**`*://wayback.now.sh/`** Required by `archive-submission` to view archived version of webpage or save the webpage to the Wayback Machine. _Source: [plibither8/wayback](https://github.com/plibither8/wayback)_.
 
 **`*://hn.algolia.com/*`** Required by `show-simillar-submission` and `list-hn-polls-separately` features to get filtered search results.
 
