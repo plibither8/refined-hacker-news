@@ -69,7 +69,27 @@ export function getUserData(path) {
 			userElement = fetchedPage.querySelector('a#me');
 		}
 
-		const topcolor = fetchedPage.querySelector('table#hnmain > tbody > tr > td').getAttribute('bgcolor');
+		const topBarElements = fetchedPage.querySelectorAll('table#hnmain > tbody > tr > td');
+		let actualTopBar = topBarElements[0];
+		let topcolor = 'red';
+		if(actualTopBar.children.length === 1 && actualTopBar.children[0].tagName === 'IMG') {
+			/**
+			 * We have a "black bar":
+			 *
+			 * HN sometimes places a black bar on top to honor notable people in the
+			 * CS/engineering space that have passed away. That bar is selector-
+			 * indistinguishable from the regular top bar.
+			 */
+			actualTopBar = topBarElements[1];
+		}
+		if(!actualTopBar || actualTopBar.children.length !== 1 || actualTopBar.children[0].tagName !== 'TABLE') {
+			// Panic
+			console.error('RHN:', 'Unexpedted DOM state: Our assumptions about the top bar have been broken', topBarElements);
+		}
+		else {
+			topcolor = actualTopBar.getAttribute('bgcolor');
+		}
+
 		username = userElement ? userElement.innerText : undefined;
 		await browser.storage.local.set({username});
 
