@@ -11,6 +11,7 @@ export default {
 	showDiscussionsWithNoComments: false,
 	optionsBarPosition: 'top',
 	italiceQuotedText: false,
+	openCommentsInNewTab: false,
 
 	// Dev options
 	logging: false,

@@ -1,10 +1,17 @@
-function init() {
-	const storyLinks = document.querySelectorAll('a.storylink');
-	if (storyLinks.length === 0) {
+function init(metadata) {
+	const links = [
+		...document.querySelectorAll('a.storylink'),
+		...(
+			metadata.options.openCommentsInNewTab ?
+				document.querySelectorAll('table.itemlist td.subtext > a:last-child') :
+				[]
+		)
+	];
+	if (links.length === 0) {
 		return false;
 	}
 
-	for (const link of storyLinks) {
+	for (const link of links) {
 		link.target = '_blank';
 		link.rel = 'noopener';
 	}
