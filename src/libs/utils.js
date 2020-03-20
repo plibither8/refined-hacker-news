@@ -71,7 +71,7 @@ export function getUserData(path) {
 
 		const topBarElements = fetchedPage.querySelectorAll('table#hnmain > tbody > tr > td');
 		let actualTopBar = topBarElements[0];
-		let topcolor = 'red';
+		let topcolor = '#ff6600';
 		if(actualTopBar.children.length === 1 && actualTopBar.children[0].tagName === 'IMG') {
 			/**
 			 * We have a "black bar":
