@@ -4,8 +4,9 @@ const scripts = [
 	'version',
 	'release:amo',
 	'zip',
+	'crx',
 	'dev-dashboard',
-	'create-git-tag'
+	'gh-release'
 ];
 
 process.stdout.write(scripts.join('|'));

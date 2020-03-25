@@ -10,12 +10,12 @@
 		"watch": "webpack --mode=development --watch",
 		"watch:firefox": "web-ext run --source-dir=dist",
 		"version": "dot-json dist/manifest.json version $VER",
-		"zip": "cd dist && zip -r ../releases/$VER.zip ./",
+		"zip": "mkdir releases/$VER && zip -r releases/$VER/$VER.zip dist/",
+		"crx": "crx pack dist -o releases/$VER/$VER.crx",
 		"dev-dashboard": "google-chrome https://chrome.google.com/webstore/developer/dashboard",
 		"release:amo": "cd dist && web-ext-submit --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
-		"release:cws": "cd dist && webstore upload --auto-publish",
-		"release": "VER=$(daily-version) npm-run-all `node get-scripts | tr '|' '\\n'`",
-		"create-git-tag": "git tag $VER -m $VER && git push origin $VER"
+		"gh-release": "node scripts/gh-release $VER",
+		"release": "VER=$(daily-version) npm-run-all `node scripts/get-scripts | tr '|' '\\n'`"
 	},
 	"dependencies": {
 		"compare-urls": "^2.0.0",
@@ -29,8 +29,11 @@
 	"devDependencies": {
 		"chrome-webstore-upload-cli": "^1.2.0",
 		"copy-webpack-plugin": "^5.0.4",
+		"crx": "^5.0.1",
+		"crx-webpack-plugin": "^0.1.5",
 		"daily-version": "^0.12.0",
 		"dot-json": "^1.1.0",
+		"gh-release": "^3.5.0",
 		"npm-run-all": "^4.1.5",
 		"rimraf": "^2.6.3",
 		"size-plugin": "^1.2.0",
