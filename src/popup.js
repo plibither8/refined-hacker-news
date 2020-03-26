@@ -25,9 +25,36 @@ indentWidthInput.addEventListener('input', () => {
 	}
 });
 
-const links = document.querySelectorAll('a');
+// Enable opening of popup anchor links in a new tab
+const links = document.querySelectorAll('a:not(.preset)');
 for (const link of links) {
 	link.addEventListener('click', () => browser.tabs.create({url: link.href}));
 }
 
+// Custom CSS presets
+const cssPresets = {
+	darkMode: `
+		body {
+			background-color: black !important;
+			filter: invert(90%) hue-rotate(180deg) !important;
+		}
+		.__rhn__profile-dropdown {
+			background-color: #f6f6ef !important;
+		}
+	`
+};
+
+const trim = str => str.replace(/\n\t\t/g, '\n');
+
+const customCssTextarea = document.querySelector('textarea[name="customCSS"]');
+const presetLinks = document.querySelectorAll('a.preset');
+for (const link of presetLinks) {
+	link.addEventListener('click', () => {
+		const {preset} = link.dataset;
+		customCssTextarea.value += `\n\n// Preset: ${preset}` + trim(cssPresets[link.dataset.preset]);
+		customCssTextarea.value = customCssTextarea.value.trim();
+	});
+}
+
+// Watch and sync the form
 new OptionsSync({logging: false}).syncForm('#options-form');
