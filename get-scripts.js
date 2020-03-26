@@ -2,6 +2,7 @@ const scripts = [
 	'clean',
 	'build',
 	'version',
+	'changelog',
 	'release:amo',
 	'zip',
 	'dev-dashboard',
