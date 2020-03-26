@@ -51,7 +51,7 @@ const presetLinks = document.querySelectorAll('a.preset');
 for (const link of presetLinks) {
 	link.addEventListener('click', () => {
 		const {preset} = link.dataset;
-		customCssTextarea.value += `\n\n// Preset: ${preset}` + trim(cssPresets[link.dataset.preset]);
+		customCssTextarea.value += `\n\n/* Preset: ${preset} */` + trim(cssPresets[link.dataset.preset]);
 		customCssTextarea.value = customCssTextarea.value.trim();
 	});
 }
