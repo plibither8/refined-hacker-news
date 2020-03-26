@@ -10,12 +10,12 @@
 		"watch": "webpack --mode=development --watch",
 		"watch:firefox": "web-ext run --source-dir=dist",
 		"version": "dot-json dist/manifest.json version $VER",
-		"changelog": "auto-changelog -v $VER && git add CHANGELOG.md && git commit -m 'Chore: Generate CHANGELOG ($VER)'",
 		"zip": "cd dist && zip -r ../releases/$VER.zip ./",
 		"dev-dashboard": "google-chrome https://chrome.google.com/webstore/developer/dashboard",
 		"release:amo": "cd dist && web-ext-submit --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
-		"release": "VER=$(daily-version) npm-run-all `node get-scripts | tr '|' '\\n'`",
-		"create-git-tag": "git tag $VER -m $VER && git push origin $VER"
+		"create-git-tag": "git tag $VER -m $VER && git push origin $VER",
+		"changelog": "auto-changelog -v $VER && git add CHANGELOG.md && git commit -m 'Chore: Generate CHANGELOG ($VER)'",
+		"release": "VER=$(daily-version) npm-run-all `node get-scripts | tr '|' '\\n'`"
 	},
 	"dependencies": {
 		"compare-urls": "^2.0.0",

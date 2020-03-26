@@ -2,11 +2,11 @@ const scripts = [
 	'clean',
 	'build',
 	'version',
-	'changelog',
 	'release:amo',
 	'zip',
 	'dev-dashboard',
-	'create-git-tag'
+	'create-git-tag',
+	'changelog'
 ];
 
 process.stdout.write(scripts.join('|'));
