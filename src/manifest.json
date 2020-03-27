@@ -36,11 +36,11 @@
 				"*://news.ycombinator.com/*"
 			],
 			"css": [
-				"content.css"
+				"refined-hacker-news.css"
 			],
 			"js": [
 				"browser-polyfill.min.js",
-				"content.js"
+				"refined-hacker-news.js"
 			]
 		}
 	],

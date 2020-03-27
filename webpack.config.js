@@ -14,7 +14,7 @@ module.exports = (env, argv) => ({
 	devtool: 'sourcemap',
 	stats: 'errors-only',
 	entry: {
-		content: './src/content',
+		"refined-hacker-news": './src/refined-hacker-news',
 		background: './src/background',
 		popup: './src/popup'
 	},
