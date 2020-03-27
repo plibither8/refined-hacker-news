@@ -14,7 +14,7 @@
 		"dev-dashboard": "google-chrome https://chrome.google.com/webstore/developer/dashboard",
 		"release:amo": "cd dist && web-ext-submit --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
 		"create-git-tag": "git tag $VER -m $VER && git push origin $VER",
-		"changelog": "auto-changelog -v $VER && git add CHANGELOG.md && git commit -m 'Chore: Generate CHANGELOG ($VER)'",
+		"changelog": "auto-changelog -v $VER && git add CHANGELOG.md && git commit -m \"Chore: Generate CHANGELOG (${VER})\"",
 		"release": "VER=$(daily-version) npm-run-all `node get-scripts | tr '|' '\\n'`"
 	},
 	"dependencies": {
