@@ -1,0 +1,90 @@
+/*! https://npm.im/webext-base-css */
+
+/*
+`:not(*:root)` selectors are Chrome only
+`@-moz-document` rules are Firefox only
+`--in-content-box-background` variables are Firefox only
+*/
+
+:root {
+	max-width: 700px;
+	margin: auto;
+}
+
+/* Selector matches Firefox’ */
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='text'],
+input[type='url'],
+input:not([type]),
+textarea {
+	display: block;
+	box-sizing: border-box;
+	margin-left: 0;
+	width: 100%;
+	resize: vertical;
+	-moz-tab-size: 4 !important;
+	tab-size: 4 !important;
+}
+
+input[type='checkbox'] {
+	vertical-align: -0.15em;
+}
+
+textarea:not(*:root):focus {
+	/* Missing from Chrome’s style https://github.com/chromium/chromium/blob/6bea0557fe67c9196dd2ec083e95fc5807674c87/extensions/renderer/resources/extension.css#L287 */
+	border-color: #4d90fe;
+	transition: border-color 200ms;
+}
+
+hr:not(*:root) {
+	margin-right: -17px;
+	margin-left: -17px;
+	border: none;
+	border-bottom: 1px solid #aaa4;
+}
+
+@-moz-document url-prefix('') {
+	:root {
+		background-color: #fff;
+	}
+
+	body {
+		min-height: 250px; /* Without this there's a white space in dark mode */
+	}
+
+	body > * {
+		margin-left: 6px;
+		margin-right: 6px;
+	}
+
+	input[type='checkbox'] {
+		vertical-align: -0.4em;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		background-color: var(--in-content-box-background, #292a2d);
+	}
+
+	body {
+		color: var(--in-content-page-color, #e8eaed);
+	}
+
+	a {
+		color: var(--in-content-link-color, #8ab4f8);
+	}
+
+	input[type='number'],
+	input[type='password'],
+	input[type='search'],
+	input[type='text'],
+	input[type='url'],
+	input:not([type]),
+	textarea {
+		color: inherit;
+		background-color: transparent;
+	}
+}
