@@ -120,10 +120,12 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 - [**`change-dead-comments-color`**](src/features/change-dead-comments-color.js) If "showdead" is enabled in user settings, color of dead comments changes to light-red (`#d89899`) instead of the barely visible light-grey (`#dddddd`).
 - [**`comments-ui-tweaks`**](src/features/comments-ui-tweaks.js) Tweaks include:
-  - Add border to indentation to make to show indent separation between comments
-  - Custom indent-width (default is 40px), which can be set using the extension popup
-  - Highlight item's original poster, displayed as `[op]` next to username
+  - Add border to indentation to make to show indent separation between comments.
+  - Custom indent-width (default is 40px), which can be set using the extension popup.
+  - Highlight item's original poster, displayed as `[op]` next to username.
+  - Make `<pre></pre>` tags more visible.
 - [**`highlight-unread-comments`**](src/features/highlight-unread-comments.js) Highlight new and unread comments after your second and subsequent visits to the comments page of an item. Data resets after three days.
+- [**`backticks-to-monospace`**](src/features/backticks-to-monospace.js) Convert backticks-wrapped (\`like this\`) inline text to monospace (`like this`).
 - [**`linkify-user-about`**](src/features/linkify-user-about.js) Linkify all links and emails IDs that are on the "about" of the user's profile.
 
 ### More actions
