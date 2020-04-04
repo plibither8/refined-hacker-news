@@ -3,6 +3,7 @@
 // All features, imported in alphabetical order
 import archive_submission from '../features/archive-submission';
 import auto_refresh from '../features/auto-refresh';
+import backticks_to_monospace from '../features/backticks-to-monospace';
 import change_dead_comments_color from '../features/change-dead-comments-color';
 import click_comment_indent_to_toggle from '../features/click-comment-indent-to-toggle';
 import click_rank_to_vote_unvote from '../features/click-rank-to-vote-unvote';
@@ -59,6 +60,7 @@ const featureList = [
 	linkify_user_about,
 	on_link_focus_comment,
 	open_story_links_in_new_tab,
+	backticks_to_monospace,
 	past_choose_date,
 	prefill_submit_title,
 	profile_links_dropdown,
