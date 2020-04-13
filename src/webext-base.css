@@ -69,10 +69,6 @@ hr:not(*:root) {
 		background-color: var(--in-content-box-background, #292a2d);
 	}
 
-	body {
-		color: var(--in-content-page-color, #e8eaed);
-	}
-
 	a {
 		color: var(--in-content-link-color, #8ab4f8);
 	}
