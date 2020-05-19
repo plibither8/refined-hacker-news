@@ -3,7 +3,8 @@ import {getAllComments, createSiblingLoader} from '../libs/dom-utils';
 import {paths} from '../libs/paths';
 
 function init(metadata) {
-	if (metadata.path === '/item') {
+	const searchParams = new URLSearchParams(window.location.search);
+	if (metadata.path === '/item' && !searchParams.get('p')) {
 		const replyForm = document.querySelector('table.fatitem form');
 		if (!replyForm) {
 			return false;
