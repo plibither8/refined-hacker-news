@@ -25,6 +25,7 @@ function requestVisitedStories(options) {
 function hideStories(idList, hide) {
 	const itemList = document.querySelector('table.itemlist');
 	const stories = getGroupedStories(itemList);
+	const loggedIn = !!document.querySelector('a#me');
 
 	for (const id of idList) {
 		const story = stories.find(obj => obj.id === id);
@@ -36,6 +37,15 @@ function hideStories(idList, hide) {
 		for (const element of story.elements) {
 			if (hide) {
 				element.classList.add('__rhn__no-display');
+				if (loggedIn) {
+					const hideLink =
+						  document.querySelector(
+							  `a[href*="hide?id=${id}"]`);
+					if (!hideLink) {
+						continue;
+					}
+					hideLink.click();
+				}
 			} else {
 				element.classList.remove('__rhn__no-display');
 			}
