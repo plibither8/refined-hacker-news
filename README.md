@@ -3,7 +3,7 @@
 [link-cws]: https://chrome.google.com/webstore/detail/gcibdgjaladjjloeocimnijdgopejkfk "Version published on Chrome Web Store"
 [link-amo]: https://addons.mozilla.org/en-US/firefox/addon/refined-hacker-news/ "Version published on Mozilla Add-ons"
 
-[![Licence](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE) 
+[![Licence](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/gcibdgjaladjjloeocimnijdgopejkfk.svg?label=chrome%20users&style=flat-square)][link-cws]
 [![Mozilla Add-on](https://img.shields.io/amo/users/refined-hacker-news.svg?label=firefox%20users&style=flat-square)][link-amo]
 ![Made with love in India](https://madewithlove.now.sh/in?heart=true&colorB=%23ff701f&template=flat-square)
@@ -14,23 +14,13 @@ The minimalist design of Hacker News is best at offering news the way we like it
 
 Hopefully, in due course, a few of these tweaks can be implemented by Hacker News themselves. You can help too by emailing [hn@ycombinator.com](mailto:hn@ycombinator.com)!
 
-*Inspired by [Sindre Sorhus](https://github.com/sindresorhus)'s extension [Refined GitHub](https://github.com/sindresorhus/refined-github).*
+_Inspired by [Sindre Sorhus](https://github.com/sindresorhus)'s extension [Refined GitHub](https://github.com/sindresorhus/refined-github)._
 
 ## Contents
 
 - [Contents](#contents)
 - [Install](#install)
-- [Highlights](#highlights)
-	- [Added features](#added-features)
-	- [UI tweaks](#ui-tweaks)
-	- [More actions](#more-actions)
-	- [More info at a glance](#more-info-at-a-glance)
-	- [Miscellaneous](#miscellaneous)
-	- [Keyboard bindings](#keyboard-bindings)
-		- [On items and comments](#on-items-and-comments)
-		- [On input fields](#on-input-fields)
-		- [Site-wide navigation](#site-wide-navigation)
-	- [Abandoned features](#abandoned-features)
+- [Highlights](#highlights) - [Added features](#added-features) - [UI tweaks](#ui-tweaks) - [More actions](#more-actions) - [More info at a glance](#more-info-at-a-glance) - [Miscellaneous](#miscellaneous) - [Keyboard bindings](#keyboard-bindings) - [On items and comments](#on-items-and-comments) - [On input fields](#on-input-fields) - [Site-wide navigation](#site-wide-navigation) - [Abandoned features](#abandoned-features)
 - [Customization and Options](#customization-and-options)
 - [Contribute](#contribute)
 - [Donate](#donate)
@@ -108,12 +98,12 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 ### Added features
 
 - [**`reply-without-leaving-page`**](src/features/reply-without-leaving-page.js) Reply to a comment, edit and delete your comment just below the parent comment, without leaving the page.
-- [**`auto-refresh`**](src/features/auto-refresh.js) *Options bar:* Auto-refresh stories on the page periodically, after a fixed interval, without reloading the page.
-- [**`hide-read-stories`**](src/features/hide-read-stories.js) *Options bar:* Hide/show stories already opened by you.
-- [**`sort-stories`**](src/features/sort-stories.js) *Options bar:* Sort stories basis of their score, age, or by their default rank.
+- [**`auto-refresh`**](src/features/auto-refresh.js) _Options bar:_ Auto-refresh stories on the page periodically, after a fixed interval, without reloading the page.
+- [**`hide-read-stories`**](src/features/hide-read-stories.js) _Options bar:_ Hide/show stories already opened by you.
+- [**`sort-stories`**](src/features/sort-stories.js) _Options bar:_ Sort stories basis of their score, age, or by their default rank.
 - [**`fetch-submission-title-from-url`**](src/features/fetch-submission-title-from-url.js) When submitting an item, get the title of the page of the URL entered.
-- [**`list-hn-polls-separately`**](src/features/list-hn-polls-separately.js) Show *HN Polls* on a separate page (like *Show HN*, *Ask HN*, etc). Linked on topbar: [https://news.ycombinator.com/#polls](https://news.ycombinator.com/#polls).
-- [**`prefill-submit-title`**](src/features/prefill-submit-title.js) Prefill submission title field with "Show HN: " or "Ask HN: " when 'Submit' link is accessed/clicked from *Show HN* or *Ask HN* pages.
+- [**`list-hn-polls-separately`**](src/features/list-hn-polls-separately.js) Show _HN Polls_ on a separate page (like _Show HN_, _Ask HN_, etc). Linked on topbar: [https://news.ycombinator.com/#polls](https://news.ycombinator.com/#polls).
+- [**`prefill-submit-title`**](src/features/prefill-submit-title.js) Prefill submission title field with "Show HN: " or "Ask HN: " when 'Submit' link is accessed/clicked from _Show HN_ or _Ask HN_ pages.
 - [**`past-choose-date`**](src/features/past-choose-date.js) Choose a custom date in `/front` to go back to that date.
 
 ### UI tweaks
@@ -133,13 +123,13 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 - [**`key-bindings-on-items`**](src/features/key-bindings-on-items.js) Enable key bindings on items and comments to improve navigation and item/comment-related actions. [Go to mappings](#on-items-and-comments).
 - [**`key-bindings-on-input-fields`**](src/features/key-bindings-on-input-fields.js) Enable key bindings/shortcuts on input fields. [Go to mappings](#on-input-fields).
 - [**`site-navigation-key-bindings`**](src/features/site-navigation-key-bindings) Universal, site-wide key bindings/shortcuts to quickly navigate to a page (eg. Home, Show HN, Threads etc.). [Go to mappings](#site-wide-navigation).
-- [**`more-accessible-favorite`**](src/features/more-accessible-favorite.js) Add a 'favorite' button next to items and comments to quickly *favorite* them. Go to `https://news.ycombinator.com/favorites?id=<your-username>` to view favorite-d items.
-- [**`more-accessible-flag`**](src/features/more-accessible-flag.js) Add a 'flag' button next to comments to quickly *flag* them.
+- [**`more-accessible-favorite`**](src/features/more-accessible-favorite.js) Add a 'favorite' button next to items and comments to quickly _favorite_ them. Go to `https://news.ycombinator.com/favorites?id=<your-username>` to view favorite-d items.
+- [**`more-accessible-flag`**](src/features/more-accessible-flag.js) Add a 'flag' button next to comments to quickly _flag_ them.
 - [**`archive-submission`**](src/features/archive-submission.js) Add "archive" button at the top of the comments page of a submission to view the archived version of the story's webpage or archive the webpage to the Wayback Machine.
 - [**`click-comment-indent-to-toggle`**](src/features/click-comment-indent-to-toggle.js) Click indentation of the comment (on the left of it) to toggle (show/hide) that comment.
 - [**`click-rank-to-vote-unvote`**](src/features/click-rank-to-vote-unvote.js) Increase hit-area of upvote button by clicking the rank number of the item to upvote it too.
 - [**`open-story-links-in-new-tab`**](src/features/open-story-links-in-new-tab.js) Open items in a new tab, instead of the same tab.
-- [**`preview-and-set-top-bar-color`**](src/features/preview-and-set-top-bar-color.js) Quickly "test" topbar colors and set them on [https://news.ycombinator.com/topcolors](https://news.ycombinator.com/topcolors). *Note: you must have 250+ karma to set a custom topcolor*.
+- [**`preview-and-set-top-bar-color`**](src/features/preview-and-set-top-bar-color.js) Quickly "test" topbar colors and set them on [https://news.ycombinator.com/topcolors](https://news.ycombinator.com/topcolors). _Note: you must have 250+ karma to set a custom topcolor_.
 - [**`toggle-all-comments-and-replies`**](src/features/toggle-all-comments-and-replies.js) Clickable button to toggle all comments on the page, or all replies to a certain comment.
 
 ### More info at a glance
@@ -165,10 +155,10 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 
 #### On items and comments
 
-*On items/stories:*
+_On items/stories:_
 
 | Key-binding                                                | Action                                                                |
-|------------------------------------------------------------|-----------------------------------------------------------------------|
+| ---------------------------------------------------------- | --------------------------------------------------------------------- |
 | <kbd>J</kbd>                                               | Next item (down)                                                      |
 | <kbd>K</kbd>                                               | Previous item (up)                                                    |
 | <kbd>Enter</kbd> <br> <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd> | Open link and focus tab <br> Open link in the background              |
@@ -179,10 +169,10 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 | <kbd>Shift</kbd>+<kbd>X</kbd>                              | Flag/unflag item                                                      |
 | <kbd>Shift</kbd>+<kbd>H</kbd>                              | Hide item                                                             |
 
-*On comments:*
+_On comments:_
 
 | Key-binding                                     | Action                                                                                |
-|-------------------------------------------------|---------------------------------------------------------------------------------------|
+| ----------------------------------------------- | ------------------------------------------------------------------------------------- |
 | <kbd>J</kbd> <br> <kbd>Shift</kbd>+<kbd>J</kbd> | Next comment (down) <br> Next direct sibling comment                                  |
 | <kbd>K</kbd> <br> <kbd>Shift</kbd>+<kbd>K</kbd> | Previous comment (down) <br> Previous direct sibling comment                          |
 | <kbd>Enter</kbd>                                | Toggle comment                                                                        |
@@ -197,21 +187,21 @@ Hopefully, in due course, a few of these tweaks can be implemented by Hacker New
 #### On input fields
 
 | Key-binding                          | Action                                                       |
-|--------------------------------------|--------------------------------------------------------------|
+| ------------------------------------ | ------------------------------------------------------------ |
 | <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd> | Submit form                                                  |
 | <kbd>Ctrl/Cmd</kbd>+<kbd>I</kbd>     | Italicise selected portion (wrap selected text in asterisks) |
 
 #### Site-wide navigation
 
-| Key-binding                 | Action   |
-|-----------------------------|----------|
-| <kbd>Alt</kbd>+<kbd>H</kbd> | Home     |
-| <kbd>Alt</kbd>+<kbd>S</kbd> | Submit   |
-| <kbd>Alt</kbd>+<kbd>N</kbd> | New      |
-| <kbd>Alt</kbd>+<kbd>O</kbd> | Show HN  |
-| <kbd>Alt</kbd>+<kbd>A</kbd> | Ask HN   |
-| <kbd>Alt</kbd>+<kbd>P</kbd> | Profile  |
-| <kbd>Alt</kbd>+<kbd>T</kbd> | Threads  |
+| Key-binding                 | Action  |
+| --------------------------- | ------- |
+| <kbd>Alt</kbd>+<kbd>H</kbd> | Home    |
+| <kbd>Alt</kbd>+<kbd>S</kbd> | Submit  |
+| <kbd>Alt</kbd>+<kbd>N</kbd> | New     |
+| <kbd>Alt</kbd>+<kbd>O</kbd> | Show HN |
+| <kbd>Alt</kbd>+<kbd>A</kbd> | Ask HN  |
+| <kbd>Alt</kbd>+<kbd>P</kbd> | Profile |
+| <kbd>Alt</kbd>+<kbd>T</kbd> | Threads |
 
 ---
 

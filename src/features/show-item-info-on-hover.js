@@ -1,46 +1,50 @@
-import linkifyElement from 'linkifyjs/element';
+import linkifyElement from "linkifyjs/element";
 
-import {getItemInfo} from '../libs/api';
-import {paths} from '../libs/paths';
-import {getUrlParams, monthNames} from '../libs/utils';
+import { getItemInfo } from "../libs/api";
+import { paths } from "../libs/paths";
+import { getUrlParams, monthNames } from "../libs/utils";
 
 function init() {
-	const links = document.querySelectorAll('span.commtext a[href*="news.ycombinator.com/item?id="]');
+  const links = document.querySelectorAll(
+    'span.commtext a[href*="news.ycombinator.com/item?id="]'
+  );
 
-	const linkifyOptions = {
-		attributes: {
-			rel: 'noopener'
-		}
-	};
+  const linkifyOptions = {
+    attributes: {
+      rel: "noopener",
+    },
+  };
 
-	for (const link of links) {
-		const itemDiv = document.createElement('div');
+  for (const link of links) {
+    const itemDiv = document.createElement("div");
 
-		itemDiv.classList.add('__rhn__hover-info', '__rhn__no-display');
-		itemDiv.style.left = link.getBoundingClientRect().left + 'px';
-		itemDiv.innerHTML = `<img src=${browser.extension.getURL('loader.gif')}>`;
+    itemDiv.classList.add("__rhn__hover-info", "__rhn__no-display");
+    itemDiv.style.left = link.getBoundingClientRect().left + "px";
+    itemDiv.innerHTML = `<img src=${browser.extension.getURL("loader.gif")}>`;
 
-		link.parentElement.insertBefore(itemDiv, link.nextSibling);
+    link.parentElement.insertBefore(itemDiv, link.nextSibling);
 
-		link.dataset.rhnInfoLoaded = '0';
+    link.dataset.rhnInfoLoaded = "0";
 
-		link.addEventListener('mouseover', async () => {
-			itemDiv.classList.remove('__rhn__no-display');
-			itemDiv.style.left = link.getBoundingClientRect().left + 'px';
+    link.addEventListener("mouseover", async () => {
+      itemDiv.classList.remove("__rhn__no-display");
+      itemDiv.style.left = link.getBoundingClientRect().left + "px";
 
-			if (link.dataset.rhnInfoLoaded === '0') {
-				link.dataset.rhnInfoLoaded = '1';
-				const id = getUrlParams('id', link.href);
+      if (link.dataset.rhnInfoLoaded === "0") {
+        link.dataset.rhnInfoLoaded = "1";
+        const id = getUrlParams("id", link.href);
 
-				const itemInfo = await getItemInfo(id);
-				const itemDate = new Date(itemInfo.time * 1000);
-				const renderedDate = `${monthNames[itemDate.getMonth()]} ${itemDate.getDate()}, ${itemDate.getFullYear()}`;
+        const itemInfo = await getItemInfo(id);
+        const itemDate = new Date(itemInfo.time * 1000);
+        const renderedDate = `${
+          monthNames[itemDate.getMonth()]
+        } ${itemDate.getDate()}, ${itemDate.getFullYear()}`;
 
-				let table = '';
+        let table = "";
 
-				switch (itemInfo.type) {
-					case 'comment': {
-						table = `
+        switch (itemInfo.type) {
+          case "comment": {
+            table = `
 							<table>
 								<tbody>
 									<tr>
@@ -59,29 +63,32 @@ function init() {
 							</table>
 						`;
 
-						break;
-					}
+            break;
+          }
 
-					case 'story': {
-						const text = itemInfo.text ?
-							`<tr>
+          case "story": {
+            const text = itemInfo.text
+              ? `<tr>
 								<td>text:</td>
 								<td>${itemInfo.text}</td>
-							</tr>` : '';
+							</tr>`
+              : "";
 
-						const url = itemInfo.url ?
-							`<tr>
+            const url = itemInfo.url
+              ? `<tr>
 								<td>url:</td>
 								<td>${itemInfo.url}</td>
-							</tr>` : '';
+							</tr>`
+              : "";
 
-						const comments = itemInfo.kids ?
-							`<tr>
+            const comments = itemInfo.kids
+              ? `<tr>
 								<td>comments:</td>
 								<td>${itemInfo.kids.length}</td>
-							</tr>` : '';
+							</tr>`
+              : "";
 
-						table = `
+            table = `
 							<table>
 								<tbody>
 									<tr>
@@ -107,37 +114,34 @@ function init() {
 							</table>
 						`;
 
-						break;
-					}
+            break;
+          }
 
-					default:
-						break;
-				}
+          default:
+            break;
+        }
 
-				itemDiv.innerHTML = table;
-				linkifyElement(itemDiv, linkifyOptions);
-			}
-		});
+        itemDiv.innerHTML = table;
+        linkifyElement(itemDiv, linkifyOptions);
+      }
+    });
 
-		link.addEventListener('mouseout', () => {
-			itemDiv.classList.add('__rhn__no-display');
-		});
-	}
+    link.addEventListener("mouseout", () => {
+      itemDiv.classList.add("__rhn__no-display");
+    });
+  }
 
-	return true;
+  return true;
 }
 
 const details = {
-	id: 'show-item-info-on-hover',
-	pages: {
-		include: [
-			...paths.comments,
-			...paths.specialComments
-		],
-		exclude: ['']
-	},
-	loginRequired: false,
-	init
+  id: "show-item-info-on-hover",
+  pages: {
+    include: [...paths.comments, ...paths.specialComments],
+    exclude: [""],
+  },
+  loginRequired: false,
+  init,
 };
 
 export default details;

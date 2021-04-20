@@ -1,59 +1,59 @@
 {
-	"private": true,
-	"scripts": {
-		"lint": "run-p --silent lint:*",
-		"lint:js": "xo",
-		"lint:styl": "stylint src/features/*.styl",
-		"lint-fix": "run-p --silent 'lint:* -- --fix'",
-		"clean": "rimraf dist",
-		"build": "webpack --mode=production",
-		"watch": "webpack --mode=development --watch",
-		"watch:firefox": "web-ext run --source-dir=dist",
-		"version": "dot-json dist/manifest.json version $VER",
-		"zip": "cd dist && zip -r ../releases/$VER.zip ./",
-		"dev-dashboard": "google-chrome https://chrome.google.com/webstore/developer/dashboard",
-		"release:amo": "cd dist && web-ext-submit --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
-		"create-git-tag": "git tag $VER -m $VER && git push origin $VER",
-		"changelog": "auto-changelog -v $VER && git add CHANGELOG.md && git commit -m \"Chore: Generate CHANGELOG (${VER})\"",
-		"release": "VER=$(daily-version) npm-run-all `node get-scripts | tr '|' '\\n'`"
-	},
-	"dependencies": {
-		"compare-urls": "^2.0.0",
-		"fit-textarea": "^1.1.0",
-		"indent-textarea": "^1.0.4",
-		"linkifyjs": "^2.1.8",
-		"timeago.js": "^4.0.0-beta.2",
-		"webext-options-sync": "^0.21.2",
-		"webextension-polyfill": "^0.4.0"
-	},
-	"devDependencies": {
-		"auto-changelog": "^1.16.3",
-		"chrome-webstore-upload-cli": "^1.2.0",
-		"copy-webpack-plugin": "^5.0.4",
-		"daily-version": "^0.12.0",
-		"dot-json": "^1.1.0",
-		"npm-run-all": "^4.1.5",
-		"rimraf": "^2.6.3",
-		"size-plugin": "^1.2.0",
-		"stylint": "^2.0.0",
-		"terser-webpack-plugin": "^1.3.0",
-		"web-ext": "^3.1.1",
-		"web-ext-submit": "^3.1.1",
-		"webpack": "^4.38.0",
-		"webpack-cli": "^3.3.6",
-		"xo": "^0.24.0"
-	},
-	"xo": {
-		"envs": [
-			"browser"
-		],
-		"globals": [
-			"browser"
-		],
-		"rules": {
-			"import/no-unassigned-import": 0,
-			"import/no-named-as-default": 0,
-			"no-script-url": 0
-		}
-	}
+  "private": true,
+  "scripts": {
+    "lint": "run-p --silent lint:*",
+    "lint:js": "xo",
+    "lint:styl": "stylint src/features/*.styl",
+    "lint-fix": "run-p --silent 'lint:* -- --fix'",
+    "clean": "rimraf dist",
+    "build": "webpack --mode=production",
+    "watch": "webpack --mode=development --watch",
+    "watch:firefox": "web-ext run --source-dir=dist",
+    "version": "dot-json dist/manifest.json version $VER",
+    "zip": "cd dist && zip -r ../releases/$VER.zip ./",
+    "dev-dashboard": "google-chrome https://chrome.google.com/webstore/developer/dashboard",
+    "release:amo": "cd dist && web-ext-submit --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET",
+    "create-git-tag": "git tag $VER -m $VER && git push origin $VER",
+    "changelog": "auto-changelog -v $VER && git add CHANGELOG.md && git commit -m \"Chore: Generate CHANGELOG (${VER})\"",
+    "release": "VER=$(daily-version) npm-run-all `node get-scripts | tr '|' '\\n'`"
+  },
+  "dependencies": {
+    "compare-urls": "^2.0.0",
+    "fit-textarea": "^1.1.0",
+    "indent-textarea": "^1.0.4",
+    "linkifyjs": "^2.1.8",
+    "timeago.js": "^4.0.0-beta.2",
+    "webext-options-sync": "^0.21.2",
+    "webextension-polyfill": "^0.4.0"
+  },
+  "devDependencies": {
+    "auto-changelog": "^1.16.3",
+    "chrome-webstore-upload-cli": "^1.2.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "daily-version": "^0.12.0",
+    "dot-json": "^1.1.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.3",
+    "size-plugin": "^1.2.0",
+    "stylint": "^2.0.0",
+    "terser-webpack-plugin": "^1.3.0",
+    "web-ext": "^3.1.1",
+    "web-ext-submit": "^3.1.1",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6",
+    "xo": "^0.24.0"
+  },
+  "xo": {
+    "envs": [
+      "browser"
+    ],
+    "globals": [
+      "browser"
+    ],
+    "rules": {
+      "import/no-unassigned-import": 0,
+      "import/no-named-as-default": 0,
+      "no-script-url": 0
+    }
+  }
 }

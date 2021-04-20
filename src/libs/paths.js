@@ -1,77 +1,60 @@
 const paths = {
-	stories: [
-		'/',
-		'/newest',
-		'/news',
-		'/show',
-		'/shownew',
-		'/ask',
-		'/jobs',
-		'/active',
-		'/best',
-		'/classic',
-		'/noobstories',
-		'/front',
-		'/from',
-		'/over'
-	],
+  stories: [
+    "/",
+    "/newest",
+    "/news",
+    "/show",
+    "/shownew",
+    "/ask",
+    "/jobs",
+    "/active",
+    "/best",
+    "/classic",
+    "/noobstories",
+    "/front",
+    "/from",
+    "/over",
+  ],
 
-	comments: [
-		'/item',
-		'/threads'
-	],
+  comments: ["/item", "/threads"],
 
-	specialComments: [
-		'/bestcomments',
-		'/noobcomments',
-		'/newcomments'
-	],
+  specialComments: ["/bestcomments", "/noobcomments", "/newcomments"],
 
-	userSpecific: [
-		'/submitted',
-		'/hidden',
-		'/upvoted',
-		'/favorites'
-	],
+  userSpecific: ["/submitted", "/hidden", "/upvoted", "/favorites"],
 
-	forms: [
-		'/reply',
-		'/submit',
-		'/newpoll',
-		'/edit',
-		'/delete-confirm',
-		'/submitlink'
-	],
+  forms: [
+    "/reply",
+    "/submit",
+    "/newpoll",
+    "/edit",
+    "/delete-confirm",
+    "/submitlink",
+  ],
 
-	misc: [
-		'/leaders',
-		'/user',
-		'/topcolors',
-		'/lists'
-	],
+  misc: ["/leaders", "/user", "/topcolors", "/lists"],
 
-	actions: [
-		'/login',
-		'/changepw',
-		'/reply',
-		'/vote',
-		'/flag',
-		'/fave',
-		'/hide',
-		'/deadlink',
-		'/xuser',
-		'/x',
-		'/r'
-	],
+  actions: [
+    "/login",
+    "/changepw",
+    "/reply",
+    "/vote",
+    "/flag",
+    "/fave",
+    "/hide",
+    "/deadlink",
+    "/xuser",
+    "/x",
+    "/r",
+  ],
 
-	info: [
-		'/formatdoc',
-		'/newsguidelines.html',
-		'/newsfaq.html',
-		'/security.html',
-		'/bookmarklet.html',
-		'/showhn.html'
-	]
+  info: [
+    "/formatdoc",
+    "/newsguidelines.html",
+    "/newsfaq.html",
+    "/security.html",
+    "/bookmarklet.html",
+    "/showhn.html",
+  ],
 };
 
-export {paths};
+export { paths };

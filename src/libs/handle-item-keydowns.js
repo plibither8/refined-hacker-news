@@ -1,270 +1,278 @@
-import {elementInScrollView} from './dom-utils';
-import parseReferenceLinks from './parse-reference-links';
+import { elementInScrollView } from "./dom-utils";
+import parseReferenceLinks from "./parse-reference-links";
 
-const focusClass = '__rhn__focussed-item';
+const focusClass = "__rhn__focussed-item";
 
 function activateItem(itemData) {
-	itemData.activeItem = itemData.items[itemData.index];
-	itemData.activeItem.classList.add(focusClass);
+  itemData.activeItem = itemData.items[itemData.index];
+  itemData.activeItem.classList.add(focusClass);
 }
 
 function getCommentIndentation(element) {
-	const parent = element.parentElement;
-	const indentation = parent.querySelector('.ind img').width / 40;
-	return indentation;
+  const parent = element.parentElement;
+  const indentation = parent.querySelector(".ind img").width / 40;
+  return indentation;
 }
 
 function getNextCommentWithSameIndent(itemData, direction) {
-	let {
-		items,
-		index,
-		activeItem
-	} = itemData;
+  let { items, index, activeItem } = itemData;
 
-	if (activeItem.matches('a.morelink')) {
-		return index;
-	}
+  if (activeItem.matches("a.morelink")) {
+    return index;
+  }
 
-	const activeItemIndentation = getCommentIndentation(activeItem);
+  const activeItemIndentation = getCommentIndentation(activeItem);
 
-	let nextItemIndent;
-	do {
-		if (index === (direction === 1 ? items.length - 1 : 0)) {
-			return index;
-		}
+  let nextItemIndent;
+  do {
+    if (index === (direction === 1 ? items.length - 1 : 0)) {
+      return index;
+    }
 
-		index += direction;
+    index += direction;
 
-		// If index is of 'More' link, then make it undefined
-		nextItemIndent = index === items.length - 1 ? undefined : getCommentIndentation(items[index]);
-	} while (nextItemIndent && nextItemIndent > activeItemIndentation);
+    // If index is of 'More' link, then make it undefined
+    nextItemIndent =
+      index === items.length - 1
+        ? undefined
+        : getCommentIndentation(items[index]);
+  } while (nextItemIndent && nextItemIndent > activeItemIndentation);
 
-	return index;
+  return index;
 }
 
 const universal = {
-	// Move down
-	down(itemData, event) {
-		if (itemData.index === itemData.items.length - 1) {
-			activateItem(itemData);
-			return;
-		}
+  // Move down
+  down(itemData, event) {
+    if (itemData.index === itemData.items.length - 1) {
+      activateItem(itemData);
+      return;
+    }
 
-		itemData.items[itemData.index].classList.remove(focusClass);
+    itemData.items[itemData.index].classList.remove(focusClass);
 
-		if (itemData.activeItem) {
-			if (event.shiftKey) {
-				if (itemData.commentList) {
-					itemData.index = getNextCommentWithSameIndent(itemData, 1);
-				} else {
-					itemData.index = itemData.items.length - 1;
-				}
-			} else {
-				itemData.index++;
-			}
-		}
+    if (itemData.activeItem) {
+      if (event.shiftKey) {
+        if (itemData.commentList) {
+          itemData.index = getNextCommentWithSameIndent(itemData, 1);
+        } else {
+          itemData.index = itemData.items.length - 1;
+        }
+      } else {
+        itemData.index++;
+      }
+    }
 
-		activateItem(itemData);
+    activateItem(itemData);
 
-		if (!elementInScrollView(itemData.activeItem)) {
-			itemData.activeItem.scrollIntoView(true);
-		}
-	},
+    if (!elementInScrollView(itemData.activeItem)) {
+      itemData.activeItem.scrollIntoView(true);
+    }
+  },
 
-	// Move up
-	up(itemData, event) {
-		if (itemData.index === 0) {
-			document.body.scrollTop = 0;
-			return;
-		}
+  // Move up
+  up(itemData, event) {
+    if (itemData.index === 0) {
+      document.body.scrollTop = 0;
+      return;
+    }
 
-		itemData.items[itemData.index].classList.remove(focusClass);
+    itemData.items[itemData.index].classList.remove(focusClass);
 
-		if (itemData.activeItem) {
-			if (event.shiftKey) {
-				if (itemData.commentList) {
-					itemData.index = getNextCommentWithSameIndent(itemData, -1);
-				} else {
-					itemData.index = 0;
-				}
-			} else {
-				itemData.index--;
-			}
-		}
+    if (itemData.activeItem) {
+      if (event.shiftKey) {
+        if (itemData.commentList) {
+          itemData.index = getNextCommentWithSameIndent(itemData, -1);
+        } else {
+          itemData.index = 0;
+        }
+      } else {
+        itemData.index--;
+      }
+    }
 
-		activateItem(itemData);
+    activateItem(itemData);
 
-		if (!elementInScrollView(itemData.activeItem)) {
-			itemData.activeItem.scrollIntoView(true);
-		}
-	},
+    if (!elementInScrollView(itemData.activeItem)) {
+      itemData.activeItem.scrollIntoView(true);
+    }
+  },
 
-	// De-activate item
-	escape(itemData) {
-		document.activeElement.blur();
+  // De-activate item
+  escape(itemData) {
+    document.activeElement.blur();
 
-		if (itemData.activeItem) {
-			itemData.activeItem.classList.remove(focusClass);
-			itemData.activeItem = undefined;
-		}
-	},
+    if (itemData.activeItem) {
+      itemData.activeItem.classList.remove(focusClass);
+      itemData.activeItem = undefined;
+    }
+  },
 
-	// Open reference links
-	openReferenceLink(event, activeItem, openReferenceLinksInNewTab) {
-		const targetIndex = event.keyCode - 48;
-		const links = parseReferenceLinks(activeItem);
+  // Open reference links
+  openReferenceLink(event, activeItem, openReferenceLinksInNewTab) {
+    const targetIndex = event.keyCode - 48;
+    const links = parseReferenceLinks(activeItem);
 
-		const link = links.find(obj => obj.index === targetIndex);
-		if (!link) {
-			return;
-		}
+    const link = links.find((obj) => obj.index === targetIndex);
+    if (!link) {
+      return;
+    }
 
-		if (openReferenceLinksInNewTab || event.shiftKey) {
-			browser.runtime.sendMessage({
-				url: link.href,
-				active: !event.shiftKey
-			});
-		} else {
-			window.open(link.href, '_self');
-		}
-	}
+    if (openReferenceLinksInNewTab || event.shiftKey) {
+      browser.runtime.sendMessage({
+        url: link.href,
+        active: !event.shiftKey,
+      });
+    } else {
+      window.open(link.href, "_self");
+    }
+  },
 };
 
 const comment = {
-	// Reply to comment
-	reply(activeItem) {
-		const replyBtn = activeItem.querySelector('a[href^="reply"]');
+  // Reply to comment
+  reply(activeItem) {
+    const replyBtn = activeItem.querySelector('a[href^="reply"]');
 
-		if (replyBtn) {
-			replyBtn.click();
-		}
-	},
+    if (replyBtn) {
+      replyBtn.click();
+    }
+  },
 
-	// Favorite comment
-	favorite(activeItem) {
-		const fave = activeItem.querySelector('.__rhn__fave-button');
+  // Favorite comment
+  favorite(activeItem) {
+    const fave = activeItem.querySelector(".__rhn__fave-button");
 
-		if (fave) {
-			fave.click();
-		}
-	},
+    if (fave) {
+      fave.click();
+    }
+  },
 
-	// Upvote/unvote comment
-	upvote(activeItem) {
-		const upvoteBtn = activeItem.previousSibling.querySelector('div.votearrow[title="upvote"]');
-		const unvote = activeItem.querySelector('a[id^="un_"]');
+  // Upvote/unvote comment
+  upvote(activeItem) {
+    const upvoteBtn = activeItem.previousSibling.querySelector(
+      'div.votearrow[title="upvote"]'
+    );
+    const unvote = activeItem.querySelector('a[id^="un_"]');
 
-		if (unvote) {
-			unvote.click();
-		} else if (upvoteBtn) {
-			upvoteBtn.click();
-		}
-	},
+    if (unvote) {
+      unvote.click();
+    } else if (upvoteBtn) {
+      upvoteBtn.click();
+    }
+  },
 
-	// Downvote/undown comment
-	downvote(activeItem) {
-		const downvoteBtn = activeItem.previousSibling.querySelector('div.votearrow[title="downvote"]');
-		const undown = activeItem.querySelector('a[id^="un_"]');
+  // Downvote/undown comment
+  downvote(activeItem) {
+    const downvoteBtn = activeItem.previousSibling.querySelector(
+      'div.votearrow[title="downvote"]'
+    );
+    const undown = activeItem.querySelector('a[id^="un_"]');
 
-		if (undown) {
-			undown.click();
-		} else if (downvoteBtn) {
-			downvoteBtn.click();
-		}
-	},
+    if (undown) {
+      undown.click();
+    } else if (downvoteBtn) {
+      downvoteBtn.click();
+    }
+  },
 
-	// Flag/unflag comment
-	async flag(activeItem) {
-		const flag = activeItem.querySelector('.__rhn__flag-button');
+  // Flag/unflag comment
+  async flag(activeItem) {
+    const flag = activeItem.querySelector(".__rhn__flag-button");
 
-		if (flag) {
-			flag.click();
-		}
-	},
+    if (flag) {
+      flag.click();
+    }
+  },
 
-	// Toggle comment
-	toggle(activeItem) {
-		activeItem.querySelector('a.togg').click();
-	}
+  // Toggle comment
+  toggle(activeItem) {
+    activeItem.querySelector("a.togg").click();
+  },
 };
 
 const story = {
-	// Open story link
-	open(activeItem, event) {
-		const story = activeItem.querySelector('a.storylink');
-		if (story) {
-			if (event.ctrlKey || event.metaKey) {
-				browser.runtime.sendMessage({
-					url: story.href
-				});
-			} else {
-				story.click();
-			}
-		}
-	},
+  // Open story link
+  open(activeItem, event) {
+    const story = activeItem.querySelector("a.storylink");
+    if (story) {
+      if (event.ctrlKey || event.metaKey) {
+        browser.runtime.sendMessage({
+          url: story.href,
+        });
+      } else {
+        story.click();
+      }
+    }
+  },
 
-	// Vote story
-	vote(activeItem, next) {
-		const vote = activeItem.querySelector('td.votelinks:not(.nosee) div.votearrow');
-		const unvote = next.querySelector('a[id^="un_"]') || activeItem.querySelector('a[id^="un_"]');
+  // Vote story
+  vote(activeItem, next) {
+    const vote = activeItem.querySelector(
+      "td.votelinks:not(.nosee) div.votearrow"
+    );
+    const unvote =
+      next.querySelector('a[id^="un_"]') ||
+      activeItem.querySelector('a[id^="un_"]');
 
-		if (unvote) {
-			unvote.click();
-		} else if (vote) {
-			vote.click();
-		}
-	},
+    if (unvote) {
+      unvote.click();
+    } else if (vote) {
+      vote.click();
+    }
+  },
 
-	// Hide story
-	hide(next) {
-		const hide = next.querySelector('a[href^="hide"]');
+  // Hide story
+  hide(next) {
+    const hide = next.querySelector('a[href^="hide"]');
 
-		if (hide) {
-			hide.click();
-			return true;
-		}
+    if (hide) {
+      hide.click();
+      return true;
+    }
 
-		return false;
-	},
+    return false;
+  },
 
-	// Favorite story
-	favorite(activeItem, next) {
-		const fave = next.querySelector('a[href^="fave"]') ||
-			activeItem.querySelector('a[href^="fave"]');
+  // Favorite story
+  favorite(activeItem, next) {
+    const fave =
+      next.querySelector('a[href^="fave"]') ||
+      activeItem.querySelector('a[href^="fave"]');
 
-		if (fave) {
-			fave.click();
-		}
-	},
+    if (fave) {
+      fave.click();
+    }
+  },
 
-	// Open comments
-	comments(next, event) {
-		const comment = next.querySelector('a[href^="item"]');
+  // Open comments
+  comments(next, event) {
+    const comment = next.querySelector('a[href^="item"]');
 
-		if (comment) {
-			if (event.ctrlKey || event.metaKey) {
-				browser.runtime.sendMessage({
-					url: comment.href
-				});
-			} else {
-				comment.click();
-			}
-		}
-	},
+    if (comment) {
+      if (event.ctrlKey || event.metaKey) {
+        browser.runtime.sendMessage({
+          url: comment.href,
+        });
+      } else {
+        comment.click();
+      }
+    }
+  },
 
-	// Flag/Unflag story
-	flag(next) {
-		const flagBtn = next.querySelector('a[href^="flag"]');
-		if (flagBtn) {
-			flagBtn.click();
-		}
-	}
+  // Flag/Unflag story
+  flag(next) {
+    const flagBtn = next.querySelector('a[href^="flag"]');
+    if (flagBtn) {
+      flagBtn.click();
+    }
+  },
 };
 
 const keydown = {
-	universal,
-	comment,
-	story
+  universal,
+  comment,
+  story,
 };
 
-export {keydown};
+export { keydown };

@@ -31,15 +31,15 @@ To run the extension in development:
 2. Clone the fork locally and navigate to the containing folder
 3. Install dependencies:
 
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
 4. Install the [stylus](https://www.npmjs.com/package/stylus) package globally:
 
-    ```sh
-    npm install -g stylus
-    ```
+   ```sh
+   npm install -g stylus
+   ```
 
 ### Running
 
@@ -69,16 +69,16 @@ To run via command-line (with automatic reloading when files change):
 
 1. Install `web-ext` globally:
 
-    ```sh
-    npm install -g web-ext
-    ```
+   ```sh
+   npm install -g web-ext
+   ```
 
 2. Make sure the development build is running (in watch mode)
 3. Navigate into the `dist` directory, and run `web-ext`:
 
-    ```sh
-    web-ext run
-    ```
+   ```sh
+   web-ext run
+   ```
 
 This will open a browser with the add-on loaded.
 
