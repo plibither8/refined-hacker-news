@@ -2,6 +2,8 @@ import fitTextarea from "fit-textarea";
 import OptionsSync from "webext-options-sync";
 import indentTextarea from "indent-textarea";
 
+const optionsStorage = new OptionsSync({ logging: false });
+
 fitTextarea.watch("textarea");
 indentTextarea.watch("textarea");
 
@@ -59,8 +61,9 @@ for (const link of presetLinks) {
     customCssTextarea.value +=
       `\n\n/* Preset: ${preset} */` + trim(cssPresets[link.dataset.preset]);
     customCssTextarea.value = customCssTextarea.value.trim();
+    optionsStorage.set({ customCSS: customCssTextarea.value });
   });
 }
 
 // Watch and sync the form
-new OptionsSync({ logging: false }).syncForm("#options-form");
+optionsStorage.syncForm("#options-form");
