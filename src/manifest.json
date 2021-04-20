@@ -1,55 +1,48 @@
 {
-	"name": "Refined Hacker News",
-	"short_name": "Refined HN",
-	"version": "0.0.0",
-	"description": "✨ Add useful features and tweak a few stuff to make the HN experience better without changing the look and feel",
-	"homepage_url": "https://github.com/plibither8/refined-hacker-news",
-	"manifest_version": 2,
-	"permissions": [
-		"storage",
-		"history",
-		"tabs",
-		"*://news.ycombinator.com/*",
-		"*://hacker-news.firebaseio.com/v0/*",
-		"*://url-title.now.sh/*",
-		"*://wayback.now.sh/*",
-		"*://hn.algolia.com/*"
-	],
-	"browser_action": {
-		"default_popup": "popup.html",
-		"default_icon": "icon.png"
-	},
-	"icons": {
-		"128": "icon.png"
-	},
-	"background": {
-		"scripts": [
-			"browser-polyfill.min.js",
-			"background.js"
-		],
-		"persistent": true
-	},
-	"content_scripts": [
-		{
-			"run_at": "document_end",
-			"matches": [
-				"*://news.ycombinator.com/*"
-			],
-			"css": [
-				"refined-hacker-news.css"
-			],
-			"js": [
-				"browser-polyfill.min.js",
-				"refined-hacker-news.js"
-			]
-		}
-	],
-	"web_accessible_resources": [
-		"loader.gif"
-	],
-	"applications": {
-		"gecko": {
-			"id": "refinedhackernews@mihir.ch"
-		}
-	}
+  "name": "Refined Hacker News",
+  "short_name": "Refined HN",
+  "version": "0.0.0",
+  "description": "✨ Add useful features and tweak a few stuff to make the HN experience better without changing the look and feel",
+  "homepage_url": "https://github.com/plibither8/refined-hacker-news",
+  "manifest_version": 2,
+  "permissions": [
+    "storage",
+    "history",
+    "tabs",
+    "*://news.ycombinator.com/*",
+    "*://hacker-news.firebaseio.com/v0/*",
+    "*://url-title.now.sh/*",
+    "*://wayback.now.sh/*",
+    "*://hn.algolia.com/*"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "background": {
+    "scripts": ["browser-polyfill.min.js", "background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_start",
+      "matches": ["*://news.ycombinator.com/*"],
+      "js": ["custom-css.js"]
+    },
+    {
+      "run_at": "document_end",
+      "matches": ["*://news.ycombinator.com/*"],
+      "css": ["refined-hacker-news.css"],
+      "js": ["browser-polyfill.min.js", "refined-hacker-news.js"]
+    }
+  ],
+  "web_accessible_resources": ["loader.gif"],
+  "applications": {
+    "gecko": {
+      "id": "refinedhackernews@mihir.ch"
+    }
+  }
 }
