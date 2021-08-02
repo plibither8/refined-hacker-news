@@ -14,6 +14,8 @@ const paths = {
     "/front",
     "/from",
     "/over",
+    "/pool",
+    "/launches",
   ],
 
   comments: ["/item", "/threads"],

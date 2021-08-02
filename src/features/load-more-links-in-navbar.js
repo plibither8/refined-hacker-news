@@ -17,6 +17,10 @@ function init(metadata) {
       description: "Highest-voted recent links",
     },
     {
+      title: "pool",
+      description: "Second chance pool",
+    },
+    {
       title: "active",
       description: "Most active current discussions",
     },
