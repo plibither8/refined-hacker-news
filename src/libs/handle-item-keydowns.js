@@ -194,7 +194,7 @@ const comment = {
 const story = {
   // Open story link
   open(activeItem, event) {
-    const story = activeItem.querySelector("a.storylink");
+    const story = activeItem.querySelector("a.titlelink");
     if (story) {
       if (event.ctrlKey || event.metaKey) {
         browser.runtime.sendMessage({

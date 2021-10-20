@@ -62,7 +62,7 @@ async function init(metadata) {
   }
 
   const storyLink = document
-    .querySelector("a.storylink")
+    .querySelector("a.titlelink")
     .href.split("://")
     .pop();
   const results = await getSimilarSubmissions(storyLink, metadata);
