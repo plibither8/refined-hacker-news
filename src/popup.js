@@ -41,7 +41,8 @@ for (const link of links) {
 // Custom CSS presets
 const cssPresets = {
   darkMode: `
-	html, body, tbody, #pagespace, field, textarea {
+/* Preset: darkMode */
+	html, body, tbody, #pagespace, field, textarea, #hnmain {
 		background-color: black !important;
 		color: #fff !important;
 	}
