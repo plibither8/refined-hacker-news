@@ -42,7 +42,8 @@ for (const link of links) {
 const cssPresets = {
   darkMode: `
 /* Preset: darkMode */
-	html, body, tbody, #pagespace, field, textarea, #hnmain {
+/* Preset: darkMode */
+	html, body, tbody, #pagespace, field, textarea, #hnmain, span {
 		background-color: black !important;
 		color: #fff !important;
 	}
@@ -54,7 +55,7 @@ const cssPresets = {
 		color: #fff !important;
 	}
 	.__rhn__profile-dropdown {
-		background-color: #f6f6ef !important;
+		background-color: #666 !important;
 	}
 	`,
 };
