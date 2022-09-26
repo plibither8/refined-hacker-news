@@ -59,12 +59,11 @@ async function commentButtons(metadata) {
     faveButton.innerText = "favorite";
     faveButton.classList.add("__rhn__fave-button");
 
-    const toggleButton = item.querySelector("a.togg");
-    toggleButton.style.marginLeft = "4px";
-
     const headSpan = item.querySelector("span.comhead");
-    headSpan.insertBefore(separatorPipe, toggleButton);
-    headSpan.insertBefore(faveButton, toggleButton);
+    const navsSpan = item.querySelector("span.navs");
+
+    headSpan.insertBefore(separatorPipe, navsSpan);
+    headSpan.insertBefore(faveButton, navsSpan);
   }
 
   let alreadyFaveItems = metadata.favorites;
@@ -120,7 +119,7 @@ async function commentButtons(metadata) {
 }
 
 async function storyButtons(metadata) {
-  const items = document.querySelectorAll("td.subtext");
+  const items = document.querySelectorAll("td.subtext span.subline");
 
   for (const item of items) {
     const lastAnchorButton = item.lastElementChild;

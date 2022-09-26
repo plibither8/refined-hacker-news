@@ -12,12 +12,13 @@ function init(metadata) {
     archiveButton.classList.add("__rhn__archive-button");
 
     const targetParent =
-      document.querySelector("table.fatitem td.subtext") ||
+      document.querySelector("table.fatitem td.subtext span.subline") ||
       document.querySelector("table.fatitem span.comhead");
-    const targetSibling = targetParent.querySelector(
-      'a[href^="https://www.google.com"]'
-    ).nextSibling;
 
+    if (!targetParent) return false;
+    const targetSibling = targetParent.querySelector("a.hnpast").nextSibling;
+
+    if (!targetSibling) return false;
     targetParent.insertBefore(separatorPipe, targetSibling);
     targetParent.insertBefore(archiveButton, targetSibling);
 

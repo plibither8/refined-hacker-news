@@ -17,12 +17,11 @@ function init() {
     flagButton.classList.add("__rhn__flag-button");
     flagButton.style.marginRight = "4px";
 
-    const toggleButton = item.querySelector("a.togg");
-    toggleButton.style.marginLeft = "4px";
-
     const headSpan = item.querySelector("span.comhead");
-    headSpan.insertBefore(separatorPipe, toggleButton);
-    headSpan.insertBefore(flagButton, toggleButton);
+    const navsSpan = item.querySelector("span.navs");
+
+    headSpan.insertBefore(separatorPipe, navsSpan);
+    headSpan.insertBefore(flagButton, navsSpan);
   }
 
   for (const item of items) {
