@@ -1,6 +1,6 @@
 function init(metadata) {
   if (metadata.path === "/item" && metadata.item.type === "story") {
-    const storyLink = document.querySelector("a.titlelink").href;
+    const storyLink = document.querySelector("span.titleline a").href;
 
     const separatorPipe = document.createTextNode(" | ");
     const archiveButton = document.createElement("a");

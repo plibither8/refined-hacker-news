@@ -67,7 +67,7 @@ export function getGroupedStories(itemlist) {
 
   for (let i = 0; i < rows.length - 2; i += 3) {
     const id = parseInt(rows[i].id, 10);
-    const storyUrl = rows[i].querySelector("a.titlelink").href;
+    const storyUrl = rows[i].querySelector("span.titleline a").href;
 
     const scoreSpan = rows[i + 1].querySelector("span.score");
     const score = scoreSpan ? parseInt(scoreSpan.innerText, 10) : undefined;

@@ -2,7 +2,7 @@ const scripts = [
   "clean",
   "build",
   "version",
-  "release:amo",
+  // "release:amo",
   "zip",
   "dev-dashboard",
   "create-git-tag",

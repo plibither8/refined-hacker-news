@@ -1,6 +1,6 @@
 function init(metadata) {
   const links = [
-    ...document.querySelectorAll("a.titlelink"),
+    ...document.querySelectorAll("span.titleline a"),
     ...(metadata.options.openCommentsInNewTab
       ? document.querySelectorAll("table.itemlist td.subtext > a:last-child")
       : []),
