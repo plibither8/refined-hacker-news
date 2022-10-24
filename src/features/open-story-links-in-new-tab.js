@@ -2,7 +2,7 @@ function init(metadata) {
   const links = [
     ...document.querySelectorAll("span.titleline a"),
     ...(metadata.options.openCommentsInNewTab
-      ? document.querySelectorAll("table.itemlist td.subtext > a:last-child")
+      ? document.querySelectorAll("table.itemlist td.subtext > span.subline > a:last-child")
       : []),
   ];
   if (links.length === 0) {
