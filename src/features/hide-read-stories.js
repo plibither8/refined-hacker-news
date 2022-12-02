@@ -5,8 +5,7 @@ import { createOptionsBar, getGroupedStories } from "../libs/dom-utils";
 import { paths } from "../libs/paths";
 
 function requestVisitedStories(options) {
-  const itemList = document.querySelector("table.itemlist");
-  const stories = getGroupedStories(itemList);
+  const stories = getGroupedStories();
   const links = {};
 
   for (const story of stories) {
@@ -23,8 +22,7 @@ function requestVisitedStories(options) {
 }
 
 function hideStories(idList, hide) {
-  const itemList = document.querySelector("table.itemlist");
-  const stories = getGroupedStories(itemList);
+  const stories = getGroupedStories();
 
   for (const id of idList) {
     const story = stories.find((obj) => obj.id === id);

@@ -57,7 +57,12 @@ export function getTopLevelComments() {
   return topLevelComments;
 }
 
-export function getGroupedStories(itemlist) {
+export function getGroupedStories() {
+  const itemList = document.querySelector("#hnmain tr:nth-child(4) table");
+  return getGroupedStoriesItemList(itemList);
+}
+
+export function getGroupedStoriesItemList(itemlist) {
   const rows = [...itemlist.querySelectorAll(":scope > tbody > tr")];
   while (!rows[0].matches(".athing")) {
     rows.shift();
