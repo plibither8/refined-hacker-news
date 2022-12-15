@@ -1,7 +1,7 @@
 import { createSiblingLoader } from "../libs/dom-utils";
 
 async function fetchTitle() {
-  const apiUrl = "https://url-title.now.sh/";
+  const apiUrl = "https://title.mihir.ch/";
 
   const titleInput = document.querySelector('input[name="title"]');
   const urlInput = document.querySelector('input[name="url"]');
