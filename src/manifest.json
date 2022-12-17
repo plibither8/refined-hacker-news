@@ -11,7 +11,7 @@
     "tabs",
     "*://news.ycombinator.com/*",
     "*://hacker-news.firebaseio.com/v0/*",
-    "*://url-title.now.sh/*",
+    "*://title.mihir.ch/*",
     "*://wayback.now.sh/*",
     "*://hn.algolia.com/*"
   ],
