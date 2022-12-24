@@ -41,13 +41,22 @@ for (const link of links) {
 // Custom CSS presets
 const cssPresets = {
   darkMode: `
-		body {
-			background-color: black !important;
-			filter: invert(90%) hue-rotate(180deg) !important;
-		}
-		.__rhn__profile-dropdown {
-			background-color: #f6f6ef !important;
-		}
+/* Preset: darkMode */
+/* Preset: darkMode */
+	html, body, tbody, #pagespace, field, textarea, #hnmain, span {
+		background-color: black !important;
+		color: #fff !important;
+	}
+	p, td, .comment, .commtext, a {
+		color: #fff !important;
+	}
+	pre {
+		background-color: #333 !important;
+		color: #fff !important;
+	}
+	.__rhn__profile-dropdown {
+		background-color: #666 !important;
+	}
 	`,
 };
 
