@@ -2,6 +2,7 @@
 
 // All features, imported in alphabetical order
 import archive_submission from "../features/archive-submission";
+import auto_generated_avatars from "../features/auto-generated-avatars";
 import auto_refresh from "../features/auto-refresh";
 import backticks_to_monospace from "../features/backticks-to-monospace";
 import change_dead_comments_color from "../features/change-dead-comments-color";
@@ -71,6 +72,7 @@ const featureList = [
   preview_and_set_top_bar_color,
   show_similar_submissions,
   collapse_root_comment,
+  auto_generated_avatars,
 
   // Options bar (order matters)
   sort_stories,
