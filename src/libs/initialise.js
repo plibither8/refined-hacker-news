@@ -21,6 +21,7 @@ import load_more_links_in_navbar from "../features/load-more-links-in-navbar";
 import more_accessible_favorite from "../features/more-accessible-favorite";
 import more_accessible_flag from "../features/more-accessible-flag";
 import on_link_focus_comment from "../features/on-link-focus-comment";
+import open_comment_links_in_new_tab from '../features/open-story-comments-in-new-tab';
 import open_story_links_in_new_tab from "../features/open-story-links-in-new-tab";
 import past_choose_date from "../features/past-choose-date";
 import prefill_submit_title from "../features/prefill-submit-title";
@@ -59,6 +60,7 @@ const featureList = [
   input_field_tweaks,
   linkify_user_about,
   on_link_focus_comment,
+  open_comment_links_in_new_tab,
   open_story_links_in_new_tab,
   backticks_to_monospace,
   past_choose_date,
