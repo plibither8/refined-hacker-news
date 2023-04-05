@@ -63,7 +63,14 @@ export function getGroupedStories() {
 }
 
 export function getGroupedStoriesItemList(itemlist) {
-  const rows = [...itemlist.querySelectorAll(":scope > tbody > tr")];
+  if (!itemlist) {
+    return [];
+  }
+  const results = itemlist.querySelectorAll(":scope > tbody > tr");
+  if (!results) {
+    return [];
+  }
+  const rows = results;
   while (!rows[0].matches(".athing")) {
     rows.shift();
   }
