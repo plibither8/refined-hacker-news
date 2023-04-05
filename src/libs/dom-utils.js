@@ -58,7 +58,7 @@ export function getTopLevelComments() {
 }
 
 export function getGroupedStories() {
-  const itemList = document.querySelector("#hnmain tr:nth-child(4) table");
+  const itemList = document.querySelector("#pagespace + div + tr table");
   return getGroupedStoriesItemList(itemList);
 }
 
