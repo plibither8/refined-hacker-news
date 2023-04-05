@@ -39,10 +39,5 @@
       "js": ["browser-polyfill.min.js", "refined-hacker-news.js"]
     }
   ],
-  "web_accessible_resources": ["loader.gif"],
-  "applications": {
-    "gecko": {
-      "id": "refinedhackernews@mihir.ch"
-    }
-  }
+  "web_accessible_resources": ["loader.gif"]
 }
