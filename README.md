@@ -251,7 +251,7 @@ No data is ever uploaded to a remote server, or is sent anywhere else. All data 
 
 **`*://hacker-news.firebaseio.com/v0/*`** Hacker News API - required to fetch `item` and `user` details.
 
-**`*://url-title.now.sh/*`** Required by the `fetch-submission-title-from-url` feature to fetch the title. _Source: [plibither8/url-title-api](https://github.com/plibither8/url-title-api)_.
+**`*://title.mihir.ch/*`** Required by the `fetch-submission-title-from-url` feature to fetch the title. _Source: [plibither8/url-title-api](https://github.com/plibither8/url-title-api)_.
 
 **`*://wayback.now.sh/`** Required by `archive-submission` to view archived version of webpage or save the webpage to the Wayback Machine. _Source: [plibither8/wayback](https://github.com/plibither8/wayback)_.
 
