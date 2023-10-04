@@ -83,7 +83,7 @@ async function init(metadata) {
 
   for (const result of results) {
     dicussionRowList.innerHTML += `
-			<li><a href="${result.link}">${result.title}</a> (${result.date} &mdash; ${
+			<li><a href="${result.link}">${result.title}</a> ${result.link} (${result.date} &mdash; ${
       result.points
     } points, ${result.comments} comments)</li>
 		`;
