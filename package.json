@@ -6,7 +6,7 @@
     "lint:styl": "stylint src/features/*.styl",
     "lint-fix": "run-p --silent 'lint:* -- --fix'",
     "clean": "rimraf dist",
-    "build": "webpack --mode=production",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode=production",
     "watch": "webpack --mode=development --watch",
     "watch:firefox": "web-ext run --source-dir=dist",
     "version": "dot-json dist/manifest.json version $VER",
