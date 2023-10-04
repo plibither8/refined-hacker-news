@@ -87,6 +87,7 @@ export function getUserData(path) {
     let actualTopBar = topBarElements[0];
     let topcolor = "#ff6600";
     if (
+      actualTopBar &&
       actualTopBar.children.length === 1 &&
       actualTopBar.children[0].tagName === "IMG"
     ) {

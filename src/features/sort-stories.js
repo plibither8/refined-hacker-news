@@ -27,7 +27,7 @@ function updateStoriesHtml(stories) {
 
 function sort() {
   const method = document.querySelector("#sort-stories-input").value;
-  const stories = getGroupedStories(document.querySelector("table.itemlist"));
+  const stories = getGroupedStories();
 
   switch (method) {
     case "time": {
@@ -90,7 +90,7 @@ function init(metadata) {
 
   sortSelect.addEventListener("change", sort);
   reverseButton.addEventListener("click", () => {
-    const stories = getGroupedStories(document.querySelector("table.itemlist"));
+    const stories = getGroupedStories();
     updateStoriesHtml(stories.reverse());
   });
 
