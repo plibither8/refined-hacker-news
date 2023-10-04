@@ -74,7 +74,7 @@ async function init(metadata) {
   const discussionRow = document.createElement("tr");
   discussionRow.innerHTML = `
 		<td class='__rhn__discussions-row'>
-			<p>Discussions on similar submissions:</p>
+			<p>\*Discussions on similar submissions:\*</p>
 			<ol></ol>
 		</td>
 	`;
@@ -83,9 +83,9 @@ async function init(metadata) {
 
   for (const result of results) {
     dicussionRowList.innerHTML += `
-			<li><a href="${result.link}">${result.title}</a> ${result.link} (${result.date} &mdash; ${
+			<li>\*<a href="${result.link}">${result.title}</a>\* ${result.link} (${result.date} &mdash; ${
       result.points
-    } points, ${result.comments} comments)</li>
+    } points, ${result.comments} comments)<br /><br /></li>
 		`;
   }
 
